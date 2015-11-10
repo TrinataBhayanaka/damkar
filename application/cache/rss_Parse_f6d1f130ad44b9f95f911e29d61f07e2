@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://rss.cnn.com/~d/styles/itemcontent.css"?><rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+<channel>
+<title>CNN.com - Asia</title>
+<link>http://edition.cnn.com/ASIA/index.html?eref=rss_asia</link>
+<description>CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.</description>
+<language>en-US</language>
+<copyright>Copyright 2015 Cable News Network LP, LLLP.</copyright>
+<pubDate>Wed, 11 Feb 2015 23:39:21 EST</pubDate>
+<ttl>10</ttl>
+<image>
+<title>CNN.com - Asia</title>
+<link>http://edition.cnn.com/ASIA/index.html?eref=rss_asia</link>
+<url>http://i.cdn.turner.com/cnn/.e/img/1.0/logo/cnn.logo.rss.gif</url>
+<width>144</width>
+<height>33</height>
+<description>CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.</description>
+</image>
+<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://rss.cnn.com/rss/edition_asia" /><feedburner:info uri="rss/edition_asia" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><item>
+<title>TransAsia pilots grounded after failing flight test</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/11/asia/transasia-crash-pilot-tests/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/yMkEtNwiL3c/index.html</link>
+<description>Taiwanese airline TransAsia grounds 10 pilots for failing an oral flight test, as the search continues for the final victim of the GE235 crash in Taipei.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/yMkEtNwiL3c" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 23:01:48 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150211214715-transasia-search-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150211214715-transasia-search-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/11/asia/transasia-crash-pilot-tests/index.html</feedburner:origLink></item>
+<item>
+<title>Mayday call shortly before plane hits bridge</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/04/asia/taiwan-plane-crash-transasia/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/ud0wbkBwnns/index.html</link>
+<description>Someone in the cockpit of a TransAsia Airways flight apparently made a mayday call because of an engine problem shortly before the plane crashed Wednesday into a river in Taiwan, killing at least 32 people.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/ud0wbkBwnns" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 23:37:29 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150204021522-vo-taiwan-transasia-crash-dash-cam-video-00000612-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150204021522-vo-taiwan-transasia-crash-dash-cam-video-00000612-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/04/asia/taiwan-plane-crash-transasia/index.html</feedburner:origLink></item>
+<item>
+<title>Father saves toddler in TransAsia plane crash</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/05/asia/taiwan-crash-survivors/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/26XQ8mitsHA/index.html</link>
+<description>As they took their seats on a TransAsia Airways flight that crashed in Taipei on Wednesday, Lin Ming-wei and his young family were looking forward to a vacation on Kinmen, an island in the Taiwan Strait.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/26XQ8mitsHA" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 23:36:34 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150205024349-tsr-dnt-brown-toddler-survives-transasia-plane-crash-00002009-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150205024349-tsr-dnt-brown-toddler-survives-transasia-plane-crash-00002009-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/05/asia/taiwan-crash-survivors/index.html</feedburner:origLink></item>
+<item>
+<title>Was TransAsia Flight GE235 safe?</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/tv/2015/02/05/tsr-intv-fredrick-taiwan-plane-crash-atr.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/v4BfDUEjEfo/tsr-intv-fredrick-taiwan-plane-crash-atr.cnn.html</link>
+<description>CNN's Wolf Blitzer talks with Stephen Fredrick, who flew ATR 72s, the same model plane that crashed in Taipei on Wednesday.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/v4BfDUEjEfo" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 23:37:03 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150204101142-07-transasia-0204-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150204101142-07-transasia-0204-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/tv/2015/02/05/tsr-intv-fredrick-taiwan-plane-crash-atr.cnn.html</feedburner:origLink></item>
+<item>
+<title>Six dead in Taiwan prison siege</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/11/asia/taiwan-prison-siege/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/Qw-nTQsK6e4/index.html</link>
+<description>Heavily armed inmates who held hostages at a Taiwan prison have committed suicide after a dramatic 14-hour siege.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/Qw-nTQsK6e4" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 23:35:48 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150211230646-taiwan-prison-siege-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150211230646-taiwan-prison-siege-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/11/asia/taiwan-prison-siege/index.html</feedburner:origLink></item>
+<item>
+<title>Australia gets bling on for Eurovision</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/10/asia/australia-eurovision/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/qTrEUj4yqp0/index.html</link>
+<description>For the first time, Australia will field an entrant into Europe's biggest, brashest song contest.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/qTrEUj4yqp0" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 10 Feb 2015 23:55:36 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150210230243-eurovision-australia-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150210230243-eurovision-australia-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/10/asia/australia-eurovision/index.html</feedburner:origLink></item>
+<item>
+<title>Malaysian court upholds sodomy conviction</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/09/asia/malaysia-anwar-ibrahim-sodomy-case/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/L5c5lzOUTMY/index.html</link>
+<description>Malaysia's top court on Tuesday upheld the conviction of opposition leader Anwar Ibrahim on the charge of sodomizing a former political aide. He vows not to be silenced: "I will never surrender," Anwar tells CNN.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/L5c5lzOUTMY" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 03:08:55 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150210011654-anwar-ibrahim-file-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150210011654-anwar-ibrahim-file-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/09/asia/malaysia-anwar-ibrahim-sodomy-case/index.html</feedburner:origLink></item>
+<item>
+<title>Malay politician speaks out </title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/world/2015/02/10/intv-ibrahim-denies-guilty-charge.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/Qa7FQVdkbpc/intv-ibrahim-denies-guilty-charge.cnn.html</link>
+<description>Malaysian opposition leader Anwar Ibrahim claims his conviction for sodomy, upheld by Malaysian courts today, was "fabricated" against him.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/Qa7FQVdkbpc" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 03:04:55 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150210013819-anwar-ibrahim-malaysian-opposition-leader-top-tease.png" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150210013819-anwar-ibrahim-malaysian-opposition-leader-top-tease.png" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/world/2015/02/10/intv-ibrahim-denies-guilty-charge.cnn.html</feedburner:origLink></item>
+<item>
+<title>ISIS' high-profile hostages</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/11/world/isis-hostages/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/PgJunOpKbrU/index.html</link>
+<description>The fates of some of ISIS' most high-profile hostages have brought home to the West the brutality of the militant group.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/PgJunOpKbrU" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 05:31:38 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/140819190153-tsr-todd-who-is-james-foley-00003527-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/140819190153-tsr-todd-who-is-james-foley-00003527-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/11/world/isis-hostages/index.html</feedburner:origLink></item>
+<item>
+<title>Two arrested in Sydney terror raid</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/10/asia/australia-sydney-terror-arrests/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/Pj2tWlNFeJM/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/Pj2tWlNFeJM" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 07:52:38 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/141214200411-05-sydney-police-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/141214200411-05-sydney-police-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/10/asia/australia-sydney-terror-arrests/index.html</feedburner:origLink></item>
+<item>
+<title>Man sentenced over AKB48 attack</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/11/world/japan-akb48-attack-sentence/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/5iwirH3lJ2I/index.html</link>
+<description>A Japanese man has been sentenced to six years in jail for slashing two members of popular J-pop group AKB48 with a saw at a fan event.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/5iwirH3lJ2I" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 04:24:41 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150211162431-akb48-rina-kawaei-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150211162431-akb48-rina-kawaei-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/11/world/japan-akb48-attack-sentence/index.html</feedburner:origLink></item>
+<item>
+<title>'Twin fetuses' found inside newborn baby</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/10/asia/hong-kong-fetuses-inside-newborn-baby/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/TOpbmtJj_aI/index.html</link>
+<description>A team of Hong Kong doctors has described an extremely rare medical occurrence -- what appeared to be a pair of fetuses inside the body of a newborn baby girl.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/TOpbmtJj_aI" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 10 Feb 2015 23:44:45 EST</pubDate>
+<feedburner:origLink>http://edition.cnn.com/2015/02/10/asia/hong-kong-fetuses-inside-newborn-baby/index.html</feedburner:origLink></item>
+<item>
+<title>Tourists deported after taking nude pics</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/10/travel/cambodia-angkor-nude-tourists/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/ITqT1oTqFmI/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/ITqT1oTqFmI" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 04:16:43 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150205170402-8-angkor-uneso-banteay-srei-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150205170402-8-angkor-uneso-banteay-srei-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/10/travel/cambodia-angkor-nude-tourists/index.html</feedburner:origLink></item>
+<item>
+<title>Modi gets first political bloody nose</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/10/asia/india-modi-delhi-election/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/IjtU4GYIQUA/index.html</link>
+<description>In the past few weeks the word "chemistry" has been much in vogue in India's capital. The branch of science is often invoked to describe Prime Minister Narendra Modi's easy, visible bonding with a wide spectrum of Indians: from the poorest to the CEOs of the country's biggest companies.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/IjtU4GYIQUA" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 10 Feb 2015 05:36:12 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150210162207-india-delhi-vote-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150210162207-india-delhi-vote-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/10/asia/india-modi-delhi-election/index.html</feedburner:origLink></item>
+<item>
+<title>ISIS recruiter killed in drone strike </title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/09/world/afghanistan-violence/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/8CD6IOTKnjE/index.html</link>
+<description>A Taliban commander once held at Guantanamo Bay has been killed by a drone strike in Afghanistan.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/8CD6IOTKnjE" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Mon, 09 Feb 2015 22:46:43 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150209071305-mullah-abdul-rauf-khadim-top-tease.jpeg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150209071305-mullah-abdul-rauf-khadim-top-tease.jpeg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/09/world/afghanistan-violence/index.html</feedburner:origLink></item>
+<item>
+<title>Australian PM survives no-confidence vote</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/08/asia/australia-tony-abbott-confidence-vote/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/cDxe1MeMDPE/index.html</link>
+<description>Prime Minister Tony Abbott retains his job after members of his own party reject calls for a leadership change amid falling polls.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/cDxe1MeMDPE" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Mon, 09 Feb 2015 09:20:18 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150208191640-australia-pm-tony-abbott-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150208191640-australia-pm-tony-abbott-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/08/asia/australia-tony-abbott-confidence-vote/index.html</feedburner:origLink></item>
+<item>
+<title>Life of a modern-day maid</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/11/asia/domestic-workers-helpers-maids/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/E0NzLXpd-eg/index.html</link>
+<description>Relatively low pay means maids -- or domestic workers -- are a common sight in homes in Asia and the Middle East.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/E0NzLXpd-eg" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 20:20:38 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/140226165730-10-downtoncostumes-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/140226165730-10-downtoncostumes-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/11/asia/domestic-workers-helpers-maids/index.html</feedburner:origLink></item>
+<item>
+<title>Housewife guilty of abusing maid</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/09/asia/hong-kong-domestic-worker-erwiana/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/fitTgGIHiRQ/index.html</link>
+<description>A Hong Kong court finds 44-year-old housewife Law Wan-tung guilty of abusing young Indonesian maid Erwiana Sulistyaningsih, who she kept as a prisoner in her home.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/fitTgGIHiRQ" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 04:25:21 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150209214602-erwiana-court-hong-kong-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150209214602-erwiana-court-hong-kong-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/09/asia/hong-kong-domestic-worker-erwiana/index.html</feedburner:origLink></item>
+<item>
+<title>Abused maid: I forgive her</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/world/2015/02/10/ns-intv-stout-maid.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/xavGQ5ahpIo/ns-intv-stout-maid.cnn.html</link>
+<description>Erwiana Sulistyaningsih tells Kristie Lu Stout that she still carries the physical and mental scars from being abused while working as a maid in Hong Kong.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/xavGQ5ahpIo" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 04:26:00 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150210092020-ns-intv-stout-maid-00002724-top-tease.png" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150210092020-ns-intv-stout-maid-00002724-top-tease.png" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/world/2015/02/10/ns-intv-stout-maid.cnn.html</feedburner:origLink></item>
+<item>
+<title>8 ways to get a date in China</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/11/asia/china-dating/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/D5WCQZrgk30/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/D5WCQZrgk30" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 22:03:06 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150211132118-china-love-date-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150211132118-china-love-date-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/11/asia/china-dating/index.html</feedburner:origLink></item>
+<item>
+<title>How to turn Air Jordans into an apartment</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/10/asia/china-sneakers-loan/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/fUUSIa9FEdY/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/fUUSIa9FEdY" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 00:55:50 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150211114752-china-air-jordans-cash-top-tease.jpeg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150211114752-china-air-jordans-cash-top-tease.jpeg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/10/asia/china-sneakers-loan/index.html</feedburner:origLink></item>
+<item>
+<title>Couples shun Year of the Sheep babies</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/08/asia/china-sheep-babies/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/SkyQKKte2NY/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/SkyQKKte2NY" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 11 Feb 2015 00:59:09 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150204143318-lunar-new-year-3-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150204143318-lunar-new-year-3-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/08/asia/china-sheep-babies/index.html</feedburner:origLink></item>
+<item>
+<title>Kim Jong Un flaunts new 'cutting-edge' missiles</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/09/asia/north-korea-missiles/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/1maqSXU9Kqg/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/1maqSXU9Kqg" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 10 Feb 2015 23:42:14 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150208202029-north-korea-missiles-test-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150208202029-north-korea-missiles-test-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/09/asia/north-korea-missiles/index.html</feedburner:origLink></item>
+<item>
+<title>How the Philippines saved 1,200 Jews</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/02/world/asia/philippines-jews-wwii/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/VvS5NQX8s3U/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/VvS5NQX8s3U" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Thu, 05 Feb 2015 00:16:47 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/140911093014-1940-refugees-3roads-top-tease.png" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/140911093014-1940-refugees-3roads-top-tease.png" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/02/world/asia/philippines-jews-wwii/index.html</feedburner:origLink></item>
+<item>
+<title>Incredible park was artist's 'final act'</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/03/travel/cnngo-hokkaido-moerenuma-park-noguchi/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/Mfev9Y_TM9g/index.html</link>
+<description>The final work of iconic Japanese-American artist Isuma Noguchi is one of the most intriguing parks in the country.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/Mfev9Y_TM9g" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 03 Feb 2015 21:10:45 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150106020527-noguchi-5-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150106020527-noguchi-5-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/03/travel/cnngo-hokkaido-moerenuma-park-noguchi/index.html</feedburner:origLink></item>
+<item>
+<title>Breakfast with 'mermaids' in Busan</title>
+<guid isPermaLink="false">http://edition.cnn.com/2013/07/10/travel/busan-breakfast/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/6yJItDUOQHA/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/6yJItDUOQHA" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 10 Feb 2015 23:54:46 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/130703132659-busan-breakfast-gallery-10-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/130703132659-busan-breakfast-gallery-10-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2013/07/10/travel/busan-breakfast/index.html</feedburner:origLink></item>
+<item>
+<title>Angkor: You've got it all wrong, say experts</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/02/06/travel/angkor-unesco-global-treasures/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/thmzXaItj_s/index.html</link>
+<description>&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/thmzXaItj_s" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Sun, 08 Feb 2015 07:47:36 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150205175220-10-angkor-wat-sunrise--top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150205175220-10-angkor-wat-sunrise--top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/02/06/travel/angkor-unesco-global-treasures/index.html</feedburner:origLink></item>
+<item>
+<title>Survivors of Taiwan plane crash tell shocking stories</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/us/2015/02/05/lead-dnt-marsh-taiwan-plane-crash.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/QoemLf9hX2k/lead-dnt-marsh-taiwan-plane-crash.cnn.html</link>
+<description>CNN's Rene Marsh looks at the stories told by some of the survivors of the plane that crashed in Taiwan.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/QoemLf9hX2k" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Thu, 05 Feb 2015 21:37:20 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150205164244-lead-dnt-marsh-taiwan-plane-crash-00010421-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150205164244-lead-dnt-marsh-taiwan-plane-crash-00010421-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/us/2015/02/05/lead-dnt-marsh-taiwan-plane-crash.cnn.html</feedburner:origLink></item>
+<item>
+<title>Dashcam video captures crashing plane</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/world/2015/02/04/vo-taiwan-transasia-crash-dash-cam-video.tvbs-taiwan.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/_l5y-e3dlEk/vo-taiwan-transasia-crash-dash-cam-video.tvbs-taiwan.html</link>
+<description>Dash-cam video shows the moment a TransAsia plane crashes across a Taipei highway and then falls into a river.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/_l5y-e3dlEk" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Thu, 05 Feb 2015 21:37:52 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150204021522-vo-taiwan-transasia-crash-dash-cam-video-00000612-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150204021522-vo-taiwan-transasia-crash-dash-cam-video-00000612-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/world/2015/02/04/vo-taiwan-transasia-crash-dash-cam-video.tvbs-taiwan.html</feedburner:origLink></item>
+<item>
+<title>Greste is greeted by supporters</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/world/2015/02/04/vo-greste-australia-arrival.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/x9abPyyUdec/vo-greste-australia-arrival.cnn.html</link>
+<description>Al Jazeera journalist Peter Greste arrives in Brisbane, Australia, to a large crowd of supporters after spending more than 400 days in captivity in Egypt.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/x9abPyyUdec" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Thu, 05 Feb 2015 21:37:10 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150204105728-vo-greste-australia-arrival-00005428-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150204105728-vo-greste-australia-arrival-00005428-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/world/2015/02/04/vo-greste-australia-arrival.cnn.html</feedburner:origLink></item>
+<item>
+<title>Parents: 'None of our lives will be the same'</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/world/2015/02/02/intv-amanpour-lois-juris-greste-air.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/naAWCt4ysSQ/intv-amanpour-lois-juris-greste-air.cnn.html</link>
+<description>After 400 days, Lois and Juris Greste speak with Christiane Amanpour about welcoming their son Peter Greste from from Egypt, where he was jailed.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/naAWCt4ysSQ" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Thu, 05 Feb 2015 21:37:14 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150202194101-intv-amanpour-lois-juris-greste-air-00043206-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150202194101-intv-amanpour-lois-juris-greste-air-00043206-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/world/2015/02/02/intv-amanpour-lois-juris-greste-air.cnn.html</feedburner:origLink></item>
+<item>
+<title>Friends remember journalist Kenji Goto</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/us/2015/02/01/nr-pkg-ripley-kenji-goto-obit.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/2N2uW2AQYik/nr-pkg-ripley-kenji-goto-obit.cnn.html</link>
+<description>CNN's Will Ripley speaks with friends of Kenji Goto. ISIS claims to have beheaded Goto.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/2N2uW2AQYik" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Sun, 01 Feb 2015 19:30:20 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150201173655-nr-pkg-ripley-kenji-goto-obit-00004813-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150201173655-nr-pkg-ripley-kenji-goto-obit-00004813-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/us/2015/02/01/nr-pkg-ripley-kenji-goto-obit.cnn.html</feedburner:origLink></item>
+<item>
+<title>Obama on India vs. China</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/tv/2015/01/31/exp-gps-obama-sot-china-and-india.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/LVvT2H7AWnM/exp-gps-obama-sot-china-and-india.cnn.html</link>
+<description>Is a burgeoning friendship between the U.S. and India a threat to China? China doesn't seem happy about it. Pres. Obama responds.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/LVvT2H7AWnM" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Sun, 01 Feb 2015 19:31:18 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150131142559-exp-gps-obama-sot-china-and-india-00001910-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150131142559-exp-gps-obama-sot-china-and-india-00001910-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/tv/2015/01/31/exp-gps-obama-sot-china-and-india.cnn.html</feedburner:origLink></item>
+<item>
+<title>'Dragon Dinosaur' discovered in China</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/tv/2015/01/30/foster-china-dragon-dinosaur.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/pTHcB4G0YqM/foster-china-dragon-dinosaur.cnn.html</link>
+<description>Paleontologists have discovered a 50-ft "dragon" dinosaur species in China that may have roamed the earth 160 million years ago in the Late Jurassic period.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/pTHcB4G0YqM" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Mon, 02 Feb 2015 02:39:36 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150130123221-china-dragon-dinosaur-2-top-tease.jpeg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150130123221-china-dragon-dinosaur-2-top-tease.jpeg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/tv/2015/01/30/foster-china-dragon-dinosaur.cnn.html</feedburner:origLink></item>
+<item>
+<title>Bringing the best of Indian style </title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/world/2015/01/28/spc-p2p-maithili-ahluwalia.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/LkMSZv4EIpM/spc-p2p-maithili-ahluwalia.cnn.html</link>
+<description>Maithili Ahluwalia shows how going "global yet local" really works with her boutique concept store Bungalow Eight.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/LkMSZv4EIpM" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Thu, 29 Jan 2015 21:35:48 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150127223329-spc-p2p-maithili-ahluwalia-00003920-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150127223329-spc-p2p-maithili-ahluwalia-00003920-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/world/2015/01/28/spc-p2p-maithili-ahluwalia.cnn.html</feedburner:origLink></item>
+<item>
+<title>Blind and deaf runners form running club</title>
+<guid isPermaLink="false">http://edition.cnn.com/2015/01/04/intl_world/fearless-dragons-hong-kong/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/HTxU_qyLHYg/index.html</link>
+<description>Blind runners pair up with deaf runners and "guide runners" to ensure the team stays on track.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/HTxU_qyLHYg" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Sun, 04 Jan 2015 23:56:49 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/150102000535-pkg-above-beyond-fearless-dragons-00005101-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/150102000535-pkg-above-beyond-fearless-dragons-00005101-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2015/01/04/intl_world/fearless-dragons-hong-kong/index.html</feedburner:origLink></item>
+<item>
+<title>Ex-addict fights Indonesia's drug problem</title>
+<guid isPermaLink="false">http://edition.cnn.com/2014/12/15/world/asia/david-gordon-rehab-center-indonesia/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/V_u0NiLf3PI/index.html</link>
+<description>David Gordon remembers visiting what was once Indonesia's only drugs recovery center. "I had never seen that many heroin addicts in one place at one time."&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/V_u0NiLf3PI" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 07 Jan 2015 06:01:03 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/141215015045-pkg-above-and-beyond-david-gordon-00004707-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/141215015045-pkg-above-and-beyond-david-gordon-00004707-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2014/12/15/world/asia/david-gordon-rehab-center-indonesia/index.html</feedburner:origLink></item>
+<item>
+<title>Music gives Indian children a voice</title>
+<guid isPermaLink="false">http://edition.cnn.com/2014/10/26/world/asia/india-music-basti-profile/index.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/HQtQ7I05ibc/index.html</link>
+<description>Faith Gonsalves, 26, founded a music and arts program for underprivileged children in Delhi. Music is a powerful tool for children's development; raises awareness of poverty, she says.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/HQtQ7I05ibc" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Mon, 29 Dec 2014 23:52:17 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/141024111541-spc-above-beyond-creativity-music-00002023-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/141024111541-spc-above-beyond-creativity-music-00002023-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/2014/10/26/world/asia/india-music-basti-profile/index.html</feedburner:origLink></item>
+<item>
+<title>Exciting art blends cultures, comics, air</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/international/2014/12/19/spc-talk-asia-jeff-koons-c.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/hPyAoV5nElc/spc-talk-asia-jeff-koons-c.cnn.html</link>
+<description>Artist Jeff Koons talks about the inspiration behind his work.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/hPyAoV5nElc" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 14 Jan 2015 01:45:58 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/141218170446-jeff-koons-retrospective-whitney-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/141218170446-jeff-koons-retrospective-whitney-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/international/2014/12/19/spc-talk-asia-jeff-koons-c.cnn.html</feedburner:origLink></item>
+<item>
+<title>Sri Lanka's cricket sensation</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/international/2014/11/20/spc-talk-asia-kumar-sangakkara-a.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/lGXy8p8d6j4/spc-talk-asia-kumar-sangakkara-a.cnn.html</link>
+<description>CNN's Anna Coren meets national sporting hero Kumar Sangakkara who says cricket represents an ideal Sri Lanka.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/lGXy8p8d6j4" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Wed, 31 Dec 2014 03:32:38 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/141121160124-spc-talk-asia-kumar-sangakkara-a-00041418-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/141121160124-spc-talk-asia-kumar-sangakkara-a-00041418-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/international/2014/11/20/spc-talk-asia-kumar-sangakkara-a.cnn.html</feedburner:origLink></item>
+<item>
+<title>In the kitchen with Curtis Stone</title>
+<guid isPermaLink="false">http://edition.cnn.com/video/data/2.0/video/international/2014/08/22/spc-talk-asia-curtis-stone-b.cnn.html</guid>
+<link>http://rss.cnn.com/~r/rss/edition_asia/~3/zTH5Pl2XGQU/spc-talk-asia-curtis-stone-b.cnn.html</link>
+<description>The superstar chef welcomes CNN's Monita Rajpal into his kitchen.&lt;img src="//feeds.feedburner.com/~r/rss/edition_asia/~4/zTH5Pl2XGQU" height="1" width="1" alt=""/&gt;</description>
+<pubDate>Tue, 30 Dec 2014 01:04:55 EST</pubDate>
+<media:thumbnail height="51" width="90" url="http://i2.cdn.turner.com/cnn/dam/assets/140823191720-spc-talk-asia-curtis-stone-b-00000823-top-tease.jpg" />
+<media:content height="51" width="90" medium="image" type="image/jpeg" url="http://i2.cdn.turner.com/cnn/dam/assets/140823191720-spc-talk-asia-curtis-stone-b-00000823-top-tease.jpg" />
+<feedburner:origLink>http://edition.cnn.com/video/data/2.0/video/international/2014/08/22/spc-talk-asia-curtis-stone-b.cnn.html</feedburner:origLink></item>
+</channel>
+</rss>
