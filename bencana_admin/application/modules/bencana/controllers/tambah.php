@@ -12,7 +12,7 @@ class tambah extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Tambah Bencana";
+        $this->module_title="Bencana";
         $this->load->model("wilayah_model");
         $this->model=$this->wilayah_model;
 

@@ -128,14 +128,14 @@
 								<div class="col-md-4">
 									<div class="form-group">
 									
-									<label>Luas Wilayah </label>
+									<label>Tanggal Awal </label>
 									<?php echo form_input($luasWilayah,false,'class="form-control"');?>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 									
-									<label>Jumlah Kecamatan </label>
+									<label>Tanggal Akhir </label>
 									<?php echo form_input($jumlahKecamatan,false,'class="form-control"');?>
 									</div>
 								</div>
@@ -143,7 +143,7 @@
 								<div class="col-md-4">
 									<div class="form-group">
 									
-									<label>Jumlah Penduduk </label>
+									<label>Jenis Bencana </label>
 									<?php echo form_input($jumlahPenduduk,false,'class="form-control"');?>
 									</div>
 								</div>
@@ -151,32 +151,52 @@
 
 							<div class="row" >
 								<div class="col-md-12" >
-									<h2 style="border-top:10px solid #F3F3F3;padding-top:10px">Rasio Capaian(SPM)</h2>
+									<h3 style="border-top:10px solid #F3F3F3;padding-top:10px">Korban Jiwa</h3>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-3">
 									<div class="form-group">
-									<label>Cakupan</label>
+									<label>Meninggal</label>
 									<?php echo form_input($cakupan,false,'class="form-control"');?>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
-									<label>Respon Time</label>
+									<label>Hilang</label>
 									<?php echo form_input($responTime,false,'class="form-control"');?>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
-									<label>Rasio Personel</label>
+									<label>Terluka</label>
 									<?php echo form_input($rasioPersonel,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+
+							<div class="row" >
+								<div class="col-md-12" >
+									<h3 style="border-top:10px solid #F3F3F3;padding-top:10px">Kerusakan</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<div class="form-group">
+									<label>Rumah</label>
+									<?php echo form_input($cakupan,false,'class="form-control"');?>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
-									<label>Rasio SarPras</label>
-									<?php echo form_input($rasioSarPras,false,'class="form-control"');?>
+									<label>Fasilitas Pendidikan</label>
+									<?php echo form_input($responTime,false,'class="form-control"');?>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="form-group">
+									<label>Fasilitas Kesehatan</label>
+									<?php echo form_input($rasioPersonel,false,'class="form-control"');?>
 									</div>
 								</div>
 							</div>
