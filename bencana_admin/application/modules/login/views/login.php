@@ -1,7 +1,7 @@
 <? $this->load->view("login/login_header")?>
 		
         <div class="form-box" id="login-box">
-        	<div class="header" style="text-align:center"><!--<img src="assets/image/dagri_logo.png" width="40px" />-->DAMKAR</div>
+        	<div class="header" style="text-align:center"><!--<img src="assets/image/dagri_logo.png" width="40px" />-->KEBENCANAAN</div>
             
             <form id="frmlogin" action="<?=base_url()."login/auth/"?>" method="post">
             	<input type="hidden" name="act" id="act" value="login"/>

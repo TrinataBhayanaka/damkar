@@ -33,19 +33,33 @@
                             </a>
                         </li>
                       <? //endif; ?> 
-						<? if(($this->cms->has_read("wa_reg/wa_reg/"))||($this->cms->has_read("reg/"))||($this->cms->has_read("ver/"))||($this->cms->has_read("ser/"))||($this->cms->has_read("keberatan/"))||($this->cms->has_read("register/register/"))):?>
-                        <li class="treeview">
+                      <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-puzzle-piece"></i>
+                                <i class="fa fa-code"></i>
                                 <span>Wilayah & Sektor/UPT</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
+                                <? //if($this->cms->has_read("register/register/")):?>
+                                <li><a href="wilayah/wilayah"><i class="fa"></i>List Wilayah</a></li>
+                                <li><a href="wilayah/sektor"><i class="fa"></i>List Sektor/UPT</a></li>
+                                <? //endif; ?>
+                                
+                           </ul>
+                        </li>
+						<? if(($this->cms->has_read("wa_reg/wa_reg/"))||($this->cms->has_read("reg/"))||($this->cms->has_read("ver/"))||($this->cms->has_read("ser/"))||($this->cms->has_read("keberatan/"))||($this->cms->has_read("register/register/"))):?>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-puzzle-piece"></i>
+                                <span>Data Bencana</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
 								<? //if($this->cms->has_read("register/register/")):?>
-								<li><a href="wilayah/wilayah"><i class="fa"></i>Wilayah List</a></li>
+								<li><a href="bencana/bencana"><i class="fa"></i>List Bencana</a></li>
                                 <? //endif; ?>
 								<? //if($this->cms->has_read("wa_reg/wa_reg/")):?>
-								<li><a href="wilayah/sektor"><i class="fa"></i>Sektor /UPT List</a></li>
+								<li><a href="bencana/tambah"><i class="fa"></i>Tambah Bencana</a></li>
                                 <? //endif; ?>
 								<!--<? if($this->cms->has_read("reg/reg/")):?>
 								<li><a class="mnu_reg" href="reg"><i class="fa"></i>Registrasi</a></li>
@@ -64,7 +78,7 @@
                         <? endif; ?>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-puzzle-piece"></i>
+                                <i class="fa fa-user"></i>
                                 <span>Personel</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -78,6 +92,34 @@
 
                         <li class="treeview">
                             <a href="#">
+                                <i class="fa fa-file-o"></i>
+                                <span>Peraturan</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <? //if($this->cms->has_read("register/register/")):?>
+                                <li><a href="personel/personel"><i class="fa"></i>Personel List</a></li>
+                                <? //endif; ?>
+                                
+                           </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-calendar"></i>
+                                <span>Agenda</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <? //if($this->cms->has_read("register/register/")):?>
+                                <li><a href="personel/personel"><i class="fa"></i>Personel List</a></li>
+                                <? //endif; ?>
+                                
+                           </ul>
+                        </li>
+
+                        <!--<li class="treeview">
+                            <a href="#">
                                 <i class="fa fa-puzzle-piece"></i>
                                 <span>Kejadian</span>
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -88,11 +130,54 @@
                                 <? //endif; ?>
                                 
                            </ul>
-                        </li>
-                        <? if(($this->cms->has_read("admin/articles/"))||($this->cms->has_read("admin/news/"))||($this->cms->has_read("admin/slider/"))||($this->cms->has_read("admin/rss/"))):?>
-                        <li class="treeview">
+                        </li>-->
+
+                        <!--<li class="treeview">
                             <a href="#">
                                 <i class="fa fa-code"></i>
+                                <span>Master Data</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <? //if($this->cms->has_read("register/register/")):?>
+                                <li><a href="kejadian/kejadian"><i class="fa"></i>Isinya apa hayoo </a></li>
+                                <? //endif; ?>
+                                
+                           </ul>
+                        </li>
+
+                         <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-file-o"></i>
+                                <span>Fasilitas</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <? //if($this->cms->has_read("register/register/")):?>
+                                <li><a href="kejadian/kejadian"><i class="fa"></i>Isinya apa hayoo </a></li>
+                                <? //endif; ?>
+                                
+                           </ul>
+                        </li>-->
+
+                        <? if($this->cms->has_read("admin/link_manager/")):?>
+                        <!--<li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-link"></i>
+                                <span>Web Links</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="admin/link_manager/category_list"><i class="fa"></i>Category</a></li>
+                                <li><a href="admin/link_manager/link_list"><i class="fa"></i>Link</a></li>
+                            </ul>
+                        </li>-->
+                        <?php endif;?>
+
+                        <? if(($this->cms->has_read("admin/articles/"))||($this->cms->has_read("admin/news/"))||($this->cms->has_read("admin/slider/"))||($this->cms->has_read("admin/rss/"))):?>
+                        <!--<li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-th"></i>
                                 <span>Web Content</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
@@ -102,91 +187,29 @@
 								<li><a href="admin/articles"><i class="fa"></i>Artikel </a></li>
 								<li><a href="admin/rss"><i class="fa"></i>RSS </a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <? endif; ?>
                         
-                         <? if($this->cms->has_read("admin/pages/")):?>
-                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-file-o"></i>
-                                <span>Web Pages</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-								<li><i class="fa"></i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BRWA</b> </li>
-                                <li><a href="admin/pages/index/pbrwa"><i class="fa"></i>Profil </a></li>
-                                <!--<li><a href="admin/pages/index/kbrwa"><i class="fa"></i>Kantor</a></li>-->
-								<li><a href="admin/regulasi"><i class="fa"></i>Regulasi </a></li>
-								<li><a href="admin/rujukan"><i class="fa"></i>Rujukan </a></li>
-								<!--<li><a href="admin/pages/index/kontak"><i class="fa"></i>Kontak </a></li>-->
-								<li><a href="admin/pages/index/kepengurusan_brwa"><i class="fa"></i>Kepengurusan BRWA </a></li>
-								<li><i class="fa"></i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pendaftaran</b> </li>
-                                <li><a href="admin/pages/index/psdbrwa"><i class="fa"></i>Prosedur</a></li>
-								<li><i class="fa"></i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Layanan</b> </li>
-                                <li><a href="admin/pages_"><i class="fa"></i>SLPP</a></li>
-								<li><a href="admin/pages_UKP3_/"><i class="fa"></i>UKP3</a></li>
-								
-                            </ul>
-                        </li>
-                        <?php endif;?>
-						<? if($this->cms->has_read("admin/link_manager/")):?>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-link"></i>
-                                <span>Web Links</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-								<li><a href="admin/link_manager/category_list"><i class="fa"></i>Category</a></li>
-								<li><a href="admin/link_manager/link_list"><i class="fa"></i>Link</a></li>
-                            </ul>
-                        </li>
-						<?php endif;?>
-                         <?php if($this->cms->has_read("master_data/")):?>
-						 <?php //if($this->cms->has_admin("master_data/")):?>
-                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-th"></i>
-                                <span>Master Data</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            
-                            <ul class="treeview-menu">
-                                <li><a href="master_data/entitas"><i class="fa"></i>Entitas</a></li> 
-                                <li><a href="master_data/jenis_ekosistem"><i class="fa"></i>Jenis Ekosistem</a></li>
-                                <li><a href="master_data/jenis_document"><i class="fa"></i>Jenis Dokumen</a></li>
-                                <li><a href="master_data/kondisi_fisik"><i class="fa"></i>Kondisi Fisik</a></li>                                
-                                <li><a href="master_data/potensi_hayati"><i class="fa"></i>Potensi Hayati</a></li>
-                                <li><a href="master_data/satuan"><i class="fa"></i>Satuan</a></li>
-                                <li><a href="master_data/document"><i class="fa"></i>Dokumen</a></li>
-                                <li><a href="master_data/tanda_pengenal"><i class="fa"></i>Tanda Pengenal</a></li>
-                            </ul>
-                        </li>
-                        <?php endif;?>
-                        
-                        
-                         <?php if($this->cms->has_admin("admin/account_manager/")):?>
-                         <li class="treeview">
+                        <!-- <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-cog"></i>
-                                <span>Account Manager</span>
+                                <span>Configuration</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="admin/account_manager/"><i class="fa"></i>Users</a></li>
-                                <li><a href="admin/account_manager/group_list"><i class="fa"></i>Groups</a></li>
-                                <!--<li><a href="setting/module/"><i class="fa fa-angle-double-right"></i>  Module</a></li>-->
-                                <li><a href="admin/acl"><i class="fa"></i>ACL Groups </a></li>
-                            </ul>
-                        </li>
-                        <?php endif;?>
+                                <? //if($this->cms->has_read("register/register/")):?>
+                                <li><a href="kejadian/kejadian"><i class="fa"></i>Isinya apa hayoo </a></li>
+                                <? //endif; ?>
+                                
+                           </ul>
+                        </li> -->
                         
                       <?php if($this->cms->has_admin("admin/config_/")):?>
-                        <li class="active">
+                        <!-- <li class="active">
                             <a href="admin/config_/">
-                                <i class="fa fa-briefcase"></i> <span>Configuration</span>
+                                <i class="fa fa-briefcase"></i> <span>ACL Manager</span>
                             </a>
-                        </li>
+                        </li> -->
                       <? endif; ?>  
                         <?php //endif;?>
                         

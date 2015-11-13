@@ -35,7 +35,7 @@ class wilayah extends Admin_Controller {
 
 	function index($forder=0,$limit=10,$page=1){
   		
-		pre($this->juned());
+		
 		$data_layout["content"]=$this->load->view("wilayah/wilayah/v_wilayah_ajax",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 	}

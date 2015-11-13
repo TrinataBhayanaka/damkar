@@ -10,10 +10,10 @@
                             <div class="small-box bg-aqua">
                                 <div class="inner">
                                     <h3>
-                                        <?=$teregistrasi?>
+                                        4
                                     </h3>
                                     <p>
-                                         Wilayah AdatTeregistrasi
+                                         Jumlah Kejadian Bencana
                                     </p>
                                 </div>
                                 <div class="icon">
@@ -30,10 +30,10 @@
                                 <div class="inner">
                                     <h3>
                                         <!--53<sup style="font-size: 20px">%</sup>-->
-                                        <?=$terverifikasi;?>
+                                        12
                                     </h3>
                                     <p>
-                                        Wilayah Adat Terverifikasi
+                                        Jumlah Korban Luka Berat
                                     </p>
                                 </div>
                                 <div class="icon">
@@ -49,10 +49,10 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        <?=($total_wa)-($teregistrasi+$terverifikasi+$tersertifikasi);?>
+                                        30
                                     </h3>
                                     <p>
-                                        In Progress
+                                        Jumlah Korban Luka Ringan
                                     </p>
                                 </div>
                                 <div class="icon">
@@ -68,10 +68,10 @@
                             <div class="small-box bg-red">
                                 <div class="inner">
                                     <h3>
-                                        <?=$tersertifikasi?>
+                                        20
                                     </h3>
                                     <p>
-                                        Wilayah Adat Tersertifikasi 
+                                        Jumlah Korban Meninggal
                                     </p>
                                 </div>
                                 <div class="icon">
@@ -92,10 +92,10 @@
         	<!-- GRAFIK LEFT 1 -->
         	<div class="box box-primary">
             <div class="box-header">
-            <h3 class="box-title">Status Chart</h3>
+                <h3 class="box-title">Status Chart  <label style="font-size:12px;color:gray;margin:0 0 0 40px">Jumlah Korban Bencana</label></h3>
             </div>
             <div class="box-body chart-responsive">
-            <div class="chart" id="donat" style="height: 300px;"></div>
+            <div id="demo-morris-donut" style="height:300px"></div>
             </div> 
             </div> 
         </div>
@@ -103,10 +103,10 @@
         <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header">
-            <h3 class="box-title">Status Chart</h3>
+            <h3 class="box-title">Status Chart  <label style="font-size:12px;color:gray;margin:0 0 0 40px">Kejadian Bencana Alam 2011 - 2015</label></h3>
             </div>
             <div class="box-body chart-responsive">
-            <div class="chart" id="donat-right" style="height: 300px;"></div>
+            <div id="demo-morris-bar" style="height:300px"></div>
             </div> 
             </div>
         <!-- GRAFIK LEFT 1 
@@ -158,79 +158,52 @@
    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
    <script>
    		$(function(){
-			//DONUT CHART
-                var donut = new Morris.Donut({
-                    element: 'donat',
-                    resize: true,
-                    colors: ["#3c8dbc", "#00a65a", "#FF9900","#f56954"],
-                    data: [
-                        {label: "Teregistrasi", value: <?=$teregistrasi?>},
-                        {label: "Terverifikasi", value: <?=$terverifikasi?>},
-						{label: "In Progress ", value: <?=($total_wa)-($teregistrasi+$terverifikasi+$tersertifikasi);?>},
-						{label: "Tersertifikasi", value: <?=$tersertifikasi?>},
-                    ],
-                    hideHover: 'auto'
-                });
-				var donut = new Morris.Donut({
-                    element: 'donat-right',
-                    resize: true,
-                    colors: ["#669999","#FF0000"],
-                    data: [
-                        {label: "Total Wilayah Adat", value: <?=$total_wa?>},
-						{label: "Data Tidak Valid", value: <?=$tidakvaild?>},
-					
-                    ],
-                    hideHover: 'auto'
-                });
-		});
-		
-		
-		var data = [
-		  { y: '2014', a: 50, b: 90},
-		  { y: '2015', a: 65,  b: 75},
-		  { y: '2016', a: 50,  b: 50},
-		  { y: '2017', a: 75,  b: 60},
-		  { y: '2018', a: 80,  b: 65},
-		  { y: '2019', a: 90,  b: 70},
-		  { y: '2020', a: 100, b: 75},
-		  { y: '2021', a: 115, b: 75},
-		  { y: '2022', a: 120, b: 85},
-		  { y: '2023', a: 145, b: 85},
-		  { y: '2024', a: 160, b: 95}
-		],
-		config = {
-		  data: data,
-		  xkey: 'y',
-		  ykeys: ['a', 'b'],
-		  labels: ['Total Income', 'Total Outcome'],
-		  fillOpacity: 0.6,
-		  hideHover: 'auto',
-		  behaveLikeLine: true,
-		  resize: true,
-		  pointFillColors:['#ffffff'],
-		  pointStrokeColors: ['black'],
-		  lineColors:['gray','red']
-	  };
-	  
-		config.element = 'area-chart';
-		Morris.Area(config);
-		config.element = 'line-chart';
-		Morris.Line(config);
-		config.element = 'bar-chart';
-		Morris.Bar(config);
-		config.element = 'stacked';
-		config.stacked = true;
-		Morris.Bar(config);
-		
-		
-		Morris.Donut({
-		  element: 'pie-chart',
-		  data: [
-			{label: "Friends", value: 30},
-			{label: "Allies", value: 15},
-			{label: "Enemies", value: 45},
-			{label: "Neutral", value: 10}
-		  ]
+            // MORRIS BAR CHART
+            // =================================================================
+            // Require MorrisJS Chart
+            // -----------------------------------------------------------------
+            // http://morrisjs.github.io/morris.js/
+            // =================================================================
+			Morris.Bar({
+                element: 'demo-morris-bar',
+                data: [
+                    { y: '2011', a: 100, b: 90, c:80, d:70 },
+                    { y: '2012', a: 75,  b: 65, c:55, d:45 },
+                    { y: '2013', a: 20,  b: 15, c:10, d:5 },
+                    { y: '2014', a: 50,  b: 40, c:30, d:20 },
+                    { y: '2015', a: 75,  b: 95, c:115, d:135 },
+                ],
+                xkey: 'y',
+                ykeys: ['a', 'b', 'c', 'd'],
+                labels: ['Tsunami', 'Puting Beliung', 'Tornado', 'Banjir'],
+                gridEnabled: false,
+                gridLineColor: 'transparent',
+                barColors: ['#00C0EF', '#00A65A', '#F39C12', '#F56954'],
+                resize:true,
+                hideHover: 'auto'
+            });
+
+            // MORRIS DONUT CHART
+            // =================================================================
+            // Require MorrisJS Chart
+            // -----------------------------------------------------------------
+            // http://morrisjs.github.io/morris.js/
+            // =================================================================
+            Morris.Donut({
+                element: 'demo-morris-donut',
+                data: [
+                    {label: "Korban Luka Berat", value: 12},
+                    {label: "Korban Luka Ringan", value: 30},
+                    {label: "Korban Meninggal", value: 20}
+                ],
+                colors: [
+                    '#00A65A',
+                    '#F39C12',
+                    '#F56954'
+                ],
+                resize:true
+            });
+
 		});
    	
    </script>
