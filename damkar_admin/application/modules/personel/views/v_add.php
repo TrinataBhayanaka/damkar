@@ -100,7 +100,7 @@
               </div>';
 		}
 	?>
-	<?php echo form_open("wilayah/addAjax",'id="fdata"');?>
+	<?php echo form_open("personel/personel/addAjax",'id="fdata"');?>
 	<input type="hidden" name="idx" value="<?=$data['id'];?>" />
 	<div class="container">
 		<div class="row">
@@ -133,13 +133,13 @@
 									<label>Jenis Kelamin :</label>
 									<div style="padding-left:20px;" class="radio">
 									  <label>
-										<input type="radio" value="laki-laki" name="jenis_kelamin" checked="checked" />
+										<input type="radio" value="laki-laki" name="jenisKelamin" checked="checked" />
 										Laki-laki
 									  </label>
 									</div>
 									<div style="padding-left:20px;" class="radio">
 									  <label>
-										<input type="radio" value="perempuan" name="jenis_kelamin" />
+										<input type="radio" value="perempuan" name="jenisKelamin" />
 										perempuan
 									  </label>
 									</div>
@@ -164,7 +164,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Tempat Lahir</label>
-									<?php echo form_input($tempat_lahir,false,'class="form-control"');?>
+									<?php echo form_input($tempatLahir,false,'class="form-control"');?>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -179,13 +179,19 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>AGAMA</label>
-									<?php echo form_input($agama,false,'class="form-control required"');?>
+									<select name="agama" class="form-control">
+										<option value="Islam">Islam</option>
+										<option value="Kristen">Kristen</option>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Status Perkawinan</label>
-									<?php echo form_input($statusKawin,false,'class="form-control"');?>
+									<select name="statusKawin" class="form-control">
+										<option value="Belum Kawin">Belum Kawin</option>
+										<option value="Kawin">Kawin</option>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -194,7 +200,12 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Golongan Darah</label>
-									<?php echo form_input($golDarah,false,'class="form-control"');?>
+									<select name="golDarah" class="form-control">
+										<option value="A">A</option>
+										<option value="B">B</option>
+										<option value="C">C</option>
+										<option value="D">D</option>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -215,23 +226,78 @@
 							</div>
 
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 									<label>Provinsi</label>
-									<?=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<select class="form-control" id="propinsi" name="propinsi">
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_propinsi as $key => $value) {
+										$selected="";
+										// if($value['kode_prop']=="14"){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['kode_prop']?>-<?=$value['nama']?></option>
+									<? 
+										}
 
+
+									?>
+									</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="form-group">
 									<label>Kabupaten</label>
-									<?php echo form_input($kabupaten,false,'class="form-control"');?>
-									</div>
+									<select class="form-control" id="kabupaten" name="kabupaten">
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_kabupaten as $key => $value) {
+										$selected="";
+										// if($value['kode_prop']=="14"){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['kode_kab']?>-<?=$value['nama']?></option>
+									<? 
+										}
+
+
+									?>
+									</select></div>
 								</div>
-								<div class="col-md-4">
+
+							</div>
+							<div class="row">
+								<div class="col-md-6">
 									<div class="form-group">
 									<label>Sektor</label>
-									<?php echo form_input($sektor,false,'class="form-control"');?>
+									<select class="form-control" id="idSektor" name="sektor">
+										
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>Tingkat Kompetensi</label>
+									<select class="form-control" id="kompetensi" name="kompetensi">
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_kompetensi as $key => $value) {
+										// $selected="";
+										// if($value['kode_prop']=="14"){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['id']?>" ><?=$value['kompetensi']?></option>
+									<? 
+										}
+
+
+									?>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -245,7 +311,10 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>STATUS</label>
-									<?php echo form_input($statusKerja,false,'class="form-control"');?>
+									<select name="statusKerja" class="form-control">
+										<option value="PNS">PNS</option>
+										<option value="Non PNS">Non PNS</option>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -253,7 +322,12 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Pangkat Golongan</label>
-									<?php echo form_input($pangkat,false,'class="form-control"');?>
+									<select name="pangkat" class="form-control">
+										<option value="1A">1A</option>
+										<option value="1B">1B</option>
+										<option value="1C">1C</option>
+										<option value="1D">1D</option>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -283,34 +357,29 @@
 								<div class="col-md-12">
 									<div class="form-group">
 									<label>Keterangan</label>
-									<?php echo form_input($keterangan,false,'class="form-control"');?>
+									<?php echo form_textarea($keterangan,false,'class="form-control"');?>
 									</div>
 								</div>
 							</div>
 							
 							
 							
-					</div> <!-- span6 -->
-					<div class="col-md-5">
-						
-						<div class="row">
-								<div class="col-md-12">
-									<div id="attachment_frame" class="form-group">
-									<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
-									<div id="imgcontainer">
-										<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
-										<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
-									</div>
-									<input id="image_name" type="hidden" name="image_name" />
-									</div>
-								</div>
+					</div>  
+					
+
+					<!-- span6 -->
+					<!-- <div class="col-md-4">
+						<div id="attachment_frame" class="form-group">
+							<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
+							<div id="imgcontainer">
+								<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
+								<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
+							</div>
+							<input id="image_name" type="hidden" name="image_name" />
 						</div>
-							
-						
-					</div>
+					</div> -->
+					
 				</div>
-				
-			</div>
 				
 			</div>
 		</div>
@@ -357,6 +426,102 @@
 </div>
 <script>
 
+//Uploader
+// // $(function(){
+// // 	var w_image = $("#attachment_frame").width()-10;
+// // 	var ufile=false;
+// // 	var dfile=<?=($data['image'])?"true":"false";?>;
+// // 	var uploader = new plupload.Uploader({
+// // 		runtimes : 'html5,flash',
+// // 		browse_button : 'btn-change',
+// // 		container: 'imgcontainer',
+// // 		multi_selection: false,
+// // 		url: "<?=base_url()?>test.php",
+// // 		max_file_size : '500kb',
+// // 		/*resize: {
+// // 			width: 200,
+// // 			height: 150,
+// // 			crop: true
+// // 		},*/
+// // 		filters : [
+// // 			{title : "Image files", extensions : "jpg,gif,png"}
+// // 		],
+// // 		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
+// // 	});
+	
+// // 	uploader.bind('Init', function(up, params) {
+// // 		$('#runtime').html("Current runtime: " + params.runtime);
+// // 	});
+
+// // 	uploader.init();
+
+// // 	uploader.bind('FilesAdded', function(up, files) {
+// // 		if (dfile) {
+// // 			$('#preview').html("");
+// // 			$('#canvas_view').html("");
+// // 		}
+// // 		if (ufile) {
+// // 			uploader.removeFile(ufile);
+// // 			$('#preview').html("");
+// // 			$('#canvas_view').html("");
+// // 		}
+// // 		$.each(files, function(i,file){
+// // 			ufile = file.id;
+// // 			$("#image_name").val(file.name);
+// // 			var img = new mOxie.Image();
+	
+// // 			img.onload = function() {
+// // 				this.embed($('#preview').get(0), {
+// // 					width: w_image,
+// // 					height: 170,
+// // 					crop: true
+// // 				});
+// // 				$('#canvas_view').css({margin:"2px 10px 10px 2px"});
+// // 				$('#canvas_view').css({width:w_image,height:170});
+// // 				this.embed($('#canvas_view').get(0), {
+// // 					width: w_image,
+// // 					height: 170,
+// // 					crop: true
+// // 				});
+// // 			};
+	
+// // 			img.onembedded = function() {
+// // 				this.destroy();
+// // 			};
+	
+// // 			img.onerror = function() {
+// // 				this.destroy();
+// // 			};
+	
+// // 			img.load(this.getSource());        
+			
+// // 		});
+// // 	});
+// // 	uploader.bind('Error', function(up, err) {
+// // 		alert("Error: " + err.code + " -" + err.message/* +  (err.file ? ", File: " + err.file.name : "")*/);
+// // 		up.refresh(); // Reposition Flash/Silverlight
+// // 	});
+// // 	var x = false;
+// // 	uploader.bind('FileUploaded', function() {
+// // 		//if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
+// // 			x=true;
+// // 			$('#fdata').submit();
+// // 		//}
+// // 	});
+// 	$('#fdata').submit(function(e) {
+// 		// Files in queue upload them first
+// 		if (uploader.files.length > 0) {
+// 			uploader.start();
+// 		} else {
+// 			//x = true;
+// 			alert('Lampiran tanda pengenal wajib ada.');
+// 		}
+// 		//	alert('You must at least upload one file.');
+	
+// 		if (!x) return false;
+// 	});    
+    
+// });
 	//callback handler for form submit
 $('#fdata').submit(function(event) {
 
@@ -385,5 +550,50 @@ $('#fdata').submit(function(event) {
         event.preventDefault();
     });
  
+ $('#fdata').on('change','#propinsi',function(){
+
+                   var parameter =$('#propinsi').val();
+                   // alert(parameter);
+                   // var valueparameter =$('#valueparameter').val();
+
+                    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+                            
+                            if (data.status==true) {
+                               
+                                    $('#kabupaten').html(data.data); 
+
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                                
+                            }else{
+                                   $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+
+                return false;
+                });
+
+  $('#fdata').on('change','#kabupaten',function(){
+
+                   var propinsi =$('#propinsi').val();
+                   var kabupaten =$('#kabupaten').val();
+                   // alert(propinsi);
+                   // var valueparameter =$('#valueparameter').val();
+
+                    $.post(basedomain+urlPageList+'get_lookup_sektorAjax/'+propinsi+'/'+kabupaten , {actionfunction: 'showDataAjax'}, function(data){
+                            
+                            if (data.status==true) {
+                               
+                                    $('#idSektor').html(data.data); 
+
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                                
+                            }else{
+                                   $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+
+                return false;
+                });
+   
 </script>
 

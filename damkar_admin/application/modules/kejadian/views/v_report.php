@@ -78,7 +78,7 @@
                     <td><?=$v['namaPropinsi'];?></td>
                     <td><?=$v['kodeKabupaten'];?></td>
                     <td><?=$v['namaPropinsi'];?></td>
-                    <td><?=$v['kejadian'];?></td>
+                    <td><?=$v['namaKejadian'];?></td>
                     <td><?=$v['waktuKejadian'];?></td>
                     <td><?=$v['meninggal'];?></td>
                     <td><?=$v['hilang'];?></td>

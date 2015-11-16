@@ -3,7 +3,7 @@
  <table width="100%" border="1" class="table table-condensed table-hover">
         <thead>
         <tr>
-        <th  rowspan="2"  align="center">No Kejadian</th>
+        <th  rowspan="2"  align="center" bgcolor="yellow">No Kejadian</th>
         <th align="center" rel="date" colspan="2">Provinsi</th>
         <th align="center" rel="title" colspan="2">Kabupaten</th>
         <th rowspan="2" align="center">Bencana/Kejadian</th>
@@ -45,7 +45,7 @@
                     <td><?=$v['namaPropinsi'];?></td>
                     <td><?=$v['kodeKabupaten'];?></td>
                     <td><?=$v['namaPropinsi'];?></td>
-                    <td><?=$v['kejadian'];?></td>
+                    <td><?=$v['namaKejadian'];?></td>
                     <td><?=$v['waktuKejadian'];?></td>
                     <td><?=$v['meninggal'];?></td>
                     <td><?=$v['hilang'];?></td>

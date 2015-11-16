@@ -90,6 +90,7 @@ class personel extends Admin_Controller {
 				'propinsi'      => $this->input->post('propinsi'),
 				'kabupaten'      => $this->input->post('kabupaten'),
 				'sektor'      => $this->input->post('sektor'),
+				'kompetensi'      => $this->input->post('kompetensi'),
 				'tmtPegawai'      => $this->input->post('tmtPegawai'),
 				'statusKerja'      => $this->input->post('statusKerja'),
 				'pangkat'      => $this->input->post('pangkat'),
@@ -122,13 +123,16 @@ class personel extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('nip','nama','jenisKelamin','glrDepan','glrBelakang','tempatLahir','tglLahir','agama','statusKawin','golDarah','reshus','alamat','propinsi','kabupaten','sektor','tmtPegawai','statusKerja','pangkat','skPangkat','pendidikan','pelatihan','keterangan');
+			$dataFormInput=array('nip','nama','jenisKelamin','glrDepan','glrBelakang','tempatLahir','tglLahir','agama','statusKawin','golDarah','reshus','alamat','propinsi','kabupaten','sektor','kompetensi','tmtPegawai','statusKerja','pangkat','skPangkat','pendidikan','pelatihan','keterangan');
 
 			$this->data=$this->set_dataInput($dataFormInput);
 
 		}
+		$this->data['m_propinsi']=$this->get_lookup_provinsi();
+		$this->data['m_kompetensi']=$this->user_model->m_kompetensi();
+		// pre($this->data['m_kompetensi']);
+		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
 		
-		$this->data['m_propinsi']=$this->get_lookup_propinsi();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
@@ -158,29 +162,43 @@ class personel extends Admin_Controller {
 		$user=$this->model->GetRecordData("id='{$id}'");
 		// pre($user);exit;
 		//validate form input
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('rasioSarPras', "<b>Rasio SarPras</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('nip', "<b>NIP</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('nama', "<b>Nama</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('jenisKelamin', "<b>Jenis Kelamin</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('glrDepan', "<b>Gelar Depan</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('glrBelakang', "<b>Gelar Belakang</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('tempatLahir', "<b>Tempat Lahir</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('tglLahir', "<b>Tanggal Lahir</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('agama', "<b>Agama</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('sektor', "<b>Sektor</b>", 'required|xss_clean');
 
 		if (isset($_POST) && !empty($_POST))
 		{
 
 			$data = array(
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),
-				'luasWilayah'    	=> $this->input->post('luasWilayah'),
-				'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
-				'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
-				'cakupan'      		=> $this->input->post('cakupan'),
-				'responTime' 	    => $this->input->post('responTime'),
-				'rasioPersonel'     => $this->input->post('rasioPersonel'),
-				'rasioSarPras'      => $this->input->post('rasioSarPras'),
+				'nip' 			=> $this->input->post('nip'),
+				'nama'  		=> $this->input->post('nama'),
+				'jenisKelamin'    	=> $this->input->post('jenisKelamin'),
+				'glrDepan'   => $this->input->post('glrDepan'),
+				'glrBelakang'   	=> $this->input->post('glrBelakang'),
+				'tempatLahir'      		=> $this->input->post('tempatLahir'),
+				'tglLahir' 	    => $this->input->post('tglLahir'),
+				'agama'     => $this->input->post('agama'),
+				'statusKawin'      => $this->input->post('statusKawin'),
+				'golDarah'      => $this->input->post('golDarah'),
+				'reshus'      => $this->input->post('reshus'),
+				'alamat'      => $this->input->post('alamat'),
+				'propinsi'      => $this->input->post('propinsi'),
+				'kabupaten'      => $this->input->post('kabupaten'),
+				'sektor'      => $this->input->post('sektor'),
+				'kompetensi'      => $this->input->post('kompetensi'),
+				'tmtPegawai'      => $this->input->post('tmtPegawai'),
+				'statusKerja'      => $this->input->post('statusKerja'),
+				'pangkat'      => $this->input->post('pangkat'),
+				'skPangkat'      => $this->input->post('skPangkat'),
+				'pendidikan'      => $this->input->post('pendidikan'),
+				'pelatihan'      => $this->input->post('pelatihan'),
+				'keterangan'      => $this->input->post('keterangan'),
 				'status'      		=> 1,
 			);
 
@@ -211,12 +229,16 @@ class personel extends Admin_Controller {
 
 		$this->data['idd'] = $idx;
 
-		$dataFormInput=array('propinsi','kabupaten','luasWilayah','jumlahKecamatan','jumlahPenduduk','cakupan','responTime','rasioPersonel','rasioSarPras');
+		$dataFormInput=array('nip','nama','jenisKelamin','glrDepan','glrBelakang','tempatLahir','tglLahir','agama','statusKawin','golDarah','reshus','alamat','propinsi','kabupaten','sektor','kompetensi','tmtPegawai','statusKerja','pangkat','skPangkat','pendidikan','pelatihan','keterangan');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
+		
 		// pre($this->data);
 		// $this->data['m_tanda_pengenal']=$this->get_lookup_tanda_pengenal();
-		$this->data['m_propinsi']=$this->get_lookup_propinsi();
+		$this->data['m_propinsi']=$this->get_lookup_provinsi();
+		$this->data['m_kompetensi']=$this->user_model->m_kompetensi();
+		// pre($this->data['m_kompetensi']);
+		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
 		// $this->data['m_pekerjaan']=$this->get_lookup_pekerjaan();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
@@ -322,8 +344,16 @@ class personel extends Admin_Controller {
 			$order = 'order by id desc';
 		}
 
-		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
+		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
+		foreach ($result as $key => $value) {
+			$namaProp=$this->get_name_provinsi($value['propinsi']);
+			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
+			
+			$arrDB[$key]=$value;
+			$arrDB[$key]['namaProp']=$namaProp['nama'];
+			$arrDB[$key]['namaKab']=$namaKab['nama'];
+		}
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
 		$query_url = ($key)?"/".$key:"";

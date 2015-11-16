@@ -32,7 +32,7 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1>User<small> Add </small></h1>
+                    <h1>Import<small> Kejadian </small></h1>
                 </div><!-- col -->
             </div><!-- row-->
         </div><!-- end: page-header -->

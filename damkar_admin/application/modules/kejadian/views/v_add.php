@@ -122,30 +122,75 @@
 									<div class="form-group">
 									
 									<label>Propinsi</label>
-									<?php echo form_input($propinsi,false,'class="form-control required"');?>
-									</div>
+									<select class="form-control" id="propinsi" name="kodePropinsi">
+										<option value="">-Pilih Propinsi-</option>
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_propinsi as $key => $value) {
+										// $selected="";
+										// if($value['kode_prop']=="14"){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['kode_prop']?>"><?=$value['kode_prop']?>-<?=$value['nama']?></option>
+									<? 
+										}
+
+
+									?>
+									</select></div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Kabupaten</label>
-									<?php echo form_input($kabupaten,false,'class="form-control required"');?>
-									</div>
+									<select class="form-control" id="kabupaten" name="kodeKabupaten">
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_kabupaten as $key => $value) {
+										// $selected="";
+										// if($value['kode_kab']==$kodeKabupaten['value']){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['kode_kab']?>" ><?=$value['kode_kab']?>-<?=$value['nama']?></option>
+									<? 
+										}
+
+
+									?>
+									</select></div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 									
-									<label>Bencana</label>
-									<?php echo form_input($kejadian,false,'class="form-control required"');?>
+									<label>Kejadian</label>
+									<select class="form-control" id="kejadian" name="kejadian">
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_kebakaran as $key => $value) {
+										// $selected="";
+										// if($value['id']==$kejadian['value']){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['id']?>"><?=$value['catKebakaran']?></option>
+									<? 
+										}
+
+
+									?>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Waktu Kejadian</label>
-									<?php echo form_input($waktuKejadian,false,'class="form-control required"');?>
+									<input type="hidden" id="waktuKejadian" name="waktuKejadian" value="<?php echo date("Y-m-d",strtotime($waktuKejadian['value']));?>" />
+									<input type="text" id="waktuKejadian_selector" name="waktuKejadian_selector" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($waktuKejadian['value']));?>" />
 									</div>
 								</div>
 							</div>
@@ -280,6 +325,34 @@
 </div>
 <script>
 
+$(document).ready(function () {
+	/*$('#dp1').datepicker().on('changeDate', function(ev){
+		$('#dp1').datepicker('hide');
+	});*/
+	tgl_lahir = $('.dp1').datepicker({
+		format:"dd/mm/yyyy"
+	}).on('changeDate', function(ev){
+		var newDate = new Date(ev.date);
+		$("#waktuKejadian").val(newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate());
+		$('.dp1').datepicker('hide');
+	}).data('datepicker');
+	
+	$('.dp1').on("keyup",function(){
+		setValDate(tgl_lahir,"#waktuKejadian");
+	});
+	
+	function setValDate(dp,target,sender) {
+		if (sender) {
+			if ($(sender).val().length<8) {
+				$(target).val("");
+				return;
+			}
+		}
+		var newDate = new Date(dp.date);
+		$(target).val(newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate());
+	};
+	
+});
 	//callback handler for form submit
 $('#fdata').submit(function(event) {
 
@@ -307,6 +380,50 @@ $('#fdata').submit(function(event) {
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
     });
- 
+
+ $('#fdata').on('change','#propinsi',function(){
+
+                   var parameter =$('#propinsi').val();
+                   // alert(parameter);
+                   // var valueparameter =$('#valueparameter').val();
+
+                    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+                            
+                            if (data.status==true) {
+                               
+                                    $('#kabupaten').html(data.data); 
+
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                                
+                            }else{
+                                   $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+
+                return false;
+                });
+
+  $('#fdata').on('change','#kabupaten',function(){
+
+                   var propinsi =$('#propinsi').val();
+                   var kabupaten =$('#kabupaten').val();
+                   // alert(propinsi);
+                   // var valueparameter =$('#valueparameter').val();
+
+                    $.post(basedomain+urlPageList+'get_lookup_sektorAjax/'+propinsi+'/'+kabupaten , {actionfunction: 'showDataAjax'}, function(data){
+                            
+                            if (data.status==true) {
+                               
+                                    $('#idSektor').html(data.data); 
+
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                                
+                            }else{
+                                   $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+
+                return false;
+                }); 
 </script>
 

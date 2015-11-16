@@ -10,7 +10,7 @@ class kejadian extends Admin_Controller {
 		$this->module=$this->folder."kejadian/";
         $this->http_ref=base_url().$this->module;
         
-		$this->load->library(array("excel","excel_reader","form_validation","utils","ion_auth"));
+		$this->load->library(array("excel","form_validation","utils","ion_auth"));
 
         $this->module_title="Kejadian List";
         $this->load->model("kejadian_model");
@@ -41,44 +41,7 @@ class kejadian extends Admin_Controller {
 		$data_layout["content"]=$this->load->view("kejadian/v_kejadian_ajax",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 	}
-	function toecel(){
-		//load our new PHPExcel library
-		// $this->load->library('excel');
-		//activate worksheet number 1
-		$this->excel->setActiveSheetIndex(0);
-		//name the worksheet
-		$this->excel->getActiveSheet()->setTitle('test worksheet');
-		//set cell A1 content with some text
-		$this->excel->getActiveSheet()->setCellValue('A1', 'This is just some text value');
-		//change the font size
-		$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(20);
-		//make the font become bold
-		$this->excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
-		//merge cell A1 until D1
-		$this->excel->getActiveSheet()->mergeCells('A1:D1');
-		//set aligment to center for that merged cell (A1 to D1)
-		$this->excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-
-		$filename='just_some_random_name.xlsx'; //save our workbook as this file name
-		header('Content-Type: application/vnd.ms-excel'); //mime type
-		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
-		header('Cache-Control: max-age=0'); //no cache
-		             
-		//save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
-		//if you want to save it as .XLSX Excel 2007 format
-		$objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel5');  
-		//force user to download the Excel file without writing it to server's HD
-		$objWriter->save('php://output');
-	}
-	function exportData(){
-		$this->html2fpdf->AddPage();
-		// $fp = fopen("sample.html","r");
-		$strContent = "<h1 align=center>Hello World!</h1><p>Sekarang saya bisa bikin laporan PDF dengan mudah</p>";
-		// $strContent = fread($fp, filesize("sample.html"));
-		// fclose($fp);
-		$this->html2fpdf->WriteHTML($strContent);
-		$this->html2fpdf->Output("sample.pdf","I");
-	}
+	
 	function importData(){
 		
 		$data_layout["content"]=$this->load->view("kejadian/v_import",$data,true); 
@@ -86,152 +49,108 @@ class kejadian extends Admin_Controller {
 	}
 
 	function importDatax(){
-		
-		
-			$this->excel_reader->read($_FILES['userfile']['tmp_name']);
-			$data = $this->excel_reader->sheets[0];
-			// pre($data['cells']);
+			// header('Content-Type: text/plain');
+		// pre($_FILES);
+		 $inputFileName = $_FILES['userfile']['tmp_name'];
+		$inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                $objPHPExcel = $objReader->load($inputFileName);
+
+                // pre($objReader);
+
+                $sheet = $objPHPExcel->getSheet(0);
+            $highestRow = $sheet->getHighestRow();
+            $highestColumn = $sheet->getHighestColumn();
+              // $objWorksheet = $objPHPExcel->setActiveSheetIndexbyName('Sheet1');
+
+              $objWorksheet = $objPHPExcel->setActiveSheetIndexbyName('Sheet1');
+
+  
+     $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+    
+     $count=count($sheetData);
+     // pre($count);
 			$dataexcel = Array();
+			$index=0;
+			foreach ($sheetData as $key => $value) {
 
-			for ($i = 3; $i <= $data['numRows']; $i++) {
-				// pre($data['cells'][$i]);
-                            if($data['cells'][$i][1] == '') break;
-                            $dataexcel[$i][] = $data['cells'][$i][1];
-                            $dataexcel[$i][] = $data['cells'][$i][2];
-                            $dataexcel[$i][] = $data['cells'][$i][3];
-                            $dataexcel[$i][] = $data['cells'][$i][4];
-                            $dataexcel[$i][] = $data['cells'][$i][5];
-                            $dataexcel[$i][] = $data['cells'][$i][6];
-                            $dataexcel[$i][] = $data['cells'][$i][7];
-                            $dataexcel[$i][] = $data['cells'][$i][8];
-                            $dataexcel[$i][] = $data['cells'][$i][9];
-                            $dataexcel[$i][] = $data['cells'][$i][10];
-                            $dataexcel[$i][] = $data['cells'][$i][11];
-                            $dataexcel[$i][] = $data['cells'][$i][12];
-                            $dataexcel[$i][] = $data['cells'][$i][13];
-                            $dataexcel[$i][] = $data['cells'][$i][14];
-                            $dataexcel[$i][] = $data['cells'][$i][15];
-    //         $dataImport = array(
-				// 'noKejadian'    	=> $data['cells'][$i][1],
-				// 'kodePropinsi' 		=> $data['cells'][$i][2],
-				// 'namaPropinsi' 		=> $data['cells'][$i][3],
-				// 'kodeKabupaten'  	=> $data['cells'][$i][4],	
-				// 'namaKabupaten'  	=> $data['cells'][$i][5],	
-				// 'kejadian'  	=> $data['cells'][$i][6],
-				// 'waktuKejadian'  	=> $data['cells'][$i][7],	
-				// 'meninggal'  	=> $data['cells'][$i][8],	
-				// 'hilang'  	=> $data['cells'][$i][9],	
-				// 'terluka'  	=> $data['cells'][$i][10],	
-				// 'mengungsi'  	=> $data['cells'][$i][11],	
-				// 'penyebab'  	=> $data['cells'][$i][12],	
-				// 'nilaiKerugian'  	=> $data['cells'][$i][13],	
-				// 'jumlahPengungsian'  	=> $data['cells'][$i][14],
-				// 'statusQuery'  		=> "INSERT",				
-				// 'n_status'      		=> 1,
-			// );
-		// 	$logdataImport = array(
-		// 		'noKejadian'    	=> $data['cells'][$i][1],
-		// 		'kodePropinsi' 		=> $data['cells'][$i][2],
-		// 		'namaPropinsi' 		=> $data['cells'][$i][3],
-		// 		'kodeKabupaten'  	=> $data['cells'][$i][4],	
-		// 		'namaKabupaten'  	=> $data['cells'][$i][5],	
-		// 		'kejadian'  	=> $data['cells'][$i][6],
-		// 		'waktuKejadian'  	=> $data['cells'][$i][7],	
-		// 		'meninggal'  	=> $data['cells'][$i][8],	
-		// 		'hilang'  	=> $data['cells'][$i][9],	
-		// 		'terluka'  	=> $data['cells'][$i][10],	
-		// 		'mengungsi'  	=> $data['cells'][$i][11],	
-		// 		'penyebab'  	=> $data['cells'][$i][12],	
-		// 		'nilaiKerugian'  	=> $data['cells'][$i][13],	
-		// 		'jumlahPengungsian'  	=> $data['cells'][$i][14],
-		// 		'statusQuery'  		=> "INSERT",				
-		// 		'status'      		=> "import",
-		// 	);
-		// // exit;
-		// 	$insert = $this->model->InsertData($dataImport);
-		// 	$insert2 = $this->modellog->InsertData($logdataImport);
+				if($key>=3){
 
+					$dataexcel[$index]['A']=$value['A'];
+					$dataexcel[$index]['B']=$value['B'];
+					$dataexcel[$index]['C']=$value['C'];
+					$dataexcel[$index]['D']=$value['D'];
+					$dataexcel[$index]['E']=$value['E'];
+					$dataexcel[$index]['F']=$value['F'];
+					$dataexcel[$index]['G']=$value['G'];
+					$dataexcel[$index]['H']=$value['H'];
+					$dataexcel[$index]['I']=$value['I'];
+					$dataexcel[$index]['J']=$value['J'];
+					$dataexcel[$index]['K']=$value['K'];
+					$dataexcel[$index]['L']=$value['L'];
+					$dataexcel[$index]['M']=$value['M'];
+					$dataexcel[$index]['N']=$value['N'];
+					$dataexcel[$index]['O']=$value['O'];
+					$dataexcel[$index]['P']=$value['P'];
+
+				$index++;
+				}
+				
 			}
-			// pre($dataexcel);
-		// exit;
+     		// pre($dataexcel);exit;
 			$data['arrDB']=$dataexcel;
 			$_SESSION['dataexcel']=$dataexcel;
+   
 
 		$data_layout["content"]=$this->load->view("kejadian/v_list_excel",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 		
 	}
-	public function pdfReport(){
-		// pre($_POST);
-		// exit;
-		$data=$this->dataPaging2(0,100,1);
-		// pre($data);
-		$data_layout["content"]=$this->load->view("kejadian/v_report",$data,true); 
-		
-		if ($data_layout){
-            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
-        }else{
-            print json_encode(array('status'=>false));
-        }
-        
-        exit;
-	}
-	public function xlsReport(){
-		// pre($_POST);
-		// exit;
-		$data=$this->dataPaging2(0,100,1);
-		// pre($data);
-		$data_layout["content"]=$this->load->view("kejadian/v_report_xls",$data,true); 
-		
-		if ($data_layout){
-            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
-        }else{
-            print json_encode(array('status'=>false));
-        }
-        
-        exit;
-	}
 	public function importInsert(){
-		// pre($_SESSION['dataexcel']);
+		pre($_SESSION['dataexcel']);
+		// exit;
 		foreach ($_SESSION['dataexcel'] as $key => $value) {
 			// pre($value);
+			$kodeKabupaten=substr($value[D],2,2);
 			$dataImport = array(
-				'noKejadian'    	=> $value[0],
-				'kodePropinsi' 		=> $value[1],
-				'namaPropinsi' 		=> $value[2],
-				'kodeKabupaten'  	=> $value[3],	
-				'namaKabupaten'  	=> $value[4],	
-				'kejadian'  		=> $value[5],
-				'waktuKejadian'  	=> $value[6],	
-				'meninggal'  		=> $value[7],	
-				'hilang'  			=> $value[8],	
-				'terluka'  			=> $value[9],	
-				'mengungsi'  		=> $value[10],	
-				'penyebab'  		=> $value[11],	
-				'penyebab'  		=> $value[12],	
-				'nilaiKerugian'  	=> $value[13],	
-				'jumlahPengungsian' => $value[14],		
+				'noKejadian'    	=> $value[A],
+				'kodePropinsi' 		=> $value[B],
+				'namaPropinsi' 		=> $value[C],
+				'kodeKabupaten'  	=> $kodeKabupaten,	
+				'namaKabupaten'  	=> $value[E],	
+				'kejadian'  		=> $value[F],
+				'namaKejadian'  	=> $value[G],
+				'waktuKejadian'  	=> $value[H],	
+				'meninggal'  		=> $value[I],	
+				'hilang'  			=> $value[J],	
+				'terluka'  			=> $value[K],	
+				'mengungsi'  		=> $value[L],	
+				'penyebab'  		=> $value[M],	
+				'objek'  			=> $value[N],	
+				'nilaiKerugian'  	=> $value[O],	
+				'jumlahPengungsian' => $value[P],		
 				'n_status'      	=> 1,
 			);
 				$logdataImport = array(
-				'noKejadian'    	=> $value[0],
-				'kodePropinsi' 		=> $value[1],
-				'namaPropinsi' 		=> $value[2],
-				'kodeKabupaten'  	=> $value[3],	
-				'namaKabupaten'  	=> $value[4],	
-				'kejadian'  		=> $value[5],
-				'waktuKejadian'  	=> $value[6],	
-				'meninggal'  		=> $value[7],	
-				'hilang'  			=> $value[8],	
-				'terluka'  			=> $value[9],	
-				'mengungsi'  		=> $value[10],	
-				'penyebab'  		=> $value[11],	
-				'penyebab'  		=> $value[12],	
-				'nilaiKerugian'  	=> $value[13],	
-				'jumlahPengungsian' => $value[14],			
+				'noKejadian'    	=> $value[A],
+				'kodePropinsi' 		=> $value[B],
+				'namaPropinsi' 		=> $value[C],
+				'kodeKabupaten'  	=> $kodeKabupaten,	
+				'namaKabupaten'  	=> $value[E],	
+				'kejadian'  		=> $value[F],
+				'namaKejadian'  	=> $value[G],
+				'waktuKejadian'  	=> $value[H],	
+				'meninggal'  		=> $value[I],	
+				'hilang'  			=> $value[J],	
+				'terluka'  			=> $value[K],	
+				'mengungsi'  		=> $value[L],	
+				'penyebab'  		=> $value[M],	
+				'objek'  			=> $value[N],	
+				'nilaiKerugian'  	=> $value[O],	
+				'jumlahPengungsian' => $value[P],				
 				'status'      		=> "import",
 			);
-			$filter="noKejadian='".$value[0]."'";
+			$filter="noKejadian='".$value[A]."'";
 			if(!$this->model->cek_data($filter)){
 
 				$dataImport['statusQuery']="insert";	
@@ -247,9 +166,11 @@ class kejadian extends Admin_Controller {
 
 
 				$insertlog = $this->modellog->InsertData($logdataImport);
-				$update = $this->model->UpdateData($dataImport,"noKejadian='".$value[0]."'");
+				$update = $this->model->UpdateData($dataImport,"noKejadian='".$value[A]."'");
 			}
 			// pre($dataImport);
+				// pre($dataImport);
+				// pre($logdataImport);exit;
 		}
 
 				redirect("kejadian/kejadian/");
@@ -274,8 +195,8 @@ class kejadian extends Admin_Controller {
  	 	// pre($_POST);
  		$this->data['post']=$_POST;
 		$this->form_validation->set_rules('noKejadian', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodePropinsi', "<b>Provinsi</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodeKabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('kejadian', "<b>Kejadian</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('waktuKejadian', "<b>Waktu Kejadian</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('hilang', "<b>Hilang</b>", 'required|xss_clean');
@@ -290,12 +211,18 @@ class kejadian extends Admin_Controller {
 			// if ($_POST['image_name']) {
 			// 	$file_name = $this->__file_upload($_POST['image_name'],$_POST['username']);
 			// }
+			$namaPropinsi=$this->get_name_provinsi($this->input->post('kodePropinsi'));
+			$namaKabupaten=$this->get_name_kabupaten($this->input->post('kodePropinsi'),$this->input->post('kodeKabupaten'));
+			$namaKebakaran=$this->get_name_kebakaran($this->input->post('kejadian'));
 
 			$additional_data = array(
 				'noKejadian' 		=> $this->input->post('noKejadian'),
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),
+				'kodePropinsi' 			=> $this->input->post('kodePropinsi'),
+				'kodeKabupaten'  		=> $this->input->post('kodeKabupaten'),
+				'namaPropinsi' 			=> $namaPropinsi['nama'],
+				'namaKabupaten'  		=> $namaKabupaten['nama'],
 				'kejadian'    		=> $this->input->post('kejadian'),
+				'namaKejadian'    	=> $namaKebakaran['catKebakaran'],
 				'waktuKejadian'  	=> $this->input->post('waktuKejadian'),
 				'meninggal'   		=> $this->input->post('meninggal'),
 				'hilang'      		=> $this->input->post('hilang'),
@@ -330,13 +257,16 @@ class kejadian extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('noKejadian','propinsi','kabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
+			$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
 
 			$this->data=$this->set_dataInput($dataFormInput);
-
+			// pre($this->data);
 		}
 		
-		$this->data['m_propinsi']=$this->get_lookup_propinsi();
+		$this->data['m_propinsi']=$this->get_lookup_provinsi();
+		$this->data['m_kabupaten']=$this->get_lookup_kabupaten($this->data['kodePropinsi']['value']);
+		$this->data['m_kebakaran']=$this->get_lookup_kebakaran();
+		// pre($this->data['m_kebakaran']);
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
@@ -366,24 +296,50 @@ class kejadian extends Admin_Controller {
 		$user=$this->model->GetRecordData("id='{$id}'");
 		// pre($user);exit;
 		//validate form input
-		$this->form_validation->set_rules('namaSektor', "<b>Nama Sektor</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-
+		$this->form_validation->set_rules('noKejadian', "<b>Provinsi</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodePropinsi', "<b>Provinsi</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodeKabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kejadian', "<b>Kejadian</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('waktuKejadian', "<b>Waktu Kejadian</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('hilang', "<b>Hilang</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('terluka', "<b>Terluka</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('penyebab', "<b>Penyebab</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('objek', "<b>objek</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('nilaiKerugian', "<b>Nilai Kerugian</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('jumlahPengungsian', "<b>Jumlah Pengungsian</b>", 'required|xss_clean');
 		if (isset($_POST) && !empty($_POST))
 		{
 
+			$namaPropinsi=$this->get_name_provinsi($this->input->post('kodePropinsi'));
+			$namaKabupaten=$this->get_name_kabupaten($this->input->post('kodePropinsi'),$this->input->post('kodeKabupaten'));
+			$namaKebakaran=$this->get_name_kebakaran($this->input->post('kejadian'));
+			// pre($namaKebakaran);
 			$data = array(
-				'namaSektor'    	=> $this->input->post('namaSektor'),
-				'skpd'   			=> $this->input->post('skpd'),
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),				
-				'status'      		=> 1,
+				'noKejadian' 		=> $this->input->post('noKejadian'),
+				'kodePropinsi' 			=> $this->input->post('kodePropinsi'),
+				'kodeKabupaten'  		=> $this->input->post('kodeKabupaten'),
+				'namaPropinsi' 			=> $namaPropinsi['nama'],
+				'namaKabupaten'  		=> $namaKabupaten['nama'],
+				'kejadian'    		=> $this->input->post('kejadian'),
+				'namaKejadian'    	=> $namaKebakaran['catKebakaran'],
+				'waktuKejadian'  	=> $this->input->post('waktuKejadian'),
+				'meninggal'   		=> $this->input->post('meninggal'),
+				'hilang'      		=> $this->input->post('hilang'),
+				'terluka' 	    	=> $this->input->post('terluka'),
+				'mengungsi'     	=> $this->input->post('mengungsi'),
+				'penyebab'      	=> $this->input->post('penyebab'),
+				'objek'      		=> $this->input->post('objek'),
+				'nilaiKerugian'     => $this->input->post('nilaiKerugian'),
+				'jumlahPengungsian' => $this->input->post('jumlahPengungsian'),
+				'n_status'      	=> 1,
 			);
-
+			// pre($data);
 			if ($this->form_validation->run() === TRUE)
 			{
+
+// 			pre($data);
+// debug();
+// 			pre($user);
 				//check to see if we are creating the user
 				//redirect them back to the admin page
 				$update = $this->model->UpdateData($data,"id='".$user['id']."'");
@@ -409,13 +365,14 @@ class kejadian extends Admin_Controller {
 
 		$this->data['idd'] = $idx;
 
-		
-		$dataFormInput=array('namaSektor','skpd','propinsi','kabupaten');
+		$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
 		// pre($this->data);
 		// $this->data['m_tanda_pengenal']=$this->get_lookup_tanda_pengenal();
-		$this->data['m_propinsi']=$this->get_lookup_propinsi();
+		$this->data['m_propinsi']=$this->get_lookup_provinsi();
+		$this->data['m_kabupaten']=$this->get_lookup_kabupaten($this->data['kodePropinsi']['value']);
+		$this->data['m_kebakaran']=$this->get_lookup_kebakaran();
 		// $this->data['m_pekerjaan']=$this->get_lookup_pekerjaan();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
@@ -573,6 +530,7 @@ class kejadian extends Admin_Controller {
 
 		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
+
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
 		$query_url = ($key)?"/".$key:"";
@@ -646,5 +604,114 @@ class kejadian extends Admin_Controller {
         endif;
         return $arrCat;
     }
+
+	public function pdfReport(){
+		// pre($_POST);
+		// exit;
+		$data=$this->dataPaging2(0,100,1);
+		// pre($data);
+		$data_layout["content"]=$this->load->view("kejadian/v_report",$data,true); 
+		
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+	public function pdfReportIntensitas(){
+		$result=$this->model->view_kejadian();
+    	$resultGroup=$this->model->view_kejadian_group();
+
+    	// pre($result);
+    	$count=array();
+    	foreach ($result as $key => $value) {
+	
+			$count[$value['kodePropinsi']][$value['kodeKabupaten']][$value['kejadian']][]=$value['kejadian'];
+	
+		}
+		$arrDB=array();
+		foreach ($resultGroup as $keyG => $valueG) {
+			$arrDB[$keyG]=$valueG;
+			$arrDB[$keyG]['BG']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['1']);
+			$arrDB[$keyG]['PP']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['2']);
+			$arrDB[$keyG]['PI']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['3']);
+			$arrDB[$keyG]['UPG']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['4']);
+			$arrDB[$keyG]['H']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['5']);
+			$arrDB[$keyG]['KL']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['6']);
+		}
+		// pre($count);
+		// pre($arrDB);
+    	// exit;
+    	$this->data['arrDB']=$arrDB;
+		// pre($_POST);
+		// exit;
+		// $data=$this->dataPaging2(0,100,1);
+		// pre($data);
+		$data_layout["content"]=$this->load->view("kejadian/v_reportIntensitas",$this->data,true); 
+		// $this->load->view($this->admin_layout,$data_layout);
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+	public function xlsReportIntensitas(){
+		$result=$this->model->view_kejadian();
+    	$resultGroup=$this->model->view_kejadian_group();
+
+    	// pre($result);
+    	$count=array();
+    	foreach ($result as $key => $value) {
+	
+			$count[$value['kodePropinsi']][$value['kodeKabupaten']][$value['kejadian']][]=$value['kejadian'];
+	
+		}
+		$arrDB=array();
+		foreach ($resultGroup as $keyG => $valueG) {
+			$arrDB[$keyG]=$valueG;
+			$arrDB[$keyG]['BG']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['1']);
+			$arrDB[$keyG]['PP']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['2']);
+			$arrDB[$keyG]['PI']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['3']);
+			$arrDB[$keyG]['UPG']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['4']);
+			$arrDB[$keyG]['H']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['5']);
+			$arrDB[$keyG]['KL']=count($count[$valueG['kodePropinsi']][$valueG['kodeKabupaten']]['6']);
+		}
+		// pre($count);
+		// pre($arrDB);
+    	// exit;
+    	$this->data['arrDB']=$arrDB;
+		// pre($_POST);
+		// exit;
+		// $data=$this->dataPaging2(0,100,1);
+		// pre($data);
+		$data_layout["content"]=$this->load->view("kejadian/v_report_xls_Intensitas",$this->data,true); 
+		// $this->load->view($this->admin_layout,$data_layout);
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+	public function xlsReport(){
+		// pre($_POST);
+		// exit;
+		$data=$this->dataPaging2(0,100,1);
+		// pre($data);
+		$data_layout["content"]=$this->load->view("kejadian/v_report_xls",$data,true); 
+		
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
    
 }
