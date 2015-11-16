@@ -36,7 +36,7 @@
                 <div class="tickerspacer2" title="Ticker">INFORMASI</div>
                 <div class="tag-lalulintas" id="lalulintaslist">
                 <ul style="height: 125px;" class="list-unstyled">
-                    <li class="tickerlist"><strong>Jumlah Wilayah Adat Berdasarkan Propinsi.</strong></li>
+                    <li class="tickerlist"><strong>Indonesia: Medan 5%, Yogyakarta 10%, Bandung 10%, DKI Jakarta 2%</strong></li>
                     <?php 
 						if (is_array($scroller_list)) { 
 						foreach($scroller_list as $k=>$v) {
@@ -61,7 +61,7 @@
                     	<div class="col-md-9">
                         	<form id="search_form" class="search_form" action="search" method="get">
                     		<div class="form-group has-success has-feedback" style="margin-bottom:0; margin-top:2px">
-                              <input style="background:#265a88; color:#ccc; border:1px solid transparent" type="text" class="form-control" id="q" name="q" aria-describedby="inputSuccess2Status">
+                              <input style="background:#BF3330; color:#ccc; border:1px solid transparent" type="text" class="form-control" id="q" name="q" aria-describedby="inputSuccess2Status">
                               <span class="glyphicon glyphicon-search form-control-feedback" style="color:#CCCCCC; cursor:pointer" id="q_button" aria-hidden="true"></span>
                             </div>
                             </form>
@@ -80,7 +80,7 @@
     	<div class="col-md-8">
         	<div class="row">
                 <div class="col-md-6">
-                	<h3 class="title"><a href="news">BERITA BRWA &nbsp;<i class="fa fa-angle-right"></i></a></h3>
+                	<h3 class="title"><a href="news">BERITA </a></h3>
                 	<?php 
 						if (is_array($news_list)) { 
 						//$news_first = array_shift($news_list);
@@ -133,7 +133,7 @@
                     <!-- end RSS -->
                 </div>
                 <div class="col-md-6">
-                	<h3 class="title"><a href="articles">ARTIKEL &nbsp;<i class="fa fa-angle-right"></i></a></h3>
+                	<h3 class="title"><a href="articles">ARTIKEL </a></h3>
                 	<?php 
 						if (is_array($article_list)) { 
 						//$news_first = array_shift($news_list);
@@ -169,9 +169,8 @@
         	
         </div>
         <div class="col-md-4">
-				<? modules::load('wg/web')->brwa_stats();?>
-          		<? modules::load('wg/web')->brwa_wa();?>
-                <? //modules::load('wg/web')->article_pages(1);?>
+				<h3 class="title"><a href="articles">STATISTIK KASUS BENCANA 2015 &nbsp;</a></h3>
+          		
         </div>
     </div>
 </div>
