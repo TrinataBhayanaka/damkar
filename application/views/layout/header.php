@@ -216,12 +216,17 @@ $(window).scroll(function(){
 .footer h2				{color:#333; padding-bottom:10px;font:16px/140% 'Roboto', Open Sans, sans-serif; text-transform:uppercase}
 
 .copyright {
-	padding:15px 0;
-	border-top:1px solid #ccc
+	/*padding:15px 0;*/
+	/*border-top:1px solid #ccc*/
+	color:#000;
 }
-.copyright, .copyright a {
-	color:#333;
-	text-shadow:none;
+.copyright a {
+	color:#a60400;
+	text-decoration: none;
+}
+.copyright a:hover {
+	color:#BF3330;
+	text-decoration: none;
 }
 
 .subhead {
@@ -487,7 +492,7 @@ h3.title a {
 	color:#000
 }
 .content-sub-nav .nav-tabs > li > a, .nav-pills > li > a {
-    color: #999;
+    color: #fff;
     padding: 8px 10px;
     margin-right: 0px;
     line-height: 14px;
@@ -556,11 +561,11 @@ img.desaturate:hover{
 }
 .hilite {	
 	/*background-image: linear-gradient(to bottom, #3287bd 10%, #8aabc9 90%);*/
-	background:#4a7dab;border-width:1px 0;
+	background:#A60400;border-width:1px 0;
 	margin-top:-70px;
 	position:relative;
 	z-index:1200;
-	opacity:.85
+	opacity:.7
 }
 
 .breadcrumb {
@@ -600,7 +605,7 @@ img.desaturate:hover{
 }
 #brwa-top li>a:hover {
 	 background:transparent;
-	 color:#777;
+	 color:#FF7673;
 }
 #brwa-top i {
 	font-size:16px;
@@ -614,16 +619,20 @@ img.desaturate:hover{
 	opacity:1
 }
 #brwa-top .ss.ss-fb i {
-	color:#335696;
+	color:#fff;
 }
 #brwa-top .ss.ss-tw i {
-	color:#4fd1e1; 
+	color:#fff; 
 }
 #brwa-top .ss.ss-gg i {
-	color:#c03820; 
+	color:#fff; 
 }
 #brwa-top .ss.ss-yt i {
-	color:#c03820; 
+	color:#fff; 
+}
+.has-success .form-control:focus {
+    border-color: #3c763d;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #BF3330;
 }
 </style>
 </head>
@@ -632,13 +641,13 @@ img.desaturate:hover{
 <div id="headers" class="sticky-header" >
 <!--topest-->
 <div class="fixed">
-<div class="ttop" style="background:#fefefe;">
-<div class="container" style="position:relative">
+<div class="ttop" style="background:#A60400;">
+<div class="container" style="position:relative;">
 	<?php echo message_box();?>
 	<div class="row">
         <div class="col-md-4 col-sm-12 hidden-xs">
-        	<div style="margin:9px 0 5px; color:#999; font-size:.9em">
-        	 <label>Kontak</label>&nbsp;0251 8362606 <label>&nbsp;&bull;&nbsp;</label> brwa@brwa.or.id
+        	<div style="margin:9px 0 5px; color:#fff; font-size:.9em">
+        	 <label>Kontak</label>&nbsp;0251 8362606 <label>&nbsp;&bull;&nbsp;</label> kebencanaan@kebencanaan.or.id
             </div>
         </div>
         <div class="col-md-8 col-sm-12 col-xs-12">
@@ -658,8 +667,8 @@ img.desaturate:hover{
               <li title="Logout"><a href="user/logout"><i class="fa fa-times-circle"></i>&nbsp; Keluar</a></li>
               <? } ?>
             </ul>
-        	<div class="pull-right" style="margin:9px 0 5px 0; color:#999; font-size:.9em">
-        	 brwa.or.id
+        	<div class="pull-right" style="margin:9px 0 5px 0; color:#fff; font-size:.9em">
+        	 kebencanaan.or.id
             </div>
 		</div>
 	</div>
@@ -676,7 +685,9 @@ img.desaturate:hover{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" style="padding:5px 30px 0 10px; position:relative"><img src="assets/image/logo-blank.png" border="0" title="<?=$title;?>" style="margin-top:-8px" /></a>
+      <a class="navbar-brand" href="#" style="padding:5px 30px 0 10px; position:relative"><img src="assets/image/map-point2.png" border="0" title="<?=$title;?>" style="" /></a>
+      <a class="navbar-brand" href="#" style="padding:5px 30px 0 10px; position:relative">KEBENCANAAN<br><small>Pantang Pulang Sebelum Kenyang</small></a>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -684,10 +695,14 @@ img.desaturate:hover{
       <ul class="nav navbar-nav main-menu">
           <li><a href="">BERANDA</a></li>
           <li class="dropdown">
-            <a href="pages/about">TENTANG BRWA</a>
+            <a href="pages/about">PROFIL</a>
           </li>
-          <li><a href="news/">BERITA</a></li>
-          <li class="dropdown">
+          <li><a href="news/">BERITA & PENGUMUMAN</a></li>
+          <li><a href="news/">AGENDA</a></li>
+          <li><a href="news/">PERATURAN</a></li>
+          <li><a href="news/">GALERI</a></li>
+          <li><a href="news/">STATISTIK</a></li>
+          <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdownx" data-hover="dropdown">WILAYAH ADAT &nbsp;<i class="fa fa-angle-down"></i></a>
             <ul class="dropdown-menu">
               <li><a href="pages/prosedur">Prosedur Pendaftaran WA</a></li>
@@ -697,7 +712,7 @@ img.desaturate:hover{
               <li><a href="wa/">Data WA</a></li>
               <li><a target="_blank" href="sig/">Web GIS</a></li>
             </ul>
-          </li>
+          </li> -->
           <!--<li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdownx" data-hover="dropdown">DATA &nbsp;<i class="fa fa-angle-down"></i></a>
             <ul class="dropdown-menu">
@@ -707,7 +722,7 @@ img.desaturate:hover{
               <li><a href="#">Peta Wilayah Adat &nbsp;<i class="fa fa-globe"></i></a></li>
             </ul>
           </li>-->
-          <li class="dropdown">
+          <!-- <li class="dropdown">
             <a href="layanan/index/">LAYANAN</a>
           </li>
           <li class="dropdown">
@@ -717,7 +732,7 @@ img.desaturate:hover{
               <li><a href="regulasi/">Regulasi</a></li>
             
             </ul>
-          </li>
+          </li> -->
         </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
