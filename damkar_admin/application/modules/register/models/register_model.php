@@ -13,6 +13,6 @@ class register_model extends LAT_Model{
         
 	}
 	// function get_pages_record($where=false,$sort='',$dataColumn=false){
-        // return $this->adodbx->GetRecord($this->tbl_cat,$where,$dataColumn);
+ //        return $this->adodbx->GetRecord($this->tbl_cat,$where,$dataColumn);
     // }
 }

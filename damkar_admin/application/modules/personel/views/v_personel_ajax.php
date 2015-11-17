@@ -11,4 +11,4 @@
  var urlPageList = 'personel/personel/';
  var urlPageAdd = 'personel/personel/addAjax';
 </script>
-<script type="text/javascript" src="assets/js/script_wilayahAjax.js"></script>
+<script type="text/javascript" src="assets/js/script_requestAjax.js"></script>

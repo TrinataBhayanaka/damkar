@@ -78,6 +78,24 @@
                             Eksport Excel
                         </a>
                     </li>
+
+                    <li>
+                        <a href="#" class="print-pdf-i" data-url="" title="Data Pendaftar">
+                            <span class="block text-center">
+                                <i class="fam-page_white_acrobat"></i>
+                            </span> 
+                            Eksport PDF Intensitas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="print-xls-i" data-url="" title="Data Pendaftar">
+                            <span class="block text-center">
+                                <i class="fam-page_white_acrobat"></i>
+                            </span> 
+                            Eksport Excel Intensitas
+                        </a>
+                    </li>
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">
@@ -108,13 +126,13 @@
         <th width="20" rowspan="2"colspan="2" class="text-center">No Kejadian</th>
         <th class="forder text-center" width="100" rel="date" colspan="2">Provinsi</th>
         <th class="forder  text-center" width="300" rel="title" colspan="2">Kabupaten</th>
-        <th rowspan="2" class="text-center">Bencana/Kejadian</th>
+        <th rowspan="2" class="text-center">Kejadian</th>
         <th class="text-center">Waktu Kejadian</th>
         <th class="text-center" colspan="4">Korban Meninggal</th>
-        <th class="text-center">Penyebab</th>
-        <th class="text-center">Objek</th>
-		<th class="text-center">Nilai Kerugian</th>
-		<th width="50" class="text-center">Jumlah Pengusian</th>
+        <th class="text-center" rowspan="2">Penyebab</th>
+        <th class="text-center" rowspan="2">Objek</th>
+		<th class="text-center" rowspan="2">Nilai Kerugian</th>
+		<th width="50" class="text-center" rowspan="2">Jumlah Pengusian</th>
         </tr>
         <tr>
             <th class="text-center">kode</th>
@@ -155,8 +173,8 @@
                     <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['kodePropinsi'];?></a></td>
                     <td><?=$v['namaPropinsi'];?></td>
                     <td><?=$v['kodeKabupaten'];?></td>
-                    <td><?=$v['namaPropinsi'];?></td>
-                    <td><?=$v['kejadian'];?></td>
+                    <td><?=$v['namaKabupaten'];?></td>
+                    <td><?=$v['namaKejadian'];?></td>
                     <td><?=$v['waktuKejadian'];?></td>
                     <td><?=$v['meninggal'];?></td>
                     <td><?=$v['hilang'];?></td>
@@ -244,15 +262,17 @@ $('#fdatalist').submit(function(event) {
             var base_url="<?=base_url()?>";
             console.log(base_url);
             // var html=style+hd+footer+$("div#print_this").html();
-            var html=$("div#print_this").html();
+            // var html=$("div#print_this").html();
             // console.log(html);
             var filePdf="kejadian<?="_".date("YmdHis").".pdf";?>";
             var fileXls="kejadian<?="_".date("YmdHis").".xls";?>";
+            var filePdfI="kejadian_intensitas<?="_".date("YmdHis").".pdf";?>";
+            var fileXlsI="kejadian_intensitas<?="_".date("YmdHis").".xls";?>";
 
         $("a.print-pdf").click(function(e){
             e.preventDefault();
             
-            $.post(base_url+"kejadian/kejadian/pdfReport", {tbl:html}, function(data){
+            $.post(base_url+"kejadian/kejadian/pdfReport", function(data){
                             // console.log(data);
                             if (data.status==true) {
                                console.log(data.data);
@@ -266,14 +286,48 @@ $('#fdatalist').submit(function(event) {
                         }, "JSON")
             
         });
+         $("a.print-pdf-i").click(function(e){
+            e.preventDefault();
+            
+            $.post(base_url+"kejadian/kejadian/pdfReportIntensitas", function(data){
+                            // console.log(data);
+                            if (data.status==true) {
+                               console.log(data.data);
+                                    UrlSubmit(base_url+"export/proxy_pdf/",{filename:filePdfI,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
+
+                                   
+                                    $('.ajax-spinner-bars').css("display","none");
+                            }else{
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+            
+        });
         $("a.print-xls").click(function(e){
             e.preventDefault();
             
-            $.post(base_url+"kejadian/kejadian/xlsReport", {tbl:html}, function(data){
+            $.post(base_url+"kejadian/kejadian/xlsReport", function(data){
                             // console.log(data);
                             if (data.status==true) {
                                console.log(data.data);
                                     UrlSubmit(base_url+"export/toxls/",{filename:fileXls,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
+
+                                   
+                                    $('.ajax-spinner-bars').css("display","none");
+                            }else{
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+            
+        });
+         $("a.print-xls-i").click(function(e){
+            e.preventDefault();
+            
+            $.post(base_url+"kejadian/kejadian/xlsReportIntensitas", function(data){
+                            // console.log(data);
+                            if (data.status==true) {
+                               console.log(data.data);
+                                    UrlSubmit(base_url+"export/toxls/",{filename:fileXlsI,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
 
                                    
                                     $('.ajax-spinner-bars').css("display","none");
