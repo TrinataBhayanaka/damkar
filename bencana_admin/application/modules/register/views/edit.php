@@ -107,7 +107,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-				  <?php 
+				  <?php
+					//pre($propinsi['value']);				  
+					//pre($m_propinsi);				  
 					if ($message) {
 						echo '<div class="row"><div class="col-md-12 alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>'.$message.'</div></div>';
 					}
@@ -255,7 +257,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 										<label>Tanda Pengenal</label>
-										<?=form_dropdown("tanda_pengenal",$m_tanda_pengenal,$tanda_pengenal['value'],"id='tanda_pengenal' class='form-control required'");?>
+										<?=form_dropdown("tanda_pengenal",$m_tanda_pengenal,$tanda_pengenal['value'],"id='tanda_pengenal' class='form-control '");?>
 										</div>
 									</div>
 									<div class="col-md-8">
@@ -265,12 +267,14 @@
 										</div>
 									</div>
 								</div>
-								<?php							
+								<?php			
+									pre($img);
+									// exit;
 									if ($img) {
 										//$image_image = '<img src="assets/image/news/'.$data['image'].'" style="float:left; margin:2px 10px 10px 2px" />';
-										$image_image = '<span id="canvas_view" style="float:left;margin:2px 10px 10px 2px; " class="img-polaroid"><img width="200" height="200" src="assets/image/members/'.$img.'" /></span>';
-										$image_canvas = '<canvas id="myCanvas" style="height:170px; background-image:url(assets/image/members/'.$img.');background-size: 100%;"></canvas>';
-										$input_image = '<input id="image_name_old" type="hidden" name="image_name_old" value="'.$img.'" />';
+										$image_image = '<span id="canvas_view" style="float:left;margin:2px 10px 10px 2px; " class="img-polaroid"><img width="200" height="200" src="assets/image/members/901024210333.jpg" /></span>';
+										$image_canvas = '<canvas id="myCanvas" style="height:170px; background-image:url(assets/image/members/901024210333.jpg);background-size: 100%;"></canvas>';
+										$input_image = '<input id="image_name_old" type="hidden" name="image_name_old" value="901024210333.jpg" />';
 										$image_data = "block";
 									}
 									else {

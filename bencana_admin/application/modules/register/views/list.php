@@ -18,7 +18,7 @@
               </div><!-- row-->
         </div><!-- end: page-header -->
         
-        <!-- start: breadcrumbs -->
+        <!-- start: breadcrumbs --> 
          <ul class="breadcrumb">
              <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
             <li><a href="<?=base_url()?>/register/register">Content</a> <span class="divider"></span></li>
@@ -54,7 +54,7 @@
 							<span class="block text-center">
 								<i class="icon-refresh"></i> 
 							</span>	
-							Refresh
+							Refresh 
 						</a>
 					</li>
 				</ul>
@@ -91,6 +91,7 @@
   		$tr_color=($k%2)?"#fff":"#fafafa";
 
 		$id=$this->encrypt_status==TRUE?encrypt($v["id"]):$v["id"];
+		// $id = $v["id"]; 
 		$url_edit = $module."edit/".$id;
 		$url_delete = $module."delete/".$id;
 		
@@ -160,16 +161,18 @@
 		var act_link="<?=$this->module?>";		
 		$(".sdb_h_active").next().find("a[href*='"+act_link+"']").parent("li").addClass("active");
 	
-		$("#button_list").click(function(){
+		/*$("#button_list").click(function(){
 			var key=($("#key_list").val())?$("#key_list").val():'0';
 			var prc=$("#page_record").val();
 			var order=(forder!='' && dorder!='')?forder+':'+dorder:0;
 			window.location.href='<?=$module;?>index/'+key+'/'+order+'/'+prc+'/1';
-		});
+		});*/
 		
 		$(".page_record").change(function(){
+			alert("masuk");
 			var order=(forder!='' && dorder!='')?forder+':'+dorder:0;
 			var page_record = $(this).val();
+			alert(page_record);
 			var url = '<?=$module;?>index/'+order+'/'+page_record+'/1'+query;
 			window.location.href=url;
 		});

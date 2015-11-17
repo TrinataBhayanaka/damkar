@@ -145,30 +145,30 @@
 	//callback handler for form submit
 // $('#fdata').submit(function(event) {
 
-//         $('.ajax-spinner-bars').css("display","block"); 
-// 	    var postData = $(this).serializeArray();
-// 	    var formURL = $(this).attr("action");
+        // $('.ajax-spinner-bars').css("display","block"); 
+	    // var postData = $(this).serializeArray();
+	    // var formURL = $(this).attr("action");
 	    
-//         $.ajax({
-//             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-//             url         : formURL, // the url where we want to POST
-//             data        : postData, // our data object
-//             dataType    : 'json', // what type of data do we expect back from the server
-//             encode          : true
-//         })
-//             // using the done promise callback
-//             .done(function(data) {
+        // $.ajax({
+            // type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            // url         : formURL, // the url where we want to POST
+            // data        : postData, // our data object
+            // dataType    : 'json', // what type of data do we expect back from the server
+            // encode          : true
+        // })
+            using the done promise callback
+            // .done(function(data) {
 
-//                 // log data to the console so we can see
-//                 $('#dataAjax').html(data.data); 
-//         		$('.ajax-spinner-bars').css("display","none"); 
+                log data to the console so we can see
+                // $('#dataAjax').html(data.data); 
+        		// $('.ajax-spinner-bars').css("display","none"); 
 
-//                 // here we will handle errors and validation messages
-//             });
+                here we will handle errors and validation messages
+            // });
 
-//         // stop the form from submitting the normal way and refreshing the page
-//         event.preventDefault();
-//     });
+        stop the form from submitting the normal way and refreshing the page
+        // event.preventDefault();
+    // });
  
 </script>
 

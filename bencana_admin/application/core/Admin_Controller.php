@@ -31,6 +31,8 @@ class Admin_Controller extends MY_Controller
 		endif;
 		
 		$this->load->library("cms");
+		$this->load->model("user/user_model");
+        $this->user_model=$this->user_model;
 		$this->cms->init();
 		
 		//$this->load->model("admin/messaging_model");
@@ -65,7 +67,148 @@ class Admin_Controller extends MY_Controller
 		$this->get_unread_message();
 		echo $this->num_unread_message;
 	}
-	function juned(){
-		echo "teso";
-	}
+	
+    function get_lookup_provinsi(){
+    	$filter=" kode_kab=00 AND level=0";
+        $arrData=$this->user_model->m_provinsi($filter);
+        // pre($arrData);
+        if(cek_array($arrData)):
+            foreach($arrData as $x=>$val):
+                $arrCat[$x]['kode_prop']=$val["kode_prop"];
+                $arrCat[$x]['nama']=$val["nama"];
+            endforeach;
+        endif;
+        // pre($arrCat);
+        return $arrCat;
+    }
+    function get_name_provinsi($prop){
+    	$filter=" kode_prop='".$prop."' AND level=0";
+        $arrData=$this->user_model->m_provinsi($filter);
+
+        return $arrData[0];
+    }
+    function get_lookup_kabupaten($id=11){
+    	$filter=" kode_prop='".$id."' AND level=1";
+        $arrData=$this->user_model->m_kabupaten($filter);
+        // pre($arrData);
+        if(cek_array($arrData)):
+            foreach($arrData as $x=>$val):
+                $arrCat[$x]['kode_kab']=$val["kode_kab"];
+                $arrCat[$x]['nama']=$val["nama"];
+            endforeach;
+        endif;
+        // pre($arrCat);
+        return $arrCat;
+    }
+    function get_name_kabupaten($prop,$kab){
+    	$filter=" kode_prop='".$prop."' AND kode_kab='".$kab."'";
+        $arrData=$this->user_model->m_kabupaten($filter);
+        // pre($arrData);
+       
+        // pre($arrCat);
+        return $arrData[0];
+    }
+     
+    function get_lookup_kabupatenAjax($id){
+
+    	$filter=" kode_prop='".$id."' AND level=1";
+        $arrData=$this->user_model->m_kabupaten($filter);
+        // pre($arrData);
+        if(cek_array($arrData)):
+            foreach($arrData as $x=>$val):
+                $arrCat[$x]['kode_kab']=$val["kode_kab"];
+                $arrCat[$x]['nama']=$val["nama"];
+            endforeach;
+        endif;
+        // pre($arrCat);
+        $data['data']=$arrCat;
+        // pre($data);
+        $data_layout["content"]=$this->load->view("master_data/wilayah/v_select",$data,true);
+        // pre($data_layout["content"]);
+		if ($arrCat){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        exit;
+        // return $arrCat;
+    }
+     function get_lookup_sektor($propinsi,$kabupaten){
+
+    	$filter=" propinsi='".$propinsi."' AND kabupaten='".$kabupaten."'";
+    	// pre($propinsi);
+    	// pre($kabupaten);
+        $arrData=$this->user_model->m_sektor($filter);
+        // pre($arrData);
+        // if(cek_array($arrData)):
+        //     foreach($arrData as $x=>$val):
+        //         $arrCat[$x]['kode_kab']=$val["kode_kab"];
+        //         $arrCat[$x]['nama']=$val["nama"];
+        //     endforeach;
+        // endif;
+        // pre($arrCat);
+        // $data['data']=$arrData;
+        // pre($data);
+  //       $data_layout["content"]=$this->load->view("sarpras/v_select",$data,true);
+  //       // pre($data_layout["content"]);
+		// if ($arrData){
+  //           print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+  //       }else{
+  //           print json_encode(array('status'=>false));
+  //       }
+        // exit;
+        return $arrData;
+    }
+    function get_lookup_sektorAjax($propinsi,$kabupaten){
+
+    	$filter=" propinsi='".$propinsi."' AND kabupaten='".$kabupaten."'";
+    	// pre($propinsi);
+    	// pre($kabupaten);
+        $arrData=$this->user_model->m_sektor($filter);
+        // pre($arrData);
+        // if(cek_array($arrData)):
+        //     foreach($arrData as $x=>$val):
+        //         $arrCat[$x]['kode_kab']=$val["kode_kab"];
+        //         $arrCat[$x]['nama']=$val["nama"];
+        //     endforeach;
+        // endif;
+        // pre($arrCat);
+        $data['data']=$arrData;
+        // pre($data);
+        $data_layout["content"]=$this->load->view("sarpras/v_select",$data,true);
+        // pre($data_layout["content"]);
+		if ($arrData){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        exit;
+        // return $arrCat;
+    }
+    function get_lookup_skpdAjax($id){
+
+    	$filter=" id='".$id."'";
+    	// pre($propinsi);
+    	// pre($kabupaten);
+        $arrData=$this->user_model->m_sektor($filter);
+        // pre($arrData);
+        // if(cek_array($arrData)):
+        //     foreach($arrData as $x=>$val):
+        //         $arrCat[$x]['kode_kab']=$val["kode_kab"];
+        //         $arrCat[$x]['nama']=$val["nama"];
+        //     endforeach;
+        // endif;
+        // pre($arrData);
+        $data['data']=$arrData;
+        // pre($data);
+        // $data_layout["content"]=$this->load->view("sarpras/v_select",$data,true);
+        // pre($data_layout["content"]);
+		if ($arrData){
+            print json_encode(array('status'=>true, 'data'=>$arrData[0]['skpd']));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        exit;
+        // return $arrCat;
+    }
 }

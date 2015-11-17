@@ -11,7 +11,7 @@
         <header class="header">
             <a href="<?=base_url()?>" class="logo">
             	<!-- <img src="assets/image/logo-blank.png" style="height:45px; margin-top:8px" /> -->
-             <span style="font-size:11px;">SISTEM INFORMASI KEBENCANAAN</span>
+             DINAS DAMKAR
             	<!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <!--<span style="font-size:0.7em;font-family: 'Kaushan Script',cursive;">BRWA</span>-->
             </a>

@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?php echo $this->module?>add">
+                    <a href="<?php echo $this->module?>add_personel">
                         <span class="block text-center">
                             <i class="icon-plus"></i> 
                         </span>
@@ -100,8 +100,7 @@
               </div>';
 		}
 	?>
-	<?php echo form_open("wilayah/addAjax",'id="fdata"');?>
-	<input type="hidden" name="idx" value="<?=$data['id'];?>" />
+	<?php echo form_open("personel/add_personel",'id="fdata"');?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -113,7 +112,7 @@
 									<div class="form-group">
 									
 									<label>No Induk Pegawai</label>
-									<?php echo form_input($nip,false,'class="form-control required"');?>
+									<?php echo form_input($nip,false,'class="form-control  IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -122,7 +121,7 @@
 									<div class="form-group">
 									
 									<label>Nama Lengkap</label>
-									<?php echo form_input($nama,false,'class="form-control required"');?>
+									<?php echo form_input($nama,false,'class="form-control"');?>
 									</div>
 								</div>
 							</div>
@@ -133,13 +132,13 @@
 									<label>Jenis Kelamin :</label>
 									<div style="padding-left:20px;" class="radio">
 									  <label>
-										<input type="radio" value="laki-laki" name="jenis_kelamin" checked="checked" />
+										<input type="radio" value="laki-laki" name="jenisKelamin" checked="checked" />
 										Laki-laki
 									  </label>
 									</div>
 									<div style="padding-left:20px;" class="radio">
 									  <label>
-										<input type="radio" value="perempuan" name="jenis_kelamin" />
+										<input type="radio" value="perempuan" name="jenisKelamin" />
 										perempuan
 									  </label>
 									</div>
@@ -164,14 +163,15 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Tempat Lahir</label>
-									<?php echo form_input($tempat_lahir,false,'class="form-control"');?>
+									<?php echo form_input($tempatLahir,false,'class="form-control"');?>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Tanggal Lahir</label>
-									<input type="hidden" id="tglLahir" name="tglLahir" value="<?php echo date("Y-m-d",strtotime($tanggal_lahir['value']));?>" />
-									<input type="text" id="tanggal_lahir_selector" name="tanggal_lahir_selector" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tanggal_lahir['value']));?>" />
+									<input type="hidden" id="tglLahir" name="tglLahir" value="<?php echo date("Y-m-d",strtotime($tglLahir['value']));?>" />
+									<input type="text" id="tanggal_lahir_selector" name="tanggal_lahir_selector" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglLahir['value']));?>" />
+									
 									</div>
 								</div>
 							</div>
@@ -218,14 +218,37 @@
 								<div class="col-md-4">
 									<div class="form-group">
 									<label>Provinsi</label>
-									<?=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<?//=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<select class="form-control" id="propinsi" name="propinsi">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_propinsi as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
 
+										?>
+									</select>	
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 									<label>Kabupaten</label>
-									<?php echo form_input($kabupaten,false,'class="form-control"');?>
+									<?php// echo form_input($kabupaten,false,'class="form-control"');?>
+									<select class="form-control" id="kabupaten" name="kabupaten">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_kabupaten as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
+
+										?>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-4">
@@ -329,61 +352,153 @@
 	<?php echo form_close();?>
 
 </div>
-<div id="tab-view" class="tab-pane">    
-    <div class="row-fluid">
-	    <div class="span9">
-            <div class="row-fluid">
-                <div class="span12">
-                    <h1 id="title-view"></h1>
-                    <p>
-                    <blockquote id="news_clip-view">
-                    
-                    </blockquote>
-                    </p>
-                    <span id="canvas_view" style="float:left;margin:0;"><canvas width=0 height=0></canvas></span>
-                    <p id="news_content-view">
-                    
-                    </p>
-                </div>
-            </div>
-        </div> 
-    </div>
-    <br />
-    <br />
-</div>
+
 </div>
 <!-- en tab-content-->
 </div>
 </div>
+
 <script>
+//js here
+//Uploader
+$(function(){
 
-	//callback handler for form submit
-$('#fdata').submit(function(event) {
+	tgl_lahir = $('.dp1').datepicker({
+		format:"dd/mm/yyyy"
+	}).on('changeDate', function(ev){
+		var newDate = new Date(ev.date);
+		$("#tglLahir").val(newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate());
+		$('.dp1').datepicker('hide');
+	}).data('datepicker');
+	
+	$('.dp1').on("keyup",function(){
+		setValDate(tgl_lahir,"#tglLahir");
+	});
+	
+	var w_image = $("#attachment_frame").width()-10;
+	var ufile=false;
+	var dfile=<?=($data['image'])?"true":"false";?>;
+	var uploader = new plupload.Uploader({
+		runtimes : 'html5,flash',
+		browse_button : 'btn-change',
+		container: 'imgcontainer',
+		multi_selection: false,
+		url: "<?=base_url()?>test.php",
+		max_file_size : '500kb',
+		/*resize: {
+			width: 200,
+			height: 150,
+			crop: true
+		},*/
+		filters : [
+			{title : "Image files", extensions : "jpg,gif,png"}
+		],
+		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
+	});
+	
+	uploader.bind('Init', function(up, params) {
+		$('#runtime').html("Current runtime: " + params.runtime);
+	});
 
-        $('.ajax-spinner-bars').css("display","block"); 
-	    var postData = $(this).serializeArray();
-	    var formURL = $(this).attr("action");
-	    
-        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : formURL, // the url where we want to POST
-            data        : postData, // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode          : true
-        })
-            // using the done promise callback
-            .done(function(data) {
+	uploader.init();
 
-                // log data to the console so we can see
-                $('#dataAjax').html(data.data); 
-        		$('.ajax-spinner-bars').css("display","none"); 
+	uploader.bind('FilesAdded', function(up, files) {
+		if (dfile) {
+			$('#preview').html("");
+			$('#canvas_view').html("");
+		}
+		if (ufile) {
+			uploader.removeFile(ufile);
+			$('#preview').html("");
+			$('#canvas_view').html("");
+		}
+		$.each(files, function(i,file){
+			ufile = file.id;
+			$("#image_name").val(file.name);
+			var img = new mOxie.Image();
+	
+			img.onload = function() {
+				this.embed($('#preview').get(0), {
+					width: w_image,
+					height: 170,
+					crop: true
+				});
+				$('#canvas_view').css({margin:"2px 10px 10px 2px"});
+				$('#canvas_view').css({width:w_image,height:170});
+				this.embed($('#canvas_view').get(0), {
+					width: w_image,
+					height: 170,
+					crop: true
+				});
+			};
+	
+			img.onembedded = function() {
+				this.destroy();
+			};
+	
+			img.onerror = function() {
+				this.destroy();
+			};
+	
+			img.load(this.getSource());        
+			
+		});
+	});
+	uploader.bind('Error', function(up, err) {
+		alert("Error: " + err.code + " -" + err.message/* +  (err.file ? ", File: " + err.file.name : "")*/);
+		up.refresh(); // Reposition Flash/Silverlight
+	});
+	var x = false;
+	uploader.bind('FileUploaded', function() {
+		//if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
+			x=true;
+			$('#fdata').submit();
+		//}
+	});
+	$('#fdata').submit(function(e) {
+		// Files in queue upload them first
+		if (uploader.files.length > 0) {
+			uploader.start();
+		} else {
+			//x = true;
+			alert('Lampiran tanda pengenal wajib ada.');
+		}
+		//	alert('You must at least upload one file.');
+	
+		if (!x) return false;
+	});   
 
-                // here we will handle errors and validation messages
-            });
+	$('.IsInteger').keypress(function (e) {
+    var charCode = (e.which) ? e.which : e.keyCode;
+    if (charCode > 31
+    && (charCode < 48 || charCode > 57))
+        return false;
+});
+    
 
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-    });
- 
+	$('#fdata').on('change','#propinsi',function(){
+		var basedomain = '<?=base_url()?>';
+ 		var parameter =$('#propinsi').val();
+		var urlPageList = 'personel/';
+	   // alert(parameter);
+	   // var valueparameter =$('#valueparameter').val();
+
+	    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+	            
+	            if (data.status==true) {
+	               
+	                    $('#kabupaten').html(data.data); 
+
+	                 $('.ajax-spinner-bars').css("display","none"); 
+	                
+	            }else{
+	                   $('.ajax-spinner-bars').css("display","none"); 
+	            }
+	        }, "JSON")
+
+	return false;
+	});
+
+});
 </script>
 

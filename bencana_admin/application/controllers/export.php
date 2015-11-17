@@ -5,13 +5,7 @@ class export extends CI_Controller {
 		$this->load->helper("export");
 		export2xls();
 	}
-	function toxls(){
-		// pre($_POST);
-		$data=urldecode($_POST['tbl']);
-		// pre($data);
-		$this->load->helper("export");
-		exporttoxls($data);
-	}
+	
 	
 	function csv(){
 		$this->load->helper("download");
@@ -96,8 +90,7 @@ class export extends CI_Controller {
 		$postdata = http_build_query(
 			$_POST
 		);
-		// pre($postdata);
-		// exit();
+		
 		$opts = array('http' =>
 			array(
 				'method'  => 'POST',
@@ -119,7 +112,6 @@ class export extends CI_Controller {
 		//header('Content-disposition: attachment; filename='.$filename.'.pdf');
 		header('Content-type: application/pdf');
 		print $result;
-
 	}
 	
 	function init_folder(){

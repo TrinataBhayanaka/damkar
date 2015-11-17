@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?php echo $this->module?>add">
+                    <a href="<?php echo $this->module?>add_wilayah">
                         <span class="block text-center">
                             <i class="icon-plus"></i> 
                         </span>
@@ -100,7 +100,7 @@
               </div>';
 		}
 	?>
-	<?php echo form_open("wilayah/addAjax",'id="fdata"');?>
+	<?php echo form_open("wilayah/add_wilayah",'id="fdata"');?>
 	<input type="hidden" name="idx" value="<?=$data['id'];?>" />
 	<div class="container">
 		<div class="row">
@@ -111,17 +111,37 @@
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
-									
 									<label>Provinsi </label>
-									<?=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<?//=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<select class="form-control" id="propinsi" name="propinsi">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_propinsi as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
 
+										?>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
-									
 									<label>Kabupaten </label>
-									<?php echo form_input($kabupaten,false,'class="form-control required"');?>
+									<select class="form-control" id="kabupaten" name="kabupaten">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_kabupaten as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
+
+										?>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -130,14 +150,14 @@
 									<div class="form-group">
 									
 									<label>Luas Wilayah </label>
-									<?php echo form_input($luasWilayah,false,'class="form-control"');?>
+									<?php echo form_input($luasWilayah,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 									
 									<label>Jumlah Kecamatan </label>
-									<?php echo form_input($jumlahKecamatan,false,'class="form-control"');?>
+									<?php echo form_input($jumlahKecamatan,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 
@@ -145,7 +165,7 @@
 									<div class="form-group">
 									
 									<label>Jumlah Penduduk </label>
-									<?php echo form_input($jumlahPenduduk,false,'class="form-control"');?>
+									<?php echo form_input($jumlahPenduduk,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -159,25 +179,25 @@
 								<div class="col-md-3">
 									<div class="form-group">
 									<label>Cakupan</label>
-									<?php echo form_input($cakupan,false,'class="form-control"');?>
+									<?php echo form_input($cakupan,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 									<label>Respon Time</label>
-									<?php echo form_input($responTime,false,'class="form-control"');?>
+									<?php echo form_input($responTime,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 									<label>Rasio Personel</label>
-									<?php echo form_input($rasioPersonel,false,'class="form-control"');?>
+									<?php echo form_input($rasioPersonel,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 									<label>Rasio SarPras</label>
-									<?php echo form_input($rasioSarPras,false,'class="form-control"');?>
+									<?php echo form_input($rasioSarPras,false,'class="form-control IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -231,34 +251,44 @@
 </div>
 </div>
 <script>
+//js here
+$(document).ready(function() {
+$('.IsInteger').keypress(function (e) {
+    var charCode = (e.which) ? e.which : e.keyCode;
+    if (charCode > 31
+    && (charCode < 48 || charCode > 57))
+        return false;
+});
+$(function(){
+$(".required").each(function(i){
+		$(this).closest("div").find(".asterix").remove();
+		$(this).closest("div").find("label").append("<span class='asterix'>&nbsp;*</span>");
+   });
 
-	//callback handler for form submit
-$('#fdata').submit(function(event) {
+});
 
-        $('.ajax-spinner-bars').css("display","block"); 
-	    var postData = $(this).serializeArray();
-	    var formURL = $(this).attr("action");
-	    
-        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : formURL, // the url where we want to POST
-            data        : postData, // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode          : true
-        })
-            // using the done promise callback
-            .done(function(data) {
+	 $('#fdata').on('change','#propinsi',function(){
+		var basedomain = '<?=base_url()?>';
+ 		var parameter =$('#propinsi').val();
+		var urlPageList = 'wilayah/wilayah/';
+	   // alert(parameter);
+	   // var valueparameter =$('#valueparameter').val();
 
-                // log data to the console so we can see
-                $('#dataAjax').html(data.data); 
-        		$('.ajax-spinner-bars').css("display","none"); 
+	    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+	            
+	            if (data.status==true) {
+	               
+	                    $('#kabupaten').html(data.data); 
 
-                // here we will handle errors and validation messages
-            });
+	                 $('.ajax-spinner-bars').css("display","none"); 
+	                
+	            }else{
+	                   $('.ajax-spinner-bars').css("display","none"); 
+	            }
+	        }, "JSON")
 
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-    });
- 
+	return false;
+	});
+});
 </script>
 

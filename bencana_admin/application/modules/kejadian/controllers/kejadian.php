@@ -41,6 +41,71 @@ class kejadian extends Admin_Controller {
 		$data_layout["content"]=$this->load->view("kejadian/v_kejadian_ajax",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 	}
+	public function importInsert(){
+		// pre($_SESSION['dataexcel']);
+		foreach ($_SESSION['dataexcel'] as $key => $value) {
+			// pre($value);
+			$dataImport = array(
+				'noKejadian'    	=> $value[A],
+				'kodePropinsi' 		=> $value[B],
+				'namaPropinsi' 		=> $value[C],
+				'kodeKabupaten'  	=> $value[D],	
+				'namaKabupaten'  	=> $value[E],	
+				'kejadian'  		=> $value[F],
+				'waktuKejadian'  	=> $value[G],	
+				'meninggal'  		=> $value[H],	
+				'hilang'  			=> $value[I],	
+				'terluka'  			=> $value[J],	
+				'mengungsi'  		=> $value[K],	
+				'penyebab'  		=> $value[L],	
+				'penyebab'  		=> $value[M],	
+				'nilaiKerugian'  	=> $value[N],	
+				'jumlahPengungsian' => $value[O],		
+				'n_status'      	=> 1,
+			);
+				$logdataImport = array(
+				'noKejadian'    	=> $value[A],
+				'kodePropinsi' 		=> $value[B],
+				'namaPropinsi' 		=> $value[C],
+				'kodeKabupaten'  	=> $value[D],	
+				'namaKabupaten'  	=> $value[E],	
+				'kejadian'  		=> $value[F],
+				'waktuKejadian'  	=> $value[G],	
+				'meninggal'  		=> $value[H],	
+				'hilang'  			=> $value[I],	
+				'terluka'  			=> $value[J],	
+				'mengungsi'  		=> $value[K],	
+				'penyebab'  		=> $value[L],	
+				'penyebab'  		=> $value[M],	
+				'nilaiKerugian'  	=> $value[N],	
+				'jumlahPengungsian' => $value[O],				
+				'status'      		=> "import",
+			);
+			$filter="noKejadian='".$value[0]."'";
+			if(!$this->model->cek_data($filter)){
+
+				$dataImport['statusQuery']="insert";	
+				$logdataImport['statusQuery']="insert";	
+
+				$insert = $this->model->InsertData($dataImport);
+				$insertlog = $this->modellog->InsertData($logdataImport);
+
+			}else{
+
+				$dataImport['statusQuery']="update";
+				$logdataImport['statusQuery']="update";		
+
+
+				$insertlog = $this->modellog->InsertData($logdataImport);
+				$update = $this->model->UpdateData($dataImport,"noKejadian='".$value[0]."'");
+			}
+			// pre($dataImport);
+		}
+
+				redirect("kejadian/kejadian/");
+
+	}
+	
 	function toecel(){
 		//load our new PHPExcel library
 		// $this->load->library('excel');
@@ -86,31 +151,99 @@ class kejadian extends Admin_Controller {
 	}
 
 	function importDatax(){
+			// header('Content-Type: text/plain');
+		// pre($_FILES);
+		 $inputFileName = $_FILES['userfile']['tmp_name'];
+		$inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                $objPHPExcel = $objReader->load($inputFileName);
+
+                // pre($objReader);
+
+                $sheet = $objPHPExcel->getSheet(0);
+            $highestRow = $sheet->getHighestRow();
+            $highestColumn = $sheet->getHighestColumn();
+              // $objWorksheet = $objPHPExcel->setActiveSheetIndexbyName('Sheet1');
+
+              $objWorksheet = $objPHPExcel->setActiveSheetIndexbyName('Sheet1');
+
+    // $starting = 1;
+    // $end      = 3;
+    // for($i = $starting;$i<=$end; $i++)
+    // {
+
+    //    for($j=0;$j<count($arrayLabel);$j++)
+    //    {
+    //        //== display each cell value
+    //        echo $objWorksheet->getCell($arrayLabel[$j].$i)->getValue();
+    //    }
+    // }
+     //or dump data
+     $sheetData = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+     // pre($sheetData);
+     // exit();
+ 	// pre($objWorksheet);
+            //  Loop through each row of the worksheet in turn
+        //     for ($row = 1; $row <= $highestRow; $row++){                  //  Read a row of data into an array                 
+        //     $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+        //                                         NULL,
+        //                                         TRUE,
+        //                                         FALSE);
+        //     echo $objWorksheet->getCell($arrayLabel[$j].$i)->getValue();
+        //     pre($rowData);
+        // }
+        	// pre($rowData);
+ 	// $starting = 1;
+  //   $end      = 7;
+  //   for($i = $starting;$i<=$end; $i++)
+  //   {
+
+  //      for($j=0;$j<count($arrayLabel);$j++)
+  //      {
+  //          //== display each cell value
+  //          echo $objWorksheet->getCell($arrayLabel[$j].$i)->getValue();
+  //      }
+  //   }
+                // exit;
+			// $this->excel_reader2->read($_FILES['userfile']['tmp_name']);
+			// $data = $this->excel_reader2->sheets[0];
+		// 	$Spreadsheet = $this->SpreadsheetReader->read($_FILES['userfile']['tmp_name']);
 		
-		
-			$this->excel_reader->read($_FILES['userfile']['tmp_name']);
-			$data = $this->excel_reader->sheets[0];
-			// pre($data['cells']);
+		// 	$Sheets = $Spreadsheet -> Sheets();
+
+		// 	pre($Spreadsheet);exit;
+     $count=count($sheetData);
+     // pre($count);
 			$dataexcel = Array();
 
-			for ($i = 3; $i <= $data['numRows']; $i++) {
-				// pre($data['cells'][$i]);
-                            if($data['cells'][$i][1] == '') break;
-                            $dataexcel[$i][] = $data['cells'][$i][1];
-                            $dataexcel[$i][] = $data['cells'][$i][2];
-                            $dataexcel[$i][] = $data['cells'][$i][3];
-                            $dataexcel[$i][] = $data['cells'][$i][4];
-                            $dataexcel[$i][] = $data['cells'][$i][5];
-                            $dataexcel[$i][] = $data['cells'][$i][6];
-                            $dataexcel[$i][] = $data['cells'][$i][7];
-                            $dataexcel[$i][] = $data['cells'][$i][8];
-                            $dataexcel[$i][] = $data['cells'][$i][9];
-                            $dataexcel[$i][] = $data['cells'][$i][10];
-                            $dataexcel[$i][] = $data['cells'][$i][11];
-                            $dataexcel[$i][] = $data['cells'][$i][12];
-                            $dataexcel[$i][] = $data['cells'][$i][13];
-                            $dataexcel[$i][] = $data['cells'][$i][14];
-                            $dataexcel[$i][] = $data['cells'][$i][15];
+			foreach ($sheetData as $key => $value) {
+
+				if($key>=3){
+					$dataexcel[]=$value;
+				}
+				
+			}
+     		// $index=0;
+			// for ($i = 3; $i <= $count; $i++) {
+			// 	// pre($data['cells'][$i]);
+   //                          if($sheetData[$i][1] == '') break;
+   //                          $dataexcel[] = $sheetData[$i][A];
+   //                          $dataexcel[] = $sheetData[$i][B];
+   //                          $dataexcel[] = $sheetData[$i][C];
+   //                          $dataexcel[] = $sheetData[$i][D];
+   //                          $dataexcel[] = $sheetData[$i][E];
+   //                          $dataexcel[] = $sheetData[$i][F];
+   //                          $dataexcel[] = $sheetData[$i][G];
+   //                          $dataexcel[] = $sheetData[$i][H];
+   //                          $dataexcel[] = $sheetData[$i][I];
+   //                          $dataexcel[] = $sheetData[$i][J];
+   //                          $dataexcel[] = $sheetData[$i][K];
+   //                          $dataexcel[] = $sheetData[$i][L];
+   //                          $dataexcel[] = $sheetData[$i][M];
+   //                          $dataexcel[] = $sheetData[$i][N];
+   //                          $dataexcel[] = $sheetData[$i][O];
+   //                          $index++;
+
     //         $dataImport = array(
 				// 'noKejadian'    	=> $data['cells'][$i][1],
 				// 'kodePropinsi' 		=> $data['cells'][$i][2],
@@ -151,48 +284,80 @@ class kejadian extends Admin_Controller {
 		// 	$insert = $this->model->InsertData($dataImport);
 		// 	$insert2 = $this->modellog->InsertData($logdataImport);
 
-			}
+			// }
 			// pre($dataexcel);
 		// exit;
 			$data['arrDB']=$dataexcel;
 			$_SESSION['dataexcel']=$dataexcel;
+    //              $worksheet  = $objPHPExcel->setActiveSheetIndexbyName('Sheet1');
 
+
+    // $highestRow         = $worksheet->getHighestRow(); // e.g. 10
+    // $highestColumn      = $worksheet->getHighestColumn(); // e.g 'F'
+    // $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+    // $nrColumns          = ord($highestColumn) - 64;
+    // $worksheetTitle     = $worksheet->getTitle();
+
+    // echo "<br>The worksheet ".$worksheetTitle." has ";
+    // echo $nrColumns . ' columns (A-' . $highestColumn . ') ';
+    // echo ' and ' . $highestRow . ' row.';
+    // echo '<br>Data: <table border="1"><tr>';
+    // //----- loop from all rows -----
+    // for ($row = 1; $row <= $highestRow; ++ $row) 
+    // {
+    //     echo '<tr>';
+    //     echo "<td>".$row."</td>";
+    //     //--- read each excel column for each row ----
+    //     for ($col = 0; $col < $highestColumnIndex; ++ $col) 
+    //     {
+    //         if($row == 1)
+    //         {
+    //             // show column name with the title
+    //              //----- get value ----
+    //             $cell = $worksheet->getCellByColumnAndRow($col, $row);
+    //             $val = $cell->getValue();
+    //             //$dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
+    //             echo '<td>' . $val ."(".$row." X ".$col.")".'</td>';
+    //         }
+    //         else
+    //         {
+    //             if($col == 9)
+    //             {
+    //                 //----- get value ----
+    //                 $cell = $worksheet->getCellByColumnAndRow($col, $row);
+    //                 $val = $cell->getValue();
+    //                 //$dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
+    //                 echo '<td>zone ' . $val .'</td>';
+    //             }
+    //             else if($col == 13)
+    //             {
+    //                 $date = PHPExcel_Shared_Date::ExcelToPHPObject($worksheet->getCellByColumnAndRow($col, $row)->getValue())->format('Y-m-d');
+    //                 echo '<td>' .dateprovider($date,'dr') .'</td>';
+    //             }
+    //             else
+    //             {
+    //                  //----- get value ----
+    //                 $cell = $worksheet->getCellByColumnAndRow($col, $row);
+    //                 $val = $cell->getValue();
+    //                 //$dataType = PHPExcel_Cell_DataType::dataTypeForValue($val);
+    //                 echo '<td>' . $val .'</td>';
+    //             }
+    //         }
+    //     }
+    //     echo '</tr>';
+    // }
+    // echo '</table>';
+    // $this->benchmark->mark('code_end');
+
+    // echo "Total time:".$this->benchmark->elapsed_time('code_start', 'code_end');     
+    // $this->load->view("error");
+// pre($data);exit;
 		$data_layout["content"]=$this->load->view("kejadian/v_list_excel",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 		
 	}
-	public function pdfReport(){
-		// pre($_POST);
-		// exit;
-		$data=$this->dataPaging2(0,100,1);
-		// pre($data);
-		$data_layout["content"]=$this->load->view("kejadian/v_report",$data,true); 
-		
-		if ($data_layout){
-            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
-        }else{
-            print json_encode(array('status'=>false));
-        }
-        
-        exit;
-	}
-	public function xlsReport(){
-		// pre($_POST);
-		// exit;
-		$data=$this->dataPaging2(0,100,1);
-		// pre($data);
-		$data_layout["content"]=$this->load->view("kejadian/v_report_xls",$data,true); 
-		
-		if ($data_layout){
-            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
-        }else{
-            print json_encode(array('status'=>false));
-        }
-        
-        exit;
-	}
-	public function importInsert(){
-		// pre($_SESSION['dataexcel']);
+	public function tes(){
+		pre($_SESSION['dataexcel']);
 		foreach ($_SESSION['dataexcel'] as $key => $value) {
 			// pre($value);
 			$dataImport = array(
@@ -249,10 +414,8 @@ class kejadian extends Admin_Controller {
 				$insertlog = $this->modellog->InsertData($logdataImport);
 				$update = $this->model->UpdateData($dataImport,"noKejadian='".$value[0]."'");
 			}
-			// pre($dataImport);
+			pre($dataImport);
 		}
-
-				redirect("kejadian/kejadian/");
 
 	}
 	function dataAjax($forder=0,$limit=10,$page=1,$postKey=false){
@@ -274,27 +437,24 @@ class kejadian extends Admin_Controller {
  	 	// pre($_POST);
  		$this->data['post']=$_POST;
 		$this->form_validation->set_rules('noKejadian', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kejadian', "<b>Kejadian</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodePropinsi', "<b>Provinsi</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodeKabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
+		/*$this->form_validation->set_rules('kejadian', "<b>Kejadian</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('waktuKejadian', "<b>Waktu Kejadian</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('hilang', "<b>Hilang</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('terluka', "<b>Terluka</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('penyebab', "<b>Penyebab</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('objek', "<b>objek</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('nilaiKerugian', "<b>Nilai Kerugian</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('jumlahPengungsian', "<b>Jumlah Pengungsian</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('jumlahPengungsian', "<b>Jumlah Pengungsian</b>", 'required|xss_clean');*/
 
 		if ($this->form_validation->run() == true)
 		{
-			// if ($_POST['image_name']) {
-			// 	$file_name = $this->__file_upload($_POST['image_name'],$_POST['username']);
-			// }
-
+			
 			$additional_data = array(
 				'noKejadian' 		=> $this->input->post('noKejadian'),
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),
+				'kodePropinsi' 			=> $this->input->post('kodePropinsi'),
+				'kodeKabupaten'  		=> $this->input->post('kodeKabupaten'),
 				'kejadian'    		=> $this->input->post('kejadian'),
 				'waktuKejadian'  	=> $this->input->post('waktuKejadian'),
 				'meninggal'   		=> $this->input->post('meninggal'),
@@ -330,13 +490,15 @@ class kejadian extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('noKejadian','propinsi','kabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
+			$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian',
+							'meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
 
 			$this->data=$this->set_dataInput($dataFormInput);
 
 		}
 		
-		$this->data['m_propinsi']=$this->get_lookup_propinsi();
+		$this->data['m_propinsi']=$this->get_lookup_provinsi();
+		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
@@ -366,20 +528,28 @@ class kejadian extends Admin_Controller {
 		$user=$this->model->GetRecordData("id='{$id}'");
 		// pre($user);exit;
 		//validate form input
-		$this->form_validation->set_rules('namaSektor', "<b>Nama Sektor</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('noKejadian', "<b>Provinsi</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodePropinsi', "<b>Provinsi</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kodeKabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kejadian', "<b>Kejadian</b>", 'required|xss_clean');
 
 		if (isset($_POST) && !empty($_POST))
 		{
 
 			$data = array(
-				'namaSektor'    	=> $this->input->post('namaSektor'),
-				'skpd'   			=> $this->input->post('skpd'),
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),				
-				'status'      		=> 1,
+				'noKejadian' 		=> $this->input->post('noKejadian'),
+				'kodePropinsi' 			=> $this->input->post('kodePropinsi'),
+				'kodeKabupaten'  		=> $this->input->post('kodeKabupaten'),
+				'kejadian'    		=> $this->input->post('kejadian'),
+				'waktuKejadian'  	=> $this->input->post('waktuKejadian'),
+				'meninggal'   		=> $this->input->post('meninggal'),
+				'hilang'      		=> $this->input->post('hilang'),
+				'terluka' 	    	=> $this->input->post('terluka'),
+				'mengungsi'     	=> $this->input->post('mengungsi'),
+				'penyebab'      	=> $this->input->post('penyebab'),
+				'objek'      		=> $this->input->post('objek'),
+				'nilaiKerugian'     => $this->input->post('nilaiKerugian'),
+				'jumlahPengungsian' => $this->input->post('jumlahPengungsian'),
 			);
 
 			if ($this->form_validation->run() === TRUE)
@@ -410,13 +580,13 @@ class kejadian extends Admin_Controller {
 		$this->data['idd'] = $idx;
 
 		
-		$dataFormInput=array('namaSektor','skpd','propinsi','kabupaten');
+		$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian',
+							'meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
 		// pre($this->data);
-		// $this->data['m_tanda_pengenal']=$this->get_lookup_tanda_pengenal();
-		$this->data['m_propinsi']=$this->get_lookup_propinsi();
-		// $this->data['m_pekerjaan']=$this->get_lookup_pekerjaan();
+		$this->data['m_propinsi']=$this->get_lookup_provinsi();
+		$this->data['m_kabupaten']=$this->get_lookup_kabupaten($this->data['kodePropinsi']['value']);
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
@@ -504,7 +674,8 @@ class kejadian extends Admin_Controller {
 
 		if ($key) {
 			
-			$filter = "(namaSektor like '%".$key."%' or skpd like '%".$key."%' or propinsi like '%".$key."%' or kabupaten like '%".$key."%')";
+			$filter = "(noKejadian like '%".$key."%' or kodePropinsi like '%".$key."%' or kodeKabupaten like '%".$key."%' or waktuKejadian like '%".$key."%' or penyebab like '%".$key."%'
+			or objek like '%".$key."%' or objek like '%".$key."%')";
 			$data["key"]=$key;
 		}
 		$offset 		= ($page-1)*$limit;
@@ -522,6 +693,14 @@ class kejadian extends Admin_Controller {
 		}
 
 		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
+		foreach ($arrDB as $key => $value) {
+			$namaProp=$this->get_name_provinsi($value['kodePropinsi']);
+			$namaKab=$this->get_name_kabupaten($value['kodePropinsi'],$value['kodeKabupaten']);
+			
+			$arrDB[$key]=$value;
+			$arrDB[$key]['namaProp']=$namaProp['nama'];
+			$arrDB[$key]['namaKab']=$namaKab['nama'];
+		}
 		// pre($arrDB);
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
@@ -544,56 +723,7 @@ class kejadian extends Admin_Controller {
 		
 		return $data_layout["content"];
 	}
-	function dataPaging2($forder=0,$limit=10,$page=1,$postKey=false){
-		$filter="";
-		if($postKey){
-			$key=$postKey;
-		}else{
-			$key = ($_POST['q'])?$_POST['q']:0;
-		}
 
-		if ($key) {
-			
-			$filter = "(namaSektor like '%".$key."%' or skpd like '%".$key."%' or propinsi like '%".$key."%' or kabupaten like '%".$key."%')";
-			$data["key"]=$key;
-		}
-		$offset 		= ($page-1)*$limit;
-		$data_start 	= $offset+1;
-		$data_end 		= $offset+$limit;
-		
-		if ($forder) {
-			$spl = preg_split("/:/",$forder);
-			$order = 'order by '.$spl[0].' '.$spl[1];
-			$data["forder"]=$spl[0];
-			$data["dorder"]=$spl[1];
-		}
-		else {
-			$order = 'order by id desc';
-		}
-
-		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
-		// pre($arrDB);
-		$total_rows=$this->model->getTotalRecordWhere2($filter);
-		//print_r($total_rows);exit;
-		$query_url = ($key)?"/".$key:"";
-		$base_url = $this->module."index/".$forder."/".$limit;
-		$perpage = $this->utils->getPerPageAjax($limit,array(5,15,20,25,30,40,50));
-		$paging = $this->utils->getPaginationStringAjax($page, $total_rows, $limit, 1, $base_url, "/",$query_url);
-		$data["acc_active"]="content";
-		$data["arrDB"]=$arrDB;
-		$data["user_name"]=$this->data['users']['user']['username'];
-		$data["total_rows"]=$total_rows;
-		$data["data_start"]=$data_start;
-		$data["data_end"]=($data_end<$total_rows)?$data_end:$total_rows; 
-		$data["perpage"]=$perpage;
-		$data["paging"]=$paging;
-		$data["module"]=$this->module;
-
-		$data["page"]=$forder."/".$limit."/".$page.$query_url;
-		// $data_layout["content"]=$this->load->view("kejadian/v_list",$data,true); 
-		
-		return $data;
-	}
  	 function set_dataInput($data,$type=1,$dataVal){
  	 	if($type=='1'){
 			foreach ($data as $key => $value) {
@@ -646,5 +776,60 @@ class kejadian extends Admin_Controller {
         endif;
         return $arrCat;
     }
-   
+ 
+	function get_lookup_provinsi(){
+    	$filter=" kode_kab=00 AND level=0";
+        $arrData=$this->user_model->m_provinsi($filter);
+        // pre($arrData);
+        if(cek_array($arrData)):
+            foreach($arrData as $x=>$val):
+                $arrCat[$x]['kode_prop']=$val["kode_prop"];
+                $arrCat[$x]['nama']=$val["nama"];
+            endforeach;
+        endif;
+        // pre($arrCat);
+        return $arrCat;
+    }
+	
+	function get_lookup_kabupaten($id=11){
+    	
+    	$filter=" kode_prop='".$id."' AND level=1";
+        $arrData=$this->user_model->m_kabupaten($filter);
+        // pre($arrData);
+        if(cek_array($arrData)):
+            foreach($arrData as $x=>$val):
+                $arrCat[$x]['kode_kab']=$val["kode_kab"];
+                $arrCat[$x]['nama']=$val["nama"];
+            endforeach;
+        endif;
+        // pre($arrCat);
+        return $arrCat;
+    }
+
+    function get_lookup_kabupatenAjax($id){
+
+    	$filter=" kode_prop='".$id."' AND level=1";
+        $arrData=$this->user_model->m_kabupaten($filter);
+        // pre($arrData);
+        if(cek_array($arrData)):
+            foreach($arrData as $x=>$val):
+                $arrCat[$x]['kode_kab']=$val["kode_kab"];
+                $arrCat[$x]['nama']=$val["nama"];
+            endforeach;
+        endif;
+        // pre($arrCat);
+        $data['data']=$arrCat;
+        // pre($data);
+        $data_layout["content"]=$this->load->view("wilayah/wilayah/v_select",$data,true);
+        // pre($data_layout["content"]);
+		if ($arrCat){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        exit;
+        // return $arrCat;
+    }
+
+	
 }

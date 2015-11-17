@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?php echo $this->module?>add">
+                    <a href="<?php echo $this->module?>add_personel">
                         <span class="block text-center">
                             <i class="icon-plus"></i> 
                         </span>
@@ -99,93 +99,255 @@
                 <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
               </div>';
 		}
+		
+		
 	?>
-	<?php echo form_open("wilayah/edit/".$idd,'id="fdata"');?>
+	<?php echo form_open("personel/edit_personel".$id,'id="fdata"');?>
+	<input type="hidden" name="id" value="<?=$idd;?>" />
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			  
 			  <div class="row">
-					<div class="col-md-12">
+					<div class="col-md-7">
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-12">
 									<div class="form-group">
 									
-									<label>Provinsi </label>
-									<?=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
-
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Kabupaten </label>
-									<?php echo form_input($kabupaten,false,'class="form-control required"');?>
+									<label>No Induk Pegawai <?=$nama?></label>
+									<?php echo form_input($nip,false,'class="form-control  IsInteger"');?>
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-12">
 									<div class="form-group">
 									
-									<label>Luas Wilayah </label>
-									<?php echo form_input($luasWilayah,false,'class="form-control"');?>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Jumlah Kecamatan </label>
-									<?php echo form_input($jumlahKecamatan,false,'class="form-control"');?>
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Jumlah Penduduk </label>
-									<?php echo form_input($jumlahPenduduk,false,'class="form-control"');?>
+									<label>Nama Lengkap</label>
+									<?php echo form_input($nama,false,'class="form-control"');?>
 									</div>
 								</div>
 							</div>
-
-							<div class="row" >
-								<div class="col-md-12" >
-									<h2 style="border-top:10px solid #F3F3F3;padding-top:10px">Rasio Capaian(SPM)</h2>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+									<label>Jenis Kelamin :</label>
+									<div style="padding-left:20px;" class="radio">
+									  <label>
+										<input type="radio" value="laki-laki" name="jenisKelamin" <?php if ($jk == 'laki-laki') echo 'checked';?> />
+										Laki-laki
+									  </label>
+									</div>
+									<div style="padding-left:20px;" class="radio">
+									  <label>
+										<input type="radio" value="perempuan" name="jenisKelamin"<?php if ($jk == 'perempuan') echo 'checked';?> />
+										perempuan
+									  </label>
+									</div>
+									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<div class="form-group">
-									<label>Cakupan</label>
-									<?php echo form_input($cakupan,false,'class="form-control"');?>
+									<label>Gelar Depan </label>
+									<?php echo form_input($glrDepan,false,'class="form-control"');?>
 									</div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<div class="form-group">
-									<label>Respon Time</label>
-									<?php echo form_input($responTime,false,'class="form-control"');?>
+									<label>Gelar Belakang </label>
+									<?php echo form_input($glrBelakang,false,'class="form-control"');?>
+									</div>
 									</div>
 								</div>
-								<div class="col-md-3">
+							<div class="row">
+								<div class="col-md-6">
 									<div class="form-group">
-									<label>Rasio Personel</label>
-									<?php echo form_input($rasioPersonel,false,'class="form-control"');?>
+									<label>Tempat Lahir</label>
+									<?php echo form_input($tempatLahir,false,'class="form-control"');?>
 									</div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<div class="form-group">
-									<label>Rasio SarPras</label>
-									<?php echo form_input($rasioSarPras,false,'class="form-control"');?>
+									<label>Tanggal Lahir</label>
+									<input type="hidden" id="tglLahir" name="tglLahir" value="<?php echo date("Y-m-d",strtotime($tglLahir['value']));?>" />
+									<input type="text" id="tglLahir_" name="tglLahir_" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglLahir['value']));?>" />
+									
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>AGAMA</label>
+									<?php echo form_input($agama,false,'class="form-control required"');?>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>Status Perkawinan</label>
+									<?php echo form_input($statusKawin,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>Golongan Darah</label>
+									<?php echo form_input($golDarah,false,'class="form-control"');?>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>Rhesus</label>
+									<?php echo form_input($reshus,false,'class="form-control"');?>
+									 </div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+									<label>Alamat</label>
+									<textarea name="alamat" class="form-control required" rows="3"><?=$almt?></textarea>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+									<label>Provinsi</label>
+									<select class="form-control" id="propinsi" name="propinsi">
+									<?php 
+									// pre($m_propinsi);
+									foreach ($m_propinsi as $key => $value) {
+										$selected="";
+										if($value['kode_prop']==$propinsi['value']){
+											$selected="selected = selected";
+										}
+									?>
+									<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+									<?php 
+										}
+									?>
+									</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+									<label>Kabupaten</label>
+									<select class="form-control" id="kabupaten" name="kabupaten">
+										<? 
+										foreach ($m_kabupaten as $key => $value) {
+											$selected="";
+											if($value['kode_kab'] == $kabupaten['value']){
+												$selected="selected = selected";
+											}
+										?>
+										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+										<? 
+											}
+
+
+										?>
+									</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+									<label>Sektor</label>
+									<?php echo form_input($sektor,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>TMT PEGAWAI</label>
+									<?php echo form_input($tmtPegawai,false,'class="form-control"');?>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>STATUS</label>
+									<?php echo form_input($statusKerja,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>Pangkat Golongan</label>
+									<?php echo form_input($pangkat,false,'class="form-control"');?>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									<label>SK PAngkat</label>
+									<?php echo form_input($skPangkat,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+									<label>Pendidikan Terakahir</label>
+									<?php echo form_input($pendidikan,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+									<label>Pendidikan Pelatihan</label>
+									<?php echo form_input($pelatihan,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+									<label>Keterangan</label>
+									<?php echo form_input($keterangan,false,'class="form-control"');?>
+									</div>
+								</div>
+							</div>
+						<?php
+						if ($img) {
+							//$image_image = '<img src="assets/image/news/'.$data['image'].'" style="float:left; margin:2px 10px 10px 2px" />';
+							$image_image = '<span id="canvas_view" style="float:left;margin:2px 10px 10px 2px; " class="img-polaroid"><img width="200" height="200" src="assets/image/members/'.$img.'" /></span>';
+							$image_canvas = '<canvas id="myCanvas" style="height:170px; background-image:url(assets/image/members/'.$img.');background-size: 100%;"></canvas>';
+							$input_image = '<input id="image_name_old" type="hidden" name="image_name_old" value="'.$img.'" />';
+							$image_data = "block";
+						}
+						else {
+							$image_image = '<span id="canvas_view" style="float:left;margin:0; " class="img-polaroid"><canvas width=0 height=0></canvas></span>';			
+							$image_data = "none";
+						}
+					?>		
 							
 							
 					</div> <!-- span6 -->
-					
+					<div class="col-md-5">
+						
+						<div class="row">
+								<div class="col-md-12">
+									<div id="attachment_frame" class="form-group">
+									<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
+									<div id="imgcontainer">
+										<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
+										<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
+									</div>
+									<input id="image_name" type="hidden" name="image_name" />
+									</div>
+								</div>
+						</div>
+							
+						
+					</div>
 				</div>
-				
 			</div>
 		</div>
 	</div>
@@ -230,34 +392,145 @@
 </div>
 </div>
 <script>
+$(function(){
+	tgl_lahir = $('.dp1').datepicker({
+		format:"dd/mm/yyyy"
+	}).on('changeDate', function(ev){
+		var newDate = new Date(ev.date);
+		$("#tglLahir").val(newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate());
+		$('.dp1').datepicker('hide');
+	}).data('datepicker');
+	
+	$('.dp1').on("keyup",function(){
+		setValDate(tgl_lahir,"#tglLahir");
+	});
+	
+	var w_image = $("#attachment_frame").width()-10;
+	var ufile=false;
+	var dfile=<?=($data['image'])?"true":"false";?>;
+	var uploader = new plupload.Uploader({
+		runtimes : 'html5,flash',
+		browse_button : 'btn-change',
+		container: 'imgcontainer',
+		multi_selection: false,
+		url: "<?=base_url()?>test.php",
+		max_file_size : '500kb',
+		/*resize: {
+			width: 200,
+			height: 150,
+			crop: true
+		},*/
+		filters : [
+			{title : "Image files", extensions : "jpg,gif,png"}
+		],
+		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
+	});
+	
+	uploader.bind('Init', function(up, params) {
+		$('#runtime').html("Current runtime: " + params.runtime);
+	});
 
-	//callback handler for form submit
-$('#fdata').submit(function(event) {
+	uploader.init();
 
-        $('.ajax-spinner-bars').css("display","block"); 
-	    var postData = $(this).serializeArray();
-	    var formURL = $(this).attr("action");
-	    
-        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : formURL, // the url where we want to POST
-            data        : postData, // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode          : true
-        })
-            // using the done promise callback
-            .done(function(data) {
+	uploader.bind('FilesAdded', function(up, files) {
+		if (dfile) {
+			$('#preview').html("");
+			$('#canvas_view').html("");
+		}
+		if (ufile) {
+			uploader.removeFile(ufile);
+			$('#preview').html("");
+			$('#canvas_view').html("");
+		}
+		$.each(files, function(i,file){
+			ufile = file.id;
+			$("#image_name").val(file.name);
+			var img = new mOxie.Image();
+	
+			img.onload = function() {
+				this.embed($('#preview').get(0), {
+					width: w_image,
+					height: 170,
+					crop: true
+				});
+				$('#canvas_view').css({margin:"2px 10px 10px 2px"});
+				$('#canvas_view').css({width:w_image,height:170});
+				this.embed($('#canvas_view').get(0), {
+					width: w_image,
+					height: 170,
+					crop: true
+				});
+			};
+	
+			img.onembedded = function() {
+				this.destroy();
+			};
+	
+			img.onerror = function() {
+				this.destroy();
+			};
+	
+			img.load(this.getSource());        
+			
+		});
+	});
+	uploader.bind('Error', function(up, err) {
+		alert("Error: " + err.code + " -" + err.message/* +  (err.file ? ", File: " + err.file.name : "")*/);
+		up.refresh(); // Reposition Flash/Silverlight
+	});
+	var x = false;
+	uploader.bind('FileUploaded', function() {
+		//if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
+			x=true;
+			$('#fdata').submit();
+		//}
+	});
+	$('#fdata').submit(function(e) {
+		// Files in queue upload them first
+		if (uploader.files.length > 0) {
+			uploader.start();
+		} 
+		// else {
+			//x = true;
+			// alert('Lampiran tanda pengenal wajib ada.');
+		// }
+		//	alert('You must at least upload one file.');
+	
+		// if (!x) return false;
+	});   
 
-                // log data to the console so we can see
-                $('#dataAjax').html(data.data); 
-        		$('.ajax-spinner-bars').css("display","none"); 
+	$('.IsInteger').keypress(function (e) {
+    var charCode = (e.which) ? e.which : e.keyCode;
+    if (charCode > 31
+    && (charCode < 48 || charCode > 57))
+        return false;
+});
+   
+	$('#fdata').on('change','#propinsi',function(){
+		var basedomain = '<?=base_url()?>';
+ 		var parameter =$('#propinsi').val();
+		var urlPageList = 'personel/';
+	   // alert(parameter);
+	   // var valueparameter =$('#valueparameter').val();
 
-                // here we will handle errors and validation messages
-            });
+	    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+	            
+	            if (data.status==true) {
+	               
+	                    $('#kabupaten').html(data.data); 
 
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-    });
- 
+	                 $('.ajax-spinner-bars').css("display","none"); 
+	                
+	            }else{
+	                   $('.ajax-spinner-bars').css("display","none"); 
+	            }
+	        }, "JSON")
+
+	return false;
+	});
+
+
+
+});
 </script>
 

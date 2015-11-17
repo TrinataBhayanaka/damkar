@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="<?php echo $this->module?>add">
+                    <a href="<?php echo $this->module?>add_sektor">
                         <span class="block text-center">
                             <i class="icon-plus"></i> 
                         </span>
@@ -100,8 +100,7 @@
               </div>';
 		}
 	?>
-	<?php echo form_open("wilayah/sektor/addAjax",'id="fdata"');?>
-	<input type="hidden" name="idx" value="<?=$data['id'];?>" />
+	<?php echo form_open("wilayah/sektor/add_sektor",'id="fdata"');?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -130,15 +129,38 @@
 									<div class="form-group">
 									
 									<label>Provinsi </label>
-									<?=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<?//=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<select class="form-control" id="propinsi" name="propinsi">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_propinsi as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
 
+										?>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Kabupaten</label>
-									<?php echo form_input($kabupaten,false,'class="form-control"');?>
+									<?php// echo form_input($kabupaten,false,'class="form-control"');?>
+									<select class="form-control" id="kabupaten" name="kabupaten">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_kabupaten as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
+
+										?>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -201,7 +223,7 @@
 </div>
 </div>
 <script>
-
+//js here
 //Uploader
 $(function(){
 	var w_image = $("#attachment_frame").width()-10;
@@ -296,35 +318,31 @@ $(function(){
 	
 		if (!x) return false;
 	});    
+
+
+	$('#fdata').on('change','#propinsi',function(){
+		var basedomain = '<?=base_url()?>';
+ 		var parameter =$('#propinsi').val();
+		var urlPageList = 'wilayah/sektor/';
+	   // alert(parameter);
+	   // var valueparameter =$('#valueparameter').val();
+
+	    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+	            
+	            if (data.status==true) {
+	               
+	                    $('#kabupaten').html(data.data); 
+
+	                 $('.ajax-spinner-bars').css("display","none"); 
+	                
+	            }else{
+	                   $('.ajax-spinner-bars').css("display","none"); 
+	            }
+	        }, "JSON")
+
+	return false;
+	});
     
 });
-	//callback handler for form submit
-$('#fdata').submit(function(event) {
-
-        $('.ajax-spinner-bars').css("display","block"); 
-	    var postData = $(this).serializeArray();
-	    var formURL = $(this).attr("action");
-	    
-        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : formURL, // the url where we want to POST
-            data        : postData, // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode          : true
-        })
-            // using the done promise callback
-            .done(function(data) {
-
-                // log data to the console so we can see
-                $('#dataAjax').html(data.data); 
-        		$('.ajax-spinner-bars').css("display","none"); 
-
-                // here we will handle errors and validation messages
-            });
-
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-    });
- 
 </script>
 

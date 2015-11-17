@@ -10,7 +10,7 @@
 <head>
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Admin Kebencanaan</title>
+	<title>Badan Registrasi Wilayah Adat</title>
 	<meta name="description" content="Badan Registrasi Wilayah Adat.">
 	<meta name="author" content="DNFLINK">
 	<meta name="keyword" content="">
@@ -185,8 +185,6 @@
     <script type="text/javascript" src="assets/js/plugins/daterange/daterangepicker.js"></script>
     <script type="text/javascript" src="assets/js/jquery.easy-pie-chart.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery-ui-1.10.3.js"></script>
-    <script type="text/javascript" src="assets/themes/admin_lte/js/plugins/morris/morris.min.js"></script>
-    <script type="text/javascript" src="assets/themes/admin_lte/js/plugins/morris/raphael-js/raphael.min.js"></script>
 	<!--<![endif]-->
 
 	<!--[if IE]>

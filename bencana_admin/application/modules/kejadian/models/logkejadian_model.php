@@ -4,7 +4,7 @@ class logkejadian_model extends LAT_Model{
 	/**
 	 * Set Table Name Here
 	 */
-	public $tbl= 'dmkr_log_kejadian';
+	public $tbl= 'bencana_log_kejadian';
 	//public $tbl_cat= 'cms_pages_category';
 
 	function __construct(){

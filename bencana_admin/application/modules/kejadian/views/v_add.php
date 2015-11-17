@@ -98,6 +98,7 @@
                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                 <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
               </div>';
+			  //pre($m_propinsi);
 		}
 	?>
 	<?php echo form_open("kejadian/kejadian/addAjax",'id="fdata"');?>
@@ -113,7 +114,7 @@
 									<div class="form-group">
 									
 									<label>Nomor Kejadian</label>
-									<?php echo form_input($noKejadian,false,'class="form-control required"');?>
+									<?php echo form_input($noKejadian,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -122,14 +123,38 @@
 									<div class="form-group">
 									
 									<label>Propinsi</label>
-									<?php echo form_input($propinsi,false,'class="form-control required"');?>
+									<?php //echo form_input($propinsi,false,'class="form-control required"');?>
+									<select class="form-control" id="propinsi" name="kodePropinsi">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_propinsi as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
+
+										?>
+									</select>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Kabupaten</label>
-									<?php echo form_input($kabupaten,false,'class="form-control required"');?>
+									<?php //echo form_input($kabupaten,false,'class="form-control required"');?>
+									<select class="form-control" id="kabupaten" name="kodeKabupaten">
+										<?php 
+										// pre($m_propinsi);
+										foreach ($m_kabupaten as $key => $value) {
+											$selected="";
+										?>
+										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+										<?php 
+											}
+
+										?>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -145,7 +170,10 @@
 									<div class="form-group">
 									
 									<label>Waktu Kejadian</label>
-									<?php echo form_input($waktuKejadian,false,'class="form-control required"');?>
+									<?php //echo form_input($waktuKejadian,false,'class="form-control required"');?>
+									<input type="hidden" id="waktuKejadian" name="waktuKejadian" value="<?php echo date("Y-m-d",strtotime($waktuKejadian['value']));?>" />
+									<input type="text" id="tanggal_lahir_selector" name="tanggal_lahir_selector" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($waktuKejadian['value']));?>" />
+									
 									</div>
 								</div>
 							</div>
@@ -162,14 +190,14 @@
 									<div class="form-group">
 									
 									<label>Meninggal</label>
-									<?php echo form_input($meninggal,false,'class="form-control required"');?>
+									<?php echo form_input($meninggal,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Terluka</label>
-									<?php echo form_input($terluka,false,'class="form-control required"');?>
+									<?php echo form_input($terluka,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -178,14 +206,14 @@
 									<div class="form-group">
 									
 									<label>Hilang</label>
-									<?php echo form_input($hilang,false,'class="form-control required"');?>
+									<?php echo form_input($hilang,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Mengungsi</label>
-									<?php echo form_input($mengungsi,false,'class="form-control required"');?>
+									<?php echo form_input($mengungsi,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -218,14 +246,14 @@
 									<div class="form-group">
 									
 									<label>Nilai Kerugian</label>
-									<?php echo form_input($nilaiKerugian,false,'class="form-control required"');?>
+									<?php echo form_input($nilaiKerugian,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 									
 									<label>Jumlah Pengungsi</label>
-									<?php echo form_input($jumlahPengungsian,false,'class="form-control required"');?>
+									<?php echo form_input($jumlahPengungsian,false,'class="form-control required IsInteger"');?>
 									</div>
 								</div>
 							</div>
@@ -279,7 +307,46 @@
 </div>
 </div>
 <script>
+$(function(){
+	tgl_lahir = $('.dp1').datepicker({
+		format:"dd/mm/yyyy"
+	}).on('changeDate', function(ev){
+		var newDate = new Date(ev.date);
+		$("#waktuKejadian").val(newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate());
+		$('.dp1').datepicker('hide');
+	}).data('datepicker');
+	
+	$('.dp1').on("keyup",function(){
+		setValDate(tgl_lahir,"#waktuKejadian");
+	});
+$('.IsInteger').keypress(function (e) {
+    var charCode = (e.which) ? e.which : e.keyCode;
+    if (charCode > 31
+    && (charCode < 48 || charCode > 57))
+        return false;
+});
+$('#fdata').on('change','#propinsi',function(){
+	var basedomain = '<?=base_url()?>';
+	var parameter =$('#propinsi').val();
+	var urlPageList = 'personel/';
+   // alert(parameter);
+   // var valueparameter =$('#valueparameter').val();
 
+	$.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+			
+			if (data.status==true) {
+			   
+					$('#kabupaten').html(data.data); 
+
+				 $('.ajax-spinner-bars').css("display","none"); 
+				
+			}else{
+				   $('.ajax-spinner-bars').css("display","none"); 
+			}
+		}, "JSON")
+
+return false;
+});
 	//callback handler for form submit
 $('#fdata').submit(function(event) {
 
@@ -307,6 +374,6 @@ $('#fdata').submit(function(event) {
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
     });
- 
+ });
 </script>
 

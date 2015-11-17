@@ -142,11 +142,11 @@ class register extends Admin_Controller {
     }
 	function index($forder=0,$limit=10,$page=1){
 		// debug();
-		// print_r($_GET);
+		// print_r($forder);
 		if (!$this->cms->has_view($this->module)) redirect ("error_");
 		$filter="";
-		$_GET['q']=".com";
-		$page=2;
+		// $_GET['q']=".com";
+		// $page=2;
 		$key = ($_GET['q'])?$_GET['q']:0;
 		if ($key) {
 			
@@ -168,7 +168,7 @@ class register extends Admin_Controller {
 		}
 		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		
-		pre("---filter---");
+		/*pre("---filter---");
 		pre($filter);
 		pre("---limit---");
 		pre($limit);
@@ -177,9 +177,9 @@ class register extends Admin_Controller {
 		pre("---order---");
 		pre($order);
 		pre("---arrdb---");
-		pre($arrDB);
+		pre($arrDB);*/
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
-		pre($total_rows);exit;
+		// pre($total_rows);exit;
 		$query_url = ($key)?"?q=".$key:"";
 		$base_url = $this->module."index/".$forder."/".$limit;
 		$perpage = $this->utils->getPerPage($limit,array(5,15,20,25,30,40,50));
@@ -193,24 +193,27 @@ class register extends Admin_Controller {
 		$data["perpage"]=$perpage;
 		$data["paging"]=$paging;
 		$data["module"]=$this->module;
-
+		// pre($data);
+		// EXIT;
 		$data_layout["content"]=$this->load->view("register/list",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 	}
 	function add(){
-  		if (!$this->cms->has_write($this->module)) redirect ("error_");
+  		// if (!$this->cms->has_write($this->module)) redirect ("error_");
+		// pre($_POST);
+		// exit;
 		// debug();
 		//validate form input
-		$this->form_validation->set_rules('username', $this->lang->line('create_user_validation_name_label'), 'required|xss_clean');
+		$this->form_validation->set_rules('username', $this->lang->line('create_user_validation_name_label'), 'xss_clean');
 		$this->form_validation->set_rules('first_name', "Nama Lengkap", 'required|xss_clean');
-		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'required|valid_email');
-		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'required|xss_clean');
-		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
+		$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'valid_email');
+		$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'xss_clean');
+		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
-		$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|xss_clean');
-		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|xss_clean');
-		$this->form_validation->set_rules('tanda_pengenal', 'Tanda pengenal', 'required|xss_clean');
+		$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'xss_clean');
+		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'xss_clean');
+		$this->form_validation->set_rules('tanda_pengenal', 'Tanda pengenal', 'xss_clean');
 		$this->form_validation->set_rules('pekerjaan_select', 'Pekerjaan Select', 'xss_clean');
 		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'xss_clean');
 		$this->form_validation->set_rules('kabupaten_kota', $this->lang->line('create_user_validation_lname_label'), 'xss_clean');
@@ -250,7 +253,7 @@ class register extends Admin_Controller {
 				'active'      			=> 1,
 				'remember_code'      	=> $rmm_cd
 			);
-
+			//sebelah kiri field database kanan name post
 			$insert = $this->model->InsertData($additional_data);
 			if ($insert) {
 				$data["redirect"]=true;
@@ -382,7 +385,7 @@ class register extends Admin_Controller {
 	function edit($idx=false){
 		//acl
 
-		$this->pr($_REQUEST);
+		// $this->pr($_REQUEST);
 		if (!$this->cms->has_write($this->module)) redirect ("error_");
 		$userSess=$_SESSION[$this->lauth->appname]["userdata"]["user"];
 		// pre($userSess);exit;
@@ -399,7 +402,8 @@ class register extends Admin_Controller {
 			$id=decrypt($idx);
 		endif;
 		$user=$this->model->GetRecordData("id='{$id}'");
-		// pre($user);exit;
+		// pre($user);
+		// exit;
 		//validate form input
 		$this->form_validation->set_rules('username', $this->lang->line('create_user_validation_name_label'), 'required|xss_clean');
 		$this->form_validation->set_rules('first_name', "Nama Lengkap", 'required|xss_clean');
@@ -407,7 +411,7 @@ class register extends Admin_Controller {
 		$this->form_validation->set_rules('handphone', $this->lang->line('create_user_validation_handphone_label'), 'xss_clean');
 		$this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required|xss_clean');
 		$this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required|xss_clean');
-		$this->form_validation->set_rules('tanda_pengenal', 'Tanda pengenal', 'required|xss_clean');
+		//$this->form_validation->set_rules('tanda_pengenal', 'Tanda pengenal', 'required|xss_clean');
 		$this->form_validation->set_rules('pekerjaan_select', 'Pekerjaan Select', 'xss_clean');
 		$this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'xss_clean');
 		$this->form_validation->set_rules('kabupaten_kota', $this->lang->line('create_user_validation_lname_label'), 'xss_clean');

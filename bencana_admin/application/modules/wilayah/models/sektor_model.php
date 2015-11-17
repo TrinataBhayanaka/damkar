@@ -4,7 +4,7 @@ class sektor_model extends LAT_Model{
 	/**
 	 * Set Table Name Here
 	 */
-	public $tbl= 'dmkr_sektor';
+	public $tbl= 'bencana_sektor';
 	//public $tbl_cat= 'cms_pages_category';
 
 	function __construct(){

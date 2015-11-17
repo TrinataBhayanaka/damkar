@@ -93,14 +93,18 @@
 <div id="tab-edit" class="tab-pane active">  
 	
 	<?php 
+				// pre($propinsi['value']);				  
+					// pre($m_propinsi);	
 		if ($message) {
 			echo '<div class="alert alert-warning alert-dismissible" >
                 <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                 <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
               </div>';
 		}
+							
 	?>
-	<?php echo form_open("wilayah/edit/".$idd,'id="fdata"');?>
+	<?php echo form_open("wilayah/edit_wilayah".$id,'id="fdata"');?>
+	<input type="hidden" name="id" value="<?=$idd;?>" />
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -112,15 +116,43 @@
 									<div class="form-group">
 									
 									<label>Provinsi </label>
-									<?=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
-
+									<?//=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+									<select class="form-control" id="propinsi" name="propinsi">
+									<?php 
+									// pre($m_propinsi);
+									foreach ($m_propinsi as $key => $value) {
+										$selected="";
+										if($value['kode_prop']==$propinsi['value']){
+											$selected="selected = selected";
+										}
+									?>
+									<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+									<?php 
+										}
+									?>
+									</select>		
 									</div>
 								</div>
 								<div class="col-md-4">
 									<div class="form-group">
 									
 									<label>Kabupaten </label>
-									<?php echo form_input($kabupaten,false,'class="form-control required"');?>
+									<?php// echo form_input($kabupaten,false,'class="form-control required"');?>
+									<select class="form-control" id="kabupaten" name="kabupaten">
+										<? 
+										foreach ($m_kabupaten as $key => $value) {
+											$selected="";
+											if($value['kode_kab'] == $kabupaten['value']){
+												$selected="selected = selected";
+											}
+										?>
+										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+										<? 
+											}
+
+
+										?>
+									</select>
 									</div>
 								</div>
 							</div>
@@ -229,35 +261,30 @@
 <!-- en tab-content-->
 </div>
 </div>
-<script>
+<script> 
+$(document).ready(function() {
+$('#fdata').on('change','#propinsi',function(){
+		var basedomain = '<?=base_url()?>';
+ 		var parameter =$('#propinsi').val();
+		var urlPageList = 'wilayah/wilayah/';
+	   // alert(parameter);
+	   // var valueparameter =$('#valueparameter').val();
 
-	//callback handler for form submit
-$('#fdata').submit(function(event) {
+	    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+	            
+	            if (data.status==true) {
+	               
+	                    $('#kabupaten').html(data.data); 
 
-        $('.ajax-spinner-bars').css("display","block"); 
-	    var postData = $(this).serializeArray();
-	    var formURL = $(this).attr("action");
-	    
-        $.ajax({
-            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-            url         : formURL, // the url where we want to POST
-            data        : postData, // our data object
-            dataType    : 'json', // what type of data do we expect back from the server
-            encode          : true
-        })
-            // using the done promise callback
-            .done(function(data) {
+	                 $('.ajax-spinner-bars').css("display","none"); 
+	                
+	            }else{
+	                   $('.ajax-spinner-bars').css("display","none"); 
+	            }
+	        }, "JSON")
 
-                // log data to the console so we can see
-                $('#dataAjax').html(data.data); 
-        		$('.ajax-spinner-bars').css("display","none"); 
-
-                // here we will handle errors and validation messages
-            });
-
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-    });
- 
+	return false;
+	});
+});	
 </script>
 

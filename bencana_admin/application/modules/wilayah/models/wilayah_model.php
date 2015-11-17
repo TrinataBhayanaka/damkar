@@ -4,7 +4,7 @@ class wilayah_model extends LAT_Model{
 	/**
 	 * Set Table Name Here
 	 */
-	public $tbl= 'dmkr_spm';
+	public $tbl= 'bencana_wilayah';
 	//public $tbl_cat= 'cms_pages_category';
 
 	function __construct(){

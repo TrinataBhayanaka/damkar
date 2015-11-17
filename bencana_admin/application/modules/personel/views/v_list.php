@@ -1,4 +1,12 @@
-
+<script language="JavaScript">
+	function onDelete(){
+		if(confirm('Do you want to delete ?')==true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+</script>
 <div class="row">
     <div class="col-sm-12 col-lg-12">
         <!-- start: page header -->
@@ -34,7 +42,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?php echo $this->module?>" id="addData">
+						<a href="<?php echo $this->module?>add_personel" id="addData">
 							<span class="block text-center">
 								<i class="icon-plus"></i> 
 							</span>
@@ -51,13 +59,8 @@
 					</li>
 				</ul>
 			</div>
-			<form class="search_form col-md-3 pull-right" action="#" method="get">
-				<div style="padding-top:5px;" class="input-group">
-              <input id="valueparameter" name="q" class="form-control input-search" value="<?=$key?>" placeholder="Search..." type="text">
-              <span class="input-group-btn">
-                <a id="btnsearch" href="<?=base_url()?>personel/personel/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
-              </span>
-            </div>
+			<form class="search_form col-md-3 pull-right" action="<?=$this->module?>" method="get">
+				<?php $this->load->view("widget/search_box_db"); ?>
 			</form>
 		</div>
 	</div>
@@ -66,7 +69,7 @@
         <h4><i class="icon fa fa-warning"></i> Alert!</h4>
         <p class="message"></p>
       </div>
-    <form name="frmMain" action="<?=$this->module.'del_cek'?>/<?=$page;?>" method="post" id="fdatalist">
+   <form name="frmMain" action="<?=$this->module.'del_cek'?>" method="post" OnSubmit="return onDelete();">
 <div id="tabs-0">
 	<?php //echo message_box();?>
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -91,9 +94,11 @@
     
   <? if (is_array($arrDB)) { foreach($arrDB as $k=>$v) {
   		$tr_color=($k%2)?"#fff":"#fafafa";
-
+		
+		
 		$id=$this->encrypt_status==TRUE?encrypt($v["id"]):$v["id"];
-		$url_edit = $module."edit/".$id;
+		// $id=$v["id"];
+		$url_edit = $module."edit_personel/".$id;
 		$url_delete = $module."delete/".$id;
 		
 		$status_badges = ($v['status']==1)?'<span class="label label-info">Active</span>':'<span class="label label-warning">Non Active</span>';
@@ -155,37 +160,18 @@
 <br />
 </div>
 <script>
-
-    //callback handler for form submit
-$('#fdatalist').submit(function(event) {
-
-        if(confirm('Anda yakin akan menghapus data ini?')==true){
-
-            $('.ajax-spinner-bars').css("display","block"); 
-            var postData = $(this).serializeArray();
-            var formURL = $(this).attr("action");
-            
-            $.ajax({
-                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url         : formURL, // the url where we want to POST
-                data        : postData, // our data object
-                dataType    : 'json', // what type of data do we expect back from the server
-                encode          : true
-            })
-                // using the done promise callback
-                .done(function(data) {
-
-                    // log data to the console so we can see
-                    $('#dataAjax').html(data.data); 
-                    $('.ajax-spinner-bars').css("display","none"); 
-
-                    // here we will handle errors and validation messages
-                });
-
-            // stop the form from submitting the normal way and refreshing the page
-            event.preventDefault();
-        }
-        return false;
-    });
- 
+var forder='<?=$forder;?>';
+var dorder='<?=$dorder;?>';
+var query ='<?=($key)?"?q=".$key:"";?>';
+$(document).ready(function () {
+	
+	$(".page_record").change(function(){
+		//alert("masuk");
+		var order=(forder!='' && dorder!='')?forder+':'+dorder:0;
+		var page_record = $(this).val();
+		var url = '<?=$module;?>index/'+order+'/'+page_record+'/1'+query;
+		window.location.href=url;
+	});
+	
+})
 </script>

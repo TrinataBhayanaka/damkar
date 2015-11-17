@@ -8,6 +8,8 @@ class user_model extends LAT_Model{
 	public $tbl_m_tanda_pengenal= 'm_tanda_pengenal';
 	public $tbl_m_propinsi= 'm_propinsi';
 	public $tbl_m_pekerjaan= 'm_pekerjaan';
+	public $tbl_m_kabupaten_kota= 'm_kabupaten_kota';
+	
 
 	function __construct(){
 		parent::__construct();
@@ -21,6 +23,12 @@ class user_model extends LAT_Model{
     }
 	function m_pekerjaan($data=false,$sort='',$dataColumn=false){
         return $this->adodbx->search_record($this->tbl_m_pekerjaan,$data,$sort,$dataColumn);
+    }
+    function m_provinsi($data=false,$sort='',$dataColumn=false){        
+        return $this->adodbx->search_record_where($this->tbl_m_kabupaten_kota,$data,$dataColumn); 
+    }
+    function m_kabupaten($data=false,$sort='',$dataColumn=false){        
+        return $this->adodbx->search_record_where($this->tbl_m_kabupaten_kota,$data,$dataColumn); 
     }
 }
 

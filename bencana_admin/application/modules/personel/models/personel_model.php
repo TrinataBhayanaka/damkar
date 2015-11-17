@@ -4,7 +4,7 @@ class personel_model extends LAT_Model{
 	/**
 	 * Set Table Name Here
 	 */
-	public $tbl= 'dmkr_personel';
+	public $tbl= 'bencana_personel';
 	//public $tbl_cat= 'cms_pages_category';
 
 	function __construct(){
