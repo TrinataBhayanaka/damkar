@@ -31,7 +31,8 @@ class news extends Public_Controller {
 		$arrDB['date_formatted']=$this->utils->dateToString($arrDB['created'],0,1);
 		$arrDB['news_clip2']=substr($arrDB['clip'],0,100)."...";
 		
-		$this->breadcrumb=array("Beranda"=>"","Berita BRWA"=>"news/","Baca"=>"#");
+		$this->page_title="Berita";
+		$this->breadcrumb=array("Beranda"=>"","Berita & Pengumuman"=>"news/","Baca"=>"#");
 		$userDB=$this->ammmodel->GetRecordData("username='".$arrDB['author']."'");
 		$arrDB['author']=$userDB['first_name'];
 		
@@ -41,6 +42,10 @@ class news extends Public_Controller {
         $this->load->view("layout/main_layout",$data_layout);
   }
 	function index($forder=0,$limit=10,$page=1){
+		$this->page_title="Berita & Pengumuman";
+		$this->page_active=$this->module."news";
+		$this->breadcrumb=array("Beranda"=>"","Berita & Pengumuman"=>"#");
+
 		$this->news_list($forder,$limit,$page);
 	}
 	

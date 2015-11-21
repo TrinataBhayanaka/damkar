@@ -40,6 +40,10 @@ class articles extends Public_Controller {
         $this->load->view("layout/main_layout",$data_layout);
   }
 	function index($forder=0,$limit=10,$page=1){
+		$this->page_title="Artikel";
+		$this->page_active=$this->module."articles";
+		$this->breadcrumb=array("Beranda"=>"","Artikel"=>"articles","index"=>"#");
+
 		$this->news_list($forder,$limit,$page);
 	}
 	

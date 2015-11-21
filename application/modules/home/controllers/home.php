@@ -112,7 +112,7 @@ class home extends Public_Controller {
 		return $arrDB;
 	}
 	
-	function article_list($forder=0,$limit=5,$page=1){
+	function article_list($forder=0,$limit=3,$page=1){
 		$filter="status=1 and (category=1)";
 		$key = ($_GET['q'])?$_GET['q']:0;
 		if ($key) {

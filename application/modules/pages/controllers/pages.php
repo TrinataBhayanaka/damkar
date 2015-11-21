@@ -21,7 +21,7 @@ class pages extends Public_Controller {
 		$this->page_title="Profil";
 		$this->page_sub_title="Badan Registrasi Wilayah Adat (BRWA) adalah lembaga tempat pendaftaran (registrasi) wilayah adat";
 		$this->page_active=$this->module."about";
-		$this->breadcrumb=array("Beranda"=>"","Tentang BRWA"=>"pages/about","Profil"=>"#");
+		$this->breadcrumb=array("Beranda"=>"","Tentang Portal Kebencanaan"=>"pages/about","Profil"=>"#");
 		$this->right_page=array("brwa_kepengurusan");
 		$this->index('pbrwa');
 	}

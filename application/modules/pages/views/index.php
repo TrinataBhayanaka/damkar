@@ -1,49 +1,50 @@
+<section class="page-header">
+  <div class="container">
+
+    <h1><?=$this->page_title?></h1>
+
+    <!-- breadcrumbs -->
+    <ol class="breadcrumb">
+      <? foreach ($this->breadcrumb as $k=>$v) { ?>
+        <? if ($v=='#') { ?>
+          <li class="active"><?=$k?></li>
+          <? } else { ?>
+          <li><a href="<?=$v?>"><?=$k?></a></li>
+        <? } ?>
+      <? } ?>
+    </ol><!-- /breadcrumbs -->
+
+  </div>
+</section>
+
+
+
 <?
 	$right = (cek_array($this->right_page))?true:false;
 ?>
-<div style="background:#4a7dab; margin-top:0px; border-bottom:1px solid #ddd; padding:15px">
-<div class="container">
-	<div class="row">
-    	<div class="col-md-8">
-        	<h1 class="page-title2"><?=$this->page_title?></h1>
-        </div>
-    	<div class="col-md-4">
-        	<? if (cek_array($this->breadcrumb)) { ?>
-            <ul class="breadcrumb">
-              <? foreach ($this->breadcrumb as $k=>$v) { ?>
-              <? if ($v=='#') { ?>
-              <li class="active"><?=$k?></li>
-              <? } else { ?>
-              <li><a href="<?=$v?>"><?=$k?></a></li>
-              <? } ?>
-              <? } ?>
-            </ul>
-            <? } ?>
-        </div>
-        <!--<div class="col-md-4">
-			<div style="color:#ddd; line-height:34px"><label>Pengguna baru? Register</label> <a href="user/register" class="btn btn-success">disini</a></div>
-        </div>-->
+
+<section>
+  <div class="container">
+
+  <div class="row">
+    <div class="col-md-<?=$right?'8':'12'?> ">
+
+      <?=$data['content']?>
+      <? modules::load('wg/web')->social_ftg('BRWA - '.$this->page_title,true);?>
+
     </div>
-</div>
-</div>
-<div class="container pages">
-	<!--<div class="row">
-    	<div class="col-md-12">
-          <h1 class="page-title"><?=$this->page_title?></h1>
-    	</div>
-	</div>-->
-    <div class="row">
-    	<div class="col-md-<?=$right?'8':'12'?> ">
-            	<?=$data['content']?>
-                <? modules::load('wg/web')->social_ftg('BRWA - '.$this->page_title,true);?>
-    	</div>
-        <? if ($right) {  ?>
-        <div class="col-md-4">
-                <?=$list[0]['content'];?>
-        </div>
-        <? } ?>
-	</div>
-</div>
+    <? if ($right) {  ?>
+      <div class="col-md-4">
+        <?=$list[0]['content'];?>
+      </div>
+    <? } ?>
+  </div>
+
+  </div>
+</section>
+
+
+
 
 <br />
 

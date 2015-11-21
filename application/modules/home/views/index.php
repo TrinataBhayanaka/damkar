@@ -1,219 +1,222 @@
-<div style="background:#ddd;">
-<!-- Carousel
-================================================== -->
-<div id="dslider" class="carousel slide">
-  <div class="carousel-inner">
-  	<?php if (is_array($slider_list)) { ?>
-    <?php 
-		foreach($slider_list as $k=>$v) {
-			$split = preg_split("/#/",$v['others']);
-			$active = ($k<1)?" active":"";
-	?>
-    <div class="item<?=$active;?>">
-      <img src="assets/image/pages/<?=$v['image'];?>" alt="">
-      <div class="container">
-        <div class="carousel-caption" style="max-width:1000px">
-          <?php if ($v['title']) { ?><h1><?=$v['title'];?></h1><? } ?>
-          <?php if ($v['clip']) { ?><p class="lead"><?=$v['clip'];?></p><? } ?>
-          <?php if ($split[1]) { ?><a class="btn btn-primary" href="<?=$split[1];?>"><?=$split[0];?></a><? } ?>
+<!-- REVOLUTION SLIDER -->
+  <div class="slider fullwidthbanner-container roundedcorners">
+    <!--
+      Navigation Styles:
+      
+        data-navigationStyle="" theme default navigation
+        
+        data-navigationStyle="preview1"
+        data-navigationStyle="preview2"
+        data-navigationStyle="preview3"
+        data-navigationStyle="preview4"
+        
+      Bottom Shadows
+        data-shadow="1"
+        data-shadow="2"
+        data-shadow="3"
+        
+      Slider Height (do not use on fullscreen mode)
+        data-height="300"
+        data-height="350"
+        data-height="400"
+        data-height="450"
+        data-height="500"
+        data-height="550"
+        data-height="600"
+        data-height="650"
+        data-height="700"
+        data-height="750"
+        data-height="800"
+    -->
+    <div class="fullwidthbanner" data-height="600" data-shadow="0" data-navigationStyle="preview2">
+      <ul class="hide">
+        <?php 
+          if (is_array($slider_list)) { 
+            foreach($slider_list as $k=>$v) {
+        ?>
+        <!-- SLIDE  -->
+        <li data-transition="random" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide <?=$k+1;?>">
+
+          <img src="assets/themes/tmpl-byu/assets/images/1x1.png" data-lazyload="assets/image/pages/<?=$v['image'];?>" alt="" data-bgfit="cover" data-bgposition="center bottom" data-bgrepeat="no-repeat" />
+
+          <div class="overlay dark-1"><!-- dark overlay [1 to 9 opacity] --></div>
+
+          <div class="tp-caption customin ltl tp-resizeme large_bold_white"
+            data-x="center"
+            data-y="205"
+            data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+            data-speed="800"
+            data-start="1200"
+            data-easing="easeOutQuad"
+            data-splitin="none"
+            data-splitout="none"
+            data-elementdelay="0.01"
+            data-endelementdelay="0.1"
+            data-endspeed="1000"
+            data-endeasing="Power4.easeIn" style="z-index: 10;">
+            <?=$v['title'];?>
+          </div>
+
+          <div class="tp-caption customin ltl tp-resizeme small_light_white font-lato"
+            data-x="center"
+            data-y="295"
+            data-customin="x:0;y:150;z:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+            data-speed="800"
+            data-start="1400"
+            data-easing="easeOutQuad"
+            data-splitin="none"
+            data-splitout="none"
+            data-elementdelay="0.01"
+            data-endelementdelay="0.1"
+            data-endspeed="1000"
+            data-endeasing="Power4.easeIn" style="z-index: 10; width: 100%; max-width: 750px; white-space: normal; text-align:center; font-size:20px;">
+            <?=$v['clip'];?>
+          </div>
+
+        </li>
+        <?php
+          }}
+        ?>
+
+      </ul>
+
+      <div class="tp-bannertimer"><!-- progress bar --></div>
+    </div>
+  </div>
+  <!-- /REVOLUTION SLIDER -->
+
+
+  <section>
+    <div class="container">
+
+      <h3 class="page-header weight-300 margin-top-100">
+        <a href="#" data-toggle="tooltip" title="view more"><i class="fa fa-plus-square-o"></i></a> 
+        <strong>Artikel</strong> Terbaru 
+      </h3>
+
+      <!-- THREE COLUMNS -->
+      <div class="row">
+
+      <?php 
+        if (is_array($article_list)) { 
+          foreach($article_list as $k=>$v) {
+            $image = ($v['image'])?$v['image']:"blank.png";
+            $category = ($v['category']==2)?'<span class="label label-important">Pengumuman</span>':'';
+      ?>
+        <div class="col-md-4">
+
+          <!-- article item -->
+          <div class="item-box">
+            <figure>
+              <a class="item-hover" href="articles/read/<?=$v['idx'];?>">
+                <span class="overlay color2"></span>
+                <span class="inner">
+                  <span class="block fa fa-plus fsize20"></span>
+                  <strong>READ</strong> ARTICLE
+                </span>
+              </a>
+              <img alt="" class="img-responsive" src="assets/image/pages/<?=$image;?>" width="263" height="147" />
+            </figure>
+            <div class="item-box-desc">
+              <h4><?=$v['title'];?></h4>
+              <small><?=$v['date_formatted'];?></small>
+              <p><?=substr($v['clip'],0,100)."...";?></p>
+            </div>
+          </div>
+          <!-- /article item -->
+
+        </div>
+      <?php
+        }}
+      ?>
+
+      </div>
+      
+      <div class="row">
+
+        <!-- first column -->
+        <div class="col-md-6">
+
+          <h3 class="page-header weight-300">
+            <a href="#" data-toggle="tooltip" title="view more"><i class="fa fa-plus-square-o"></i></a>
+            <strong>Berita</strong> Terkini
+          </h3>
+
+          <?php 
+            if (is_array($news_list)) { 
+              foreach($news_list as $k=>$v) {
+                $image = ($v['image'])?$v['image']:"blank.png";
+                $category = ($v['category']==2)?'<span class="label label-important">Pengumuman</span>':'';
+                      
+          ?>
+
+          <h4><a href="news/read/<?=$v['idx'];?>"><?=$v['title'];?></a></h4>
+          <p>
+            <?=substr($v['clip'],0,150)."...";?>
+            <small class="block"><?=$v['date_formatted'];?></small>
+          </p>
+
+          <hr class="half-margins" /><!-- separator -->
+
+          <?php
+            }}
+          ?>
+
+        </div>
+
+        <!-- second column -->
+        <div class="col-md-6">
+
+        <h3 class="page-header weight-300">
+          <a href="#" data-toggle="tooltip" title="view more"><i class="fa fa-bar-chart"></i></a> 
+          <strong>Statistik</strong> Bencana 2015  
+        </h3>
+
+        <div id="demo-morris-donut" style="height:312px"></div>
+
         </div>
       </div>
+
     </div>
-    <?php
-		}}
-	?>
+  </section>
+
+  <div class="text-center margin-top-30 margin-bottom-30">
+    <div class="owl-carousel nomargin" data-plugin-options='{"items":6, "singleItem": false, "autoPlay": true}'>
+      
+      <?php 
+        if (is_array($partner_list)) { 
+          foreach($partner_list as $k=>$v) {
+            $image = ($v['image'])?$v['image']:"foot_1.jpg";
+      ?>
+      <div>
+        <a href="linkdir/get_link/<?=$v['idx'];?>" target="_blank">
+          <img class="img-responsive" src="assets/image/pages/<?=$image?>" alt="">
+        </a>
+      </div>
+      <?php
+        }}
+      ?>
+      
+    </div>
   </div>
-  <a class="carousel-control left hidden-xs" href="#dslider" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right hidden-xs" href="#dslider" data-slide="next">&rsaquo;</a>
-</div><!-- /.carousel -->
-</div>
 
-<div class="section hilite" style="">
-<div class="container">
-    <div class="row">
-    	<div class="col-md-8 col-sm-12">
-            <div class="tickerhead" style="padding:5px 0px;">
-                <div class="tickerspacer2" title="Ticker">INFORMASI</div>
-                <div class="tag-lalulintas" id="lalulintaslist">
-                <ul style="height: 125px;" class="list-unstyled">
-                    <li class="tickerlist"><strong>Indonesia: Medan 5%, Yogyakarta 10%, Bandung 10%, DKI Jakarta 2%</strong></li>
-                    <?php 
-						if (is_array($scroller_list)) { 
-						foreach($scroller_list as $k=>$v) {
-					?>
-                    <li class="tickerlist"><strong><?=$k?></strong> (<strong><?=$v['Total']?></strong>) &bull; TEREGISTRASI: <strong><?=$v['Teregistrasi']?></strong> &bull; TERVERIFIKASI: <strong><?=$v['Terverifikasi']?></strong> &bull; TERSERTIFIKASI: <strong><?=$v['Tersertifikasi']?></strong></li>
-                    <? }} ?>
-                </ul>
-                </div>
-            </div>
-        </div>
-    	<div class="col-md-4">
-        	<? $url = 'http://'.$_SERVER['HTTP_HOST'];  $uri=$_SERVER['REQUEST_URI']; ?>
-			<? $style = ($page_title)?'padding:20px 0 10px':'padding:3px 0 0;' ?>
-            <style>
-            .rrssb-icon i {
-                font-size:18px; color:#fff; line-height:30px
-            }
-            </style>
-                <div class="share-container clearfix" style="background:transparent; margin:-10px 0 -15px ">
-                    <span class="label" style="color:#fff">PENCARIAN:</span>
-                    <div class="row">
-                    	<div class="col-md-9">
-                        	<form id="search_form" class="search_form" action="search" method="get">
-                    		<div class="form-group has-success has-feedback" style="margin-bottom:0; margin-top:2px">
-                              <input style="background:#BF3330; color:#ccc; border:1px solid transparent" type="text" class="form-control" id="q" name="q" aria-describedby="inputSuccess2Status">
-                              <span class="glyphicon glyphicon-search form-control-feedback" style="color:#CCCCCC; cursor:pointer" id="q_button" aria-hidden="true"></span>
-                            </div>
-                            </form>
-                    	</div>
-                    </div>
-                </div>
-        </div>
-    </div>
-</div>
-</div>
+<script type="text/javascript">
+  $(document).ready(function() {
 
+    Morris.Donut({
+      element: 'demo-morris-donut',
+      data: [
+        {label: "Kebakaran", value: 12},
+        {label: "Tornado", value: 30},
+        {label: "Tsunami", value: 20}
+      ],
+      colors: [
+        '#BF3030',
+        '#269926',
+        '#1D7373'
+      ],
+      resize:true
+    });
 
-<div class="section" style="padding-bottom:100px">
-<div class="container">
-    <div class="row">
-    	<div class="col-md-8">
-        	<div class="row">
-                <div class="col-md-6">
-                	<h3 class="title"><a href="news">BERITA </a></h3>
-                	<?php 
-						if (is_array($news_list)) { 
-						//$news_first = array_shift($news_list);
-					?>
-                    	<!--<div>
-                            <h4 class="media-heading"><a href="news/read/<?=$news_first['idx'];?>" class="news-title"><?=$news_first['title'];?></a></h4>
-                            <img src="assets/image/news/<?=$news_first['image']?>" class="img-thumbnail" style="width:100%" />
-                           	<?=$news_first['clip']?>
-                        </div>-->
-					  <?php 
-                        foreach($news_list as $k=>$v) { 
-                            $image = ($v['image'])?$v['image']:"blank.png";
-                            $category = ($v['category']==2)?'<span class="label label-important">Pengumuman</span>':'';
-                      ?>
-                      <!--media-->
-                      <div class="media">
-                        <!--<div class="media-left" style="width:100px;">
-                            <img src="assets/image/news/<?=$image;?>" class="avatar media-object img-polaroid" alt="2013" style=" width:90px;height:90px;margin:1px" />
-                        </div>-->   
-                        <div class='media-body'>
-                            <?=$category;?>
-                            <div style="color:grey"><?=$v['date_formatted'];?></div>
-                            <div>
-                                <h5 class="media-heading"><a href="news/read/<?=$v['idx'];?>" class="news-title"><?=$v['title'];?></a></h5>
-                                <?=substr($v['clip'],0,150)."...";?>
-                            </div>
-                        </div>
-                     </div>
-                     <!--end media-->
-         			<? }} ?>
-                    
-                    <!-- RSS -->
-                	<h3 class="title"><a href="">SINDIKASI BERITA</a> &nbsp;<span><i class="fa fa-rss-square" style="color:orange"></i></span></h3>
-                    <div id="rss_container">
-                    </div>
-					<!--<?php if (is_array($rss)) { ?>
-                      <?php 
-                        foreach($rss as $k=>$v) { 
-                      ?>
-                          <div class="media">
-                            <div class='media-body'>
-                                <div style="color:grey"><?=$k;?> &bull; <span>[<?=$v['src']?>]</span></div>
-                                <div>
-                                    <h5 class="media-heading"><a href="<?=$v['link'];?>" target="_blank" class="news-title"><?=$v['title'];?></a></h5>
-                                </div>
-                            </div>
-                         </div>
-                      <? } ?>
-                      <? } ?>-->
-                    <!-- end RSS -->
-                </div>
-                <div class="col-md-6">
-                	<h3 class="title"><a href="articles">ARTIKEL </a></h3>
-                	<?php 
-						if (is_array($article_list)) { 
-						//$news_first = array_shift($news_list);
-					?>
-                    	<!--<div>
-                            <h4 class="media-heading"><a href="news/read/<?=$news_first['idx'];?>" class="news-title"><?=$news_first['title'];?></a></h4>
-                            <img src="assets/image/news/<?=$news_first['image']?>" class="img-thumbnail" style="width:100%" />
-                           	<?=$news_first['clip']?>
-                        </div>-->
-					  <?php 
-                        foreach($article_list as $k=>$v) { 
-                            $image = ($v['image'])?$v['image']:"blank.png";
-                            $category = ($v['category']==2)?'<span class="label label-important">Pengumuman</span>':'';
-                      ?>
-                      <!--media-->
-                      <div class="media">
-                        <div class="media-left" style="width:100px;">
-                            <img src="assets/image/pages/<?=$image;?>" class="avatar media-object img-polaroid" alt="2013" style=" width:90px;height:90px;margin:1px" />
-                        </div>   
-                        <div class='media-body'>
-                            <?=$category;?>
-                            <div style="color:grey"><?=$v['date_formatted'];?></div>
-                            <div>
-                                <h5 class="media-heading"><a href="articles/read/<?=$v['idx'];?>" class="news-title"><?=$v['title'];?></a></h5>
-                                <?=substr($v['clip'],0,100)."...";?>
-                            </div>
-                        </div>
-                     </div>
-                     <!--end media-->
-         			<? }} ?>
-                </div>
-            </div>
-        	
-        </div>
-        <div class="col-md-4">
-				<h3 class="title"><a href="articles">STATISTIK KASUS BENCANA 2015 &nbsp;</a></h3>
-          		
-        </div>
-    </div>
-</div>
-</div>
-
-<?php 
-	if (is_array($partner_list)) { 
-?>
-<div class="section" style="border:1px solid #ddd; border-width:1px 0 0">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-            	<? foreach ($partner_list as $k=>$v) { ?>
-                <a href="linkdir/get_link/<?=$v['idx'];?>" target="_blank" class="friend_link" title="<?=$v['name']?>"><img class="desaturates" src="assets/image/pages/<?=$v['image']?>" style="height:40px" /></a>
-				<? } ?>
-            </div>
-        </div>
-    </div>
-</div>
-<? } ?>
-
-<script>
-  $(function () {
-	$('#myCarousel').carousel();
-	$('#lalulintaslist').realm({
-		slideShow:true,
-		slideEffect: 'slide-vertical', //pilihan
-		slideInterval: 5000,
-		onHoverStop:false,
-		continuous:true,
-		showControlBar:false,
-		showData:false,
-		showNumberBar:false,
-		onSlideEnd:function() {  }
-	});    
-	$('#newsTab a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show')
-	}).focus(function() {
-		$(this).blur();
-	});
-	
-	$("#rss_container").html("Loading Sindikasi...");
-	$("#rss_container").load('wg/web/brwa_rss');
-  })
+  });
 </script>
