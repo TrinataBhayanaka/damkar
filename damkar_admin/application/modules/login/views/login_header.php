@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="bg-black">
+<html class="bg-damkar">
     <head>
     	
         <meta charset="UTF-8">
-        <title>BRWA | Log in</title>
+        <title>Dinas Pemadam Kebakaran | Log in</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
          <base href="<?=BASE_URL;?>" />
         <!-- bootstrap 3.0.2 -->
@@ -15,13 +15,18 @@
         <style>
 			.form-box .header {
 				/*#0A2D46*/
-				background: none repeat scroll 0 0 #357CA5  !important;
+				background: none repeat scroll 0 0 #A20013 !important;
 				font-size:20px;
 				font-weight:bold;
 			}
-			
+			#login-box{
+				-webkit-box-shadow: -18px -17px 8px 2px rgba(204,8,31,1);
+				-moz-box-shadow: -18px -17px 8px 2px rgba(204,8,31,1);
+				box-shadow: -18px -17px 8px 2px rgba(204,8,31,1);
+			}
+
 			.bg-olive {
-    			background-color: #357CA5 !important;
+    			background-color: #C14553 !important;
 			}
 			
 			.alert-error {
@@ -43,4 +48,4 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="bg-black">
+    <body class="bg-damkar">

@@ -428,5 +428,106 @@ class personel extends Admin_Controller {
         endif;
         return $arrCat;
     }
+    public function pdfReport(){
+		$result=$this->model->view_personel();
+    	$resultGroup=$this->model->view_personel_group();
+
+    	// pre($resultGroup);exit;
+    	$countSK=array();
+    	$countKM=array();
+    	foreach ($result as $keySK => $valueSK) {
+	
+			$countSK[$valueSK['propinsi']][$valueSK['kabupaten']][$valueSK['statusKerja']][]=$valueSK['id'];
+	
+		}
+		foreach ($result as $keyKM => $valueKM) {
+	
+			$countKM[$valueKM['propinsi']][$valueKM['kabupaten']][$valueKM['kompetensi']][]=$valueKM['id'];
+	
+		}
+		$arrDB=array();
+		foreach ($resultGroup as $keyG => $valueG) {
+			$arrDB[$keyG]=$valueG;
+			$arrDB[$keyG]['PNS']=count($countSK[$valueG['propinsi']][$valueG['kabupaten']]['PNS']);
+			$arrDB[$keyG]['NONPNS']=count($countSK[$valueG['propinsi']][$valueG['kabupaten']]['Non PNS']);
+			$arrDB[$keyG]['TKM']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['0']);;
+			$arrDB[$keyG]['KM1']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['1']);;
+			$arrDB[$keyG]['KM2']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['2']);;
+			$arrDB[$keyG]['KM3']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['3']);;
+			$arrDB[$keyG]['KM4']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['4']);;
+			$arrDB[$keyG]['KM5']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['5']);;
+			$arrDB[$keyG]['KM6']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['6']);
+			$arrDB[$keyG]['KM7']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['7']);
+		}
+		// pre($countSK);
+		// pre($countKM);
+		// pre($arrDB);
+  //   	exit;
+    	$this->data['arrDB']=$arrDB;
+		// pre($_POST);
+		// exit;
+		// $data=$this->dataPaging2(0,100,1);
+		// pre($data);
+		$data_layout["content"]=$this->load->view("personel/v_report",$this->data,true); 
+		// $this->load->view("personel/v_report",$this->data); 
+		// $this->load->view($this->admin_layout,$data_layout);
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+	public function xlsReport(){
+		$result=$this->model->view_personel();
+    	$resultGroup=$this->model->view_personel_group();
+
+    	// pre($resultGroup);exit;
+    	$countSK=array();
+    	$countKM=array();
+    	foreach ($result as $keySK => $valueSK) {
+	
+			$countSK[$valueSK['propinsi']][$valueSK['kabupaten']][$valueSK['statusKerja']][]=$valueSK['id'];
+	
+		}
+		foreach ($result as $keyKM => $valueKM) {
+	
+			$countKM[$valueKM['propinsi']][$valueKM['kabupaten']][$valueKM['kompetensi']][]=$valueKM['id'];
+	
+		}
+		$arrDB=array();
+		foreach ($resultGroup as $keyG => $valueG) {
+			$arrDB[$keyG]=$valueG;
+			$arrDB[$keyG]['PNS']=count($countSK[$valueG['propinsi']][$valueG['kabupaten']]['PNS']);
+			$arrDB[$keyG]['NONPNS']=count($countSK[$valueG['propinsi']][$valueG['kabupaten']]['Non PNS']);
+			$arrDB[$keyG]['TKM']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['0']);;
+			$arrDB[$keyG]['KM1']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['1']);;
+			$arrDB[$keyG]['KM2']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['2']);;
+			$arrDB[$keyG]['KM3']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['3']);;
+			$arrDB[$keyG]['KM4']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['4']);;
+			$arrDB[$keyG]['KM5']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['5']);;
+			$arrDB[$keyG]['KM6']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['6']);
+			$arrDB[$keyG]['KM7']=count($countKM[$valueG['propinsi']][$valueG['kabupaten']]['7']);
+		}
+		// pre($countSK);
+		// pre($countKM);
+		// pre($arrDB);
+  //   	exit;
+    	$this->data['arrDB']=$arrDB;
+		// pre($_POST);
+		// exit;
+		// $data=$this->dataPaging2(0,100,1);
+		// pre($data);
+		$data_layout["content"]=$this->load->view("personel/v_report_xls",$this->data,true); 
+		// $this->load->view($this->admin_layout,$data_layout);
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
    
 }

@@ -4,7 +4,7 @@
     <table cellspacing="0" cellpadding="4" width="100%">
         <tr>
             <td style="padding-left:25px;">
-                <img src="assets/image/logo-blank.png" style="height:45px;" />
+                <img src="assets/image/damkar.png" style="width:65px;" />
             </td>
             <td style="font-size:12px;">
                 <center>

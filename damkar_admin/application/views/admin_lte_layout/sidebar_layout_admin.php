@@ -34,15 +34,14 @@
                         </li>
                       <? //endif; ?> 
 						<? if(($this->cms->has_read("wa_reg/wa_reg/"))||($this->cms->has_read("reg/"))||($this->cms->has_read("ver/"))||($this->cms->has_read("ser/"))||($this->cms->has_read("keberatan/"))||($this->cms->has_read("register/register/"))):?>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-puzzle-piece"></i>
+                        <li>
+                            <a href="capaian_spm/capaian_spm">
+                                <i class="fa fa-line-chart"></i>
                                 <span>Capaian Target SPM</span>
-                                <i class="fa fa-angle-left pull-right"></i>
                             </a>
-                            <ul class="treeview-menu">
+                            <!-- <ul class="treeview-menu"> -->
 								<? //if($this->cms->has_read("register/register/")):?>
-								<li><a href="capaian_spm/capaian_spm"><i class="fa"></i>Capaian SPM List</a></li>
+								<!-- <li><a href="capaian_spm/capaian_spm"><i class="fa"></i>Capaian SPM List</a></li> -->
                                 <? //endif; ?>
 								<? //if($this->cms->has_read("wa_reg/wa_reg/")):?>
 								<!-- <li><a href="wilayah/sektor"><i class="fa"></i>Sektor /UPT List</a></li> -->
@@ -59,48 +58,48 @@
 								<? if($this->cms->has_read("keberatan/")):?>
 								<li><a class="mnu_keberatan" href="keberatan"><i class="fa"></i>Pengajuan Keberatan </a></li>
 								<? endif; ?>-->
-						   </ul>
+						   <!-- </ul> -->
                         </li>
                         <? endif; ?>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-puzzle-piece"></i>
+                        <li>
+                            <a href="personel/personel">
+                                <i class="fa fa-users"></i>
                                 <span>Personel</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <!-- <i class="fa fa-angle-left pull-right"></i> -->
                             </a>
-                            <ul class="treeview-menu">
+                           <!--  <ul class="treeview-menu">
                                 <? //if($this->cms->has_read("register/register/")):?>
                                 <li><a href="personel/personel"><i class="fa"></i>Personel List</a></li>
                                 <? //endif; ?>
                                 
-                           </ul>
+                           </ul> -->
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-puzzle-piece"></i>
+                        <li>
+                            <a href="kejadian/kejadian">
+                                <i class="fa fa-ambulance"></i>
                                 <span>Kejadian</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <!-- <i class="fa fa-angle-left pull-right"></i> -->
                             </a>
-                            <ul class="treeview-menu">
+                            <!-- <ul class="treeview-menu">
                                 <? //if($this->cms->has_read("register/register/")):?>
                                 <li><a href="kejadian/kejadian"><i class="fa"></i>Kejadian List </a></li>
                                 <? //endif; ?>
                                 
-                           </ul>
+                           </ul> -->
                         </li>
-                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-puzzle-piece"></i>
+                         <li>
+                            <a href="sarpras/sarpras">
+                                <i class="fa fa-truck"></i>
                                 <span>Sarana & Prasarana</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                                <!-- <i class="fa fa-angle-left pull-right"></i> -->
                             </a>
-                            <ul class="treeview-menu">
+                           <!--  <ul class="treeview-menu">
                                 <? //if($this->cms->has_read("register/register/")):?>
                                 <li><a href="sarpras/sarpras"><i class="fa"></i>SarPras List </a></li>
                                 <? //endif; ?>
                                 
-                           </ul>
+                           </ul> -->
                         </li>
                         <? if(($this->cms->has_read("admin/articles/"))||($this->cms->has_read("admin/news/"))||($this->cms->has_read("admin/slider/"))||($this->cms->has_read("admin/rss/"))):?>
                        <!--  <li class="treeview">
@@ -165,9 +164,11 @@
                             </a>
                             
                             <ul class="treeview-menu">
-                                <li><a href="master_data/wilayah"><i class="fa"></i>Wilayah List</a></li> 
-                                <li><a href="master_data/m_capaian_spm"><i class="fa"></i>Capaian SPM List</a></li> 
-                                <li><a href="master_data/sektor"><i class="fa"></i>Sektor List</a></li> 
+                                <li><a href="master_data/wilayah"><i class="fa fa-map"></i>Wilayah List</a></li> 
+                                <li><a href="master_data/m_capaian_spm"><i class="fa  fa-area-chart"></i>Capaian SPM List</a></li> 
+                                <li><a href="master_data/sektor"><i class="fa fa-map-marker"></i>Sektor List</a></li> 
+                                <li><a href="master_data/jenisKebakaran"><i class="fa  fa-fire"></i>Jenis Kebakaran</a></li> 
+                                <li><a href="master_data/jenisSarPras"><i class="fa fa-truck"></i>Jenis SarPras</a></li> 
                                 <!-- <li><a href="master_data/entitas"><i class="fa"></i>Entitas</a></li> 
                                 <li><a href="master_data/jenis_ekosistem"><i class="fa"></i>Jenis Ekosistem</a></li>
                                 <li><a href="master_data/jenis_document"><i class="fa"></i>Jenis Dokumen</a></li>
@@ -182,7 +183,7 @@
                         
                         
                          <?php if($this->cms->has_admin("admin/account_manager/")):?>
-                        <!--  <li class="treeview">
+                          <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-cog"></i>
                                 <span>Account Manager</span>
@@ -191,7 +192,7 @@
                             <ul class="treeview-menu">
                                 <li><a href="admin/account_manager/"><i class="fa"></i>Users</a></li>
                                 <li><a href="admin/account_manager/group_list"><i class="fa"></i>Groups</a></li>
-                                <!--<li><a href="setting/module/"><i class="fa fa-angle-double-right"></i>  Module</a></li>-->
+                                <!--<li><a href="setting/module/"><i class="fa fa-angle-double-right"></i>  Module</a></li>
                                 <!-- <li><a href="admin/acl"><i class="fa"></i>ACL Groups </a></li>
                             </ul>
                         </li> -->

@@ -49,43 +49,26 @@
 							Refresh
 						</a>
 					</li>
-
                     <li>
-                        <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport PDF
-                        </a>
+                        <div class="btn-group">
+                          <button class="btn btn-default" type="button"><i class="fa fa-download"></i> Eksport</button>
+                          <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul id="menu"role="menu" class="dropdown-menu">
+                            <li><a href="#" class="print-pdf">
+                                <i class="fam-page_white_acrobat"></i> PDF Sarpras</a></li>
+                            <li><a href="#" class="print-xls"><i class="fa fa-file-excel-o"></i> Excel Sarpras</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"  class="print-pdf-kondisi">
+                                <i class="fam-page_white_acrobat"></i> PDF Kondisi</a></li>
+                            <li><a href="#" class="print-xls-kondisi"><i class="fa fa-file-excel-o"></i> Excel Kondisi</a></li>
+                          </ul>
+                        </div>
                     </li>
 
-                    <li>
-                        <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport Excel
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a href="#" class="print-pdf-kondisi" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport PDF Kondisi
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="print-xls-kondisi" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport Excel Kondisi
-                        </a>
-                    </li>
+                    
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">

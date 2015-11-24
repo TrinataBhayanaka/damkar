@@ -55,8 +55,7 @@
 
 				</ul>
 			</div>
-			<!-- <a href="#" onClick ="$('#tableID').tableExport({type:'pdf',escape:'false'});">PDF</a> -->
-			 <a href="#" class="list-group-item" onClick ="$('#customers').tableExport({type:'pdf',escape:'false'});">PDF</a>
+			
 			<form class="search_form col-md-3 pull-right" action="<?=$this->module?>" method="get">
 				<?php $this->load->view("widget/search_box_db"); ?>
 			</form>
@@ -69,48 +68,7 @@
 <!-- INI -->
 <div id="print_this">
 <!-- END INI -->
-<table id="customers" class="table table-striped" >
-	<thead>			
-		<tr class='warning'>
-			<th>Country</th>
-			<th>Population</th>
-			<th>Date</th>
-			<th>%ge</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Chinna</td>
-			<td>1,363,480,000</td>
-			<td>March 24, 2014</td>
-			<td>19.1</td>
-		</tr>
-		<tr>
-			<td>India</td>
-			<td>1,241,900,000</td>
-			<td>March 24, 2014</td>
-			<td>17.4</td>
-		</tr>
-		<tr>
-			<td>United States</td>
-			<td>317,746,000</td>
-			<td>March 24, 2014</td>
-			<td>4.44</td>
-		</tr>
-		<tr>
-			<td>Indonesia</td>
-			<td>249,866,000</td>
-			<td>July 1, 2013</td>
-			<td>3.49</td>
-		</tr>
-		<tr>
-			<td>Brazil</td>
-			<td>201,032,714</td>
-			<td>July 1, 2013</td>
-			<td>2.81</td>
-		</tr>
-	</tbody>
-</table> 
+
 <form id="frm" method="post">
 <table class="table table-condensed">
 	<thead>

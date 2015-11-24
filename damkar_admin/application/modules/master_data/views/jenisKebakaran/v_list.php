@@ -49,31 +49,13 @@
 							Refresh
 						</a>
 					</li>
-
-                    <li>
-                        <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport PDF
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport Excel
-                        </a>
-                    </li>
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">
 				<div style="padding-top:5px;" class="input-group">
               <input id="valueparameter" name="q" class="form-control input-search" value="<?=$key?>" placeholder="Search..." type="text">
               <span class="input-group-btn">
-                <a id="btnsearch" href="<?=base_url()?>personel/personel/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
+                <a id="btnsearch" href="<?=base_url()?>master_data/jenisKebakaran/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
               </span>
             </div>
 			</form>
@@ -97,12 +79,7 @@
         <th width="50">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th class="forder" width="100" rel="date">NIP</th>
-        <th class="forder" width="300" rel="title">Nama</th>
-        <th>Gelar Depan</th>
-		<th>Gelar Belakang</th>
-        <th width="100">Sektor</th>
-		<th width="50">Status</th>
+        <th>Kategori Kebakaran</th>
         </tr>
         </thead>
         <tbody>
@@ -127,13 +104,8 @@
                         <a href="<?=$url_delete;?>/<?=$page;?>" id="deleteData"><i class="icon-remove icon-alert"></i></a>   
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
-                    <td></td> 	
-                    <td rel="date_col" width="150"><?=$v['nip'];?></td>
-                    <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['nama'];?></a></td>
-                    <td><?=$v['glrDepan'];?></td>
-					<td><?=$v['glrBelakang'];?></td>
-                    <td><?=$v['sektor'];?></td>
-					<td><?=$status_badges;?></td>
+                    <td></td> 
+                    <td><?=$v['catKebakaran'];?></td>
             	</tr>
                 
         <? } }?>
@@ -205,51 +177,5 @@ $('#fdatalist').submit(function(event) {
         }
         return false;
     });
- $(function(){
-       
-            var base_url="<?=base_url()?>";
-            console.log(base_url);
-            // var html=style+hd+footer+$("div#print_this").html();
-            // var html=$("div#print_this").html();
-            // console.log(html);
-            var filePdf="personel<?="_".date("YmdHis").".pdf";?>";
-            var fileXls="personel<?="_".date("YmdHis").".xls";?>";
-
-        $("a.print-pdf").click(function(e){
-            e.preventDefault();
-            
-            $.post(base_url+"personel/personel/pdfReport", function(data){
-                            // console.log(data);
-                            if (data.status==true) {
-                               console.log(data.data);
-                                    UrlSubmit(base_url+"export/proxy_pdf/",{filename:filePdf,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
-
-                                   
-                                    $('.ajax-spinner-bars').css("display","none");
-                            }else{
-                                 $('.ajax-spinner-bars').css("display","none"); 
-                            }
-                        }, "JSON")
-            
-        });
-      
-        $("a.print-xls").click(function(e){
-            e.preventDefault();
-            
-            $.post(base_url+"personel/personel/xlsReport", function(data){
-                            // console.log(data);
-                            if (data.status==true) {
-                               console.log(data.data);
-                                    UrlSubmit(base_url+"export/toxls/",{filename:fileXls,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
-
-                                   
-                                    $('.ajax-spinner-bars').css("display","none");
-                            }else{
-                                 $('.ajax-spinner-bars').css("display","none"); 
-                            }
-                        }, "JSON")
-            
-        });
-      
-    }); 
+ 
 </script>

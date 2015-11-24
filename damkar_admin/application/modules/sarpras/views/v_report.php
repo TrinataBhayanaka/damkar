@@ -4,7 +4,7 @@
     <table cellspacing="0" cellpadding="4" width="100%">
         <tr>
             <td style="padding-left:25px;">
-                <img src="assets/image/logo-blank.png" style="height:45px;" />
+                <img src="assets/image/damkar.png" style="width:65px;" />
             </td>
             <td style="font-size:12px;">
                 <center>
@@ -23,7 +23,7 @@
 <table width='100%' style='vertical-align: bottom; font-family: serif; font-size: 8pt;color: #000000; font-weight: bold; font-style: italic;'>
     <tr>
         <td width='33%'>
-            <span style='font-weight: bold; font-style: italic;'>Sumber : http://brwa.or.id</span>
+            <span style='font-weight: bold; font-style: italic;'>Sumber : http://damkar.or.id</span>
         </td>
         <td width='33%' align='center' style='font-weight: bold; font-style: italic;'>
             {PAGENO}/{nbpg}

@@ -10,8 +10,8 @@
 <head>
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Badan Registrasi Wilayah Adat</title>
-	<meta name="description" content="Badan Registrasi Wilayah Adat.">
+	<title>DINAS PEMADAM KEBAKARAN</title>
+	<meta name="description" content="DINAS PEMADAM KEBAKARAN">
 	<meta name="author" content="DNFLINK">
 	<meta name="keyword" content="">
 	<!-- end: Meta -->
@@ -28,9 +28,12 @@
 	<!-- start: CSS -->
 	<link href="assets/themes/admin_lte/css/bootstrap.min.css" rel="stylesheet">
 	<link href="assets/fa/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/themes/admin_lte/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+   <!--  <link href="assets/themes/admin_lte/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="assets/themes/admin_lte/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    
+     -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="assets/css/style.lat.css" rel="stylesheet">
 	<link href="assets/css/style.new.infobox.css" rel="stylesheet">
 	<link href="assets/css/style.new.statsbox.css" rel="stylesheet">
@@ -206,7 +209,6 @@
     <script src="assets/themes/admin_lte/js/AdminLTE/app.js" type="text/javascript"></script>
     <?=loadFunction("validate");?>
     <? $this->load->view("admin_lte_layout/header_js")?>
-    	
 					
 </head>
 
@@ -215,12 +217,6 @@
   		
   		 <div id="facebookG" align="center">
   		 	<img src="assets/images/loading.gif" width="40%"/>
-			<!-- <div id="blockG_1" class="facebook_blockG">
-			</div>
-			<div id="blockG_2" class="facebook_blockG">
-			</div>
-			<div id="blockG_3" class="facebook_blockG">
-			</div> -->
 		</div> 
 
 	</div>

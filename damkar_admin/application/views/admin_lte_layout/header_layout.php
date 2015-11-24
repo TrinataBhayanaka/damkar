@@ -10,8 +10,10 @@
 <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="<?=base_url()?>" class="logo">
-            	<!-- <img src="assets/image/logo-blank.png" style="height:45px; margin-top:8px" /> -->
-             DINAS DAMKAR
+
+                <!-- <img src="assets/images/Pemadam_200.png" width="30%"/> -->
+            	<img src="assets/images/Pemadam_200.png" style="width:40px;" />
+            DAMKAR
             	<!-- Add the class icon to your logo image or logo icon to add the margining -->
                 <!--<span style="font-size:0.7em;font-family: 'Kaushan Script',cursive;">BRWA</span>-->
             </a>

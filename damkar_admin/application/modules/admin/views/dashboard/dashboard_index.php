@@ -1,89 +1,83 @@
-<?php $teregistrasi=$this->conn->GetOne("select count(idx) as total from wa_data where doc_proses=1 and doc_status=4 and wa_data_status!= 99 ");?>
-<?php $terverifikasi=$this->conn->GetOne("select count(idx) as total from wa_data where (doc_proses=2 and doc_status=5 and wa_data_status != 99)");?>
-<?php $tersertifikasi=$this->conn->GetOne("select count(idx) as total from wa_data where (doc_proses=3 and doc_status=2 and wa_data_status!=99)");?>
-<?php $tidakvaild=$this->conn->GetOne("select count(idx) from wa_data where wa_data_status=99");?>
-<?php $total_wa=$this->conn->GetOne("select count(idx) from wa_data");?>
 
 <div class="row">
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-aqua">
-                                <div class="inner">
-                                    <h3>
-                                        <?=$teregistrasi?>
-                                    </h3>
-                                    <p>
-                                         Wilayah AdatTeregistrasi
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-document"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-green">
-                                <div class="inner">
-                                    <h3>
-                                        <!--53<sup style="font-size: 20px">%</sup>-->
-                                        <?=$terverifikasi;?>
-                                    </h3>
-                                    <p>
-                                        Wilayah Adat Terverifikasi
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-document-text"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-yellow">
-                                <div class="inner">
-                                    <h3>
-                                        <?=($total_wa)-($teregistrasi+$terverifikasi+$tersertifikasi);?>
-                                    </h3>
-                                    <p>
-                                        In Progress
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-information-circled"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3>
-                                        <?=$tersertifikasi?>
-                                    </h3>
-                                    <p>
-                                        Wilayah Adat Tersertifikasi 
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-clipboard"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        
-                    </div>
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>
+                    0
+                </h3>
+                <p>
+                     Jumlah Personel
+                </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-document"></i>
+            </div>
+            <a class="small-box-footer" href="#">
+                <i class="fa"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>
+                   0
+                </h3>
+                <p>
+                    Jumlah PNS
+                </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-document-text"></i>
+            </div>
+            <a class="small-box-footer" href="#">
+                <i class="fa"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>
+                    0
+                </h3>
+                <p>
+                    Jumlah NON PNS
+                </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-information-circled"></i>
+            </div>
+            <a class="small-box-footer" href="#">
+                <i class="fa"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>
+                   0
+                </h3>
+                <p>
+                    Jumlah DAMKAR
+                </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-clipboard"></i>
+            </div>
+            <a class="small-box-footer" href="#">
+                <i class="fa"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    
+</div>
                     
    <div class="formSep"></div>
    
@@ -110,46 +104,46 @@
             </div> 
             </div>
         <!-- GRAFIK LEFT 1 
-        	<div class="box box-primary">
+            -->
+        	<!-- <div class="box box-primary">
             <div class="box-header">
             <h3 class="box-title">Area Chart</h3>
             </div>
             <div class="box-body chart-responsive">
             <div class="chart" id="area-chart" style="height: 300px;"></div>
             </div> 
-            </div> 
-            -->
+            </div>  -->
             
-            <!-- GRAFIK LEFT 1 
-        	<div class="box box-primary">
+            <!-- GRAFIK LEFT 1 --> 
+        	<!-- <div class="box box-primary">
             <div class="box-header">
             <h3 class="box-title">Area Chart</h3>
             </div>
             <div class="box-body chart-responsive">
             <div class="chart" id="bar-chart" style="height: 300px;"></div>
             </div> 
-            </div>--> 
+            </div> -->
             
             
             <!-- GRAFIK LEFT 1 -->
-        	<!--<div class="box box-primary">
+        	<!-- <div class="box box-primary">
             <div class="box-header">
             <h3 class="box-title">Area Chart</h3>
             </div>
             <div class="box-body chart-responsive">
             <div class="chart" id="line-chart" style="height: 300px;"></div>
             </div> 
-            </div> -->
+            </div>  -->
             
             <!-- GRAFIK LEFT 1 -->
-        	<!--<div class="box box-primary">
+        <!-- 	<div class="box box-primary">
             <div class="box-header">
             <h3 class="box-title">Area Chart</h3>
             </div>
             <div class="box-body chart-responsive">
             <div class="chart" id="stacked" style="height: 300px;"></div>
             </div> 
-            </div> -->
+            </div>  -->
         
         	
         </div>
@@ -164,10 +158,10 @@
                     resize: true,
                     colors: ["#3c8dbc", "#00a65a", "#FF9900","#f56954"],
                     data: [
-                        {label: "Teregistrasi", value: <?=$teregistrasi?>},
-                        {label: "Terverifikasi", value: <?=$terverifikasi?>},
-						{label: "In Progress ", value: <?=($total_wa)-($teregistrasi+$terverifikasi+$tersertifikasi);?>},
-						{label: "Tersertifikasi", value: <?=$tersertifikasi?>},
+                        {label: "Teregistrasi", value: 1},
+                        {label: "Terverifikasi", value: 2},
+						{label: "In Progress ", value: 3},
+						{label: "Tersertifikasi", value: 4},
                     ],
                     hideHover: 'auto'
                 });
@@ -176,8 +170,8 @@
                     resize: true,
                     colors: ["#669999","#FF0000"],
                     data: [
-                        {label: "Total Wilayah Adat", value: <?=$total_wa?>},
-						{label: "Data Tidak Valid", value: <?=$tidakvaild?>},
+                        {label: "Total Wilayah Adat", value: 5},
+						{label: "Data Tidak Valid", value: 6},
 					
                     ],
                     hideHover: 'auto'
