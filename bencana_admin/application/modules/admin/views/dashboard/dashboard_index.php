@@ -95,7 +95,7 @@
                 <h3 class="box-title">Status Chart  <label style="font-size:12px;color:gray;margin:0 0 0 40px">Jumlah Korban Bencana</label></h3>
             </div>
             <div class="box-body chart-responsive">
-            <div id="demo-morris-donut" style="height:300px"></div>
+                <div id="demo-morris-donut" style="height:300px"></div>
             </div> 
             </div> 
         </div>
@@ -106,7 +106,7 @@
             <h3 class="box-title">Status Chart  <label style="font-size:12px;color:gray;margin:0 0 0 40px">Kejadian Bencana Alam 2011 - 2015</label></h3>
             </div>
             <div class="box-body chart-responsive">
-            <div id="demo-morris-bar" style="height:300px"></div>
+                <div id="demo-morris-bar" style="height:300px"></div>
             </div> 
             </div>
         <!-- GRAFIK LEFT 1 
@@ -155,57 +155,46 @@
         </div>
 
    </div>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
    <script>
-   		$(function(){
-            // MORRIS BAR CHART
-            // =================================================================
-            // Require MorrisJS Chart
-            // -----------------------------------------------------------------
-            // http://morrisjs.github.io/morris.js/
-            // =================================================================
-			Morris.Bar({
-                element: 'demo-morris-bar',
-                data: [
-                    { y: '2011', a: 100, b: 90, c:80, d:70 },
-                    { y: '2012', a: 75,  b: 65, c:55, d:45 },
-                    { y: '2013', a: 20,  b: 15, c:10, d:5 },
-                    { y: '2014', a: 50,  b: 40, c:30, d:20 },
-                    { y: '2015', a: 75,  b: 95, c:115, d:135 },
-                ],
-                xkey: 'y',
-                ykeys: ['a', 'b', 'c', 'd'],
-                labels: ['Tsunami', 'Puting Beliung', 'Tornado', 'Banjir'],
-                gridEnabled: false,
-                gridLineColor: 'transparent',
-                barColors: ['#00C0EF', '#00A65A', '#F39C12', '#F56954'],
-                resize:true,
-                hideHover: 'auto'
-            });
+   		$(document).ready(function() {
+            Morris.Bar({
+        element: 'demo-morris-bar',
+        data: [
+            { y: '2011', a: 100, b: 90, c: 80, d: 70 },
+            { y: '2012', a: 75,  b: 65, c: 55, d: 45 },
+            { y: '2013', a: 20,  b: 15, c: 10, d: 5 },
+            { y: '2014', a: 50,  b: 40, c: 30, d: 20},
+            { y: '2015', a: 75,  b: 95, c: 85, d: 65 }
+        ],
+        xkey: 'y',
+        ykeys: ['a', 'b', 'c', 'd'],
+        labels: ['Tsunami', 'Gempa Bumi', 'Tornado', 'Banjir'],
+        gridEnabled: false,
+        gridLineColor: 'transparent',
+        barColors: ['#177bbb'],
+        resize:true,
+        hideHover: 'auto'
+    });
 
-            // MORRIS DONUT CHART
-            // =================================================================
-            // Require MorrisJS Chart
-            // -----------------------------------------------------------------
-            // http://morrisjs.github.io/morris.js/
-            // =================================================================
-            Morris.Donut({
-                element: 'demo-morris-donut',
-                data: [
-                    {label: "Korban Luka Berat", value: 12},
-                    {label: "Korban Luka Ringan", value: 30},
-                    {label: "Korban Meninggal", value: 20}
-                ],
-                colors: [
-                    '#00A65A',
-                    '#F39C12',
-                    '#F56954'
-                ],
-                resize:true
-            });
 
-		});
-   	
+    Morris.Donut({
+        element: 'demo-morris-donut',
+        data: [
+            {label: "Jumlah Bencana", value: 4},
+            {label: "Luka Berat", value: 12},
+            {label: "Luka Ringan", value: 30},
+            {label: "Meninggal", value: 20}
+        ],
+        colors: [
+            '#00C0EF',
+            '#00A65A',
+            '#F39C12',
+            '#DD4B39'
+        ],
+        resize:true
+    });
+
+        })
    </script>
 
                

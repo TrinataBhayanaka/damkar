@@ -1,0 +1,223 @@
+.btn-quick {
+	min-width: 100px;
+	min-height:75px;
+    font-size: 12px;
+    padding: 15px 0 0;
+    position: relative;
+	vertical-align: middle;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+	margin: 0 0.9% 1em;
+	display: inline-block;
+	background-image: linear-gradient(to bottom, rgba(10,10,10,0.15), rgba(0,0,0,0.3));
+	background-image: -webkit-gradient(linear, 0% 0%, 90% 0%, from(rgba(10,10,10,0.4)), to(rgba(0,0,0,0.2)));
+	border:none;
+	color:#ddd
+}
+.btn-quick>p {
+	margin:0!important;
+}
+.btn-quick.wide {
+	width: 120px;
+}
+.btn-quick.wider {
+	width: 160px;
+}
+.btn-quick.wider>p,
+.btn-quick.wider>i {
+	display:inline-block!important;
+	float:left;
+	margin-left:15px;
+	line-height:37px;
+}
+.btn-quick.wider>p {
+	font-size:large;
+	padding-left:15px;
+}
+.btn-quick:hover {
+    border-color: #A5A5A5;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+	color:#fff;
+}
+.btn-quick i {
+	font-size:xx-large;
+	text-shadow:none;
+}
+
+/* Default (circle) */
+.btn-quick .badge {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+	padding: .2em .6em .3em;
+  	font-size: 75%;
+	font-weight: 600;
+	line-height: 1;
+	color: white;
+	text-align: center;
+	white-space: nowrap;
+	border-radius: .25em;
+}
+.btn-quick .badge.red {
+	background:#FF6633;
+}
+.btn-quick .badge.blue {
+	background:#003366;
+}
+/* Triangle */
+/* Top Right (Default) */
+.btn-quick *[class^="badge-triangle"] {
+    position: absolute;
+	float:right;
+    right: 0px;
+    top: 0px;
+	width:30px;
+	height:30px;
+	overflow:hidden;
+	border-radius:4px;
+}
+.btn-quick *[class^="badge-triangle"]:before { 
+	content: ""; 
+	width: 0; 
+	height: 0;
+	border-left: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	border-top: 30px solid rgba(255, 255, 255, 0.4);
+	position: absolute;
+	top: 100%;
+	left: 1px;
+	margin-top: -31px;
+	z-index:0
+}
+.btn-quick *[class^="badge-triangle"]>* {
+	position: absolute;
+	display:block;
+	font-size:10px;
+	line-height:1;
+	padding:2px;
+	min-width:18px;
+	max-width:20px;
+	overflow:hidden;
+	text-align:center;
+	right: 0!important;
+	z-index:2
+}
+
+/* Bottom Right */
+.btn-quick .badge-triangle-br {
+    position: absolute;
+	float:none!important;
+	top:auto!important;
+    right: 0px;
+    bottom: 0px;
+	width:30px;
+	height:30px;
+	overflow: hidden;
+	border-radius:4px;
+}
+.btn-quick .badge-triangle-br:before { 
+	content: ""; 
+	width: 10px; 
+	height: 0;
+	border-left: 30px solid transparent;
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid rgba(255, 255, 255, 0.4);
+	position: absolute;
+	top: 0;
+	left: 1px;
+	margin-top: -29px;
+	z-index:0
+}
+.btn-quick .badge-triangle-br>* {
+	bottom:0;
+	right:0;
+}
+
+/* Top Left */
+.btn-quick .badge-triangle-tl {
+    position: absolute;
+	float:left!important;
+    left: 0px;
+    top: 0px;
+	width:30px;
+	height:30px;
+	overflow: hidden;
+	border-radius:4px;
+}
+.btn-quick .badge-triangle-tl:before { 
+	content: ""; 
+	width: 10px; 
+	height: 0;
+	border-bottom: 30px solid transparent;
+	border-top: 30px solid transparent;
+	border-left: 30px solid rgba(255, 255, 255, 0.4);
+	position: absolute;
+	top: 0;
+	left: -1px;
+	margin-top: -31px;
+	z-index:0
+}
+.btn-quick .badge-triangle-tl>* {
+	top:0px;
+	left:0px;
+	right:auto!important;
+}
+
+/* Bottom Left */
+.btn-quick .badge-triangle-bl {
+    position: absolute;
+	float:none!important;
+	top:auto!important;
+    left: 0px;
+    bottom: 0px;
+	width:30px;
+	height:30px;
+	overflow: hidden;
+	border-radius:4px;
+}
+.btn-quick .badge-triangle-bl:before { 
+	content: ""; 
+	width: 0; 
+	height: 0;
+	border-right: 30px solid transparent;
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid rgba(255, 255, 255, 0.4);
+	position: absolute;
+	top: 1px;
+	left: -31px;
+	z-index:0
+}
+.btn-quick .badge-triangle-bl>* {
+	bottom:0;
+	left:0;
+	margin:0;
+	right:auto!important;
+}
+
+/* Triangle Color */
+.btn-quick .badge-triangle.red:before {
+	border-top: 30px solid #FF6633;
+}
+.btn-quick .badge-triangle.blue:before {
+	border-top: 30px solid #003366;
+}
+
+.btn-quick .badge-triangle-tl.red:before {
+	border-left: 30px solid #FF6633;
+}
+.btn-quick .badge-triangle-tl.blue:before {
+	border-left: 30px solid #003366;
+}
+
+.btn-quick .badge-triangle-br.red:before,
+.btn-quick .badge-triangle-bl.red:before {
+	border-bottom: 30px solid #FF6633;
+}
+.btn-quick .badge-triangle-br.blue:before,
+.btn-quick .badge-triangle-bl.blue:before {
+	border-bottom: 30px solid #003366;
+}
+

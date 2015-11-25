@@ -303,7 +303,7 @@ class capaian_spm extends Admin_Controller {
 		$filter="(SPM.propinsi=KAB.kode_prop AND SPM.kabupaten=KAB.kode_kab AND SPM.propinsi=PROV.kodeProp) ";
 		if ($key) {
 			
-			$filter .= " AND (propinsi like '%".$key."%' or kabupaten like '%".$key."%' or luasWilayah like '%".$key."%' or jumlahKecamatan like '%".$key."%' or jumlahPenduduk like '%".$key."%' or cakupan like '%".$key."%' or responTime like '%".$key."%' or rasioPersonel like '%".$key."%' or rasioSarPras like '%".$key."%')";
+			$filter .= " AND (SPM.propinsi like '%".$key."%' or SPM.kabupaten like '%".$key."%' or SPM.cakupan like '%".$key."%' or SPM.responTime like '%".$key."%' or SPM.rasioPersonel like '%".$key."%' or SPM.rasioSarPras like '%".$key."%' or KAB.nama like '%".$key."%' or PROV.namaProvinsi like '%".$key."%')";
 			$data["key"]=$key;
 		}
 		$offset 		= ($page-1)*$limit;
@@ -321,7 +321,7 @@ class capaian_spm extends Admin_Controller {
 		}
 
 		$arrDB=$this->model->SearchRecordLimitWhereJoin($filter,$limit,$offset,$order);
-		pre($arrDB);
+		// pre($arrDB);
 		// foreach ($result as $key => $value) {
 		// 	$namaProp=$this->get_name_provinsi($value['propinsi']);
 		// 	$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);

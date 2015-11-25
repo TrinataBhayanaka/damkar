@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sintony'),local('Sintony'), url('http://themes.googleusercontent.com/static/fonts/sintony/v2/3U1YPkuvIZcjFV_iKr78mw.woff') format('woff');
+}
+@font-face {
+  font-family: 'Sintony';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Sintony Bold'), local('Sintony-Bold'), url('http://themes.googleusercontent.com/static/fonts/sintony/v2/TiXPkS2VjL9yF_daQZv9IhsxEYwM7FgeyaSgU71cLG0.woff') format('woff');
+}

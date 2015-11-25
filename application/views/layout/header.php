@@ -131,7 +131,7 @@
 
 						<!-- Logo -->
 						<a class="logo pull-left" href="">
-							<img src="assets/themes/tmpl-byu/assets/images/logo.jpg" alt="" />
+							<img src="assets/themes/tmpl-byu/assets/images/logo.png" alt="" />
 						</a>
 
 						<div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">

@@ -1,10 +1,17 @@
-
-        <!-- jQuery 2.0.2 -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <? echo js_asset("jquery.cookie.js");?>
-		<? echo js_asset("lingkar/app.pack.js");?>
-        <!-- Bootstrap -->
-        <script src="assets/themes/admin_lte/js/bootstrap.min.js" type="text/javascript"></script>        
-
-    </body>
+<!-- jQuery 2.1.4 -->
+    <script src="assets/themes/lte2.3.0/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="assets/themes/lte2.3.0/bootstrap/js/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="assets/themes/lte2.3.0/plugins/iCheck/icheck.min.js"></script>
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+  </body>
 </html>
