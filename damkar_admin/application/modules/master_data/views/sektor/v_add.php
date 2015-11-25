@@ -164,29 +164,7 @@
 									<?php echo form_input($namaSektor,false,'class="form-control"');?>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>SKPD </label>
-
-									<select class="form-control" id="skpd" name="skpd">	
-									<? 
-									// pre($m_propinsi);
-									foreach ($m_skpd as $key => $value) {
-										// $selected="";
-										// if($value['kode_prop']=="14"){
-										// 	$selected="selected";
-										// }
-									?>
-									<option value="<?=$value['skpd']?>" ><?=$value['skpd']?></option>
-									<? 
-										}
-
-
-									?>
-									</select>
-								</div>
-								</div>
+								
 							</div>
 							
 					</div> <!-- span6 -->

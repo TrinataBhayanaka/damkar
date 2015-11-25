@@ -64,6 +64,7 @@ class wilayah extends Admin_Controller {
 		$this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
@@ -81,6 +82,7 @@ class wilayah extends Admin_Controller {
 				'luasWilayah'    	=> $this->input->post('luasWilayah'),
 				'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
 				'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
+				'skpd'   			=> $this->input->post('skpd'),
 				// 'cakupan'      		=> $this->input->post('cakupan'),
 				// 'responTime' 	    => $this->input->post('responTime'),
 				// 'rasioPersonel'     => $this->input->post('rasioPersonel'),
@@ -111,7 +113,7 @@ class wilayah extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('propinsi','kabupaten','luasWilayah','jumlahKecamatan','jumlahPenduduk');
+			$dataFormInput=array('propinsi','kabupaten','luasWilayah','jumlahKecamatan','jumlahPenduduk','skpd');
 
 			$this->data=$this->set_dataInput($dataFormInput);
 
@@ -119,6 +121,7 @@ class wilayah extends Admin_Controller {
 		// pre($this->form_validation->set_rules());
 		$this->data['m_propinsi']=$this->get_lookup_provinsi();
 		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
+		$this->data['m_skpd']=$this->user_model->m_skpd(false);
 		// pre($this->data['m_propinsi']);
 		// pre($this->data['m_kabupaten']);
 		$this->data["user_name"]=$this->data['users']['user']['username'];
@@ -155,6 +158,7 @@ class wilayah extends Admin_Controller {
 		$this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
@@ -169,6 +173,7 @@ class wilayah extends Admin_Controller {
 				'luasWilayah'    	=> $this->input->post('luasWilayah'),
 				'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
 				'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
+				'skpd'   	=> $this->input->post('skpd'),
 				// 'cakupan'      		=> $this->input->post('cakupan'),
 				// 'responTime' 	    => $this->input->post('responTime'),
 				// 'rasioPersonel'     => $this->input->post('rasioPersonel'),
@@ -204,13 +209,14 @@ class wilayah extends Admin_Controller {
 
 		$this->data['idd'] = $idx;
 
-		$dataFormInput=array('propinsi','kabupaten','luasWilayah','jumlahKecamatan','jumlahPenduduk');
+		$dataFormInput=array('propinsi','kabupaten','luasWilayah','jumlahKecamatan','jumlahPenduduk','skpd');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
 		// pre($this->data['propinsi']);
 		// $this->data['m_tanda_pengenal']=$this->get_lookup_tanda_pengenal();
 		$this->data['m_propinsi']=$this->get_lookup_provinsi();
 		$this->data['m_kabupaten']=$this->get_lookup_kabupaten($this->data['propinsi']['value']);
+		$this->data['m_skpd']=$this->user_model->m_skpd(false);
 		// $this->data['m_pekerjaan']=$this->get_lookup_pekerjaan();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";

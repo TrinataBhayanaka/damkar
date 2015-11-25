@@ -98,6 +98,30 @@ class Admin_Controller extends MY_Controller
 
         return $arrData[0];
     }
+     function get_name_kompetensi($id){
+        $filter=" id='".$id."' AND n_status=1";
+        $arrData=$this->user_model->m_kompetensiid($filter);
+        
+        // pre($id);
+        // pre($filter);
+        // pre($arrData);
+        return $arrData[0];
+    }
+    function get_name_sektor($namaSektor){
+        $filter=" id='".$namaSektor."' AND status=1";
+        $arrData=$this->user_model->m_sektor($filter);
+
+        // pre($arrData);
+        return $arrData[0];
+    }
+    function get_name_sarpras($jenisSarpras){
+        // pre($jenisSarpras);
+        $filter=" id='".$jenisSarpras."' AND n_status='1'";
+        // pre($filter);
+        $arrData=$this->user_model->m_cat_sarprasid($filter);
+        // pre($arrData);
+        return $arrData[0];
+    }
     function get_lookup_kabupaten($id=11){
     	$filter=" kode_prop='".$id."' AND level=1";
         $arrData=$this->user_model->m_kabupaten($filter);

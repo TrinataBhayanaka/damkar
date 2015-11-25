@@ -49,33 +49,13 @@
 							Refresh
 						</a>
 					</li>
-                    <li>
-                        <div class="btn-group">
-                          <button class="btn btn-default" type="button"><i class="fa fa-download"></i> Eksport</button>
-                          <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul id="menu"role="menu" class="dropdown-menu">
-                            <li><a href="#" class="print-pdf">
-                                <i class="fam-page_white_acrobat"></i> PDF Sarpras</a></li>
-                            <li><a href="#" class="print-xls"><i class="fa fa-file-excel-o"></i> Excel Sarpras</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#"  class="print-pdf-kondisi">
-                                <i class="fam-page_white_acrobat"></i> PDF Kondisi</a></li>
-                            <li><a href="#" class="print-xls-kondisi"><i class="fa fa-file-excel-o"></i> Excel Kondisi</a></li>
-                          </ul>
-                        </div>
-                    </li>
-
-                    
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">
 				<div style="padding-top:5px;" class="input-group">
               <input id="valueparameter" name="q" class="form-control input-search" value="<?=$key?>" placeholder="Search..." type="text">
               <span class="input-group-btn">
-                <a id="btnsearch" href="<?=base_url()?>wilayah/sektor/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
+                <a id="btnsearch" href="<?=base_url()?>master_data/jenisKompetensi/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
               </span>
             </div>
 			</form>
@@ -99,11 +79,7 @@
         <th width="50">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th class="forder">Jenis Sarpras</th>
-        <th class="forder">Kondisi</th>
-        <th class="forder">Kantor Sektor</th>
-        <th>Kabupaten</th>
-        <th>Propinsi</th>
+        <th>Jenis Kompetensi</th>
         </tr>
         </thead>
         <tbody>
@@ -115,15 +91,9 @@
 		$url_edit = $module."edit/".$id;
 		$url_delete = $module."delete/".$id;
 		
-		if($v['kondisi']=="B"){
-            $kondisi="BAIK";
-        }elseif($v['kondisi']=="RR"){
-            
-            $kondisi="Rusak Ringan";
-        }elseif($v['kondisi']=="RB"){
-            $kondisi="Rusak Berat";
-            
-        }
+		$status_badges = ($v['status']==1)?'<span class="label label-info">Active</span>':'<span class="label label-warning">Non Active</span>';
+		$reg = ($v['status']==1)?"<a href='wa_reg/add/$id'><span class='label label-success'>Registrasi</span></a>":'';
+		
    ?>
             	<tr>
 					<td>
@@ -135,12 +105,7 @@
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 
-                    <td><?=$v['namaSarpras'];?></td>
-                    <td><?=$kondisi;?></td>
-                    <td><?=$v['namaSektor'];?></td>
-                    
-                    <td><?=$v['namaKab'];?></td>    
-                    <td><?=$v['namaProp'];?></td>
+                    <td><?=$v['kompetensi'];?></td>
             	</tr>
                 
         <? } }?>
@@ -213,81 +178,4 @@ $('#fdatalist').submit(function(event) {
         return false;
     });
  
-</script>
-
-<script>
-    
-            var base_url="<?=base_url()?>";
-            var filePdf="Sarpras<?="_".date("YmdHis").".pdf";?>";
-            var filePdfK="Sarpras_kondisi<?="_".date("YmdHis").".pdf";?>";
-            var fileXls="Sarpras<?="_".date("YmdHis").".xls";?>";
-            var fileXlsK="Sarpras_kondisi<?="_".date("YmdHis").".xls";?>";
-      $("a.print-pdf").click(function(e){
-            e.preventDefault();
-            $.post(base_url+"sarpras/sarpras/pdfReport", function(data){
-                            // console.log(data);
-            // alert('ada');
-                            if (data.status==true) {
-                               console.log(data.data);
-                                    UrlSubmit(base_url+"export/proxy_pdf/",{filename:filePdf,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
-
-                                   
-                                    $('.ajax-spinner-bars').css("display","none");
-                            }else{
-                                 $('.ajax-spinner-bars').css("display","none"); 
-                            }
-                        }, "JSON")
-            
-        });
-       $("a.print-pdf-kondisi").click(function(e){
-            e.preventDefault();
-            $.post(base_url+"sarpras/sarpras/pdfReportKondisi", function(data){
-                            // console.log(data);
-            // alert('ada');
-                            if (data.status==true) {
-                               console.log(data.data);
-                                    UrlSubmit(base_url+"export/proxy_pdf/",{filename:filePdfK,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
-
-                                   
-                                    $('.ajax-spinner-bars').css("display","none");
-                            }else{
-                                 $('.ajax-spinner-bars').css("display","none"); 
-                            }
-                        }, "JSON")
-            
-        });
-      $("a.print-xls").click(function(e){
-            e.preventDefault();
-            
-            $.post(base_url+"sarpras/sarpras/xlsReport", function(data){
-                            // console.log(data);
-                            if (data.status==true) {
-                               console.log(data.data);
-                                    UrlSubmit(base_url+"export/toxls/",{filename:fileXls,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
-
-                                   
-                                    $('.ajax-spinner-bars').css("display","none");
-                            }else{
-                                 $('.ajax-spinner-bars').css("display","none"); 
-                            }
-                        }, "JSON")
-            
-        });
-      $("a.print-xls-kondisi").click(function(e){
-            e.preventDefault();
-            
-            $.post(base_url+"sarpras/sarpras/xlsReportKondisi", function(data){
-                            // console.log(data);
-                            if (data.status==true) {
-                               console.log(data.data);
-                                    UrlSubmit(base_url+"export/toxls/",{filename:fileXlsK,tbl:encodeURIComponent(data.data),time:(new Date).getTime(),header_height:70,target:"_blank"});
-
-                                   
-                                    $('.ajax-spinner-bars').css("display","none");
-                            }else{
-                                 $('.ajax-spinner-bars').css("display","none"); 
-                            }
-                        }, "JSON")
-            
-        });
 </script>

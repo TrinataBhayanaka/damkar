@@ -1,20 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class capaian_spm extends Admin_Controller {
+class jenisKompetensi extends Admin_Controller {
 
     function __construct(){
         parent::__construct();
         
         $this->folder="";
 
-		$this->module=$this->folder."capaian_spm/capaian_spm/";
+		$this->module=$this->folder."master_data/jenisKompetensi/";
         $this->http_ref=base_url().$this->module;
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Capaian SPM";
-        $this->load->model("capaianspm_model");
-        $this->model=$this->capaianspm_model;
+        $this->module_title="Master Data Kompetensi List";
+        $this->load->model("mkompetensi_model");
+        $this->model=$this->mkompetensi_model;
 
 		$this->load->model("ion_auth_model");
 		$this->load->database();
@@ -31,11 +31,12 @@ class capaian_spm extends Admin_Controller {
 		$this->admin_layout="admin_lte_layout/main_layout";
 
     }
+    
 
 	function index($forder=0,$limit=10,$page=1){
   		
-		// pre($this->juned());
-		$data_layout["content"]=$this->load->view("capaian_spm/v_capaian_ajax",$data,true); 
+
+		$data_layout["content"]=$this->load->view("master_data/jenisKompetensi/v_jenisKompetensi_ajax",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 	}
 
@@ -43,9 +44,8 @@ class capaian_spm extends Admin_Controller {
 
 	
 		// $arrDB=true;
-		$data=$this->dataPaging($forder,$limit,$page,$postKey);
-		$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
-		
+		$data_layout["content"]=$this->dataPaging($forder,$limit,$page,$postKey);
+
 		if ($data_layout){
             print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
         }else{
@@ -58,43 +58,28 @@ class capaian_spm extends Admin_Controller {
  	 function addAjax(){
  	 	// pre($_POST);
  		$this->data['post']=$_POST;
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('rasioSarPras', "<b>Rasio SarPras</b>", 'required|xss_clean');
+
+		$this->form_validation->set_rules('kompetensi', "<b>Nama Kompetensi</b>", 'required|xss_clean');
 
 		if ($this->form_validation->run() == true)
 		{
 			// if ($_POST['image_name']) {
-			// 	$file_name = $this->__file_upload($_POST['image_name'],$_POST['username']);
+			// 	$file_name = $this->__file_upload($_POST['image_name'],"wewe");
 			// }
 
 			$additional_data = array(
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),
-				// 'luasWilayah'    	=> $this->input->post('luasWilayah'),
-				// 'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
-				// 'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
-				'cakupan'      		=> $this->input->post('cakupan'),
-				'responTime' 	    => $this->input->post('responTime'),
-				'rasioPersonel'     => $this->input->post('rasioPersonel'),
-				'rasioSarPras'      => $this->input->post('rasioSarPras'),
+				'kompetensi'    	=> $this->input->post('kompetensi'),		
 				'status'      		=> 1,
 			);
-		
+			
+		// exit;
 			$insert = $this->model->InsertData($additional_data);
 			if ($insert) {
 				// $data["redirect"]=true;
 				// set_message("success","Data Added.");
-				// redirect("capaian_spm/");
-				$data=$this->dataPaging(0,10,1);
-				$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
-		
+				// redirect("wilayah/wilayah/");
+				$data_layout["content"]=$this->dataPaging(0,10,1);
+
 				if ($data_layout){
 		            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
 		        }else{
@@ -110,20 +95,21 @@ class capaian_spm extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras');
+			$dataFormInput=array('kompetensi');
 
 			$this->data=$this->set_dataInput($dataFormInput);
+			// pre($this->data['catKebakaran']);
 
 		}
-		// pre($this->form_validation->set_rules());
-		$this->data['m_propinsi']=$this->get_lookup_provinsi();
-		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
-		// pre($this->data['m_propinsi']);
-		// pre($this->data['m_kabupaten']);
+		
+		// $this->data['m_propinsi']=$this->get_lookup_provinsi();
+		// $this->data['m_kabupaten']=$this->get_lookup_kabupaten();
+		// $this->data['m_skpd']=$this->user_model->m_skpd(false);
+		// pre($this->data['m_skpd']);
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
-		$data_layout["content"]=$this->load->view("capaian_spm/v_add",$this->data,true); 
+		$data_layout["content"]=$this->load->view("master_data/jenisKompetensi/v_add",$this->data,true); 
 
 		if ($data_layout){
             print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
@@ -149,29 +135,13 @@ class capaian_spm extends Admin_Controller {
 		$user=$this->model->GetRecordData("id='{$id}'");
 		// pre($user);exit;
 		//validate form input
-		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('rasioSarPras', "<b>Rasio SarPras</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('kompetensi', "<b>Nama Kompetensi</b>", 'required|xss_clean');
 
 		if (isset($_POST) && !empty($_POST))
 		{
 
 			$data = array(
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),
-				// 'luasWilayah'    	=> $this->input->post('luasWilayah'),
-				// 'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
-				// 'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
-				'cakupan'      		=> $this->input->post('cakupan'),
-				'responTime' 	    => $this->input->post('responTime'),
-				'rasioPersonel'     => $this->input->post('rasioPersonel'),
-				'rasioSarPras'      => $this->input->post('rasioSarPras'),
+				'kompetensi'    	=> $this->input->post('kompetensi'),		
 				'status'      		=> 1,
 			);
 
@@ -184,9 +154,8 @@ class capaian_spm extends Admin_Controller {
 					// $data["edited"]=true;
 					// set_message("success","User Saved.");
 					// redirect("register/register/", 'refresh');
-					$data=$this->dataPaging(0,10,1);
-					$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
-		
+					$data_layout["content"]=$this->dataPaging(0,10,1);
+
 					if ($data_layout){
 			            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
 			        }else{
@@ -203,19 +172,22 @@ class capaian_spm extends Admin_Controller {
 
 		$this->data['idd'] = $idx;
 
-		$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras');
+		
+		$dataFormInput=array('kompetensi');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
-		// pre($this->data['propinsi']);
+		// pre($this->data['skpd']);
 		// $this->data['m_tanda_pengenal']=$this->get_lookup_tanda_pengenal();
-		$this->data['m_propinsi']=$this->get_lookup_provinsi();
-		$this->data['m_kabupaten']=$this->get_lookup_kabupaten($this->data['propinsi']['value']);
+		// $this->data['m_propinsi']=$this->get_lookup_provinsi();
+		// $this->data['m_kabupaten']=$this->get_lookup_kabupaten();
+		// $this->data['m_skpd']=$this->user_model->m_skpd(false);
+			// pre($this->data['m_skpd']);
 		// $this->data['m_pekerjaan']=$this->get_lookup_pekerjaan();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
 		// pre($this->data);exit;
-		$data_layout["content"]=$this->load->view("capaian_spm/v_edit",$this->data,true); 
+		$data_layout["content"]=$this->load->view("master_data/jenisKompetensi/v_edit",$this->data,true); 
 		if ($data_layout){
             print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
         }else{
@@ -242,9 +214,7 @@ class capaian_spm extends Admin_Controller {
 		$data["delete"]=true;
 		set_message("success","User Deleted.");
 		$arrDB=true;
-		$data=$this->dataPaging($forder,$limit,$page,$postKey);
-		$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
-		
+		$data_layout["content"]=$this->dataPaging($forder,$limit,$page,$postKey);
 		if ($arrDB){
             print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
         }else{
@@ -258,11 +228,9 @@ class capaian_spm extends Admin_Controller {
 	   $get = get_post();
 
 	   if($_POST["chkDel"]==""){
-		   // redirect("capaian_spm/");
+		   // redirect("wilayah/wilayah/");
 	   		$arrDB=true;
-				$data=$this->dataPaging($forder,$limit,$page,$postKey);
-				$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
-		
+				$data_layout["content"]=$this->dataPaging($forder,$limit,$page,$postKey);
 				if ($arrDB){
 		            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
 		        }else{
@@ -282,8 +250,7 @@ class capaian_spm extends Admin_Controller {
 			if($delete){
 
 				$arrDB=true;
-				$data=$this->dataPaging($forder,$limit,$page,$postKey);
-				$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
+				$data_layout["content"]=$this->dataPaging($forder,$limit,$page,$postKey);
 				if ($arrDB){
 		            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
 		        }else{
@@ -300,10 +267,10 @@ class capaian_spm extends Admin_Controller {
 		}else{
 			$key = ($_POST['q'])?$_POST['q']:0;
 		}
-		$filter="(SPM.propinsi=KAB.kode_prop AND SPM.kabupaten=KAB.kode_kab AND SPM.propinsi=PROV.kodeProp) ";
+
 		if ($key) {
 			
-			$filter .= " AND (SPM.propinsi like '%".$key."%' or SPM.kabupaten like '%".$key."%' or SPM.cakupan like '%".$key."%' or SPM.responTime like '%".$key."%' or SPM.rasioPersonel like '%".$key."%' or SPM.rasioSarPras like '%".$key."%' or KAB.nama like '%".$key."%' or PROV.namaProvinsi like '%".$key."%')";
+			$filter = "(catKebakaran like '%".$key."%')";
 			$data["key"]=$key;
 		}
 		$offset 		= ($page-1)*$limit;
@@ -320,7 +287,7 @@ class capaian_spm extends Admin_Controller {
 			$order = 'order by id desc';
 		}
 
-		$arrDB=$this->model->SearchRecordLimitWhereJoin($filter,$limit,$offset,$order);
+		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
 		// foreach ($result as $key => $value) {
 		// 	$namaProp=$this->get_name_provinsi($value['propinsi']);
@@ -347,8 +314,9 @@ class capaian_spm extends Admin_Controller {
 		$data["module"]=$this->module;
 
 		$data["page"]=$forder."/".$limit."/".$page.$query_url;
+		$data_layout["content"]=$this->load->view("master_data/jenisKompetensi/v_list",$data,true); 
 		
-		return $data;
+		return $data_layout["content"];
 	}
 
  	 function set_dataInput($data,$type=1,$dataVal){
@@ -403,41 +371,6 @@ class capaian_spm extends Admin_Controller {
         endif;
         return $arrCat;
     }
-    function pdfReport(){
-    	$arrDB=$this->model->view_capaian();
-
-    	// pre($arrDB);
-    	$this->data['arrDB']=$arrDB;
-
-		$data_layout["content"]=$this->load->view("capaian_spm/v_report",$this->data,true); 
-		// $this->load->view($this->admin_layout,$data_layout);
-
-		if ($arrDB){
-            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
-        }else{
-            print json_encode(array('status'=>false));
-        }
-        
-        exit;
-    }
-    public function xlsReport(){
-
-
-    	$arrDB=$this->model->view_capaian();
-
-    	// pre($arrDB);
-    	$this->data['arrDB']=$arrDB;
-
-		$data_layout["content"]=$this->load->view("capaian_spm/v_report_xls",$this->data,true); 
-		
-		if ($data_layout){
-            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
-        }else{
-            print json_encode(array('status'=>false));
-        }
-        
-        exit;
-	}
-   
+    
    
 }

@@ -60,7 +60,6 @@ class sektor extends Admin_Controller {
  		$this->data['post']=$_POST;
 
 		$this->form_validation->set_rules('namaSektor', "<b>Nama Sektor</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
 
@@ -72,7 +71,6 @@ class sektor extends Admin_Controller {
 
 			$additional_data = array(
 				'namaSektor'    	=> $this->input->post('namaSektor'),
-				'skpd'   			=> $this->input->post('skpd'),
 				'propinsi' 			=> $this->input->post('propinsi'),
 				'kabupaten'  		=> $this->input->post('kabupaten'),				
 				'filename'  		=> "0",				
@@ -102,7 +100,7 @@ class sektor extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('namaSektor','skpd','propinsi','kabupaten');
+			$dataFormInput=array('namaSektor','propinsi','kabupaten');
 
 			$this->data=$this->set_dataInput($dataFormInput);
 
@@ -110,7 +108,7 @@ class sektor extends Admin_Controller {
 		
 		$this->data['m_propinsi']=$this->get_lookup_provinsi();
 		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
-		$this->data['m_skpd']=$this->user_model->m_skpd(false);
+		// $this->data['m_skpd']=$this->user_model->m_skpd(false);
 		// pre($this->data['m_skpd']);
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
@@ -142,7 +140,6 @@ class sektor extends Admin_Controller {
 		// pre($user);exit;
 		//validate form input
 		$this->form_validation->set_rules('namaSektor', "<b>Nama Sektor</b>", 'required|xss_clean');
-		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
 
@@ -151,7 +148,6 @@ class sektor extends Admin_Controller {
 
 			$data = array(
 				'namaSektor'    	=> $this->input->post('namaSektor'),
-				'skpd'   			=> $this->input->post('skpd'),
 				'propinsi' 			=> $this->input->post('propinsi'),
 				'kabupaten'  		=> $this->input->post('kabupaten'),				
 				'status'      		=> 1,
@@ -185,14 +181,13 @@ class sektor extends Admin_Controller {
 		$this->data['idd'] = $idx;
 
 		
-		$dataFormInput=array('namaSektor','skpd','propinsi','kabupaten');
+		$dataFormInput=array('namaSektor','propinsi','kabupaten');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
 		// pre($this->data['skpd']);
 		// $this->data['m_tanda_pengenal']=$this->get_lookup_tanda_pengenal();
 		$this->data['m_propinsi']=$this->get_lookup_provinsi();
 		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
-		$this->data['m_skpd']=$this->user_model->m_skpd(false);
 			// pre($this->data['m_skpd']);
 		// $this->data['m_pekerjaan']=$this->get_lookup_pekerjaan();
 		$this->data["user_name"]=$this->data['users']['user']['username'];

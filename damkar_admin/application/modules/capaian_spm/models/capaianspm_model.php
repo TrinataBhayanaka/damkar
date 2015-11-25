@@ -4,7 +4,7 @@ class capaianspm_model extends LAT_Model{
 	/**
 	 * Set Table Name Here
 	 */
-	public $tbl= 'dmkr_spm';
+	public $tbl= 'dmkr_spm as SPM,m_kabupaten_kota as Wil';
 	public $tbl_view_capaian= 'view_capaian';
 	//public $tbl_cat= 'cms_pages_category';
 

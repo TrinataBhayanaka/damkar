@@ -68,10 +68,12 @@ class wa_reg extends Admin_Controller {
 	 
 	 
 	 
-	 
+	 function maps(){
+	 	
+	 }
 	 
 	 function listview(){
-	 	debug();
+	 	//debug();
 	 	if (!$this->cms->has_view($this->module)) redirect ("error_");
 		//acl
 		$userSess=$_SESSION[$this->lauth->appname]["userdata"]["user"];
@@ -142,7 +144,7 @@ class wa_reg extends Admin_Controller {
 	
 	
 	function listuser(){
-		// debug();
+		// //debug();
 	 	//if (!$this->cms->has_view($this->module)) redirect ("admin/error");
 		// $userSess=$_SESSION[$this->lauth->appname]["userdata"]["user"];
 		// if($userSess['id_propinsi'] != ''):
@@ -213,9 +215,9 @@ class wa_reg extends Admin_Controller {
 			$this->_render_page($this->module."v_add",$data,true);
         endif;
 		
-        //debug();
+        ////debug();
         if($act=="create"):
-			//debug();
+			////debug();
 			$data=get_post();
 			$data=$this->_add_creator($data);
 			$this->conn->StartTrans();
@@ -262,7 +264,7 @@ class wa_reg extends Admin_Controller {
 			$id_enc=$idx;
 			$id=decrypt($idx);
 		endif;
-		// debug();
+		// //debug();
 		
 		$this->msg_ok="Data created successfully";
         $this->msg_fail="Unable to add new comment";
@@ -296,7 +298,7 @@ class wa_reg extends Admin_Controller {
 			
         endif;
 		
-        //debug();
+        ////debug();
         if($act=="create"):
 			$data=get_post();
 			// echo $id."/".$id_enc;
@@ -466,7 +468,7 @@ class wa_reg extends Admin_Controller {
 			$this->_render_page($this->module."v_register",$data,true);
         endif;
 		
-        //debug();
+        ////debug();
         if($act=="create"):
 			$data=get_post();
 			
@@ -612,7 +614,7 @@ class wa_reg extends Admin_Controller {
 			$id_enc=$id;
 			$id=decrypt($id);
 		endif;
-		// debug();
+		// //debug();
 		$this->msg_ok="Link updated successfully";
         $this->msg_fail="Unable to update link";
        
@@ -674,7 +676,7 @@ class wa_reg extends Admin_Controller {
         endif;
 		
 		if($act=="update"):
-			// debug();
+			// //debug();
 			$this->conn->StartTrans();
             wa_log_start($id);
 			
@@ -882,7 +884,7 @@ class wa_reg extends Admin_Controller {
 		$data['arrEmail']=$this->model_cms_configuration->GetRecordData("id_key='email'");
 		$data['arrKontak']=$this->model_cms_configuration->GetRecordData("id_key='kontak_laporan'");
 		if($act=="update"):
-			debug();
+			//debug();
 			$this->conn->StartTrans();
             $data=get_post();
 			$data=$this->_add_editor($data);

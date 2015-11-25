@@ -60,7 +60,7 @@
                     <li>
                         <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
                             <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
+                                <i class="fa fa-file-excel-o"></i>
                             </span> 
                             Eksport Excel
                         </a>

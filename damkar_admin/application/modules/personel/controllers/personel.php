@@ -346,13 +346,19 @@ class personel extends Admin_Controller {
 
 		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
-		foreach ($result as $key => $value) {
+		foreach ($result as $keys => $value) {
+			$namaSektor=$this->get_name_sektor($value['sektor']);
+			// pre($namaSektor);exit;
+			$namaKompetensi=$this->get_name_kompetensi($value['kompetensi']);
 			$namaProp=$this->get_name_provinsi($value['propinsi']);
 			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
-			
-			$arrDB[$key]=$value;
-			$arrDB[$key]['namaProp']=$namaProp['nama'];
-			$arrDB[$key]['namaKab']=$namaKab['nama'];
+			// pre($value['kompetensi']);
+			// pre($namaKompetensi);exit;
+			$arrDB[$keys]=$value;
+			$arrDB[$keys]['namaProp']=$namaProp['nama'];
+			$arrDB[$keys]['namaKab']=$namaKab['nama'];
+			$arrDB[$keys]['namaSektor']=$namaSektor['namaSektor'];
+			$arrDB[$keys]['namaKompetensi']=$namaKompetensi['kompetensi'];
 		}
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;

@@ -274,6 +274,22 @@
 									</div>
 								</div>
 							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+									
+									<label>Koordinat X</label>
+									<?php echo form_input($x,false,'class="form-control required"');?>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+									
+									<label>Koordinat Y</label>
+									<?php echo form_input($y,false,'class="form-control required"');?>
+									</div>
+								</div>
+							</div>
 							
 							
 							

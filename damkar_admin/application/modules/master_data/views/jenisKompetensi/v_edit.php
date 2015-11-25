@@ -100,7 +100,7 @@
               </div>';
 		}
 	?>
-	<?php echo form_open("master_data/sektor/edit/".$idd,'id="fdata"');?>
+	<?php echo form_open("master_data/jenisKompetensi/edit/".$idd,'id="fdata"');?>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -112,70 +112,17 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									
-									<label>Provinsi </label>
-									<select class="form-control" id="propinsi" name="propinsi">
-									<? 
-									// pre($m_propinsi);
-									foreach ($m_propinsi as $key => $value) {
-										$selected="";
-										if($value['kode_prop']==$propinsi['value']){
-											$selected="selected";
-										}
-									?>
-									<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
-									<? 
-										}
-
-
-									?>
-									</select>
+									<label>Nama Kompetensi </label>
+									<?php echo form_input($kompetensi,false,'class="form-control"');?>
+									
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>Kabupaten</label>
-									<select class="form-control" id="kabupaten" name="kabupaten">
-									<? 
-									// pre($m_propinsi);
-									foreach ($m_kabupaten as $key => $value) {
-										$selected="";
-										if($value['kode_kab']==$kabupaten['value']){
-											$selected="selected";
-										}
-									?>
-									<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
-									<? 
-										}
-
-
-									?>
-									</select></div>
-								</div>
+								
 							</div>
 							
-							<div class="row">
-								
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>Nama Sektor </label>
-									<?php echo form_input($namaSektor,false,'class="form-control"');?>
-									</div>
-								</div>
-								
-							</div>
+						
 					</div> <!-- span6 -->
-				<!-- 	<div class="col-md-4">
-						<div id="attachment_frame" class="form-group">
-							<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
-							<div id="imgcontainer">
-								<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
-								<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
-							</div>
-							<input id="image_name" type="hidden" name="image_name" />
-						</div>
-					</div> -->
+				
 					
 				</div>
 				
