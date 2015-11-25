@@ -1,9 +1,7 @@
 brwa_services/*
 lat_ci_portal/*
-damkar_admin/assets/*
 damkar_admin/application/config/*
 bencana_admin/application/config/*
-bencana_admin/assets/*
 layanan_data/*
 tmp/*
 uploads/*
