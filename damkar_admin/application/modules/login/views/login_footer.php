@@ -1,10 +1,10 @@
+<script src="assets/themes/login-tmp/js/libs/jquery-1.9.1.min.js"></script>
+<script src="assets/themes/login-tmp/js/libs/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="assets/themes/login-tmp/js/libs/bootstrap.min.js"></script>
 
-        <!-- jQuery 2.0.2 -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <? echo js_asset("jquery.cookie.js");?>
-		<? echo js_asset("lingkar/app.pack.js");?>
-        <!-- Bootstrap -->
-        <script src="assets/themes/admin_lte/js/bootstrap.min.js" type="text/javascript"></script>        
+<script src="assets/themes/login-tmp/js/App.js"></script>
 
-    </body>
+<script src="assets/themes/login-tmp/js/Login.js"></script>
+
+</body>
 </html>
