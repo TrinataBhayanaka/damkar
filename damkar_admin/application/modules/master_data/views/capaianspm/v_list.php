@@ -48,14 +48,7 @@
 							</span>	
 							Refresh
 						</a>
-					</li><li>
-                        <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport PDF
-                        </a>
-                    </li>
+					</li>
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">

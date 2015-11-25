@@ -21,6 +21,8 @@ $config["dir_pages_image"] = "assets/image/pages/";
 
 $config["dir_tmp_members"] = "tmp/plupload/";
 $config["dir_members"] = "assets/image/members/";
+$config["dir_personel"] = "assets/image/personels/";
+// $config["dir_personel"] = "assets/image/personels/";
 
 $config["dir_tmp_regulasi"] = "tmp/plupload/";
 $config["dir_regulasi"] = "assets/image/regulasi/";

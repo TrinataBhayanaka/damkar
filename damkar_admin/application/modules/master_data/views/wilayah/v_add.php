@@ -156,6 +156,31 @@
 									</select>
 									</div>
 								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+									
+									<label>SKPD </label>
+									<!-- <div id="kabupaten">
+
+									</div> -->
+									<select class="form-control" id="skpd" name="skpd">
+									<? 
+									// pre($m_propinsi);
+									foreach ($m_skpd as $key => $value) {
+										// $selected="";
+										// if($value['kode_prop']=="14"){
+										// 	$selected="selected";
+										// }
+									?>
+									<option value="<?=$value['skpd']?>" ><?=$value['skpd']?></option>
+									<? 
+										}
+
+
+									?>
+									</select>
+									</div>
+								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-4">

@@ -34,7 +34,6 @@ class kejadian extends Admin_Controller {
 
     }
     
-
 	function index($forder=0,$limit=10,$page=1){
   		
 
@@ -92,6 +91,8 @@ class kejadian extends Admin_Controller {
 					$dataexcel[$index]['N']=$value['N'];
 					$dataexcel[$index]['O']=$value['O'];
 					$dataexcel[$index]['P']=$value['P'];
+					$dataexcel[$index]['Q']=$value['Q'];
+					$dataexcel[$index]['R']=$value['R'];
 
 				$index++;
 				}
@@ -129,6 +130,8 @@ class kejadian extends Admin_Controller {
 				'objek'  			=> $value[N],	
 				'nilaiKerugian'  	=> $value[O],	
 				'jumlahPengungsian' => $value[P],		
+				'x' 				=> $value[Q],		
+				'y' 				=> $value[R],		
 				'n_status'      	=> 1,
 			);
 				$logdataImport = array(
@@ -147,7 +150,9 @@ class kejadian extends Admin_Controller {
 				'penyebab'  		=> $value[M],	
 				'objek'  			=> $value[N],	
 				'nilaiKerugian'  	=> $value[O],	
-				'jumlahPengungsian' => $value[P],				
+				'jumlahPengungsian' => $value[P],		
+				'x' 				=> $value[Q],		
+				'y' 				=> $value[R],				
 				'status'      		=> "import",
 			);
 			$filter="noKejadian='".$value[A]."'";
@@ -232,6 +237,8 @@ class kejadian extends Admin_Controller {
 				'objek'      		=> $this->input->post('objek'),
 				'nilaiKerugian'     => $this->input->post('nilaiKerugian'),
 				'jumlahPengungsian' => $this->input->post('jumlahPengungsian'),
+				'x' 				=> $this->input->post('x'),
+				'y'					 => $this->input->post('y'),
 				'n_status'      	=> 1,
 			);
 		
@@ -257,7 +264,7 @@ class kejadian extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
+			$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian','x','y');
 
 			$this->data=$this->set_dataInput($dataFormInput);
 			// pre($this->data);
@@ -331,6 +338,8 @@ class kejadian extends Admin_Controller {
 				'objek'      		=> $this->input->post('objek'),
 				'nilaiKerugian'     => $this->input->post('nilaiKerugian'),
 				'jumlahPengungsian' => $this->input->post('jumlahPengungsian'),
+				'x' 				=> $this->input->post('x'),
+				'y'					 => $this->input->post('y'),
 				'n_status'      	=> 1,
 			);
 			// pre($data);
@@ -365,7 +374,7 @@ class kejadian extends Admin_Controller {
 
 		$this->data['idd'] = $idx;
 
-		$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian');
+		$dataFormInput=array('noKejadian','kodePropinsi','kodeKabupaten','kejadian','waktuKejadian','meninggal','hilang','terluka','mengungsi','penyebab','objek','nilaiKerugian','jumlahPengungsian','x','y');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
 		// pre($this->data);

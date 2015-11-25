@@ -1,0 +1,133 @@
+ul.task {
+	list-style-type: none;
+	width: 100%;
+	font-size: 14px;
+	padding: 0px;
+	clear: both;
+	z-index: 200;
+}
+ul.task li {
+	clear:both;
+	display:block;
+	margin: 0px;
+	padding: 0px;
+	position:relative;
+	clear: both;
+	background:#fafafa
+}
+ul.task li.task-header {
+	font-weight: bold;
+	border-bottom:1px solid #ccc;
+	font-size: 14px;
+	background:transparent;
+}
+/*ul.task li.task-header .section-task {
+	padding-left:35px!important
+}*/
+.no-padding ul.task li div.sections {
+	position:relative;
+	display:block;
+	border:1px solid #ddd;
+	margin-top:-1px;
+	border-width:1px 0;
+}
+ul.task li div.sections {
+	position:relative;
+	display:block;
+	border:1px solid #ddd;
+	margin-top:-1px;
+}
+ul.task li div.sections.inactive {
+	background: #f8f8f8 url(../js/plugins/fullcalendar/half-blind.png) repeat!important;
+	color:#aaa!important;
+	text-decoration:line-through!important
+}
+ul.task li div.section{
+	float:left;
+	min-height: 16px;
+	padding: 8px 5px;
+}
+ul.task li div.section.section-0{
+	width:5%;
+}
+ul.task li div.section.section-task{
+	width:55%;
+}
+ul.task li div.section.section-progress{
+	width:15%
+}
+ul.task li div.section.section-due{
+	width:15%
+}
+ul.task li div.section.section-actions{
+	width: 15%
+}
+ul.task li div.section.section-actions a {
+    font-size: 14px;
+    margin: -1px 1px;
+    display: inline-block;
+    padding: 0px;
+	color:#bbb;
+}
+ul.task li div.section.section-actions a:hover {
+	text-decoration:none;
+	color:#555;
+}
+ul.task li div.section.section-actions [data-action] > [class*="icon-"] {
+	font-weight:lighter;
+    margin-right: 0px;
+}
+
+ul.task li div.priority {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 6px;
+    height: 100%;
+    border-right: 1px solid #ddd;
+	background:#ddd;
+}
+ul.task li div.priority.priority-critical {
+	background:#d43f3a
+}
+ul.task li div.priority.priority-high {
+	background:#f0ad4e
+}
+ul.task li div.priority.priority-normal {
+	background: #5cb85c
+}
+ul.task li div.priority.priority-low {
+	background:#aaaaaa
+}
+
+ul.task li span.start{
+	display:block;
+}
+ul.task li span.end{
+	display:inline-block;
+}
+ul.task li span.start,
+ul.task li span.end{
+	font-size:.9em
+}
+ul.task li span.end{
+	border-top:1px solid #999
+}
+
+ul.task li div.main {
+    float:left;
+	display:block
+}
+ul.task li small {
+	display:block;
+	font-size:x-small;
+	color:#777
+}
+ul.task li div.status {
+    float:left;
+	margin:0 10px;
+	display:block;
+	cursor:default
+}
+
+.tasklist-placeholder { border: 2px dashed #ddd; visibility: visible !important; height: 50px !important; }

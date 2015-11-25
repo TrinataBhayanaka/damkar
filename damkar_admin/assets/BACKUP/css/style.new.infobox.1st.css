@@ -1,0 +1,46 @@
+*[class^="infobox"] {
+    background: none repeat scroll 0% 0% transparent;
+    padding: 10px;
+    position: relative;
+	border:1px solid transparent
+}
+.infobox-bordered {
+	border:1px solid #ddd
+}
+
+*[class^="infobox"] .sparkline-box {
+	margin:15px 0 0;
+	position:relative;
+	display:block;
+	width:100%;
+	height:30px;
+}
+*[class^="infobox"] .title {
+}
+*[class^="infobox"] .value {
+	font-family:"Segoe UI";
+	font-weight:lighter;
+	margin-top:-20px;
+	font-size:36px;
+	color:#777;
+}
+
+*[class^="infobox"]  .badge {
+	float:right!important;
+	overflow: hidden;
+	border-radius:2px;
+	font-size:11px;
+	font-weight:normal;
+	padding:5px;
+}
+*[class^="infobox"] .badge.badge-success {
+	color:#009900!important;
+	background:transparent
+}
+*[class^="infobox"] .badge.badge-important {
+	color: #CC0000!important;
+	background:transparent
+}
+*[class^="infobox"]  .badge i {
+	margin-left:2px;
+}

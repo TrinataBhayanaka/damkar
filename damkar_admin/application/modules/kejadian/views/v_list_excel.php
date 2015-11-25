@@ -83,10 +83,12 @@
         <th rowspan="2" class="text-center">Bencana/Kejadian</th>
         <th class="text-center">Waktu Kejadian</th>
         <th class="text-center" colspan="4">Korban Meninggal</th>
-        <th class="text-center">Penyebab</th>
-        <th class="text-center">Objek</th>
-		<th class="text-center">Nilai Kerugian</th>
-		<th width="50" class="text-center">Jumlah Pengusian</th>
+        <th class="text-center" rowspan="2">Penyebab</th>
+        <th class="text-center" rowspan="2">Objek</th>
+		<th class="text-center" rowspan="2">Nilai Kerugian</th>
+        <th width="50" class="text-center" rowspan="2">Jumlah Pengusian</th>
+        <th width="50" class="text-center" rowspan="2">Koordinat X</th>
+		<th width="50" class="text-center" rowspan="2">Koordinat Y</th>
         </tr>
         <tr>
             <th class="text-center">kode</th>
@@ -132,7 +134,9 @@
                     <td><?=$v['M'];?></td>
                     <td><?=$v['N'];?></td>
                     <td><?=$v['O'];?></td>
-					<td><?=$v['P'];?></td>
+                    <td><?=$v['P'];?></td>
+                    <td><?=$v['Q'];?></td>
+					<td><?=$v['R'];?></td>
             	</tr>
                 
         <? } }?>

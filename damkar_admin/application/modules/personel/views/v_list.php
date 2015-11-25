@@ -62,7 +62,7 @@
                     <li>
                         <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
                             <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
+                                <i class="fa fa-file-excel-o"></i>
                             </span> 
                             Eksport Excel
                         </a>
@@ -97,12 +97,12 @@
         <th width="50">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th class="forder" width="100" rel="date">NIP</th>
-        <th class="forder" width="300" rel="title">Nama</th>
-        <th>Gelar Depan</th>
-		<th>Gelar Belakang</th>
-        <th width="100">Sektor</th>
-		<th width="50">Status</th>
+        <th class="forder"  rel="date">NIP</th>
+        <th class="forder"  rel="title">Nama</th>
+        <th>Tingkat Kompetensi</th>
+        <th>Sektor</th>
+        <th>Kabupaten</th>
+        <th>Provinsi</th>
         </tr>
         </thead>
         <tbody>
@@ -128,12 +128,12 @@
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 	
-                    <td rel="date_col" width="150"><?=$v['nip'];?></td>
+                    <td rel="date_col"><?=$v['nip'];?></td>
                     <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['nama'];?></a></td>
-                    <td><?=$v['glrDepan'];?></td>
-					<td><?=$v['glrBelakang'];?></td>
-                    <td><?=$v['sektor'];?></td>
-					<td><?=$status_badges;?></td>
+                    <td><?=$v['namaKompetensi'];?></td>
+					<td><?=$v['namaSektor'];?></td>
+                    <td><?=$v['namaKab'];?></td>
+					<td><?=$v['namaProp'];?></td>
             	</tr>
                 
         <? } }?>

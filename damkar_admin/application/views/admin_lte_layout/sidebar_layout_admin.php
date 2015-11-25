@@ -169,6 +169,7 @@
                                 <li><a href="master_data/sektor"><i class="fa fa-map-marker"></i>Sektor List</a></li> 
                                 <li><a href="master_data/jenisKebakaran"><i class="fa  fa-fire"></i>Jenis Kebakaran</a></li> 
                                 <li><a href="master_data/jenisSarPras"><i class="fa fa-truck"></i>Jenis SarPras</a></li> 
+                                <li><a href="master_data/jenisKompetensi"><i class="fa fa-file-text-o"></i>Jenis Kompentensi</a></li> 
                                 <!-- <li><a href="master_data/entitas"><i class="fa"></i>Entitas</a></li> 
                                 <li><a href="master_data/jenis_ekosistem"><i class="fa"></i>Jenis Ekosistem</a></li>
                                 <li><a href="master_data/jenis_document"><i class="fa"></i>Jenis Dokumen</a></li>
@@ -192,10 +193,10 @@
                             <ul class="treeview-menu">
                                 <li><a href="admin/account_manager/"><i class="fa"></i>Users</a></li>
                                 <li><a href="admin/account_manager/group_list"><i class="fa"></i>Groups</a></li>
-                                <!--<li><a href="setting/module/"><i class="fa fa-angle-double-right"></i>  Module</a></li>
-                                <!-- <li><a href="admin/acl"><i class="fa"></i>ACL Groups </a></li>
+                              <!--   <li><a href="setting/module/"><i class="fa fa-angle-double-right"></i>  Module</a></li> -->
+                                <li><a href="admin/acl"><i class="fa"></i>ACL Groups </a></li>
                             </ul>
-                        </li> -->
+                        </li>
                         <?php endif;?>
                         
                       <?php if($this->cms->has_admin("admin/config_/")):?>

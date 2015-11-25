@@ -99,11 +99,11 @@
         <th width="50">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th>Propinsi</th>
-        <th>Kabupaten</th>
-        <th class="forder">Kantor Sektor</th>
         <th class="forder">Jenis Sarpras</th>
         <th class="forder">Kondisi</th>
+        <th class="forder">Kantor Sektor</th>
+        <th>Kabupaten</th>
+        <th>Propinsi</th>
         </tr>
         </thead>
         <tbody>
@@ -115,9 +115,15 @@
 		$url_edit = $module."edit/".$id;
 		$url_delete = $module."delete/".$id;
 		
-		$status_badges = ($v['status']==1)?'<span class="label label-info">Active</span>':'<span class="label label-warning">Non Active</span>';
-		$reg = ($v['status']==1)?"<a href='wa_reg/add/$id'><span class='label label-success'>Registrasi</span></a>":'';
-		
+		if($v['kondisi']=="B"){
+            $kondisi="BAIK";
+        }elseif($v['kondisi']=="RR"){
+            
+            $kondisi="Rusak Ringan";
+        }elseif($v['kondisi']=="RB"){
+            $kondisi="Rusak Berat";
+            
+        }
    ?>
             	<tr>
 					<td>
@@ -129,12 +135,12 @@
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 
-                    <td><?=$v['namaProp'];?></td>
-                    <td><?=$v['namaKab'];?></td>	
-                    <td><?=$v['idSektor'];?></td>
-                    <td><?=$v['catSarpras'];?></td>
+                    <td><?=$v['namaSarpras'];?></td>
+                    <td><?=$kondisi;?></td>
+                    <td><?=$v['namaSektor'];?></td>
                     
-					<td><?=$v['kondisi'];?></td>
+                    <td><?=$v['namaKab'];?></td>    
+                    <td><?=$v['namaProp'];?></td>
             	</tr>
                 
         <? } }?>

@@ -1,0 +1,87 @@
+/* http: links */
+.file a{
+	text-decoration:none;
+	color:#666666;
+}
+
+.file a:hover{
+	color:#666666;
+	text-decoration:underline;
+}
+
+a.url_link,.file a[href^="http:"]{
+    display:inline-block;
+    padding-left:20px;
+    background:transparent url(../icons/famfamsilk/page_link.png) center right no-repeat;
+}
+/* mailto: links */
+a.mail_link,.file a[href^="mailto:"] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/email.png) center left no-repeat;
+}
+/* pdf: links */
+a.pdf_link,.file a[href$='.pdf'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_white_acrobat.png) center left no-repeat;
+}
+/* swf: links */
+a.flash_link,.file a[href$='.swf'],.file a[href$='.fla'],.file a[href$='.swd'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_white_flash.png) center left no-repeat;
+}
+/* xls: links */
+a.xls_link,.file a[href$='.xls'],.file a[href$='.csv'],.file a[href$='.xlt'],.file a[href$='.xlw'], .file a[href$='.xlsx'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_excel.png) center left no-repeat;
+}
+/* ppt: links */
+a.ppt_link,.file a[href$='.ppt'],.file a[href$='.pps'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_white_powerpoint.png) center left no-repeat;
+}
+/* doc: links */
+a.doc_link,.file a[href$='.doc'],.file a[href$='.rtf'],.file a[href$='.txt'],.file a[href$='.wps'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_word.png)center left no-repeat;
+}
+/* zip: links */
+a.zip_link,.file a[href$='.zip'],.file a[href$='.gzip'],.file a[href$='.rar'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_white_zip.png) center left no-repeat;
+}
+
+a.img_link,.file a[href$='.png'],.file  a[href$='.jpeg'],.file  a[href$='.jpg'],.file  a[href$='.gif'],.file  a[href$='.bmp'] {
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/image_link.png) center left no-repeat;
+}
+
+/* doc: links */
+a.txt_link,.file a[href$='.txt']{
+    display:inline-block;
+    padding-left:20px;
+    line-height:18px;
+    background:transparent url(../icons/famfamsilk/page_white_text.png)center left no-repeat;
+}
+
+
+
+
+
+
+

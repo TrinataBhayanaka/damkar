@@ -1,0 +1,285 @@
+/* Iconize 0.5 */
+
+/* websites (pictures and movies) */
+.file a[href *="youtube.com/watch?"], .file a[href *="sevenload.com/videos/"], .file a[href *="metacafe.com/watch/"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_film.gif) no-repeat center right;
+}
+
+.file a[href *="flickr.com/photos/"], .file a[href *="zooomr.com"], .file a[href *="imageshack.us"], .file a[href *="bubbleshare.com"], .file a[href *="sevenload.com/bilder/"] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_pic.gif) no-repeat center right;
+}
+
+/* extensions */
+
+.file a[href$='.doc'], .file a[href$='.rtf'] , .file a[href$='.docx']{
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_doc.gif) no-repeat center right;
+}
+
+.file a[href$='.txt'] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_txt.gif) no-repeat center right;
+}
+
+.file a[href$='.xls'],.file a[href$='.xlsx']  {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	
+	background: transparent url(icons/icon_xls.gif) no-repeat center right;
+}
+
+.file a[href$='.rss'], .file a[href$='.atom'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_feed.gif) no-repeat center right;
+}
+
+.file a[href$='.opml'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_opml.gif) no-repeat center right;
+}
+
+.file a[href$='.phps'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_phps.gif) no-repeat center right;
+}
+
+.file a[href$='.phps'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_phps.gif) no-repeat center right;
+}
+
+.file a[href$='.torrent'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_torrent.gif) no-repeat center right;
+}
+
+.file a[href$='.vcard'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_vcard.gif) no-repeat center right;
+}
+
+.file a[href$='.exe'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_exe.gif) no-repeat center right;
+}
+
+.file a[href$='.dmg'], .file a[href$='.app'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_dmg.gif) no-repeat center right;
+}
+
+.file a[href$='.pps'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_pps.gif) no-repeat center right;
+}
+
+.file a[href$='.pdf'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_pdf.gif) no-repeat center right;
+}
+
+.file a[href$='.xpi'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_plugin.gif) no-repeat center right;
+}
+
+.file a[href$='.fla'], .file a[href$='.swf'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_flash.gif) no-repeat center right;
+}
+
+.file a[href$='.zip'], .file a[href$='.rar'], .file a[href$='.gzip'], .file a[href$='.bzip'], .file a[href$='.ace'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_archive.gif) no-repeat center right;
+}
+
+.file a[href$='.ical'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_ical.gif) no-repeat center right;
+}
+
+.file a[href$='.css'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_css.gif) no-repeat center right;
+}
+
+.file a[href$='.ttf'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_ttf.gif) no-repeat center right;
+}
+
+.file a[href$='.jpg'], .file a[href$='.gif'], .file a[href$='.png'], .file a[href$='.bmp'], .file a[href$='.jpeg'], .file a[href$='.svg'], .file a[href$='.eps'] { 
+	display:inline-block;
+	/*display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_pic.gif) no-repeat center right;
+}
+
+.file a[href$='.mov'], .file a[href$='.wmv'], .file a[href$='.mp4'], .file a[href$='.avi'], .file a[href$='.mpg'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_film.gif) no-repeat center right;
+}
+
+.file a[href$='.mp3'], .file a[href$='.wav'], .file a[href$='.ogg'], .file a[href$='.wma'], .file a[href$='.m4a'] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_music.gif) no-repeat center right;
+}
+
+/* messenger */
+.file a[href ^="aim:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_aim.gif) no-repeat center right;
+}
+
+.file a[href ^="msnim:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_msn.gif) no-repeat center right;
+}
+
+.file a[href ^="xmpp:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_jabber.gif) no-repeat center right;
+}
+
+.file a[href *="icq.com"] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_icq.gif) no-repeat center right;
+}
+
+.file a[href *="edit.yahoo.com/config/send_webmesg?"] { 
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+	background: transparent url(icons/icon_yim.gif) no-repeat center right;
+}
+
+.file a[href ^="callto:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_call.gif) no-repeat center right;
+}
+
+.file a[href ^="skype:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_skype.gif) no-repeat center right;
+}
+
+.file a[href ^="gg:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_gadugadu.gif) no-repeat center right;
+}
+
+/* email */
+.file a[href ^="mailto:"] {
+	display:inline-block;
+	/*padding: 5px 20px 5px 0;*/
+	padding-left:20px;
+	line-height:18px;
+    background: transparent url(icons/icon_mailto.gif) no-repeat center right;
+}
+
+
+/* use this class to make sure that images won't get iconized */
+.imageLink {
+	padding-right: 0px !important;
+	background: none !important;
+}
+
+.file.no_padding a{
+	pading-left:15px !important;
+}

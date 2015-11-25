@@ -91,7 +91,7 @@
         <th>Luas Wilayah</th>
 		<th>Jumlah Kecamatan</th>
         <th width="100">Jumlah Penduduk</th>
-		<th width="50">Status</th>
+		<th width="50">SKPD</th>
         </tr>
         </thead>
         <tbody>
@@ -122,7 +122,7 @@
                     <td><?=$v['luasWilayah'];?></td>
 					<td><?=$v['jumlahKecamatan'];?></td>
                     <td><?=$v['jumlahPenduduk'];?></td>
-					<td><?=$status_badges;?></td>
+					<td><?=$v['skpd'];?></td>
             	</tr>
                 
         <? } }?>

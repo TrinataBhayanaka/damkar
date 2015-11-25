@@ -61,6 +61,26 @@
 							Refresh
 						</a>
 					</li>
+                    <!-- <li>
+                        <div class="btn-group">
+                          <button class="btn btn-default" type="button"><i class="fa fa-download"></i> Eksport</button>
+                          <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <ul id="menu"role="menu" class="dropdown-menu">
+                            <li><a href="#" class="print-pdf" data-url="">
+                                <i class="fam-page_white_acrobat"></i> PDF Kejadian</a></li>
+                            <li><a href="#" class="print-xls"><i class="fa fa-file-excel-o"></i> Excel Kejadian</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#"  class="print-pdf-i" data-url="">
+                                <i class="fam-page_white_acrobat"></i> PDF Intensitas</a>
+                            </li>
+                            <li><a href="#" class="print-xls-i" data-url=""><i class="fa fa-file-excel-o"></i> Excel Intensitas</a></li>
+                          </ul>
+                        </div>
+                    </li> -->
                     <li>
                         <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
                             <span class="block text-center">
@@ -73,7 +93,7 @@
                     <li>
                         <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
                             <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
+                                <i class="fa fa-file-excel-o"></i>
                             </span> 
                             Eksport Excel
                         </a>
@@ -91,7 +111,7 @@
                     <li>
                         <a href="#" class="print-xls-i" data-url="" title="Data Pendaftar">
                             <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
+                                <i class="fa fa-file-excel-o"></i>
                             </span> 
                             Eksport Excel Intensitas
                         </a>
@@ -120,30 +140,17 @@
         <table width="100%" cellpadding="0" cellspacing="0" class="table table-condensed table-hover">
         <thead>
         <tr>
-        <td width="20"  rowspan="2">&nbsp;</td>
-        <td width="50"  rowspan="2">&nbsp;</td>
-        <th width="20" rowspan="2"colspan="2" class="text-center">No.</th>
-        <th width="20" rowspan="2"colspan="2" class="text-center">No Kejadian</th>
-        <th class="forder text-center" width="100" rel="date" colspan="2">Provinsi</th>
-        <th class="forder  text-center" width="300" rel="title" colspan="2">Kabupaten</th>
-        <th rowspan="2" class="text-center">Kejadian</th>
-        <th class="text-center">Waktu Kejadian</th>
-        <th class="text-center" colspan="4">Korban Meninggal</th>
-        <th class="text-center" rowspan="2">Penyebab</th>
-        <th class="text-center" rowspan="2">Objek</th>
-		<th class="text-center" rowspan="2">Nilai Kerugian</th>
-		<th width="50" class="text-center" rowspan="2">Jumlah Pengusian</th>
-        </tr>
-        <tr>
-            <th class="text-center">kode</th>
-            <th class="text-center">nama</th>
-            <th class="text-center">kode</th>
-            <th class="text-center">nama</th>
-            <th class="text-center">tgl/bln/thn</th>
-            <th class="text-center">Meninggal</th>
-            <th class="text-center">hilang</th>
-            <th class="text-center">terluka</th>
-            <th class="text-center">mengungsi</th>
+        <td width="20"  >&nbsp;</td>
+        <td width="50"  >&nbsp;</td>
+        <th width="20" class="text-center">No.</th>
+        <th width="20" class="text-center">No Kejadian</th>
+        <th class="text-center">Kejadian</th>
+        <th class="text-center" >Penyebab</th>
+        <th class="text-center">Objek</th>
+        <th class="forder  text-center"  rel="title" >Kabupaten</th>
+        <th class="forder text-center" rel="date" >Provinsi</th>
+        <th class="forder text-center" rel="date" >Koordinat X</th>
+        <th class="forder text-center" rel="date" >Koordinat Y</th>
         </tr>
         </thead>
         <tbody>
@@ -168,22 +175,14 @@
                         <a href="<?=$url_delete;?>/<?=$page;?>" id="deleteData"><i class="icon-remove icon-alert"></i></a>   
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
-                    <td></td> 	
-                    <td rel="date_col" width="150" colspan="2"><?=$v['noKejadian'];?></td>
-                    <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['kodePropinsi'];?></a></td>
-                    <td><?=$v['namaPropinsi'];?></td>
-                    <td><?=$v['kodeKabupaten'];?></td>
-                    <td><?=$v['namaKabupaten'];?></td>
+                    <td rel="date_col"><?=$v['noKejadian'];?></td>
                     <td><?=$v['namaKejadian'];?></td>
-                    <td><?=$v['waktuKejadian'];?></td>
-                    <td><?=$v['meninggal'];?></td>
-                    <td><?=$v['hilang'];?></td>
-                    <td><?=$v['terluka'];?></td>
-                    <td><?=$v['mengungsi'];?></td>
                     <td><?=$v['penyebab'];?></td>
                     <td><?=$v['objek'];?></td>
-					<td><?=$v['nilaiKerugian'];?></td>
-					<td><?=$v['jumlahPengungsian'];?></td>
+                    <td class="text-center"><?=$v['namaKabupaten'];?></td>
+                    <td class="text-center"><?=$v['namaPropinsi'];?></td>
+                    <td class="text-center"><?=$v['x'];?></td>
+                    <td class="text-center"><?=$v['y'];?></td>
             	</tr>
                 
         <? } }?>

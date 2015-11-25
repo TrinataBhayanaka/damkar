@@ -31,7 +31,6 @@ class capaian_spm extends Admin_Controller {
 		$this->admin_layout="admin_lte_layout/main_layout";
 
     }
-    
 
 	function index($forder=0,$limit=10,$page=1){
   		
@@ -301,10 +300,10 @@ class capaian_spm extends Admin_Controller {
 		}else{
 			$key = ($_POST['q'])?$_POST['q']:0;
 		}
-
+		$filter="(SPM.propinsi=KAB.kode_prop AND SPM.kabupaten=KAB.kode_kab AND SPM.propinsi=PROV.kodeProp) ";
 		if ($key) {
 			
-			$filter = "(propinsi like '%".$key."%' or kabupaten like '%".$key."%' or luasWilayah like '%".$key."%' or jumlahKecamatan like '%".$key."%' or jumlahPenduduk like '%".$key."%' or cakupan like '%".$key."%' or responTime like '%".$key."%' or rasioPersonel like '%".$key."%' or rasioSarPras like '%".$key."%')";
+			$filter .= " AND (propinsi like '%".$key."%' or kabupaten like '%".$key."%' or luasWilayah like '%".$key."%' or jumlahKecamatan like '%".$key."%' or jumlahPenduduk like '%".$key."%' or cakupan like '%".$key."%' or responTime like '%".$key."%' or rasioPersonel like '%".$key."%' or rasioSarPras like '%".$key."%')";
 			$data["key"]=$key;
 		}
 		$offset 		= ($page-1)*$limit;
@@ -321,16 +320,16 @@ class capaian_spm extends Admin_Controller {
 			$order = 'order by id desc';
 		}
 
-		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
-		// pre($arrDB);
-		foreach ($result as $key => $value) {
-			$namaProp=$this->get_name_provinsi($value['propinsi']);
-			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
+		$arrDB=$this->model->SearchRecordLimitWhereJoin($filter,$limit,$offset,$order);
+		pre($arrDB);
+		// foreach ($result as $key => $value) {
+		// 	$namaProp=$this->get_name_provinsi($value['propinsi']);
+		// 	$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
 			
-			$arrDB[$key]=$value;
-			$arrDB[$key]['namaProp']=$namaProp['nama'];
-			$arrDB[$key]['namaKab']=$namaKab['nama'];
-		}
+		// 	$arrDB[$key]=$value;
+		// 	$arrDB[$key]['namaProp']=$namaProp['nama'];
+		// 	$arrDB[$key]['namaKab']=$namaKab['nama'];
+		// }
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
 		$query_url = ($key)?"/".$key:"";

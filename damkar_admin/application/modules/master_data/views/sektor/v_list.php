@@ -79,11 +79,9 @@
         <th width="50">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th>Propinsi</th>
-        <th>Kabupaten</th>
         <th class="forder" width="100" rel="date">Kantor Sektor</th>
-        <th class="forder" width="300" rel="title">SKPD</th>
-		<th width="50">Status</th>
+        <th>Kabupaten</th>
+        <th>Propinsi</th>
         </tr>
         </thead>
         <tbody>
@@ -95,8 +93,6 @@
 		$url_edit = $module."edit/".$id;
 		$url_delete = $module."delete/".$id;
 		
-		$status_badges = ($v['status']==1)?'<span class="label label-info">Active</span>':'<span class="label label-warning">Non Active</span>';
-		$reg = ($v['status']==1)?"<a href='wa_reg/add/$id'><span class='label label-success'>Registrasi</span></a>":'';
 		
    ?>
             	<tr>
@@ -109,12 +105,9 @@
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 
-                    <td><?=$v['namaProp'];?></td>
-                    <td><?=$v['namaKab'];?></td>	
                     <td rel="date_col" width="150"><?=$v['namaSektor'];?></td>
-                    <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['skpd'];?></a></td>
-                    
-					<td><?=$status_badges;?></td>
+                    <td><?=$v['namaKab'];?></td>    
+                    <td><?=$v['namaProp'];?></td>
             	</tr>
                 
         <? } }?>

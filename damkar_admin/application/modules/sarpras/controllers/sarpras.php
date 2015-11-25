@@ -315,13 +315,19 @@ class sarpras extends Admin_Controller {
 		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($result);
 
-		foreach ($result as $key => $value) {
+		foreach ($result as $keys => $value) {
+			$namaSarpras=$this->get_name_sarpras($value['catSarpras']);
+			// pre($value['catSarpras']);
+			// pre($namaSarpras);
+			$namaSektor=$this->get_name_sektor($value['idSektor']);
 			$namaProp=$this->get_name_provinsi($value['propinsi']);
 			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
 			
-			$arrDB[$key]=$value;
-			$arrDB[$key]['namaProp']=$namaProp['nama'];
-			$arrDB[$key]['namaKab']=$namaKab['nama'];
+			$arrDB[$keys]=$value;
+			$arrDB[$keys]['namaProp']=$namaProp['nama'];
+			$arrDB[$keys]['namaKab']=$namaKab['nama'];
+			$arrDB[$keys]['namaSarpras']=$namaSarpras['jenisSarpras'];
+			$arrDB[$keys]['namaSektor']=$namaSektor['namaSektor'];
 		}
 		// pre($arrDB);
 		// $data=$this->get_name_provinsi('11');
@@ -333,6 +339,7 @@ class sarpras extends Admin_Controller {
 		$base_url = $this->module."index/".$forder."/".$limit;
 		$perpage = $this->utils->getPerPageAjax($limit,array(5,15,20,25,30,40,50));
 		$paging = $this->utils->getPaginationStringAjax($page, $total_rows, $limit, 1, $base_url, "/",$query_url);
+		// pre($query_url);
 		$data["acc_active"]="content";
 		$data["arrDB"]=$arrDB;
 		$data["user_name"]=$this->data['users']['user']['username'];

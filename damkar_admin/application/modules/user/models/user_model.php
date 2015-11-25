@@ -41,8 +41,14 @@ class user_model extends LAT_Model{
     function m_cat_sarpras($data=false,$sort='',$dataColumn=false){        
         return $this->adodbx->search_record($this->tbl_m_cat_sarpras,$data,$dataColumn); 
     }
+    function m_cat_sarprasid($data=false,$sort='',$dataColumn=false){        
+        return $this->adodbx->search_record_where($this->tbl_m_cat_sarpras,$data,$dataColumn); 
+    }
      function m_sektor($data=false,$sort='',$dataColumn=false){        
         return $this->adodbx->search_record_where($this->tbl_m_sektor,$data,$dataColumn); 
+    }
+     function m_kompetensiid($data=false,$sort='',$dataColumn=false){        
+        return $this->adodbx->search_record_where($this->tbl_m_kompetensi,$data,$dataColumn); 
     }
     function m_kompetensi($data=false,$sort='',$dataColumn=false){        
         return $this->adodbx->search_record($this->tbl_m_kompetensi,$data,$dataColumn); 
