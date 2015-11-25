@@ -1,0 +1,182 @@
+*[class^="stats"] {
+	padding-bottom:5px;
+	color:#555;
+}
+
+*[class^="stats"] .sparkline-box {
+	width:85%;
+	margin:0px auto 10px auto!important;
+	padding:5px;
+	position:relative;
+	/*background:#eee;*/
+	display:block;
+	text-align:center;
+	float:none;
+}
+*[class^="stats"] .title {
+	position:relative;
+	display:inline-block;
+	text-transform:uppercase;
+	padding:5px 10px;
+	color:#777;
+}
+*[class^="stats"] .value {
+	font-family:"Open Sans";
+	font-size:48px;
+	margin:0 10px;
+	margin-bottom:-5px;
+	display:block;
+	text-align: center;
+}
+*[class^="stats"] .subtitle {
+	position:relative;
+	display:block;
+	margin:-10px auto 5px auto;
+	font-size:x-small;
+	text-align:center;
+	text-transform:uppercase;
+	color:#777;
+}
+*[class^="stats"] .value .sup,
+*[class^="stats"] .value .sub {
+	font-family:"Segoe UI";
+	font-weight:lighter;
+	font-size:24px;
+	vertical-align: text-top
+}
+*[class^="stats"] .value .sup {
+	vertical-align: text-top
+}
+*[class^="stats"] .value .sub {
+	vertical-align: baseline
+}
+/**[class^="stats"]  .badge {
+	position:absolute;
+	right:20px!important;
+	top:-3px;
+	overflow: hidden;
+	border-radius:0;
+	font-size:12px;
+	font-weight:normal;
+	margin:3px;
+	padding:2px;
+	min-width:35px;
+	min-height:35px;
+	line-height:15px;
+	background:#ccc;
+}*/
+
+/* STATS COLOR */
+*[class^="stats"].success {
+	color:#5cb85c
+}
+*[class^="stats"].danger {
+	color:#d9534f
+}
+*[class^="stats"].primary {
+	color:#428bca
+}
+*[class^="stats"].info {
+	color:#5bc0de
+}
+*[class^="stats"].warning {
+	color:#f0ad4e
+}
+
+/* BADGES */
+/**[class^="stats"] .badge.badge-success {
+	color:#ffffff!important;
+	background:#5cb85c
+}
+*[class^="stats"] .badge.badge-danger {
+	color:#ffffff!important;
+	background:#d9534f
+}
+*[class^="stats"] .badge.badge-primary {
+	color:#ffffff!important;
+	background:#428bca
+}
+*[class^="stats"] .badge.badge-info {
+	color:#ffffff!important;
+	background:#5bc0de
+}
+*[class^="stats"] .badge.badge-warning {
+	color:#ffffff!important;
+	background: #f0ad4e
+}
+*[class^="stats"]  .badge i {
+	margin-left:2px;
+	display:block;
+	line-height:15px;
+	vertical-align:middle
+}*/
+
+/* circle stats */
+.circle-stats {
+	padding:5px;
+}
+.circle-stats.success {
+	color:#5cb85c
+}
+.circle-stats.danger {
+	color:#d9534f
+}
+.circle-stats.primary {
+	color:#428bca
+}
+.circle-stats.info {
+	color:#5bc0de
+}
+.circle-stats.warning {
+	color:#f0ad4e
+}
+.circle-stats .title {
+	font-weight:bold;
+	color:#777;
+	display:block;
+	line-height:15px;
+	text-align:center;
+	vertical-align:middle
+}
+.circle-stats>.percentage{
+    text-align: center;
+	font-size:18px!important;
+    font-weight: 100;
+    font-size: .9em;
+    margin-bottom: 0.3em;
+}
+
+.linechart2,.boxchart {
+	position:relative;
+	z-index:2;
+}
+.sparkline-range {
+	position:absolute;
+	z-index:0;
+	list-style:none;
+	width:100%;
+	padding:0;
+	margin:-5px;
+	color:#aaa;
+	font-size:xx-small;
+	line-height:75px
+}
+.sparkline-range li {
+	display:inline-block;
+	float:left;
+	height:30px;
+}
+.sparkline-range.quarterly li {
+	width:25%;
+}
+.sparkline-range.monthly li {
+	width:8.33%;
+}
+.sparkline-range.weekly li {
+	width:14.285%;
+}
+.sparkline-range.weekly6 li {
+	width:16.66%;
+}
+.sparkline-range li:nth-child(even) {background: #ddd}
+.sparkline-range li:nth-child(odd) {background: #e5e5e5}

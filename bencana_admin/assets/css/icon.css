@@ -1,0 +1,160 @@
+/* CSS Document */
+
+.iconize{
+	/*display:inline-block;*/
+	/*height: 16px;
+	line-height: 16px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	background:none;
+	background-position: 0% 50%;
+	background-image: url('images/css3buttons_icons.png');
+	*/
+	position:relative;
+	width: 14px; height: 12px; 
+	margin: auto 7px auto auto;
+	display:inline-block;
+	background-repeat: no-repeat;
+	background-size:12px;
+}
+
+.icon{
+	position:relative;
+	width: 12px; height: 12px; 
+	/*margin: auto 7px auto auto;*/
+	display:inline-block;
+	background-repeat: no-repeat;
+	background-size:12px;
+}
+
+.icon_save{ 
+background-image: url("../image/icons/free/save.png");
+}
+
+.icon_del{ 
+background-image: url("../image/icons/famfamsilk/delete.png");
+}
+
+.icon_cross{ 
+
+background-image: url("../image/icons/famfamext/bullet_cross.png");
+}
+
+.icon_refresh{ 
+background-image: url("../image/icons/famfamsilk/arrow_refresh_small.png");
+}
+
+.icon_edit{ 
+background-image: url("../image/icons/famfamext/bullet_edit.png");
+background-repeat:no-repeat;
+}
+
+.icon_add{ 
+background-image: url("../image/icons/famfamsilk/add.png");
+background-repeat:no-repeat;
+ }
+ 
+.icon_cancel{ 
+background-image: url("../image/icons/famfamsilk/cancel.png");
+background-repeat:no-repeat;
+ }
+ 
+.icon_view{ 
+background-image: url("../image/icons/famfamext/bullet_magnify.png");
+
+}
+ 
+.icon_tick{ 
+background-image: url("../image/icons/famfamsilk/tick.png");
+background-repeat:no-repeat;
+ }
+ 
+/* mailto: links */
+.icon_mail {
+    background-image:url(../image/icons/famfamsilk/email.png);
+	background-repeat:no-repeat;
+}
+/* pdf: links */
+.icon_pdf{
+    background-image: url(../image/icons/famfamsilk/page_white_acrobat.png);
+	background-repeat:no-repeat;
+}
+.icon_swf {
+    background-image: url(../image/icons/famfamsilk/page_white_flash.png);
+	background-repeat:no-repeat;
+}
+/* xls: links */
+.icon_xls {
+    background-image: url(../image/icons/famfamsilk/page_excel.png);
+	background-repeat:no-repeat;
+}
+.icon_ppt {
+    background-image: url(../image/icons/famfamsilk/page_white_powerpoint.png);
+	background-repeat:no-repeat;
+}
+/* doc: links */
+.icon_doc {
+    background-image: url(../image/icons/famfamsilk/page_word.png);
+	background-repeat:no-repeat;
+}
+/* zip: links */
+.icon_zip {
+    background-image: url(../image/icons/famfamsilk/page_white_zip.png);
+	background-repeat:no-repeat;
+}
+
+.icon_img{
+    background-image: url(../image/icons/famfamsilk/image_link.png);
+	background-repeat:no-repeat;
+}
+
+.icon_txt{
+    background-image: url(../image/icons/famfamsilk/page_white_text.png);
+	background-repeat:no-repeat;
+}
+
+.icon_disk{
+    background-image: url(../image/icons/famfamsilk/disk_black.png);
+	background-repeat:no-repeat;
+}
+
+.icon_lightning{
+    background-image: url("../image/icons/famfamext/bullet_lightning.png");
+	background-repeat:no-repeat;
+}
+
+.icon_new_user{ 
+	background-image: url("../image/icons/famfamext/user_alert.png");
+	background-repeat:no-repeat;
+}
+
+.icon_old_user{ 
+	background-image: url("../image/icons/famfamext/user_key.png");
+	background-repeat:no-repeat;
+}
+
+.icon_active_user{ 
+	background-image: url("../image/icons/famfamext/user_tick.png");
+	background-repeat:no-repeat;
+}
+
+.icon_delete_user{ 
+	background-image: url("../image/icons/famfamext/user_cross.png");
+	background-repeat:no-repeat;
+}
+
+.icon_register_user{ 
+	background-image: url("../image/icons/famfamext/vcard_key.png");
+	background-repeat:no-repeat;
+}
+
+.icon_help{ 
+	background-image: url("../image/icons/free/help.png");
+	background-repeat:no-repeat;
+}
+
+
+
+
