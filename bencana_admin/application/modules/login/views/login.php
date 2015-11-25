@@ -2,7 +2,8 @@
 
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>  Kebencanaan</a>
+    <img src="assets/image/dagri_logo.png"><br>
+    <a href="<?=base_url()?>"><b>Admin</b>  Kebencanaan</a>
   </div><!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
