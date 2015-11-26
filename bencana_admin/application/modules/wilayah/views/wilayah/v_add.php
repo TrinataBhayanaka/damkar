@@ -47,16 +47,16 @@
 		<div class="col-xs-12">
 			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="daftar">
             	<i class="fa fa-bars"></i> Daftar Wilayah
-	          </a>
-	          <a class="btn btn-app bg-purple" href="<?php echo $this->module?>add_wilayah" id="addData">
-	            <i class="fa fa-plus"></i> Input Wilayah
-	          </a>
-	          <a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
-	            <i class="fa fa-refresh"></i> Refresh
-	          </a>
-	          <a class="btn btn-app bg-purple" data-url="" title="Data Pendaftar" href="#">
-	            <i class="fa fa-file-pdf-o"></i> Export PDF
-	          </a>
+			</a>
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>add_wilayah" id="addData">
+				<i class="fa fa-plus"></i> Input Wilayah
+			</a>
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+				<i class="fa fa-refresh"></i> Refresh
+			</a>
+			<a class="btn btn-app bg-purple" data-url="" title="Data Pendaftar" href="#">
+				<i class="fa fa-file-pdf-o"></i> Export PDF
+			</a>
 
 	        <?php 
 				if ($message) {

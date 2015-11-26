@@ -26,202 +26,176 @@
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
 }
 </style>
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1>User<small> Add </small></h1>
-                </div><!-- col -->
-            </div><!-- row-->
-        </div><!-- end: page-header -->
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>register/register"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
-         </ul>
-        <!-- end: breadcrumbs -->
-   </div><!-- cols -->
-</div> <!-- row -->
 
-                        
-<div style="padding:0px">
-<div class="row topbar box_shadow">
-    <div class="col-md-12">
-            <ul class="tab-bar grey-tab">
-                <li>
-                    <a href="<?php echo $this->module?>" id="refresh">
-                        <span class="block text-center">
-                            <i class="icon-list"></i> 
-                        </span>
-                        Daftar <?=$this->module_title?>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="<?php echo $this->module?>add_sektor">
-                        <span class="block text-center">
-                            <i class="icon-plus"></i> 
-                        </span>
-                        Input <?=$this->module_title?>
-                    </a>
-                </li>
-                <li>
-					<a href="<?php echo $this->module?>" id="addData">
-						<span class="block text-center">
-							<i class="icon-refresh"></i> 
-						</span>	
-						Refresh
-					</a>
-				</li>
-            </ul>
-    	<!--<form class="search_form col-md-3 pull-right" action="<?//=$this->module?>listview" method="get">
-        	<?php //$this->load->view("widget/search_box_db"); ?>
-        </form>-->
-    </div>
-</div>
-<br>
-<div class="row-fluid">
-<ul class="nav nav-tabs" id="news-tab">
-   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-plus"></i> Tambah Data</a></li>
-</ul>
-<!--tab content-->
-<div class="tab-content">
-  
-<div id="tab-edit" class="tab-pane active">  
-	
-	<?php 
-		if ($message) {
-			echo '<div class="alert alert-warning alert-dismissible" >
-                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
-              </div>';
-		}
-	?>
-	<?php echo form_open("wilayah/sektor/add_sektor",'id="fdata"');?>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-			  
-			  <div class="row">
-					<div class="col-md-8">
-							<div class="row">
-								
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>Nama Sektor </label>
-									<?php echo form_input($namaSektor,false,'class="form-control"');?>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>SKPD </label>
-									<?php echo form_input($skpd,false,'class="form-control required"');?>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>Provinsi </label>
-									<?//=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
-									<select class="form-control" id="propinsi" name="propinsi">
-										<?php 
-										// pre($m_propinsi);
-										foreach ($m_propinsi as $key => $value) {
-											$selected="";
-										?>
-										<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
-										<?php 
-											}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small>Input Data</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-globe"></i> Home</a></li>
+    <li><a href="wilayah/sektor"> <?=$this->module_title?></a></li>
+    <li class="active">Input Data Sektor</li>
+  </ol>
+</section>
 
-										?>
-									</select>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-									
-									<label>Kabupaten</label>
-									<?php// echo form_input($kabupaten,false,'class="form-control"');?>
-									<select class="form-control" id="kabupaten" name="kabupaten">
-										<?php 
-										// pre($m_propinsi);
-										foreach ($m_kabupaten as $key => $value) {
-											$selected="";
-										?>
-										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
-										<?php 
-											}
 
-										?>
-									</select>
+<!-- Main content -->
+<section class="content">
+
+	<div class="row">
+		<div class="col-xs-12">
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="daftar">
+				<i class="fa fa-bars"></i> Daftar Wilayah
+			</a>
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>add_sektor" id="addData">
+				<i class="fa fa-plus"></i> Input Wilayah
+			</a>
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+				<i class="fa fa-refresh"></i> Refresh
+			</a>
+
+
+			<?php 
+				if ($message) {
+					echo '<div class="alert alert-warning alert-dismissible" >
+		                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+		                <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
+		              </div>';
+				}
+			?>
+			<?php echo form_open("wilayah/sektor/add_sektor",'id="fdata"');?>
+			<div class="box box-default">
+				<div class="box-header with-border">
+	              <h3 class="box-title">Tambah Data</h3>
+	              <div class="box-tools pull-right">
+	                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+	              </div>
+	            </div><!-- /.box-header -->
+	            <div class="box-body">
+
+	            <div class="row">
+					<div class="col-md-12">
+					  
+					  <div class="row">
+							<div class="col-md-8">
+									<div class="row">
+										
+										<div class="col-md-6">
+											<div class="form-group">
+											
+											<label>Nama Sektor </label>
+											<?php echo form_input($namaSektor,false,'class="form-control"');?>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+											
+											<label>SKPD </label>
+											<?php echo form_input($skpd,false,'class="form-control required"');?>
+											</div>
+										</div>
 									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+											
+											<label>Provinsi </label>
+											<?//=form_dropdown("propinsi",$m_propinsi,$propinsi['value'],"id='propinsi' class='form-control required'");?>
+											<select class="form-control" id="propinsi" name="propinsi">
+												<?php 
+												// pre($m_propinsi);
+												foreach ($m_propinsi as $key => $value) {
+													$selected="";
+												?>
+												<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+												<?php 
+													}
+
+												?>
+											</select>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+											
+											<label>Kabupaten</label>
+											<?php// echo form_input($kabupaten,false,'class="form-control"');?>
+											<select class="form-control" id="kabupaten" name="kabupaten">
+												<?php 
+												// pre($m_propinsi);
+												foreach ($m_kabupaten as $key => $value) {
+													$selected="";
+												?>
+												<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+												<?php 
+													}
+
+												?>
+											</select>
+											</div>
+										</div>
+									</div>
+									
+							</div> <!-- span6 -->
+							<div class="col-md-4">
+								<div id="attachment_frame" class="form-group">
+									<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
+									<div id="imgcontainer">
+										<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
+										<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
+									</div>
+									<input id="image_name" type="hidden" name="image_name" />
 								</div>
 							</div>
 							
-					</div> <!-- span6 -->
-					<div class="col-md-4">
-						<div id="attachment_frame" class="form-group">
-							<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
-							<div id="imgcontainer">
-								<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
-								<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
-							</div>
-							<input id="image_name" type="hidden" name="image_name" />
 						</div>
+						
 					</div>
-					
 				</div>
-				
+
+	            </div>
+	            <div class="box-footer">
+	             	<div class="form-actions">
+						<button type="submit" class="btn btn-success">Simpan</button>
+						<button type="reset" class="btn">Batal</button>
+					</div>
+	            </div>
 			</div>
+			<?php echo form_close();?>
+
+			<div id="tab-view" class="tab-pane">    
+			    <div class="row-fluid">
+				    <div class="span9">
+			            <div class="row-fluid">
+			                <div class="span12">
+			                    <h1 id="title-view"></h1>
+			                    <p>
+			                    <blockquote id="news_clip-view">
+			                    
+			                    </blockquote>
+			                    </p>
+			                    <span id="canvas_view" style="float:left;margin:0;"><canvas width=0 height=0></canvas></span>
+			                    <p id="news_content-view">
+			                    
+			                    </p>
+			                </div>
+			            </div>
+			        </div> 
+			    </div>
+			    <br />
+			    <br />
+			</div>
+
+
 		</div>
 	</div>
 
-	<div class="container" style="background-color:#F5F5F5;margin-top:20px;margin-bottom:20px;">
-	
-	<!--tab content-->
-	  <br>
-		<div class="form-actions">
-			<button type="submit" class="btn btn-success">Simpan</button>
-			<button type="reset" class="btn">Batal</button>
-		</div>
-		<br />
-	</div>
-	<?php echo form_close();?>
+</section>
 
-</div>
-<div id="tab-view" class="tab-pane">    
-    <div class="row-fluid">
-	    <div class="span9">
-            <div class="row-fluid">
-                <div class="span12">
-                    <h1 id="title-view"></h1>
-                    <p>
-                    <blockquote id="news_clip-view">
-                    
-                    </blockquote>
-                    </p>
-                    <span id="canvas_view" style="float:left;margin:0;"><canvas width=0 height=0></canvas></span>
-                    <p id="news_content-view">
-                    
-                    </p>
-                </div>
-            </div>
-        </div> 
-    </div>
-    <br />
-    <br />
-</div>
-</div>
-<!-- en tab-content-->
-</div>
-</div>
+
 <script>
 //js here
 //Uploader
