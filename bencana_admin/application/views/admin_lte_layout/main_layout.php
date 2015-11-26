@@ -13,7 +13,7 @@
 <!-- end: main Menu -->
 
 <!-- start: Wrapper-->
-<div class="wrapper row-offcanvas row-offcanvas-left">
+<div class="wrapper">
 	<?php
 	$this->load->view("admin_lte_layout/sidebar_layout_admin");
 	// $sess=$_SESSION[$this->lauth->appname]["userdata"]["user"];
@@ -28,29 +28,10 @@
 	// endif;
 	?>
 
-	
-    <!-- Right side column. Contains the navbar and content of the page -->
-     <aside class="right-side">                
-     	<!-- Content Header (Page header) -->
-          <? if(cek_var($this->layout_data["page_title"])):?>
-          <section class="content-header">
-                <h1>
-                   <?php echo $this->layout_data["page_title"]?$this->layout_data["page_title"]:"";?>
-                   <small><?php echo $this->layout_data["page_title_small"]?$this->layout_data["page_title_small"]:"";?>
-                   </small>
-                </h1>
-           </section>
-           <? endif;?>
-
-                <!-- Main content -->
-                <section class="content">
-                	<? if(cek_var($this->layout_data["breadcrumb"])):?>
-                    	<?php echo $this->layout_data["breadcrumb"];?>
-					<? endif;?>
-					<?php echo $content;?>
-				</section><!-- /.content -->
-        </aside><!-- /.right-side -->
-</div>
+    <!-- Layout Baru LT2.. hadehh ampuun ga rapi bgt ni framework (T.T) mending codekir kemana2 -->
+    <div class="content-wrapper">
+        <?php echo $content;?>
+    </div>
 <!-- end: Wrapper-->
 
 <div class="modal fade" id="myModal">
@@ -76,3 +57,5 @@
 <!--<br><br>-->
 
 <? $this->load->view("admin_lte_layout/footer");?>
+
+</div>

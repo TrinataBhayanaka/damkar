@@ -30,5 +30,3 @@
 </div><!-- /.login-box -->
         
 <? $this->load->view("login/login_footer")?>
-
-

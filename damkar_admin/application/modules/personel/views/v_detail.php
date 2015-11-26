@@ -90,5 +90,6 @@ label{
          </table>
 
          <button aria-hidden="true" data-dismiss="modal" class="btn btn-info" type="button">Close</button>
+
      </div>  
 </div>

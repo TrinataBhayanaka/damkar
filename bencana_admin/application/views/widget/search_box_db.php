@@ -8,12 +8,19 @@
                               <button type="submit" class='add-on btn'><i class="icon-search"></i>&nbsp;Search</button>
                               <button type="reset" class='add-on  btn  btn-danger' id="search-reset"><i class="icon-refresh"></i>&nbsp;Reset</button>
                              </div>-->
-                             <div style="padding-top:5px;" class="input-group">
+                             <div class="input-group" style="width: 150px;">
+		                      <input type="text" id="q" name="q" class="form-control input-sm pull-right" value="<?=$q?>" placeholder="Search">
+		                      <div class="input-group-btn">
+		                        <button type="submit" class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+		                      </div>
+		                    </div>
+
+                            <!--  <div style="padding-top:5px;" class="input-group">
 							  <input id="q" name="q" class="form-control input-search" value="<?=$q?>" placeholder="Search..." type="text">
                               <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                               </span>
-                            </div>
+                            </div> -->
                          <script>	
 						 	$(function(){
 								$("#search-reset").click(function(){

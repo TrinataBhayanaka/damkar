@@ -29,7 +29,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="assets/themes/lte2.3.0/dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="assets/themes/lte2.3.0/plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="assets/themes/lte2.3.0/plugins/iCheck/all.css">
     <!-- jvectormap -->
     <link rel="stylesheet" href="assets/themes/lte2.3.0/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
     <!-- Date Picker -->
@@ -63,4 +63,3 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">

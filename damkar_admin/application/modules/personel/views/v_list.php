@@ -176,6 +176,7 @@
 <script>
 
 var base_url="<?=base_url()?>";
+
     //callback handler for form submit
 $('#fdatalist').submit(function(event) {
 
