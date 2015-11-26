@@ -44,6 +44,8 @@ class capaian_spm extends Admin_Controller {
 	
 		// $arrDB=true;
 		$data=$this->dataPaging($forder,$limit,$page,$postKey);
+		
+		$data['m_propinsi']=$this->get_lookup_provinsi();
 		$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
 		
 		if ($data_layout){
@@ -63,6 +65,7 @@ class capaian_spm extends Admin_Controller {
 		// $this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('tahun', "<b>Tahun</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
@@ -80,6 +83,7 @@ class capaian_spm extends Admin_Controller {
 				// 'luasWilayah'    	=> $this->input->post('luasWilayah'),
 				// 'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
 				// 'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
+				'tahun'      		=> $this->input->post('tahun'),
 				'cakupan'      		=> $this->input->post('cakupan'),
 				'responTime' 	    => $this->input->post('responTime'),
 				'rasioPersonel'     => $this->input->post('rasioPersonel'),
@@ -110,7 +114,7 @@ class capaian_spm extends Admin_Controller {
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras');
+			$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras','tahun');
 
 			$this->data=$this->set_dataInput($dataFormInput);
 
@@ -154,6 +158,7 @@ class capaian_spm extends Admin_Controller {
 		// $this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
 		// $this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
+		$this->form_validation->set_rules('tahun', "<b>Tahun</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
@@ -168,6 +173,7 @@ class capaian_spm extends Admin_Controller {
 				// 'luasWilayah'    	=> $this->input->post('luasWilayah'),
 				// 'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
 				// 'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
+				'tahun'      		=> $this->input->post('tahun'),
 				'cakupan'      		=> $this->input->post('cakupan'),
 				'responTime' 	    => $this->input->post('responTime'),
 				'rasioPersonel'     => $this->input->post('rasioPersonel'),
@@ -203,7 +209,7 @@ class capaian_spm extends Admin_Controller {
 
 		$this->data['idd'] = $idx;
 
-		$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras');
+		$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras','tahun');
 
 		$this->data=$this->set_dataInput($dataFormInput,2,$user);
 		// pre($this->data['propinsi']);
@@ -315,11 +321,14 @@ class capaian_spm extends Admin_Controller {
 			$order = 'order by '.$spl[0].' '.$spl[1];
 			$data["forder"]=$spl[0];
 			$data["dorder"]=$spl[1];
+
+			
 		}
 		else {
 			$order = 'order by id desc';
 		}
-
+		// pre($forder);
+		// 	pre($spl);
 		$arrDB=$this->model->SearchRecordLimitWhereJoin($filter,$limit,$offset,$order);
 		// pre($arrDB);
 		// foreach ($result as $key => $value) {

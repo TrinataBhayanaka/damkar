@@ -30,7 +30,7 @@
 							<span class="block text-center">
 								<i class="icon-list"></i> 
 							</span>
-							Daftar <?=$this->module_title?>
+							Daftar 
 						</a>
 					</li>
 					<li>
@@ -38,7 +38,7 @@
 							<span class="block text-center">
 								<i class="icon-plus"></i> 
 							</span>
-							Input <?=$this->module_title?>
+							Input 
 						</a>
 					</li>
 					<li>
@@ -48,35 +48,39 @@
 							</span>	
 							Refresh
 						</a>
-					</li><li>
-                        <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport PDF
-                        </a>
-                    </li>
+					</li>
+                     <li>
+                                <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
+                                    <span class="block text-center">
+                                        <i class="fam-page_white_acrobat"></i>
+                                    </span> 
+                                    Eksport PDF
+                                </a>
+                            </li>
 
-                    <li>
-                        <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fa fa-file-excel-o"></i>
-                            </span> 
-                            Eksport Excel
-                        </a>
-                    </li>
+                            <li>
+                                <a href="#" class="print-xls" data-url="" title="Data Pendaftar">
+                                    <span class="block text-center">
+                                        <i class="fa fa-file-excel-o"></i>
+                                    </span> 
+                                    Eksport Excel
+                                </a>
+                            </li>
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">
 				<div style="padding-top:5px;" class="input-group">
               <input id="valueparameter" name="q" class="form-control input-search" value="<?=$key?>" placeholder="Search..." type="text">
               <span class="input-group-btn">
-                <a id="btnsearch" href="<?=base_url()?>wilayah/wilayah/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
+                <a id="btnsearch" href="<?=base_url()?>capaian_spm/capaian_spm/index/0/10/1" class="btn btn-default"><i class="fa fa-search"></i></a>
               </span>
             </div>
 			</form>
+           
 		</div>
+
 	</div>
+    
     <div class="alert alert-success alert-dismissible" id="message" style="display:none">
         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
         <h4><i class="icon fa fa-warning"></i> Alert!</h4>
@@ -97,10 +101,11 @@
         <th width="20">&nbsp;</th>
         <th class="forder" >Provinsi</th>
         <th class="forder" >Kabupaten</th>
-        <th>Cakupan</th>
-		<th>Respon Time</th>
-        <th>Rasio Personel</th>
-		<th >Rasio SarPras</th>
+        <th><a id="sort" href="<?=base_url()?>capaian_spm/capaian_spm/index/4/10/1">Cakupan <i class="fa fa-sort"></i></a></th>
+		<th><a id="sort" href="<?=base_url()?>capaian_spm/capaian_spm/index/5/10/1">Respon Time <i class="fa fa-sort"></i></a></th>
+        <th><a id="sort" href="<?=base_url()?>capaian_spm/capaian_spm/index/6/10/1">Rasio Personel <i class="fa fa-sort"></i></a></th>
+        <th ><a id="sort" href="<?=base_url()?>capaian_spm/capaian_spm/index/7/10/1">Rasio SarPras <i class="fa fa-sort"></i></a></th>
+		<th ><a id="sort" href="<?=base_url()?>capaian_spm/capaian_spm/index/8/10/1">Tahun <i class="fa fa-sort"></i></a></th>
         </tr>
         </thead>
         <tbody>
@@ -126,12 +131,13 @@
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 	
-                    <td ><?=$v['namaProp'];?></td>
-                    <td><?=$v['namaKab'];?></td>
+                    <td ><?=$v['namaProvinsi'];?></td>
+                    <td><?=$v['nama'];?></td>
                     <td><?=$v['cakupan'];?></td>
 					<td><?=$v['responTime'];?></td>
                     <td><?=$v['rasioPersonel'];?></td>
                     <td><?=$v['rasioSarPras'];?></td>
+                    <td><?=$v['tahun'];?></td>
             	</tr>
                 
         <? } }?>
@@ -243,4 +249,56 @@ $('#fdatalist').submit(function(event) {
                         }, "JSON")
             
         });
+</script>
+
+<script>
+
+    //callback handler for form submit
+$('#fdata').submit(function(event) {
+
+        $('.ajax-spinner-bars').css("display","block"); 
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        
+        $.ajax({
+            type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+            url         : formURL, // the url where we want to POST
+            data        : postData, // our data object
+            dataType    : 'json', // what type of data do we expect back from the server
+            encode          : true
+        })
+            // using the done promise callback
+            .done(function(data) {
+
+                // log data to the console so we can see
+                $('#dataAjax').html(data.data); 
+                $('.ajax-spinner-bars').css("display","none"); 
+
+                // here we will handle errors and validation messages
+            });
+
+        // stop the form from submitting the normal way and refreshing the page
+        event.preventDefault();
+    });
+ $('#fdata').on('change','#propinsi',function(){
+
+                   var parameter =$('#propinsi').val();
+                   // alert(parameter);
+                   // var valueparameter =$('#valueparameter').val();
+
+                    $.post(basedomain+urlPageList+'get_lookup_kabupatenAjax/'+parameter , {actionfunction: 'showDataAjax'}, function(data){
+                            
+                            if (data.status==true) {
+                               
+                                    $('#kabupaten').html(data.data); 
+
+                                 $('.ajax-spinner-bars').css("display","none"); 
+                                
+                            }else{
+                                   $('.ajax-spinner-bars').css("display","none"); 
+                            }
+                        }, "JSON")
+
+                return false;
+                });
 </script>

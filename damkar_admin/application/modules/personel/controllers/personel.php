@@ -254,6 +254,28 @@ class personel extends Admin_Controller {
         exit;
   }
 
+  function detail($idx=false){
+  		if($this->encrypt_status==TRUE):
+			$id_enc=$idx;
+			$id=decrypt($idx);
+		endif;
+
+		$user=$this->model->GetRecordData("id='{$id}'");
+		pre($user);
+
+
+		$data_layout["content"]=$this->load->view("personel/v_detail",$this->data,true); 
+
+		if ($user){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+
+  }
+
 	function delete($idx=false,$forder=0,$limit=10,$page=1,$postKey=false){
   		// debug();
 		// if (!$this->cms->has_admin($this->module)) redirect ("error_");
@@ -333,7 +355,7 @@ class personel extends Admin_Controller {
 		$offset 		= ($page-1)*$limit;
 		$data_start 	= $offset+1;
 		$data_end 		= $offset+$limit;
-		
+		// $forder=4;
 		if ($forder) {
 			$spl = preg_split("/:/",$forder);
 			$order = 'order by '.$spl[0].' '.$spl[1];

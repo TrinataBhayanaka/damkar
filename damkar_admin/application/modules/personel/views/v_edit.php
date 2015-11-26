@@ -100,7 +100,7 @@
               </div>';
 		}
 	?>
-	<?php echo form_open("personel/personel/edit".$idd,'id="fdata"');?>
+	<?php echo form_open("personel/personel/edit/".$idd,'id="fdata"');?>
 	<input type="hidden" name="idx" value="<?=$data['id'];?>" />
 	<div class="container">
 		<div class="row">

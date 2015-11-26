@@ -32,7 +32,7 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1>User<small> Add </small></h1>
+                    <h1>Capaian SPM<small> Add </small></h1>
                 </div><!-- col -->
             </div><!-- row-->
         </div><!-- end: page-header -->
@@ -57,7 +57,7 @@
                         <span class="block text-center">
                             <i class="icon-list"></i> 
                         </span>
-                        Daftar <?=$this->module_title?>
+                        Daftar 
                     </a>
                 </li>
                 <li class="active">
@@ -65,7 +65,7 @@
                         <span class="block text-center">
                             <i class="icon-plus"></i> 
                         </span>
-                        Input <?=$this->module_title?>
+                        Input 
                     </a>
                 </li>
                 <li>
@@ -108,6 +108,16 @@
 			  
 			  <div class="row">
 					<div class="col-md-12">
+						<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+									
+									<label>Tahun </label>
+									<?php echo form_input($tahun,false,'class="form-control"');?>
+									
+									</div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-md-4">
 									<div class="form-group">
