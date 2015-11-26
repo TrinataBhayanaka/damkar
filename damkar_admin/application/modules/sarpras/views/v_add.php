@@ -57,7 +57,7 @@
                         <span class="block text-center">
                             <i class="icon-list"></i> 
                         </span>
-                        Daftar <?=$this->module_title?>
+                        Daftar 
                     </a>
                 </li>
                 <li class="active">

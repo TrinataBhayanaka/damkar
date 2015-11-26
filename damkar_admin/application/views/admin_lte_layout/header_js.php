@@ -23,7 +23,6 @@
     <script src="assets/themes/lte2.3.0/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="assets/themes/lte2.3.0/dist/js/app.min.js"></script>
-    
 <script>
 	var api_server="<?//=get_server()?>";
 </script>

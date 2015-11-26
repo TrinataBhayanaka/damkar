@@ -39,6 +39,7 @@
         <th  rowspan="2"  align="center">No Kejadian</th>
         <th align="center" rel="date" colspan="2">Provinsi</th>
         <th align="center" rel="title" colspan="2">Kabupaten</th>
+        <th align="center" rel="title" rowspan="2">SKPD</th>
         <th rowspan="2" align="center">Bencana/Kejadian</th>
         <th align="center">Waktu Kejadian</th>
         <th align="center" colspan="4">Korban Meninggal</th>
@@ -78,6 +79,7 @@
                     <td><?=$v['namaPropinsi'];?></td>
                     <td><?=$v['kodeKabupaten'];?></td>
                     <td><?=$v['namaPropinsi'];?></td>
+                    <td><?=$v['skpd'];?></td>
                     <td><?=$v['namaKejadian'];?></td>
                     <td><?=$v['waktuKejadian'];?></td>
                     <td><?=$v['meninggal'];?></td>

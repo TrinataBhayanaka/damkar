@@ -30,7 +30,7 @@
 							<span class="block text-center">
 								<i class="icon-list"></i> 
 							</span>
-							Daftar <?=$this->module_title?>
+							Daftar 
 						</a>
 					</li>
 					<li>
@@ -38,7 +38,7 @@
 							<span class="block text-center">
 								<i class="icon-plus"></i> 
 							</span>
-							Input <?=$this->module_title?>
+							Input 
 						</a>
 					</li>
 					<li>
@@ -84,7 +84,8 @@
         <th>Cakupan</th>
 		<th>Respon Time</th>
         <th>Rasio Personel</th>
-		<th >Rasio SarPras</th>
+        <th >Rasio SarPras</th>
+		<th >Tahun</th>
         </tr>
         </thead>
         <tbody>
@@ -116,6 +117,7 @@
 					<td><?=$v['responTime'];?></td>
                     <td><?=$v['rasioPersonel'];?></td>
                     <td><?=$v['rasioSarPras'];?></td>
+                    <td><?=$v['tahun'];?></td>
             	</tr>
                 
         <? } }?>

@@ -4,6 +4,7 @@
         <tr >
         <th  rowspan="3"  align="center">No </th>
         <th align="center" rel="date" rowspan="3">Kabupaten/Kota</th>
+        <th align="center" rel="date" rowspan="3">SKPD</th>
         <th align="center" rel="title" rowspan="3">Luas Wilayah (km2)</th>
         <th align="center" rel="title" rowspan="3">Jumlah Kecamatan</th>
         <th align="center" rel="title" rowspan="3">Jumlah Penduduk (ribuan)</th>
@@ -53,6 +54,7 @@
                 <tr>            
                     <td ><?=$no++;?></td>
                     <td ><?=$v['nama'];?></a></td>
+                    <td ><?=$v['skpd'];?></a></td>
                     <td><?=$v['luasWilayah'];?></td>
                     <td><?=$v['jumlahKecamatan'];?></td>
                     <td><?=$v['jumlahPenduduk'];?></td>

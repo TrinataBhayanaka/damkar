@@ -30,7 +30,7 @@
 							<span class="block text-center">
 								<i class="icon-list"></i> 
 							</span>
-							Daftar <?=$this->module_title?>
+							Daftar 
 						</a>
 					</li>
 					<li>
@@ -38,7 +38,7 @@
 							<span class="block text-center">
 								<i class="icon-plus"></i> 
 							</span>
-							Input <?=$this->module_title?>
+							Input 
 						</a>
 					</li>
 					<li>
@@ -94,11 +94,11 @@
         <thead>
         <tr>
         <th width="20">&nbsp;</th>
-        <th width="50">&nbsp;</th>
+        <th width="100">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th class="forder"  rel="date">NIP</th>
-        <th class="forder"  rel="title">Nama</th>
+        <th class="forder"  rel="date"><a id="sort" href="<?=base_url()?>personel/personel/index/2/10/1">NIP <i class="fa fa-sort"></i></a></th>
+        <th class="forder"  rel="title"><a id="sort" href="<?=base_url()?>personel/personel/index/3/10/1">Nama <i class="fa fa-sort"></i></a></th>
         <th>Tingkat Kompetensi</th>
         <th>Sektor</th>
         <th>Kabupaten</th>
@@ -123,13 +123,14 @@
                     <input type="checkbox" name="chkDel[]" value="<?=$v['id'];?>">
                     </td>
                     <td>
+                        <a href="<?=$id;?>" id="detail" class="btn btn-info detailData"><i class="icon-list"></i></a>&nbsp;&nbsp;
                     	<a href="<?=$url_edit;?>" id="editData"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
                         <a href="<?=$url_delete;?>/<?=$page;?>" id="deleteData"><i class="icon-remove icon-alert"></i></a>   
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 	
                     <td rel="date_col"><?=$v['nip'];?></td>
-                    <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['nama'];?></a></td>
+                    <td rel="title_col"><?=$v['nama'];?></td>
                     <td><?=$v['namaKompetensi'];?></td>
 					<td><?=$v['namaSektor'];?></td>
                     <td><?=$v['namaKab'];?></td>
@@ -250,6 +251,33 @@ $('#fdatalist').submit(function(event) {
                         }, "JSON")
             
         });
+
+         
       
     }); 
+
+$('#detail.detailData').on('click', function(){
+             
+  $page = $(this).attr('href');
+
+     alert($page);
+            $('.ajax-spinner-bars').css("display","block"); 
+            $.post(base_url+"personel/personel/detail/"+$page, function(data){
+                // if (data.status==true) {
+                //       bootbox.dialog({
+                //             title: "Personel juned",
+                //             message: '',
+                         
+                //         }
+                //     );
+                //     $('.ajax-spinner-bars').css("display","none"); 
+                // }else{
+
+                //     $('.ajax-spinner-bars').css("display","none"); 
+                // }
+
+                        }, "JSON")
+          
+                return false;
+                });
 </script>
