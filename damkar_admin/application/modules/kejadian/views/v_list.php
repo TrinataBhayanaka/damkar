@@ -9,7 +9,7 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1><?=$this->module_title?><small> </small></h1>
+                    <h1>Daftar <?=$this->module_title?><small> </small></h1>
                 </div><!-- col -->
               </div><!-- row-->
         </div><!-- end: page-header -->
@@ -17,7 +17,6 @@
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
              <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=base_url()?>/register/register">Content</a> <span class="divider"></span></li>
             <li class="active"><?=$this->module_title?></li>
          </ul>
         <!-- end: breadcrumbs -->
@@ -134,21 +133,21 @@
         <p class="message"></p>
       </div>
      <div id="print_this">
-    <form name="frmMain" action="<?=$this->module.'del_cek'?>/<?=$page;?>" method="post" id="fdatalist" style="overflow:scroll">
+    <form name="frmMain" action="<?=$this->module.'del_cek'?>/<?=$page;?>" method="post" id="fdatalist" >
 	<?php //echo message_box();?>
     
         <table width="100%" cellpadding="0" cellspacing="0" class="table table-condensed table-hover">
         <thead>
         <tr>
         <td width="20"  >&nbsp;</td>
-        <td width="50"  >&nbsp;</td>
+        <td width="100"  >&nbsp;</td>
         <th width="20" class="text-center">No.</th>
-        <th width="20" class="text-center">No Kejadian</th>
+        <th ><a id="sort" href="<?=base_url()?>kejadian/kejadian/index/2/10/1">No Kejadian <i class="fa fa-sort"></a></th>
         <th class="text-center">Kejadian</th>
         <th class="text-center" >Penyebab</th>
         <th class="text-center">Objek</th>
         <th class="forder  text-center"  rel="title" >Kabupaten</th>
-        <th class="forder text-center" rel="date" >Provinsi</th>
+        <!-- <th class="forder text-center" rel="date" >Provinsi</th> -->
         <th class="forder text-center" rel="date" >Koordinat X</th>
         <th class="forder text-center" rel="date" >Koordinat Y</th>
         </tr>
@@ -171,16 +170,17 @@
                     <input type="checkbox" name="chkDel[]" value="<?=$v['id'];?>">
                     </td>
                     <td>
+                        <a href="<?=$id;?>" id="detail" class="btn btn-info detailData"><i class="icon-list"></i></a>&nbsp;&nbsp;
                     	<a href="<?=$url_edit;?>" id="editData"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
                         <a href="<?=$url_delete;?>/<?=$page;?>" id="deleteData"><i class="icon-remove icon-alert"></i></a>   
                     </td>               
                     <td><?=($data_start+$k);?></td> 	
-                    <td rel="date_col"><?=$v['noKejadian'];?></td>
+                    <td><?=$v['noKejadian'];?></td>
                     <td><?=$v['namaKejadian'];?></td>
                     <td><?=$v['penyebab'];?></td>
                     <td><?=$v['objek'];?></td>
                     <td class="text-center"><?=$v['namaKabupaten'];?></td>
-                    <td class="text-center"><?=$v['namaPropinsi'];?></td>
+                    <!-- <td class="text-center"><?=$v['namaPropinsi'];?></td> -->
                     <td class="text-center"><?=$v['x'];?></td>
                     <td class="text-center"><?=$v['y'];?></td>
             	</tr>
@@ -221,14 +221,17 @@
 </div>
 <script>
 
+            var base_url="<?=base_url()?>";
     //callback handler for form submit
 $('#fdatalist').submit(function(event) {
-
-        if(confirm('Anda yakin akan menghapus data ini?')==true){
-
-            $('.ajax-spinner-bars').css("display","block"); 
+    
             var postData = $(this).serializeArray();
             var formURL = $(this).attr("action");
+        bootbox.confirm("<h4>Anda yakin akan menghapus data ini?</h4>", function(result){ 
+        
+          if(result==true){
+            $('.ajax-spinner-bars').css("display","block"); 
+            
             
             $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -243,13 +246,20 @@ $('#fdatalist').submit(function(event) {
                     // log data to the console so we can see
                     $('#dataAjax').html(data.data); 
                     $('.ajax-spinner-bars').css("display","none"); 
-
-                    // here we will handle errors and validation messages
+                    $.notify({
+                      message: "<i class='fa fa-check'></i> Data Berhasil Dihapus <i class='fa fa-eraser'></i>"
+                    },{
+                        type: 'info'
+                    });
+                // here we will handle errors and validation messages
                 });
 
             // stop the form from submitting the normal way and refreshing the page
             event.preventDefault();
         }
+    })
+            
+    $('.ajax-spinner-bars').css("display","none"); 
         return false;
     });
  
@@ -258,7 +268,6 @@ $('#fdatalist').submit(function(event) {
 <script>
     $(function(){
        
-            var base_url="<?=base_url()?>";
             console.log(base_url);
             // var html=style+hd+footer+$("div#print_this").html();
             // var html=$("div#print_this").html();
@@ -337,4 +346,29 @@ $('#fdatalist').submit(function(event) {
             
         });
     });
+
+$('#detail.detailData').on('click', function(){
+             
+  $page = $(this).attr('href');
+
+     // alert($page);
+            $('.ajax-spinner-bars').css("display","block"); 
+            $.post(base_url+"kejadian/kejadian/detail/"+$page, function(data){
+                if (data.status==true) {
+                      bootbox.dialog({
+                            title: "Detail Data Kejadian ",
+                            message: data.data,
+                         
+                        }
+                    );
+                    $('.ajax-spinner-bars').css("display","none"); 
+                }else{
+
+                    $('.ajax-spinner-bars').css("display","none"); 
+                }
+
+                        }, "JSON")
+          
+                return false;
+                });
 </script>

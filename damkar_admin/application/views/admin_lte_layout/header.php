@@ -40,6 +40,7 @@
 	<link href="assets/css/style.new.badges.css" rel="stylesheet">
 	<link href="assets/css/style.new.task.css" rel="stylesheet">
 	<link href="assets/css/ajax-spinner.css" rel="stylesheet">
+	<link href="assets/css/animate.css" rel="stylesheet">
     
    
     <!-- Theme style -->

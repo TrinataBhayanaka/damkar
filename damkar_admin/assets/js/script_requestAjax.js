@@ -48,7 +48,7 @@
                 return false;
                 });
                   $('#dataAjax').on('click','#btnsearch',function(){
-
+                    // alert('ada');
                    $('.ajax-spinner-bars').css("display","block"); 
                    var parameter =$('#parameter').val();
                    var valueparameter =$('#valueparameter').val();
@@ -60,7 +60,7 @@
                     $.post(pageAjax, {actionfunction: 'showDataAjax',q:valueparameter}, function(data){
                             
                             if (data.status==true) {
-                               
+                                                            
                                     $('#dataAjax').html(data.data); 
 
                                  $('.ajax-spinner-bars').css("display","none"); 
@@ -200,8 +200,10 @@
                   
                    $page = $(this).attr('href');
                
-                    if(confirm('Anda yakin akan menghapus data ini?')==true){
+                    bootbox.confirm("<h4>Anda yakin akan menghapus data ini?</h4>", function(result){ 
                       
+                      if(result==true){
+
                       $('.ajax-spinner-bars').css("display","block"); 
                       $.post(basedomain+$page, {actionfunction: 'showData'}, function(data){
                                 
@@ -210,12 +212,20 @@
                                         $('#dataAjax').html(data.data); 
 
                                         $('.ajax-spinner-bars').css("display","none"); 
+                                        $.notify({
+                                          message: "<i class='fa fa-check'></i> Data Berhasil Dihapus <i class='fa fa-eraser'></i>"
+                                        },{
+                                            type: 'info'
+                                        });
                                     
                                 }else{
                                      $('.ajax-spinner-bars').css("display","none"); 
                                 }
                             }, "JSON")
-                    }
+                      }
+                    })
+            
+                  $('.ajax-spinner-bars').css("display","none"); 
 
                 return false;
                 });
@@ -224,22 +234,25 @@
                   
                    $page = $(this).attr('href');
                
-                    if(confirm('Anda yakin akan Mengubah data ini?')==true){
+                     bootbox.confirm("<h4>Anda yakin akan Mengubah data ini?</h4>", function(result){ 
                       
-                      $('.ajax-spinner-bars').css("display","block"); 
-                      $.get(basedomain+$page, {actionfunction: 'showData'}, function(data){
-                                
-                                if (data.status==true) {
-                                   
-                                        $('#dataAjax').html(data.data); 
+                        if(result==true){
+                          
+                        $('.ajax-spinner-bars').css("display","block"); 
+                        $.get(basedomain+$page, {actionfunction: 'showData'}, function(data){
+                                  
+                                  if (data.status==true) {
+                                     
+                                          $('#dataAjax').html(data.data); 
 
-                                        $('.ajax-spinner-bars').css("display","none"); 
-                                    
-                                }else{
-                                     $('.ajax-spinner-bars').css("display","none"); 
-                                }
-                            }, "JSON")
-                    }
+                                          $('.ajax-spinner-bars').css("display","none"); 
+                                      
+                                  }else{
+                                       $('.ajax-spinner-bars').css("display","none"); 
+                                  }
+                              }, "JSON")
+                      }
+                    })
 
                 return false;
                 });

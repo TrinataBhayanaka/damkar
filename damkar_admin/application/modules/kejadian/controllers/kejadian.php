@@ -12,7 +12,7 @@ class kejadian extends Admin_Controller {
         
 		$this->load->library(array("excel","form_validation","utils","ion_auth"));
 
-        $this->module_title="Kejadian List";
+        $this->module_title="Kejadian";
         $this->load->model("kejadian_model");
         $this->load->model("logkejadian_model");
         $this->model=$this->kejadian_model;
@@ -396,7 +396,26 @@ class kejadian extends Admin_Controller {
         
         exit;
   }
+  function detail($idx=false){
+  	
+  		if($this->encrypt_status==TRUE):
+			$id_enc=$idx;
+			$id=decrypt($idx);
+		endif;
 
+		$data['data']=$this->model->GetRecordData("id='{$id}'");
+	// pre($data['data']);
+		$data_layout["content"]=$this->load->view("kejadian/v_detail",$data,true); 
+
+		if ($data['data']){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+
+  }
 	function delete($idx=false,$forder=0,$limit=10,$page=1,$postKey=false){
   		// debug();
 		// if (!$this->cms->has_admin($this->module)) redirect ("error_");

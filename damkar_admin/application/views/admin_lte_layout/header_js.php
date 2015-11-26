@@ -6,6 +6,8 @@
 <link href="assets/css/famfam/famfam.css" rel="stylesheet" type="text/css">
 <script src="assets/js/jquery.tooltipsy.min.js"></script>
 <script src="assets/js/bootbox.min.js"></script>
+<script src="assets/js/bootstrap-notify.min.js"></script>
+
 <script>
 	var api_server="<?//=get_server()?>";
 </script>

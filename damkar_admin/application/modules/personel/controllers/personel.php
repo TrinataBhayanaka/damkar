@@ -12,7 +12,7 @@ class personel extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Personel List";
+        $this->module_title="Personel";
         $this->load->model("personel_model");
         $this->model=$this->personel_model;
 
@@ -70,9 +70,9 @@ class personel extends Admin_Controller {
 
 		if ($this->form_validation->run() == true)
 		{
-			// if ($_POST['image_name']) {
-			// 	$file_name = $this->__file_upload($_POST['image_name'],$_POST['username']);
-			// }
+			if ($_POST['image_name']) {
+				$file_name = $this->__file_upload($_POST['image_name'],$_POST['nip']);
+			}
 
 			$additional_data = array(
 				'nip' 			=> $this->input->post('nip'),
@@ -98,6 +98,7 @@ class personel extends Admin_Controller {
 				'pendidikan'      => $this->input->post('pendidikan'),
 				'pelatihan'      => $this->input->post('pelatihan'),
 				'keterangan'      => $this->input->post('keterangan'),
+				'filename'      => $file_name,
 				'status'      		=> 1,
 			);
 		
@@ -174,7 +175,9 @@ class personel extends Admin_Controller {
 
 		if (isset($_POST) && !empty($_POST))
 		{
-
+			if ($_POST['image_name']) {
+				$file_name = $this->__file_upload($_POST['image_name'],$_POST['nip']);
+			}
 			$data = array(
 				'nip' 			=> $this->input->post('nip'),
 				'nama'  		=> $this->input->post('nama'),
@@ -199,6 +202,7 @@ class personel extends Admin_Controller {
 				'pendidikan'      => $this->input->post('pendidikan'),
 				'pelatihan'      => $this->input->post('pelatihan'),
 				'keterangan'      => $this->input->post('keterangan'),
+				'filename'      => $file_name,
 				'status'      		=> 1,
 			);
 
@@ -255,18 +259,17 @@ class personel extends Admin_Controller {
   }
 
   function detail($idx=false){
+  	
   		if($this->encrypt_status==TRUE):
 			$id_enc=$idx;
 			$id=decrypt($idx);
 		endif;
 
-		$user=$this->model->GetRecordData("id='{$id}'");
-		pre($user);
+		$data['user']=$this->model->GetRecordData("id='{$id}'");
+	
+		$data_layout["content"]=$this->load->view("personel/v_detail",$data,true); 
 
-
-		$data_layout["content"]=$this->load->view("personel/v_detail",$this->data,true); 
-
-		if ($user){
+		if ($data['user']){
             print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
         }else{
             print json_encode(array('status'=>false));
@@ -428,15 +431,15 @@ class personel extends Admin_Controller {
 	}
 
 	function __file_upload($file_name,$name=false) {
-		$cfolder = $this->config->item('dir_members');
+		$cfolder = $this->config->item('dir_personels');
 		if (!is_dir($cfolder)) mkdir($cfolder);
 		
-		$folder = $this->config->item('dir_members');
+		$folder = $this->config->item('dir_personels');
 		$data["process"]=true;
 		if ($file_name) {
 		
 			$fix_name = (($name)?$name:$file_name).substr($file_name,strrpos($file_name,"."));
-			$tmp_name = $this->config->item('dir_tmp_members').$file_name;
+			$tmp_name = $this->config->item('dir_tmp').$file_name;
 			$new_name = $folder.$fix_name;
 			if (file_exists($tmp_name)) {
 				if (copy($tmp_name,$new_name)) {

@@ -34,7 +34,6 @@ class capaian_spm extends Admin_Controller {
 
 	function index($forder=0,$limit=10,$page=1){
   		
-		// pre($this->juned());
 		$data_layout["content"]=$this->load->view("capaian_spm/v_capaian_ajax",$data,true); 
 		$this->load->view($this->admin_layout,$data_layout);
 	}
@@ -42,7 +41,6 @@ class capaian_spm extends Admin_Controller {
 	function dataAjax($forder=0,$limit=10,$page=1,$postKey=false){
 
 	
-		// $arrDB=true;
 		$data=$this->dataPaging($forder,$limit,$page,$postKey);
 		
 		$data['m_propinsi']=$this->get_lookup_provinsi();
@@ -62,9 +60,6 @@ class capaian_spm extends Admin_Controller {
  		$this->data['post']=$_POST;
 		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('tahun', "<b>Tahun</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
@@ -73,16 +68,10 @@ class capaian_spm extends Admin_Controller {
 
 		if ($this->form_validation->run() == true)
 		{
-			// if ($_POST['image_name']) {
-			// 	$file_name = $this->__file_upload($_POST['image_name'],$_POST['username']);
-			// }
 
 			$additional_data = array(
 				'propinsi' 			=> $this->input->post('propinsi'),
 				'kabupaten'  		=> $this->input->post('kabupaten'),
-				// 'luasWilayah'    	=> $this->input->post('luasWilayah'),
-				// 'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
-				// 'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
 				'tahun'      		=> $this->input->post('tahun'),
 				'cakupan'      		=> $this->input->post('cakupan'),
 				'responTime' 	    => $this->input->post('responTime'),
@@ -93,9 +82,7 @@ class capaian_spm extends Admin_Controller {
 		
 			$insert = $this->model->InsertData($additional_data);
 			if ($insert) {
-				// $data["redirect"]=true;
-				// set_message("success","Data Added.");
-				// redirect("capaian_spm/");
+
 				$data=$this->dataPaging(0,10,1);
 				$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
 		
@@ -110,8 +97,7 @@ class capaian_spm extends Admin_Controller {
 			
 		}else{
 		
-			//display the create user form
-			//set the flash data error message if there is one
+			
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
 			$dataFormInput=array('propinsi','kabupaten','cakupan','responTime','rasioPersonel','rasioSarPras','tahun');
@@ -119,11 +105,10 @@ class capaian_spm extends Admin_Controller {
 			$this->data=$this->set_dataInput($dataFormInput);
 
 		}
-		// pre($this->form_validation->set_rules());
+
 		$this->data['m_propinsi']=$this->get_lookup_provinsi();
 		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
-		// pre($this->data['m_propinsi']);
-		// pre($this->data['m_kabupaten']);
+
 		$this->data["user_name"]=$this->data['users']['user']['username'];
 		$this->data["acc_active"]="content";
 		$this->data["process"]=$process;
@@ -138,13 +123,7 @@ class capaian_spm extends Admin_Controller {
         exit;
  	 }
  	 function edit($idx=false){
-		//acl
-
-		
-		// if (!$this->cms->has_write($this->module)) redirect ("error_");
-		// $userSess=$_SESSION[$this->lauth->appname]["userdata"]["user"];
-		// pre($idx);
-
+	
 		if($this->encrypt_status==TRUE):
 			$id_enc=$idx;
 			$id=decrypt($idx);
@@ -155,9 +134,7 @@ class capaian_spm extends Admin_Controller {
 		//validate form input
 		$this->form_validation->set_rules('propinsi', "<b>Provinsi</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('kabupaten', "<b>Kabupaten</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('luasWilayah', "<b>Luas Wilayah</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
+
 		$this->form_validation->set_rules('tahun', "<b>Tahun</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
@@ -170,9 +147,6 @@ class capaian_spm extends Admin_Controller {
 			$data = array(
 				'propinsi' 			=> $this->input->post('propinsi'),
 				'kabupaten'  		=> $this->input->post('kabupaten'),
-				// 'luasWilayah'    	=> $this->input->post('luasWilayah'),
-				// 'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
-				// 'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
 				'tahun'      		=> $this->input->post('tahun'),
 				'cakupan'      		=> $this->input->post('cakupan'),
 				'responTime' 	    => $this->input->post('responTime'),
@@ -306,6 +280,7 @@ class capaian_spm extends Admin_Controller {
 		}else{
 			$key = ($_POST['q'])?$_POST['q']:0;
 		}
+		// $limit=5;
 		$filter="(SPM.propinsi=KAB.kode_prop AND SPM.kabupaten=KAB.kode_kab AND SPM.propinsi=PROV.kodeProp) ";
 		if ($key) {
 			
@@ -354,7 +329,7 @@ class capaian_spm extends Admin_Controller {
 		$data["perpage"]=$perpage;
 		$data["paging"]=$paging;
 		$data["module"]=$this->module;
-
+		// pre($data['perpage']);
 		$data["page"]=$forder."/".$limit."/".$page.$query_url;
 		
 		return $data;

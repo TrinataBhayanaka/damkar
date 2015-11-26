@@ -12,7 +12,7 @@ class jenisKebakaran extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Master Data Kebakaran List";
+        $this->module_title="Master Data Kebakaran";
         $this->load->model("mkebakaran_model");
         $this->model=$this->mkebakaran_model;
 

@@ -12,7 +12,7 @@ class sarpras extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Sarana & Prasana List";
+        $this->module_title="Sarana dan Prasana";
         $this->load->model("sarpras_model");
         $this->model=$this->sarpras_model;
 

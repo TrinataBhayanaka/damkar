@@ -5,7 +5,7 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1><?=$this->module_title?><small> </small></h1>
+                    <h1>Daftar <?=$this->module_title?><small> </small></h1>
                 </div><!-- col -->
               </div><!-- row-->
         </div><!-- end: page-header -->
@@ -13,7 +13,6 @@
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
              <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=base_url()?>/register/register">Content</a> <span class="divider"></span></li>
             <li class="active"><?=$this->module_title?></li>
          </ul>
         <!-- end: breadcrumbs -->
@@ -30,7 +29,7 @@
 							<span class="block text-center">
 								<i class="icon-list"></i> 
 							</span>
-							Daftar <?=$this->module_title?>
+							Daftar
 						</a>
 					</li>
 					<li>
@@ -38,7 +37,7 @@
 							<span class="block text-center">
 								<i class="icon-plus"></i> 
 							</span>
-							Input <?=$this->module_title?>
+							Input 
 						</a>
 					</li>
 					<li>
@@ -48,14 +47,7 @@
 							</span>	
 							Refresh
 						</a>
-					</li><li>
-                        <a href="#" class="print-pdf" data-url="" title="Data Pendaftar">
-                            <span class="block text-center">
-                                <i class="fam-page_white_acrobat"></i>
-                            </span> 
-                            Eksport PDF
-                        </a>
-                    </li>
+					</li>
 				</ul>
 			</div>
 			<form class="search_form col-md-3 pull-right" action="#" method="get">
@@ -86,11 +78,11 @@
         <th width="50">&nbsp;</th>
         <th width="20">No.</th>
         <th width="20">&nbsp;</th>
-        <th class="forder" width="100" rel="date">Provinsi</th>
-        <th class="forder" width="300" rel="title">Kabupaten</th>
-        <th>Luas Wilayah</th>
-		<th>Jumlah Kecamatan</th>
-        <th width="100">Jumlah Penduduk</th>
+        <th class="forder" width="200" rel="date">Provinsi</th>
+        <th class="forder" width="150" rel="title">Kabupaten</th>
+        <th><a id="sort" href="<?=base_url()?>master_data/wilayah/index/4/10/1">Luas Wilayah  <i class="fa fa-sort"></i></a></th>
+		<th><a id="sort" href="<?=base_url()?>master_data/wilayah/index/5/10/1">Jumlah Kecamatan  <i class="fa fa-sort"></i></a></th>
+        <th><a id="sort" href="<?=base_url()?>master_data/wilayah/index/6/10/1">Jumlah Penduduk  <i class="fa fa-sort"></i></a></th>
 		<th width="50">SKPD</th>
         </tr>
         </thead>
@@ -118,7 +110,7 @@
                     <td><?=($data_start+$k);?></td> 	
                     <td></td> 	
                     <td rel="date_col" width="150"><?=$v['namaProp'];?></td>
-                    <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['namaKab'];?></a></td>
+                    <td rel="title_col"><?=$v['namaKab'];?></td>
                     <td><?=$v['luasWilayah'];?></td>
 					<td><?=$v['jumlahKecamatan'];?></td>
                     <td><?=$v['jumlahPenduduk'];?></td>
@@ -166,11 +158,14 @@
     //callback handler for form submit
 $('#fdatalist').submit(function(event) {
 
-        if(confirm('Anda yakin akan menghapus data ini?')==true){
-
-            $('.ajax-spinner-bars').css("display","block"); 
             var postData = $(this).serializeArray();
             var formURL = $(this).attr("action");
+        // if(confirm('Anda yakin akan menghapus data ini?')==true){
+        bootbox.confirm("<h4>Anda yakin akan menghapus data ini?</h4>", function(result){ 
+        
+          if(result==true){
+            $('.ajax-spinner-bars').css("display","block"); 
+            
             
             $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -185,13 +180,20 @@ $('#fdatalist').submit(function(event) {
                     // log data to the console so we can see
                     $('#dataAjax').html(data.data); 
                     $('.ajax-spinner-bars').css("display","none"); 
-
+                     $.notify({
+                          message: "<i class='fa fa-check'></i> Data Berhasil Dihapus <i class='fa fa-eraser'></i>"
+                        },{
+                            type: 'info'
+                        });
                     // here we will handle errors and validation messages
                 });
 
             // stop the form from submitting the normal way and refreshing the page
             event.preventDefault();
         }
+    });
+
+    $('.ajax-spinner-bars').css("display","none"); 
         return false;
     });
  

@@ -5,7 +5,7 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1><?=$this->module_title?><small> </small></h1>
+                    <h1>Daftar <?=$this->module_title?><small> </small></h1>
                 </div><!-- col -->
               </div><!-- row-->
         </div><!-- end: page-header -->
@@ -13,8 +13,8 @@
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
              <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=base_url()?>/register/register">Content</a> <span class="divider"></span></li>
-            <li class="active"><?=$this->module_title?></li>
+            <li  class="active">Personel</li>
+          
          </ul>
         <!-- end: breadcrumbs -->
    </div><!-- cols -->
@@ -175,14 +175,18 @@
 </div>
 <script>
 
+var base_url="<?=base_url()?>";
     //callback handler for form submit
 $('#fdatalist').submit(function(event) {
 
-        if(confirm('Anda yakin akan menghapus data ini?')==true){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
 
+     bootbox.confirm("<h4>Anda yakin akan menghapus data ini?</h4>", function(result){ 
+        
+          if(result==true){
+            
             $('.ajax-spinner-bars').css("display","block"); 
-            var postData = $(this).serializeArray();
-            var formURL = $(this).attr("action");
             
             $.ajax({
                 type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
@@ -197,18 +201,23 @@ $('#fdatalist').submit(function(event) {
                     // log data to the console so we can see
                     $('#dataAjax').html(data.data); 
                     $('.ajax-spinner-bars').css("display","none"); 
-
+                     $.notify({
+                      message: "<i class='fa fa-check'></i> Data Berhasil Dihapus <i class='fa fa-eraser'></i>"
+                    },{
+                        type: 'info'
+                    });
                     // here we will handle errors and validation messages
                 });
 
             // stop the form from submitting the normal way and refreshing the page
             event.preventDefault();
         }
+    });
+        $('.ajax-spinner-bars').css("display","none"); 
         return false;
     });
  $(function(){
        
-            var base_url="<?=base_url()?>";
             console.log(base_url);
             // var html=style+hd+footer+$("div#print_this").html();
             // var html=$("div#print_this").html();
@@ -260,21 +269,21 @@ $('#detail.detailData').on('click', function(){
              
   $page = $(this).attr('href');
 
-     alert($page);
+     // alert($page);
             $('.ajax-spinner-bars').css("display","block"); 
             $.post(base_url+"personel/personel/detail/"+$page, function(data){
-                // if (data.status==true) {
-                //       bootbox.dialog({
-                //             title: "Personel juned",
-                //             message: '',
+                if (data.status==true) {
+                      bootbox.dialog({
+                            title: "Detail Data Personel ",
+                            message: data.data,
                          
-                //         }
-                //     );
-                //     $('.ajax-spinner-bars').css("display","none"); 
-                // }else{
+                        }
+                    );
+                    $('.ajax-spinner-bars').css("display","none"); 
+                }else{
 
-                //     $('.ajax-spinner-bars').css("display","none"); 
-                // }
+                    $('.ajax-spinner-bars').css("display","none"); 
+                }
 
                         }, "JSON")
           

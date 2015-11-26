@@ -12,7 +12,7 @@ class jenisSarPras extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Master Data Sarana Prasarana List";
+        $this->module_title="Master Data Sarana Prasarana";
         $this->load->model("msarpras_model");
         $this->model=$this->msarpras_model;
 
@@ -260,6 +260,7 @@ class jenisSarPras extends Admin_Controller {
 			}   
 	}
  	 function dataPaging($forder=0,$limit=10,$page=1,$postKey=false){
+ 	 	// pre($postKey);
 		$filter="";
 		if($postKey){
 			$key=$postKey;
@@ -287,15 +288,7 @@ class jenisSarPras extends Admin_Controller {
 		}
 
 		$arrDB=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
-		// pre($arrDB);
-		// foreach ($result as $key => $value) {
-		// 	$namaProp=$this->get_name_provinsi($value['propinsi']);
-		// 	$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
-			
-		// 	$arrDB[$key]=$value;
-		// 	$arrDB[$key]['namaProp']=$namaProp['nama'];
-		// 	$arrDB[$key]['namaKab']=$namaKab['nama'];
-		// }
+	
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
 		$query_url = ($key)?"/".$key:"";

@@ -32,16 +32,15 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1>Master Capaian SPM<small> Add </small></h1>
+                    <h1>Tambah<small> <?=$this->module_title?></small></h1>
                 </div><!-- col -->
             </div><!-- row-->
         </div><!-- end: page-header -->
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>register/register"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
+            <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
+            <li><a href="<?php echo $this->module?>" id="refresh"><?=$this->module_title?></a> <span class="divider"></span></li>
+			<li class="active">Tambah Data</li>
          </ul>
         <!-- end: breadcrumbs -->
    </div><!-- cols -->
@@ -294,7 +293,11 @@ $('#fdata').submit(function(event) {
                 // log data to the console so we can see
                 $('#dataAjax').html(data.data); 
         		$('.ajax-spinner-bars').css("display","none"); 
-
+        		$.notify({
+                  message: "<i class='fa fa-check'></i> Data Berhasil Disimpan "
+                },{
+                    type: 'success'
+                });
                 // here we will handle errors and validation messages
             });
 

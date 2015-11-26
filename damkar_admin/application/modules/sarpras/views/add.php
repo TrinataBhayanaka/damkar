@@ -501,46 +501,46 @@ $(function(){
 
 
 <script>
-	$(function(){
-		$("#comment_list").load("<?=$this->module?>comments_list/<?=$data["id"]?>/<?=$data["category"];?>");
-		$(".comments_add").click(function(e){
-			e.preventDefault();
-			$("#add_comments").load("<?=$this->module?>comments_add/<?=$data["id"]?>/<?=$data["category"];?>");
-		});
+	// $(function(){
+	// 	$("#comment_list").load("<?=$this->module?>comments_list/<?=$data["id"]?>/<?=$data["category"];?>");
+	// 	$(".comments_add").click(function(e){
+	// 		e.preventDefault();
+	// 		$("#add_comments").load("<?=$this->module?>comments_add/<?=$data["id"]?>/<?=$data["category"];?>");
+	// 	});
 		
-		$("#com_add_save").live("click",function(e){
-			e.preventDefault();
-			var url="<?=$this->module?>comments_add_save/";
-			var data=$("#frm_comment").serialize();
-			$.post(url,data,function(ret){
-				if(ret=="ok"){
-					$("#comment_list").load("<?=$this->module?>comments_list/<?=$data["id"]?>/<?=$data["category"];?>");
-					Alert("Message","OK");
-				}else{
-					Alert("Message","not OK");
-				}
-			})
-		});
+	// 	$("#com_add_save").live("click",function(e){
+	// 		e.preventDefault();
+	// 		var url="<?=$this->module?>comments_add_save/";
+	// 		var data=$("#frm_comment").serialize();
+	// 		$.post(url,data,function(ret){
+	// 			if(ret=="ok"){
+	// 				$("#comment_list").load("<?=$this->module?>comments_list/<?=$data["id"]?>/<?=$data["category"];?>");
+	// 				Alert("Message","OK");
+	// 			}else{
+	// 				Alert("Message","not OK");
+	// 			}
+	// 		})
+	// 	});
 		
-		$(".comments_reply").live("click",function(e){
-			e.preventDefault();
-			var url=$(this).attr("rel");
-			$("#add_comments").load(url);
-		});
+	// 	$(".comments_reply").live("click",function(e){
+	// 		e.preventDefault();
+	// 		var url=$(this).attr("rel");
+	// 		$("#add_comments").load(url);
+	// 	});
 		
-		$("#com_reply_save").live("click",function(e){
-			e.preventDefault();
-			var url="<?=$this->module?>comments_reply_save/";
-			var data=$("#frm_comment_reply").serialize();
-			$.post(url,data,function(ret){
-				if(ret=="ok"){
-					$("#comment_list").load("<?=$this->module?>comments_list/<?=$data["id"]?>/<?=$data["category"];?>");
-					Alert("Message","OK");
-				}else{
-					Alert("Message","not OK");
-				}
-			})
-		});
+	// 	$("#com_reply_save").live("click",function(e){
+	// 		e.preventDefault();
+	// 		var url="<?=$this->module?>comments_reply_save/";
+	// 		var data=$("#frm_comment_reply").serialize();
+	// 		$.post(url,data,function(ret){
+	// 			if(ret=="ok"){
+	// 				$("#comment_list").load("<?=$this->module?>comments_list/<?=$data["id"]?>/<?=$data["category"];?>");
+	// 				Alert("Message","OK");
+	// 			}else{
+	// 				Alert("Message","not OK");
+	// 			}
+	// 		})
+	// 	});
 		
-	});
+	// });
 </script>
