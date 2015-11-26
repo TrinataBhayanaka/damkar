@@ -175,6 +175,7 @@
 </div>
 <script>
 
+            var base_url="<?=base_url()?>";
     //callback handler for form submit
 $('#fdatalist').submit(function(event) {
 
@@ -208,7 +209,6 @@ $('#fdatalist').submit(function(event) {
     });
  $(function(){
        
-            var base_url="<?=base_url()?>";
             console.log(base_url);
             // var html=style+hd+footer+$("div#print_this").html();
             // var html=$("div#print_this").html();
@@ -260,21 +260,21 @@ $('#detail.detailData').on('click', function(){
              
   $page = $(this).attr('href');
 
-     alert($page);
+     // alert($page);
             $('.ajax-spinner-bars').css("display","block"); 
             $.post(base_url+"personel/personel/detail/"+$page, function(data){
-                // if (data.status==true) {
-                //       bootbox.dialog({
-                //             title: "Personel juned",
-                //             message: '',
+                if (data.status==true) {
+                      bootbox.dialog({
+                            title: "Detail Data Personel ",
+                            message: data.data,
                          
-                //         }
-                //     );
-                //     $('.ajax-spinner-bars').css("display","none"); 
-                // }else{
+                        }
+                    );
+                    $('.ajax-spinner-bars').css("display","none"); 
+                }else{
 
-                //     $('.ajax-spinner-bars').css("display","none"); 
-                // }
+                    $('.ajax-spinner-bars').css("display","none"); 
+                }
 
                         }, "JSON")
           

@@ -169,8 +169,8 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label>Tanggal Lahir</label>
-									<input type="hidden" id="tglLahir" name="tglLahir" value="<?php echo date("Y-m-d",strtotime($tglLahir['value']));?>" />
-									<input type="text" id="tanggal_lahir_selector" name="tanggal_lahir_selector" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglLahir['value']));?>" />
+									<input type="hidden" id="tglLahir" name="tglLahir" value="<?php echo date("Y-m-d",$tglLahir['value']);?>" />
+									<input type="text" id="tanggal_lahir_selector" name="tanggal_lahir_selector" class="dp1 form-control" value="" />
 									
 									</div>
 								</div>

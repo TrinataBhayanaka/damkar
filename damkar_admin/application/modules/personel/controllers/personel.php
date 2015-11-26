@@ -255,18 +255,17 @@ class personel extends Admin_Controller {
   }
 
   function detail($idx=false){
+  	
   		if($this->encrypt_status==TRUE):
 			$id_enc=$idx;
 			$id=decrypt($idx);
 		endif;
 
-		$user=$this->model->GetRecordData("id='{$id}'");
-		pre($user);
+		$data['user']=$this->model->GetRecordData("id='{$id}'");
+	
+		$data_layout["content"]=$this->load->view("personel/v_detail",$data,true); 
 
-
-		$data_layout["content"]=$this->load->view("personel/v_detail",$this->data,true); 
-
-		if ($user){
+		if ($data['user']){
             print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
         }else{
             print json_encode(array('status'=>false));

@@ -136,7 +136,6 @@ class wilayah extends Admin_Controller {
    function add_wilayah(){
   		// if (!$this->cms->has_write($this->module)) redirect ("error_");
 		// pre($_POST);
-		// exit;
 		// debug();
 		//validate form input
 		$this->data['post']=$_POST;
@@ -232,6 +231,7 @@ class wilayah extends Admin_Controller {
 		}
 		
 		// $this->data['m_propinsi']=$this->get_lookup_propinsi();
+		// exit;
 		$this->data['m_propinsi']=$this->get_lookup_provinsi();
 		$this->data['m_kabupaten']=$this->get_lookup_kabupaten();
 		$this->data["user_name"]=$this->data['users']['user']['username'];
