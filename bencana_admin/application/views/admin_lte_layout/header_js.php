@@ -21,11 +21,20 @@
     <script src="assets/themes/lte2.3.0/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="assets/themes/lte2.3.0/plugins/fastclick/fastclick.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="assets/themes/lte2.3.0/plugins/iCheck/icheck.min.js"></script>
     <!-- AdminLTE App -->
     <script src="assets/themes/lte2.3.0/dist/js/app.min.js"></script>
     
 <script>
 	var api_server="<?//=get_server()?>";
+      $(function () {
+         //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+          checkboxClass: 'icheckbox_minimal-blue',
+          radioClass: 'iradio_minimal-blue'
+        });
+      })
 </script>
 
 

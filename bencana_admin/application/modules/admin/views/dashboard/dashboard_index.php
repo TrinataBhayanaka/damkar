@@ -4,86 +4,101 @@
 <?php $tidakvaild=$this->conn->GetOne("select count(idx) from wa_data where wa_data_status=99");?>
 <?php $total_wa=$this->conn->GetOne("select count(idx) from wa_data");?>
 
-<div class="row">
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-aqua">
-                                <div class="inner">
-                                    <h3>
-                                        4
-                                    </h3>
-                                    <p>
-                                         Jumlah Kejadian Bencana
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-document"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-green">
-                                <div class="inner">
-                                    <h3>
-                                        <!--53<sup style="font-size: 20px">%</sup>-->
-                                        12
-                                    </h3>
-                                    <p>
-                                        Jumlah Korban Luka Berat
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-document-text"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-yellow">
-                                <div class="inner">
-                                    <h3>
-                                        30
-                                    </h3>
-                                    <p>
-                                        Jumlah Korban Luka Ringan
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-information-circled"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        <div class="col-lg-3 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3>
-                                        20
-                                    </h3>
-                                    <p>
-                                        Jumlah Korban Meninggal
-                                    </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-clipboard"></i>
-                                </div>
-                                <a class="small-box-footer" href="#">
-                                    <i class="fa"></i>
-                                </a>
-                            </div>
-                        </div><!-- ./col -->
-                        
-                    </div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Dashboard
+    <small>Control panel</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>
+                        4
+                    </h3>
+                    <p>
+                         Jumlah Kejadian Bencana
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-document"></i>
+                </div>
+                <a class="small-box-footer" href="#">
+                    <i class="fa"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>
+                        <!--53<sup style="font-size: 20px">%</sup>-->
+                        12
+                    </h3>
+                    <p>
+                        Jumlah Korban Luka Berat
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-document-text"></i>
+                </div>
+                <a class="small-box-footer" href="#">
+                    <i class="fa"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>
+                        30
+                    </h3>
+                    <p>
+                        Jumlah Korban Luka Ringan
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-information-circled"></i>
+                </div>
+                <a class="small-box-footer" href="#">
+                    <i class="fa"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>
+                        20
+                    </h3>
+                    <p>
+                        Jumlah Korban Meninggal
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-clipboard"></i>
+                </div>
+                <a class="small-box-footer" href="#">
+                    <i class="fa"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        
+    </div>
                     
    <div class="formSep"></div>
    
@@ -155,6 +170,7 @@
         </div>
 
    </div>
+</section>
    <script>
    		$(document).ready(function() {
             Morris.Bar({

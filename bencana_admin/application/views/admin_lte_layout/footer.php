@@ -7,7 +7,12 @@
     <!--<p>Copyright &copy; 2014 &middot; All Rights Reserved &middot; <a href="#" style="color:#A0A0CA;">brwa.go.id</a></p>	
   </div>
 </nav>-->
-		
+	<footer class="main-footer">
+		<div class="pull-right hidden-xs">
+		  <b>Version</b> 1.0.0
+		</div>
+		<strong>2015 <a href="#">Portal Kebencanaan</a>.</strong> All rights reserved.
+	</footer>	
 	<? $this->load->view("admin_lte_layout/footer_js")?>
 	<script>
 	var plot1;

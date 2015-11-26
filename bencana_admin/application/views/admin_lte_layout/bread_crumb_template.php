@@ -1,6 +1,7 @@
- <ul class="breadcrumb">
+ <ol class="breadcrumb">
  	{breadcrumb}
 	<li class="{active}">
-    	<a href="{url}">{icon}{title}</a> <span class="divider"></span></li>
+    	<a href="{url}">{icon}{title}</a></li>
     {/breadcrumb}
- </ul>
+ </ol>
+
