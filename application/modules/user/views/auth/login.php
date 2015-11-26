@@ -56,10 +56,10 @@
             </div>
             <div class="col-md-7" style="padding:10px;">
                     <legend>Belum menjadi anggota?</legend>
-                    <label>Dengan menjadi anggota online <strong>BRWA</strong>, anda dapat:</label>
+                    <label>Dengan menjadi anggota Portal <strong>Kebencanaan</strong>, anda dapat:</label>
                         <ul class="unstyled">
-                            <li>Mendaftarkan Wilayah adat secara online</li>
-                            <li>Anda dapat mengetahui proses Registrasi Wilayah adat</li>
+                            <li>Mendapatkan informasi terkini mengenai bencana yang terjadi di Nusantara</li>
+                            <li>Anda dapat mengetahui statistik kebencanaan terkini</li>
                             <li>Mendapatkan Notifikasi proses</li>
                         </ul>
                     
