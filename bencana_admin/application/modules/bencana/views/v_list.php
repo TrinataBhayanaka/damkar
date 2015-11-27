@@ -20,7 +20,7 @@
     <small></small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="admin/dashboard"><i class="fa fa-globe"></i> Home</a></li>
+    <li><a href="admin/dashboard"><i class="fa fa-file-text"></i> Home</a></li>
     <li class="active"><?=$this->module_title?></li>
   </ol>
 </section>
