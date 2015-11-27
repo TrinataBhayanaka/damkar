@@ -26,244 +26,212 @@
 	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
 }
 </style>
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1>User<small> Add </small></h1>
-                </div><!-- col -->
-            </div><!-- row-->
-        </div><!-- end: page-header -->
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>register/register"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
-         </ul>
-        <!-- end: breadcrumbs -->
-   </div><!-- cols -->
-</div> <!-- row -->
 
-                        
-<div style="padding:0px">
-<div class="row topbar box_shadow">
-    <div class="col-md-12">
-            <ul class="tab-bar grey-tab">
-                <li>
-                    <a href="<?php echo $this->module?>" id="refresh">
-                        <span class="block text-center">
-                            <i class="icon-list"></i> 
-                        </span>
-                        Daftar <?=$this->module_title?>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="<?php echo $this->module?>add_bencana">
-                        <span class="block text-center">
-                            <i class="icon-plus"></i> 
-                        </span>
-                        Input <?=$this->module_title?>
-                    </a>
-                </li>
-                <li>
-					<a href="<?php echo $this->module?>" id="addData">
-						<span class="block text-center">
-							<i class="icon-refresh"></i> 
-						</span>	
-						Refresh
-					</a>
-				</li>
-            </ul>
-    	<!--<form class="search_form col-md-3 pull-right" action="<?//=$this->module?>listview" method="get">
-        	<?php //$this->load->view("widget/search_box_db"); ?>
-        </form>-->
-    </div>
-</div>
-<br>
-<div class="row-fluid">
-<ul class="nav nav-tabs" id="news-tab">
-   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-plus"></i> Tambah Data</a></li>
-</ul>
-<!--tab content-->
-<div class="tab-content">
-  
-<div id="tab-edit" class="tab-pane active">  
-	
-	<?php 
-		if ($message) {
-			echo '<div class="alert alert-warning alert-dismissible" >
-                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
-              </div>';
-		}
-	?>
-	<?php echo form_open("bencana/edit_bencana",'id="fdata"');?>
-	<input type="hidden" name="id" value="<?=$idd;?>" />
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-			  
-			  <div class="row">
-					<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Provinsi </label>
-									<select class="form-control" id="propinsi" name="propinsi">
-										<?php 
-										// pre($m_propinsi);
-										foreach ($m_propinsi as $key => $value) {
-											$selected="";
-											if($value['kode_prop']==$propinsi['value']){
-												$selected="selected = selected";
-											}
-										?>
-										<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
-										<?php 
-											}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small>Edit Data</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-file-text"></i> Home</a></li>
+    <li><a href="wilayah/wilayah"> <?=$this->module_title?></a></li>
+    <li class="active">Edit Data Wilayah</li>
+  </ol>
+</section>
 
-										?>
-									</select>
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Kabupaten </label>
-									<select class="form-control" id="kabupaten" name="kabupaten">
-										<?php 
-										// pre($m_propinsi);
-										foreach ($m_kabupaten as $key => $value) {
-											$selected="";
-											if($value['kode_kab'] == $kabupaten['value']){
-												$selected="selected = selected";
-											}
-										?>
-										<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
-										<?php 
-											}
+<!-- Main content -->
+<section class="content">
 
-										?>
-									</select>
-									</div>
-								</div>
+	<div class="row">
+		<div class="col-xs-12">
+
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="daftar">
+            	<i class="fa fa-bars"></i> Daftar Bencana
+			</a>
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>add_bencana" id="addData">
+				<i class="fa fa-plus"></i> Input Bencana
+			</a>
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+				<i class="fa fa-refresh"></i> Refresh
+			</a>
+
+
+			<?php 
+				if ($message) {
+					echo '<div class="alert alert-warning alert-dismissible" >
+		                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+		                <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
+		              </div>';
+				}
+			?>
+			<?php echo form_open("bencana/edit_bencana",'id="fdata"');?>
+			<input type="hidden" name="id" value="<?=$idd;?>" />
+
+				<div class="box box-default">
+					<div class="box-header with-border">
+		              <h3 class="box-title">Edit Data</h3>
+		              <div class="box-tools pull-right">
+		                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+		                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+		              </div>
+		            </div><!-- /.box-header -->
+		            <div class="box-body">
+
+		            <div class="row">
+						<div class="col-md-12">
+						  
+						  <div class="row">
+								<div class="col-md-12">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+												
+												<label>Provinsi </label>
+												<select class="form-control" id="propinsi" name="propinsi">
+													<?php 
+													// pre($m_propinsi);
+													foreach ($m_propinsi as $key => $value) {
+														$selected="";
+														if($value['kode_prop']==$propinsi['value']){
+															$selected="selected = selected";
+														}
+													?>
+													<option value="<?=$value['kode_prop']?>" <?=$selected?>><?=$value['nama']?></option>
+													<?php 
+														}
+
+													?>
+												</select>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+												
+												<label>Kabupaten </label>
+												<select class="form-control" id="kabupaten" name="kabupaten">
+													<?php 
+													// pre($m_propinsi);
+													foreach ($m_kabupaten as $key => $value) {
+														$selected="";
+														if($value['kode_kab'] == $kabupaten['value']){
+															$selected="selected = selected";
+														}
+													?>
+													<option value="<?=$value['kode_kab']?>" <?=$selected?>><?=$value['nama']?></option>
+													<?php 
+														}
+
+													?>
+												</select>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+												
+												<label>Tanggal Awal </label>
+												<input type="hidden" id="tglawal" name="tglawal" value="<?php echo date("Y-m-d",strtotime($tglawal['value']));?>" />
+												<input type="text" id="tglawal_" name="tglawal_" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglawal['value']));?>" />
+												
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group">
+												
+												<label>Tanggal Akhir </label>
+												<input type="hidden" id="tglakhir" name="tglakhir" value="<?php echo date("Y-m-d",strtotime($tglakhir['value']));?>" />
+												<input type="text" id="tglakhir_" name="tglakhir_" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglakhir['value']));?>" />
+												
+												</div>
+											</div>
+
+											<div class="col-md-4">
+												<div class="form-group">
+												
+												<label>Jenis Bencana </label>
+												<?php echo form_input($jenisbencana,false,'class="form-control"');?>
+												</div>
+											</div>
+										</div>
+
+										<div class="row" >
+											<div class="col-md-12" >
+												<h3 style="border-top:10px solid #F3F3F3;padding-top:10px">Korban Jiwa</h3>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+												<label>Meninggal</label>
+												<?php echo form_input($meninggal,false,'class="form-control IsInteger"');?>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+												<label>Hilang</label>
+												<?php echo form_input($hilang,false,'class="form-control IsInteger"');?>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+												<label>Terluka</label>
+												<?php echo form_input($terluka,false,'class="form-control IsInteger"');?>
+												</div>
+											</div>
+										</div>
+
+										<div class="row" >
+											<div class="col-md-12" >
+												<h3 style="border-top:10px solid #F3F3F3;padding-top:10px">Kerusakan</h3>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-3">
+												<div class="form-group">
+												<label>Rumah</label>
+												<?php echo form_input($rumah,false,'class="form-control IsInteger"');?>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+												<label>Fasilitas Pendidikan</label>
+												<?php echo form_input($fsltspendidikan,false,'class="form-control IsInteger"');?>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="form-group">
+												<label>Fasilitas Kesehatan</label>
+												<?php echo form_input($fsltskesehatan,false,'class="form-control IsInteger"');?>
+												</div>
+											</div>
+										</div>
+										
+										
+								</div> <!-- span6 -->
+								
 							</div>
-							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Tanggal Awal </label>
-									<input type="hidden" id="tglawal" name="tglawal" value="<?php echo date("Y-m-d",strtotime($tglawal['value']));?>" />
-									<input type="text" id="tglawal_" name="tglawal_" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglawal['value']));?>" />
-									
-									</div>
-								</div>
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Tanggal Akhir </label>
-									<input type="hidden" id="tglakhir" name="tglakhir" value="<?php echo date("Y-m-d",strtotime($tglakhir['value']));?>" />
-									<input type="text" id="tglakhir_" name="tglakhir_" class="dp1 form-control" value="<?php echo date("d/m/Y",strtotime($tglakhir['value']));?>" />
-									
-									</div>
-								</div>
-
-								<div class="col-md-4">
-									<div class="form-group">
-									
-									<label>Jenis Bencana </label>
-									<?php echo form_input($jenisbencana,false,'class="form-control"');?>
-									</div>
-								</div>
-							</div>
-
-							<div class="row" >
-								<div class="col-md-12" >
-									<h3 style="border-top:10px solid #F3F3F3;padding-top:10px">Korban Jiwa</h3>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-									<label>Meninggal</label>
-									<?php echo form_input($meninggal,false,'class="form-control IsInteger"');?>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-									<label>Hilang</label>
-									<?php echo form_input($hilang,false,'class="form-control IsInteger"');?>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-									<label>Terluka</label>
-									<?php echo form_input($terluka,false,'class="form-control IsInteger"');?>
-									</div>
-								</div>
-							</div>
-
-							<div class="row" >
-								<div class="col-md-12" >
-									<h3 style="border-top:10px solid #F3F3F3;padding-top:10px">Kerusakan</h3>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-3">
-									<div class="form-group">
-									<label>Rumah</label>
-									<?php echo form_input($rumah,false,'class="form-control IsInteger"');?>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-									<label>Fasilitas Pendidikan</label>
-									<?php echo form_input($fsltspendidikan,false,'class="form-control IsInteger"');?>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-									<label>Fasilitas Kesehatan</label>
-									<?php echo form_input($fsltskesehatan,false,'class="form-control IsInteger"');?>
-									</div>
-								</div>
+								
 							</div>
 							
-							
-					</div> <!-- span6 -->
-					
-				</div>
-					
-				</div>
-				
-			</div>
-				
-			</div>
+						</div>
+
+		            </div>
+		            <div class="box-footer">
+		             	<div class="form-actions">
+							<button type="submit" class="btn btn-success">Simpan</button>
+							<button type="reset" class="btn">Batal</button>
+						</div>
+		             </div>
+		        </div>
+
+			<?php echo form_close();?>
+
 		</div>
 	</div>
 
-	<div class="container" style="background-color:#F5F5F5;margin-top:20px;margin-bottom:20px;">
-	
-	<!--tab content-->
-	  <br>
-		<div class="form-actions">
-			<button type="submit" class="btn btn-success">Simpan</button>
-			<button type="reset" class="btn">Batal</button>
-		</div>
-		<br />
-	</div>
-	<?php echo form_close();?>
-
-</div>
-
-</div>
-<!-- en tab-content-->
-</div>
-</div>
+</section>
 
 <script>
 //js here

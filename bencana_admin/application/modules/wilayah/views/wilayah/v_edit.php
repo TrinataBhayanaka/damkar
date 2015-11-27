@@ -35,8 +35,8 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="admin/dashboard"><i class="fa fa-globe"></i> Home</a></li>
-    <li><a href="wilayah/wilayah"> <?=$this->module_title?></a></li>
-    <li class="active">Edit Data Wilayah</li>
+    <li><a href="bencana"> <?=$this->module_title?></a></li>
+    <li class="active">Edit Data Bencana</li>
   </ol>
 </section>
 
