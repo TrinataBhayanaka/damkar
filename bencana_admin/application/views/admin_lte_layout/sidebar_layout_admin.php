@@ -74,6 +74,50 @@
                </ul>
             </li>
 
+            <? if(($this->cms->has_read("admin/articles/"))||($this->cms->has_read("admin/news/"))||($this->cms->has_read("admin/slider/"))||($this->cms->has_read("admin/rss/"))):?>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-desktop"></i>
+                    <span>Web Content</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="admin/slider"><i class="fa"></i>Carousel</a></li>
+                    <li><a href="admin/news"><i class="fa"></i>Berita </a></li>
+                    <li><a href="admin/articles"><i class="fa"></i>Artikel </a></li>
+                    <li><a href="admin/agenda"><i class="fa"></i>Agenda </a></li>
+                    <li><a href="admin/rss"><i class="fa"></i>RSS </a></li>
+                </ul>
+            </li>
+            <? endif; ?>
+            <? if($this->cms->has_read("admin/pages/")):?>
+                 <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-clone"></i>
+                        <span>Web Pages</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="admin/pages/index/pbrwa"><i class="fa"></i>Profil </a></li>
+                        <li><a href="admin/pages/index/peraturan"><i class="fa"></i>Peraturan </a></li>
+                        
+                    </ul>
+                </li>
+                <?php endif;?>
+                <? if($this->cms->has_read("admin/link_manager/")):?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-link"></i>
+                        <span>Web Links</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="admin/link_manager/category_list"><i class="fa"></i>Category</a></li>
+                        <li><a href="admin/link_manager/link_list"><i class="fa"></i>Link</a></li>
+                    </ul>
+                </li>
+                <?php endif;?>
+
         </ul>
     </section>
 </aside>
