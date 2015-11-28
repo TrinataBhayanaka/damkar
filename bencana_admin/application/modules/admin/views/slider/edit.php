@@ -41,176 +41,160 @@
   margin-top: 10px;
 }
 </style>
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1><?=$this->module_title?><small> Edit </small></h1>
-                </div><!-- col -->
-              </div><!-- row-->
-        </div><!-- end: page-header -->
-        
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>admin/"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=base_url()?>admin/slider">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=base_url()?>admin/slider"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Edit</li>
-         </ul>
-        <!-- end: breadcrumbs -->  
-   </div><!-- cols -->
-</div> <!-- row -->
-<?php echo message_box();?>              
-<div style="padding:0px">
-<div class="row topbar box_shadow">
-    <div class="col-md-12">
-            <ul class="tab-bar grey-tab">
-                <li>
-                    <a href="<?php echo $this->module?>">
-                        <span class="block text-center">
-                            <i class="icon-list"></i> 
-                        </span>
-                        Daftar <?=$this->module_title?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $this->module?>add">
-                        <span class="block text-center">
-                            <i class="icon-plus"></i> 
-                        </span>
-                        Add <?=$this->module_title?>
-                    </a>
-                </li>
-				<li class="active">
-                    <a href="javascript:void(0)">
-                        <span class="block text-center">
-                            <i class="icon-pencil"></i> 
-                        </span>
-                        Edit <?=$this->module_title?>            
-					</a>
-                </li>
-				<li class="pull-right">
-                    <a class="red" onclick="return confirm('Anda yakin akan menghapus data ini?');" href="admin/slider/delete/<?=$id;?>">
-                        <span class="block text-center">
-                            <i class="icon-remove red"></i> 
-                        </span>
-                        Delete <?=$this->module_title?>                    
-					</a>
-                </li>
-            </ul>
-    </div>
-</div>
 
-<div class="row-fluid">
-<!--tab content-->
-<div class="tab-content">
-<?
-	if ($data['image']) {
-		$bg_image = 'background-image:url('.$this->config->item('dir_ppid').'assets/image/pages/'.$data['image'].')';
-		$image_data = "block";
-	}
-	else {
-		$bg_image = '';			
-		$image_data = "none";
-	}
-	if ($data['others']) {
-		$split = preg_split("/#/",$data['others']);
-	}
-?>
-    
-<div id="tab-edit" class="tab-pane active">    
-  <form id="fdata" action="<?=$module;?>edit" method="post" enctype="multipart/form-data" >
-    <input type="hidden" name="author" value="<?=$user_name;?>" />
-    <input type="hidden" name="idx" value="<?=$data['idx'];?>" />
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small>Edit Data</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-desktop"></i> Home</a></li>
+    <li><a href="wilayah/wilayah"> <?=$this->module_title?></a></li>
+    <li class="active">Edit Data Carousel</li>
+  </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+
     <div class="row">
-	    <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="imgcontainer">
-                        <label>Image <span class="help-block" style="display:inline">(Max filesize: 500kb)</span></label>
-                        <!--<div id="runtime">No runtime found.</div>-->
-                        <div style="position:relative"> 
-                            <div id="preview" style="width:968px; height:360px; margin:1px;<?=$bg_image;?>" class="img-polaroid"></div>
-                            <div style="text-align:left;" class="carousel-caption" style="max-width:600px">
-                              <h2 id="s_title"><?=$data['title'];?></h2>
-                              <p id="s_lead" class="lead"><?=$data['clip'];?></p>
-                              <a id="s_button" class="btn btn-large btn-warning <?=$split[1]?'':'hidden';?>" href="<?=$split[1];?>" target="_blank"><?=$split[0];?></a>
-                            </div>
-                        </div>
-                        [ <a href id="pickfiles">Browse</a> ]
+        <div class="col-xs-12">
+
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>">
+                <i class="fa fa-bars"></i> Daftar Carousel
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>add" id="addData">
+                <i class="fa fa-plus"></i> Input Carousel
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
+            <?php echo message_box();?> 
+            <?
+                if ($data['image']) {
+                    $bg_image = 'background-image:url(../assets/image/pages/'.$data['image'].')';
+                    $image_data = "block";
+                }
+                else {
+                    $bg_image = '';         
+                    $image_data = "none";
+                }
+                if ($data['others']) {
+                    $split = preg_split("/#/",$data['others']);
+                }
+            ?>
+
+
+            <form id="fdata" action="<?=$module;?>edit" method="post" enctype="multipart/form-data" >
+                <input type="hidden" name="author" value="<?=$user_name;?>" />
+                <input type="hidden" name="idx" value="<?=$data['idx'];?>" />
+
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Edit Data</h3>
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
                         
-                    </div>
-                        <input id="image_name" type="hidden" name="image_name" />
-                </div>
-            </div>
-       </div>
-    </div>
-    <div class="row">
-	    <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Title</label>
-                    <input type="text" id="title" name="title" class="form-control" value="<?=$data['title'];?>" />
-                </div>
-            </div>
-            <div class="formSep">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Clip </label>
-                        <textarea name="news_clip" id="news_clip" cols="10" rows="3" class="form-control"><?=$data['clip'];?></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <label>Button Text</label>
-                        <input type="text" id="buttontext" name="button" class="form-control" value="<?=$split[0];?>" />
-                    </div>
-                    <div class="col-md-8">
-                        <label>URL</label>
-                        <input type="text" id="buttonurl" name="url" class="form-control" value="<?=$split[1];?>" <?=$split[1]?'':'disabled="disabled"';?> />
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-3">
-        	<div class="formSep">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="image_data" style="display:<?=$image_data;?>">
-                            <label>Image Source</label>
-                            <input id="image_src" class="form-control" type="text" name="news_image_src" style="width:200px;" value="<?=$data['image_src'];?>" />
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="imgcontainer">
+                                            <label>Image <span class="help-block" style="display:inline">(Max filesize: 500kb)</span></label>
+                                            <!--<div id="runtime">No runtime found.</div>-->
+                                            <div style="position:relative"> 
+                                                <div id="preview" style="width:968px; height:360px; margin:1px;<?=$bg_image;?>;background-size: 100% 100%;" class="img-polaroid"></div>
+                                                <div style="text-align:left;" class="carousel-caption" style="max-width:600px">
+                                                  <h2 id="s_title"><?=$data['title'];?></h2>
+                                                  <p id="s_lead" class="lead"><?=$data['clip'];?></p>
+                                                  <a id="s_button" class="btn btn-large btn-warning <?=$split[1]?'':'hidden';?>" href="<?=$split[1];?>" target="_blank"><?=$split[0];?></a>
+                                                </div>
+                                            </div>
+                                            <a class="btn btn-default" href id="pickfiles">Browse </a>
+                                            
+                                        </div>
+                                            <input id="image_name" type="hidden" name="image_name" />
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Title</label>
+                                        <input type="text" id="title" name="title" class="form-control" value="<?=$data['title'];?>" />
+                                    </div>
+                                </div>
+                                <div class="formSep">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Clip </label>
+                                            <textarea name="news_clip" id="news_clip" cols="10" rows="3" class="form-control"><?=$data['clip'];?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Button Text</label>
+                                            <input type="text" id="buttontext" name="button" class="form-control" value="<?=$split[0];?>" />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label>URL</label>
+                                            <input type="text" id="buttonurl" name="url" class="form-control" value="<?=$split[1];?>" <?=$split[1]?'':'disabled="disabled"';?> />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                     </div>
-                </div>
-            </div> <!-- form separator -->
-            <div class="formSep">
-                <div class="row">
-                     <div class="col-md-12">
-                        <? $checked=($data['status'])?" checked":""; ?>
-                        <label class="">
-                            <input type="checkbox" value="1" name="status"<?=$checked;?> />
-                            Publish
-                        </label>
+                            
+                            <div class="col-md-3">
+                                <div class="formSep">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div id="image_data" style="display:<?=$image_data;?>">
+                                                <label>Image Source</label>
+                                                <input id="image_src" class="form-control" type="text" name="news_image_src" style="width:200px;" value="<?=$data['image_src'];?>" />
+                                                </div>
+                                         </div>
+                                    </div>
+                                </div> <!-- form separator -->
+                                <div class="formSep">
+                                    <div class="row">
+                                         <div class="col-md-12">
+                                            <? $checked=($data['status'])?" checked":""; ?>
+                                            <label class="">
+                                                <input type="checkbox" value="1" name="status"<?=$checked;?> />
+                                                Publish
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div> <!-- form separator -->
+                            </div> 
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="reset" class="btn">Batal</button>
+                        </div>
                     </div>
                 </div>
-            </div> <!-- form separator -->
-        </div> 
-    </div>
-	<div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <button type="reset" class="btn">Cancel</button>
-    </div>
-   </div>
-  </form>
-</div>
 
-</div>
-<!-- en tab-content-->
-</div>
-</div>
+            </form>
+
+        </div>
+    </div>
+
+</section>
+
+
+
 <script>  
 $(document).ready(function () {
 	var act_link="<?=$this->module?>";		

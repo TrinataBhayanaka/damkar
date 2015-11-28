@@ -223,7 +223,7 @@
 							<button type="submit" class="btn btn-success">Simpan</button>
 							<button type="reset" class="btn">Batal</button>
 						</div>
-		             </div>
+	             	</div>
 		        </div>
 
 			<?php echo form_close();?>
