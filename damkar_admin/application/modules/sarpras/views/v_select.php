@@ -1,4 +1,4 @@
-<option>Pilih Sektor</option>
+<option value="">Pilih Sektor</option>
 <? foreach($data as $k=>$v) { ?>
 
 <option value="<?=$v['id']?>"><?=$v['namaSektor']?></option>

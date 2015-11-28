@@ -342,19 +342,66 @@ class personel extends Admin_Controller {
 			
 			}   
 	}
- 	 function dataPaging($forder=0,$limit=10,$page=1,$postKey=false){
+	function searchAjax($forder=0,$limit=10,$page=1,$postKey=false){
+
+		// pre($_POST);
 		$filter="";
+		if($_POST['propinsi']){
+			$filter .=" AND PRS.propinsi ='".$_POST['propinsi']."' ";
+		}
+		if($_POST['kabupaten']){
+			$filter .=" AND PRS.kabupaten ='".$_POST['kabupaten']."' ";
+		}
+		if($_POST['sektor']){
+			$filter .=" AND PRS.sektor ='".$_POST['sektor']."'";
+		}
+		if($_POST['kompetensi']){
+			$filter .=" AND PRS.kompetensi ='".$_POST['kompetensi']."' ";
+		}
+		if($_POST['nama']){
+			$filter .=" AND PRS.nama LIKE '%".$_POST['nama']."%' ";
+		}
+		if($_POST['nip']){
+			$filter .=" AND PRS.nip LIKE '%".$_POST['nip']."%' ";
+		}
+		// pre($filter);
+
+		$postKey=encrypt($filter);
+		// pre($postKey);
+		// $r=decrypt($postKey);
+		// pre($r);
+		
+		$data=$this->dataPaging($forder,$limit,$page,$postKey);
+		
+		$data['m_propinsi']=$this->get_lookup_provinsi();
+		$data_layout["content"]=$this->load->view("personel/v_list",$data,true); 
+		
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+ 	 function dataPaging($forder=0,$limit=10,$page=1,$postKey=false){
+ 	 	// debug();
+		$filter="";
+		// pre($postKey);
 		if($postKey){
-			$key=$postKey;
+			$key=decrypt($postKey);
 		}else{
 			$key = ($_POST['q'])?$_POST['q']:0;
 		}
-
+		$dataColumn=array("PRS.nip","PRS.id","PRS.nama","KAB.nama as namaKabupaten","PROV.namaProvinsi","KMP.kompetensi","SKR.namaSektor","PRS.sektor","SKR.id as idSektor");
+		$filter .="(PRS.propinsi=KAB.kode_prop AND PRS.kabupaten=KAB.kode_kab AND PRS.propinsi=PROV.kodeProp AND PRS.kompetensi=KMP.id AND PRS.sektor=SKR.id) ";
 		if ($key) {
 			
-			$filter = "(nip like '%".$key."%' or nama like '%".$key."%' or glrDepan like '%".$key."%' or glrBelakang like '%".$key."%' or sektor like '%".$key."%')";
-			$data["key"]=$key;
+			// $filter = "(nip like '%".$key."%' or nama like '%".$key."%' or glrDepan like '%".$key."%' or glrBelakang like '%".$key."%' or sektor like '%".$key."%')";
+			$filter .= $key;
+			$data["key"]=$postKey;
 		}
+		// pre($filter);
 		$offset 		= ($page-1)*$limit;
 		$data_start 	= $offset+1;
 		$data_end 		= $offset+$limit;
@@ -369,25 +416,26 @@ class personel extends Admin_Controller {
 			$order = 'order by id desc';
 		}
 
-		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
+		$arrDB=$this->model->SearchRecordLimitWhereJoin($filter,$limit,$offset,$order,$dataColumn);
 		// pre($arrDB);
-		foreach ($result as $keys => $value) {
-			$namaSektor=$this->get_name_sektor($value['sektor']);
-			// pre($namaSektor);exit;
-			$namaKompetensi=$this->get_name_kompetensi($value['kompetensi']);
-			$namaProp=$this->get_name_provinsi($value['propinsi']);
-			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
-			// pre($value['kompetensi']);
-			// pre($namaKompetensi);exit;
-			$arrDB[$keys]=$value;
-			$arrDB[$keys]['namaProp']=$namaProp['nama'];
-			$arrDB[$keys]['namaKab']=$namaKab['nama'];
-			$arrDB[$keys]['namaSektor']=$namaSektor['namaSektor'];
-			$arrDB[$keys]['namaKompetensi']=$namaKompetensi['kompetensi'];
-		}
-		$total_rows=$this->model->getTotalRecordWhere2($filter);
+		// debug();
+		// foreach ($result as $keys => $value) {
+		// 	$namaSektor=$this->get_name_sektor($value['sektor']);
+		// 	// pre($namaSektor);exit;
+		// 	$namaKompetensi=$this->get_name_kompetensi($value['kompetensi']);
+		// 	$namaProp=$this->get_name_provinsi($value['propinsi']);
+		// 	$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
+		// 	// pre($value['kompetensi']);
+		// 	// pre($namaKompetensi);exit;
+		// 	$arrDB[$keys]=$value;
+		// 	$arrDB[$keys]['namaProp']=$namaProp['nama'];
+		// 	$arrDB[$keys]['namaKab']=$namaKab['nama'];
+		// 	$arrDB[$keys]['namaSektor']=$namaSektor['namaSektor'];
+		// 	$arrDB[$keys]['namaKompetensi']=$namaKompetensi['kompetensi'];
+		// }
+		$total_rows=$this->model->getTotalRecordWhereJoin($filter,"PRS.id");
 		//print_r($total_rows);exit;
-		$query_url = ($key)?"/".$key:"";
+		$query_url = ($key)?"/".$postKey:"";
 		$base_url = $this->module."index/".$forder."/".$limit;
 		$perpage = $this->utils->getPerPageAjax($limit,array(5,15,20,25,30,40,50));
 		$paging = $this->utils->getPaginationStringAjax($page, $total_rows, $limit, 1, $base_url, "/",$query_url);
@@ -400,6 +448,8 @@ class personel extends Admin_Controller {
 		$data["perpage"]=$perpage;
 		$data["paging"]=$paging;
 		$data["module"]=$this->module;
+		$data['m_propinsi']=$this->get_lookup_provinsi();
+		$data['m_kompetensi']=$this->user_model->m_kompetensi();
 
 		$data["page"]=$forder."/".$limit."/".$page.$query_url;
 		$data_layout["content"]=$this->load->view("personel/v_list",$data,true); 

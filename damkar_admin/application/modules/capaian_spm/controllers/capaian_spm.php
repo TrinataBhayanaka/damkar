@@ -273,6 +273,38 @@ class capaian_spm extends Admin_Controller {
 			
 			}   
 	}
+
+	function searchAjax($forder=0,$limit=10,$page=1,$postKey=false){
+
+		// pre($_POST);
+		$filter="";
+		if($_POST['propinsi']){
+			$filter .=" AND SPM.propinsi =".$_POST['propinsi'];
+		}
+		if($_POST['kabupaten']){
+			$filter .=" AND SPM.kabupaten =".$_POST['kabupaten'];
+		}
+		// pre($filter);
+
+		$postKey=encrypt($filter);
+		// pre($postKey);
+		// $r=decrypt($postKey);
+		// pre($r);
+		
+		$data=$this->dataPaging($forder,$limit,$page,$postKey);
+		
+		$data['m_propinsi']=$this->get_lookup_provinsi();
+		$data_layout["content"]=$this->load->view("capaian_spm/v_list",$data,true); 
+		
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+
  	 function dataPaging($forder=0,$limit=10,$page=1,$postKey=false){
 		$filter="";
 		if($postKey){
@@ -284,7 +316,8 @@ class capaian_spm extends Admin_Controller {
 		$filter="(SPM.propinsi=KAB.kode_prop AND SPM.kabupaten=KAB.kode_kab AND SPM.propinsi=PROV.kodeProp) ";
 		if ($key) {
 			
-			$filter .= " AND (SPM.propinsi like '%".$key."%' or SPM.kabupaten like '%".$key."%' or SPM.cakupan like '%".$key."%' or SPM.responTime like '%".$key."%' or SPM.rasioPersonel like '%".$key."%' or SPM.rasioSarPras like '%".$key."%' or KAB.nama like '%".$key."%' or PROV.namaProvinsi like '%".$key."%')";
+			// $filter .= " AND (SPM.propinsi like '%".$key."%' or SPM.kabupaten like '%".$key."%' or SPM.cakupan like '%".$key."%' or SPM.responTime like '%".$key."%' or SPM.rasioPersonel like '%".$key."%' or SPM.rasioSarPras like '%".$key."%' or KAB.nama like '%".$key."%' or PROV.namaProvinsi like '%".$key."%')";
+			$filter .= decrypt($postKey);
 			$data["key"]=$key;
 		}
 		$offset 		= ($page-1)*$limit;
@@ -314,7 +347,7 @@ class capaian_spm extends Admin_Controller {
 		// 	$arrDB[$key]['namaProp']=$namaProp['nama'];
 		// 	$arrDB[$key]['namaKab']=$namaKab['nama'];
 		// }
-		$total_rows=$this->model->getTotalRecordWhere2($filter);
+		$total_rows=$this->model->getTotalRecordWhereJoin($filter,"SPM.id");
 		//print_r($total_rows);exit;
 		$query_url = ($key)?"/".$key:"";
 		$base_url = $this->module."index/".$forder."/".$limit;

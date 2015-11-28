@@ -16,9 +16,9 @@
         
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
-             <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=base_url()?>/register/register">Content</a> <span class="divider"></span></li>
-            <li class="active"><?=$this->module_title?></li>
+            <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
+            <li><a href="<?php echo $this->module?>" id="refresh">Kejadian</a> <span class="divider"></span></li>
+            <li class="active">List Data Excel</li>
          </ul>
         <!-- end: breadcrumbs -->
    </div><!-- cols -->
