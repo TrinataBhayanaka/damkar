@@ -1,148 +1,121 @@
 <?
 $result = ($key)?"Keywords: <strong>".$key."</strong>":"&nbsp;"; 
 ?>
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1><?=$this->module_title?><small> List</small></h1>
-                </div><!-- col -->
-              </div><!-- row-->
-        </div><!-- end: page-header -->
-        
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-             <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=base_url()?>/admin/rss">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=base_url()?>/admin/rss"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">List</li>
-         </ul>
-        <!-- end: breadcrumbs -->
-   </div><!-- cols -->
-</div> <!-- row -->
-                       
 
-<div style="padding:0px;">
-	<div class="row topbar box_shadow">
-		<div class="col-md-12">
-			<div class="pull-left">
-				<ul class="tab-bar grey-tab">
-					<li class="active">
-						<a href="<?php echo $this->module?>">
-							<span class="block text-center">
-								<i class="icon-list"></i> 
-							</span>
-							Daftar <?=$this->module_title?>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo $this->module?>add">
-							<span class="block text-center">
-								<i class="icon-plus"></i> 
-							</span>
-							Input <?=$this->module_title?>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo $this->module?>">
-							<span class="block text-center">
-								<i class="icon-refresh"></i> 
-							</span>	
-							Refresh
-						</a>
-					</li>
-				</ul>
-			</div>
-			<form class="search_form col-md-3 pull-right" action="<?=$this->module?>" method="get">
-				<?php $this->load->view("widget/search_box_db"); ?>
-			</form>
-		</div>
-	</div>
-<div id="tabs-0">
-	<?php echo message_box();?>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td valign="top">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table table-condensed table-hover">
-        <thead>
-        <tr>
-        <th width="80">&nbsp;</th>
-        <th width="20">No.</th>
-        <th width="20">&nbsp;</th>
-        <th class="forder" width="100" rel="date">Date</th>
-        <th class="forder" width="300" rel="title">Title/Judul</th>
-        <th>Url</th>
-        <!--<td class="tbldata_header forder">Alamat</td>-->
-        <th width="100">Publish</th>
-        </tr>
-        </thead>
-        <tbody>
-  <? if (is_array($arrDB)) { foreach($arrDB as $k=>$v) {
-  		$tr_color=($k%2)?"#fff":"#fafafa";
-		$id=$this->encrypt_status==TRUE?encrypt($v[$this->tbl_idx]):$v[$this->tbl_idx];
-		$url_edit = $module."edit/".$id;
-		$url_delete = $module."delete/".$id;
-		
-		$status_badges = ($v['status'])?'<span class="label label-info">Published</span>':'<span class="label label-warning">Draft</span>';
-		
-   ?>
-            	<tr>
-					<td>
-                    	<!--<div class="btn-groupx">
-                            <a href="<?//=$url_edit;?>"><i class="icon-edit icon-white"></i></a>
-                            <a href="<?//=$url_delete;?>" ><i class="icon-trash icon-white"></i></a>
-                        </div>-->
-						<a href="<?=$url_edit;?>"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
-                        <a onclick="return confirm('Anda yakin akan menghapus data ini?');" href="<?=$url_delete;?>"><i class="icon-remove icon-alert"></i></a>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-desktop"></i> Home</a></li>
+    <li class="active"><?=$this->module_title?></li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <?php echo message_box();?> 
+
+        <div id="print_this">
+
+            <div class="col-xs-12">
+
+                <a class="btn btn-app bg-purple" href="<?php echo $this->module?>">
+                    <i class="fa fa-bars"></i> Daftar Rss
+                </a>
+                <a class="btn btn-app bg-purple" href="<?php echo $this->module?>add" id="addData">
+                    <i class="fa fa-plus"></i> Input Rss
+                </a>
+                <a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+                    <i class="fa fa-refresh"></i> Refresh
+                </a>
+                
+                <div class="box">
+                    <div class="box-header">
+                      <h3 class="box-title">Tabel Daftar Rss</h3>
+                      <div class="box-tools">
+                        <form action="<?=$this->module?>" method="get">
+                        <?php $this->load->view("widget/search_box_db"); ?>
+                        </form>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body  table-responsive no-padding">
+                        <form name="frmMain" action="<?=$this->module.'del_cek'?>" method="post" OnSubmit="return onDelete();">
+                            <table class="table table-hover table-bordered">
                                 
-                        
-                    </td>               
-                    <!--<td class="tc">
-                        <div class="btn-group">
-                        	<a title="Profil" class="btn btn-small btn-primary" style="margin-right:2px" href="pegawai/pegawai/edit/eU9pUW5vcWVGTjA"><i class="icon-search icon-white"></i></a>
-                        	<a class="btn btn-small btn-danger" title="delete" href="pegawai/pegawai/del/eU9pUW5vcWVGTjA"><i class="icon-remove icon-white"></i></a>
-                        </div>
-                    </td>-->
-                    <td><?=($data_start+$k);?></td> 	
-                    <td></td> 	
-                    <td rel="date_col" width="150"><?=$v['date_formatted'];?></td>
-                    <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['title'];?></a></td>
-                    <td><?=$v['news_clip2'];?></td>
-                    <td><?=$status_badges;?></td>
-            	</tr>
-        <? } }?>
-        </tbody>
-        </table>
+                                <tr>
+                                    <th width="70">
+                                        &nbsp;
+                                    </th>
+                                    <th width="20">No.</th>
+                                    <th width="20">&nbsp;</th>
+                                    <th class="forder" width="100" rel="date">Date</th>
+                                    <th class="forder" width="300" rel="title">Title/Judul</th>
+                                    <th>Url</th>
+                                    <!--<td class="tbldata_header forder">Alamat</td>-->
+                                    <th width="100">Publish</th>
+                                </tr>
 
-        </td>
-      </tr>
-    </table>
-   <div class="row tables_info">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="displaying">Displaying : <?=$data_start;?> - <?=$data_end;?> of <?=$total_rows;?> entries,</div>
+                                <? if (is_array($arrDB)) { foreach($arrDB as $k=>$v) {
+                                    $tr_color=($k%2)?"#fff":"#fafafa";
+                                    $id=$this->encrypt_status==TRUE?encrypt($v[$this->tbl_idx]):$v[$this->tbl_idx];
+                                    $url_edit = $module."edit/".$id;
+                                    $url_delete = $module."delete/".$id;
+                                    
+                                    $status_badges = ($v['status'])?'<span class="label label-info">Published</span>':'<span class="label label-warning">Draft</span>';
+                                    
+                               ?>
+                                            <tr>
+                                                <td>
+                                                    <!--<div class="btn-groupx">
+                                                        <a href="<?//=$url_edit;?>"><i class="icon-edit icon-white"></i></a>
+                                                        <a href="<?//=$url_delete;?>" ><i class="icon-trash icon-white"></i></a>
+                                                    </div>-->
+                                                    <a href="<?=$url_edit;?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                                    <a onclick="return confirm('Anda yakin akan menghapus data ini?');" href="<?=$url_delete;?>"><i class="fa fa-times"></i></a>
+                                                            
+                                                    
+                                                </td>               
+                                                <!--<td class="tc">
+                                                    <div class="btn-group">
+                                                        <a title="Profil" class="btn btn-small btn-primary" style="margin-right:2px" href="pegawai/pegawai/edit/eU9pUW5vcWVGTjA"><i class="icon-search icon-white"></i></a>
+                                                        <a class="btn btn-small btn-danger" title="delete" href="pegawai/pegawai/del/eU9pUW5vcWVGTjA"><i class="icon-remove icon-white"></i></a>
+                                                    </div>
+                                                </td>-->
+                                                <td><?=($data_start+$k);?></td>     
+                                                <td></td>   
+                                                <td rel="date_col" width="150"><?=$v['date_formatted'];?></td>
+                                                <td rel="title_col"><a href="<?=$url_edit;?>"><?=$v['title'];?></a></td>
+                                                <td><?=$v['news_clip2'];?></td>
+                                                <td><?=$status_badges;?></td>
+                                            </tr>
+                                    <? } }?>
+
+                            </table>
+                        </form>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer clearfix">
                         <div class="displaying">
-                            Rows/page:   
+                            Displaying : <?=$data_start;?> - <?=$data_end;?> of <?=$total_rows;?> entries, Rows/page: <?=$perpage;?>
                         </div>
-                        <div class="displaying">
-                            <?=$perpage;?>    
+                        <div class="pagination pagination-sm no-margin pull-right">
+                            <?=$paging;?>
                         </div>
                     </div>
-                </div>
+                  </div><!-- /.box -->
+
             </div>
-           <div class="col-md-4">
-                <?=$paging;?>
-            </div>
+
         </div>
-</div>
+    </div>
+
+</section>
 
 
-<br />
-<br />
-</div>
 <script>  
 	var forder='<?=$forder;?>';
 	var dorder='<?=$dorder;?>';

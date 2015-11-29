@@ -6,173 +6,147 @@
 <script type="text/javascript" src="http://www.plupload.com/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
 <!-- Place inside the <head> of your HTML -->
 
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1>Articles<small> Add </small></h1>
-                </div><!-- col -->
-            </div><!-- row-->
-        </div><!-- end: page-header -->
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>admin/"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
-         </ul>
-        <!-- end: breadcrumbs -->
-   </div><!-- cols -->
-</div> <!-- row -->
-                        
-<div style="padding:0px">
-<div class="row topbar box_shadow">
-    <div class="col-md-12">
-            <ul class="tab-bar grey-tab">
-                <li>
-                    <a href="<?php echo $this->module?>">
-                        <span class="block text-center">
-                            <i class="icon-list"></i> 
-                        </span>
-                        Daftar <?=$this->module_title?>
-                    </a>
-                </li>
-                <li class="active">
-                    <a href="<?php echo $this->module?>add">
-                        <span class="block text-center">
-                            <i class="icon-plus"></i> 
-                        </span>
-                        Input <?=$this->module_title?>
-                    </a>
-                </li>
-            </ul>
-    	<!--<form class="search_form col-md-3 pull-right" action="<?//=$this->module?>listview" method="get">
-        	<?php //$this->load->view("widget/search_box_db"); ?>
-        </form>-->
-    </div>
-</div>
-<div class="row-fluid">
-<ul class="nav nav-tabs" id="news-tab">
-   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-plus"></i> Add</a></li>
-   <!--<li><a href="#tab-view" class="a_view"><i class="icon-eye-open"></i> View</a></li>-->
-</ul>
-<!--tab content-->
-<div class="tab-content">
-    
-<div id="tab-edit" class="tab-pane active">    
-  <form id="fdata" action="<?php echo $this->module?>add" method="post" enctype="multipart/form-data" >
-    <input type="hidden" name="author" value="<?=$user_name;?>" />
-    <input type="hidden" name="category" value="1" />
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small>Input Data</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-file-text"></i> Home</a></li>
+    <li><a href="articles"> <?=$this->module_title?></a></li>
+    <li class="active">Input Artikel</li>
+  </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+
     <div class="row">
-	    <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Author</label>
-                    <input type="text" id="title" name="author2" class="form-control" placeholder="title" value="" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Title</label>
-                    <input type="text" id="title" name="title" class="form-control" class="span12 required" value="" />
-                </div>
-            </div>
-            <div class="formSep">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Clip </label>
-                        <textarea name="clip" id="clip" cols="10" rows="3" class="form-control required"><?=$data['news_clip'];?></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Content</label>
-                    <textarea name="content" id="news_content" cols="10" rows="3" class="ckeditor span11 required"><?=$data['content'];?></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label>Reference/Source</label>
-                    <input type="text" id="title" name="ref" class="form-control" value="" />
-                </div>
-            </div>
-        </div>
+        <div class="col-xs-12">
 
-	    <div class="col-md-3">
-        	<!--<h3 class="heading">Options</h3>-->
-        	<div class="formSep">
-                <div class="row">
-                    <div class="span12">
-                    	<div id="imgcontainer">
-                        	<label>Image <span class="help-block" style="display:inline">(Max filesize: 500kb)</span></label>
-                            <!--<div id="runtime">No runtime found.</div>-->
-                            <div id="preview" style="border:1px solid grey; width:200px; height:200px;" class="img-polaroid"></div>
-                            [ <a href id="pickfiles">Browse</a> ]
-							<div id="image_data" style="display:<?=$image_data;?>">
-                                <label>Image Title</label>
-                                <input class="form-control" id="image_title" type="text" name="news_image_title" value="<?=$data['image_title'];?>" style="width:200px;" />
-                                <label>Source</label>
-                                <input  class="form-control"id="image_src" type="text" name="news_image_src" value="<?=$data['image_src'];?>" style="width:200px;" />
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>">
+                <i class="fa fa-bars"></i> Daftar Artikel
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>add" id="addData">
+                <i class="fa fa-plus"></i> Input Artikel
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
+
+
+            <?php 
+                if ($message) {
+                    echo '<div class="alert alert-warning alert-dismissible" >
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        <h4><i class="icon fa fa-warning"></i> Alert!</h4>'.$message.'
+                      </div>';
+                }
+            ?>
+            <form id="fdata" action="<?php echo $this->module?>add" method="post" enctype="multipart/form-data" >
+                <input type="hidden" name="author" value="<?=$user_name;?>" />
+                <input type="hidden" name="category" value="1" />
+
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Tambah Data</h3>
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Author</label>
+                                        <input type="text" id="title" name="author2" class="form-control" placeholder="title" value="" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Title</label>
+                                        <input type="text" id="title" name="title" class="form-control" class="span12 required" value="" />
+                                    </div>
+                                </div>
+                                <div class="formSep">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Clip </label>
+                                            <textarea name="clip" id="clip" cols="10" rows="3" class="form-control required"><?=$data['news_clip'];?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Content</label>
+                                        <textarea name="content" id="news_content" cols="10" rows="3" class="ckeditor span11 required"><?=$data['content'];?></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Reference/Source</label>
+                                        <input type="text" id="title" name="ref" class="form-control" value="" />
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="col-md-3">
+                                <!--<h3 class="heading">Options</h3>-->
+                                <div class="formSep">
+                                    <div class="row">
+                                        <div class="span12">
+                                            <div id="imgcontainer">
+                                                <label>Image <span class="help-block" style="display:inline">(Max filesize: 500kb)</span></label>
+                                                <!--<div id="runtime">No runtime found.</div>-->
+                                                <div id="preview" style="border:1px solid grey; width:200px; height:200px;" class="img-polaroid"></div>
+                                                [ <a href id="pickfiles">Browse</a> ]
+                                                <div id="image_data" style="display:<?=$image_data;?>">
+                                                    <label>Image Title</label>
+                                                    <input class="form-control" id="image_title" type="text" name="news_image_title" value="<?=$data['image_title'];?>" style="width:200px;" />
+                                                    <label>Source</label>
+                                                    <input  class="form-control"id="image_src" type="text" name="news_image_src" value="<?=$data['image_src'];?>" style="width:200px;" />
+                                                </div>
+                                            </div>
+                                            <input id="image_name" type="hidden" name="image_name" />
+                                        </div>
+                                    </div>
+                                </div><!-- form separator -->
+                                <div class="formSep">
+                                    <div class="row">
+                                         <div class="span12">
+                                            <? $checked=($data['status'])?" checked":""; ?>
+                                            <label class="">
+                                                <input type="checkbox" value="1" name="status"<?=$checked;?> />
+                                                Publish
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div> <!-- form separator -->
+                            </div> 
                         </div>
-                        <input id="image_name" type="hidden" name="image_name" />
-                	</div>
-                </div>
-            </div><!-- form separator -->
-            <div class="formSep">
-                <div class="row">
-                     <div class="span12">
-                        <? $checked=($data['status'])?" checked":""; ?>
-                        <label class="">
-                            <input type="checkbox" value="1" name="status"<?=$checked;?> />
-                            Publish
-                        </label>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="reset" class="btn">Batal</button>
+                        </div>
                     </div>
                 </div>
-            </div> <!-- form separator -->
-        </div> 
-    </div>
-    <br>
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <button type="reset" class="btn">Cancel</button>
-    </div>
-    <br />
-    <br />
-  </form>
-</div>
 
+            </form>
 
-
-<div id="tab-view" class="tab-pane">    
-    <div class="row-fluid">
-	    <div class="span9">
-            <div class="row-fluid">
-                <div class="span12">
-                    <h1 id="title-view"></h1>
-                    <p>
-                    <blockquote id="clip-view">
-                    
-                    </blockquote>
-                    </p>
-                    <span id="canvas_view" style="float:left;margin:0;"><canvas width=0 height=0></canvas></span>
-                    <p id="content-view">
-                    
-                    </p>
-                </div>
-            </div>
-        </div> 
+        </div>
     </div>
-    <br />
-    <br />
-</div>
-</div>
-<!-- en tab-content-->
-</div>
-</div>
+
+</section>
+
 <script>  
 $(document).ready(function () {
 	var act_link="<?=$this->module?>";		

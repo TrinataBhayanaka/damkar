@@ -7,233 +7,179 @@
 <script type="text/javascript" src="http://www.plupload.com/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
 <!-- Place inside the <head> of your HTML -->
 <?php $id=$this->encrypt_status==TRUE?encrypt($data['idx']):$data['idx']; ?>
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1>News<small> Edit </small></h1>
-                </div><!-- col -->
-              </div><!-- row-->
-        </div><!-- end: page-header -->
-        
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>admin/"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Edit</li>
-         </ul>
-        <!-- end: breadcrumbs -->
-        
-   </div><!-- cols -->
-</div> <!-- row -->
-             
-<div style="padding:0px">
-<div class="row topbar box_shadow">
-    <div class="col-md-12">
-            <ul class="tab-bar grey-tab">
-                <li>
-                    <a href="<?php echo $this->module?>">
-                        <span class="block text-center">
-                            <i class="icon-list"></i> 
-                        </span>
-                        Daftar <?=$this->module_title?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $this->module?>add">
-                        <span class="block text-center">
-                            <i class="icon-plus"></i> 
-                        </span>
-                        Add <?=$this->module_title?>
-                    </a>
-                </li>
-				<li class="active">
-                    <a href="javascript:void(0)">
-                        <span class="block text-center">
-                            <i class="icon-pencil"></i> 
-                        </span>
-                        Edit <?=$this->module_title?>            
-					</a>
-                </li>
-				<li class="pull-right">
-                    <a class="red" onclick="return confirm('Anda yakin akan menghapus data ini?');" href="admin/news/delete/<?=$id;?>">
-                        <span class="block text-center">
-                            <i class="icon-remove red"></i> 
-                        </span>
-                        Delete News                    
-					</a>
-                </li>
-            </ul>
-    	<!--<form class="search_form col-md-3 pull-right" action="<?=$this->module?>listview" method="get">
-        	<?php //$this->load->view("widget/search_box_db"); ?>
-        </form>-->
-    </div>
-</div>
-<?php echo message_box();?>
-<div>
-	<ul class="nav nav-tabs" id="news-tab">
-	   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-edit"></i> Edit</a></li>
-	   <!--<li><a href="#tab-view" class="a_view"><i class="icon-eye-open"></i> View</a></li>
-	   <li><a href="#tab-comments" class="a_view"><i class="icon-comments-alt"></i> Comments</a></li>-->
-	</ul>
-	<!--tab content-->
-	<form id="fdata" action="<?=$module;?>edit" method="post" enctype="multipart/form-data" >
-		<input type="hidden" name="editor" value="<?=$user_name;?>" />
-		<input type="hidden" name="author" value="<?=$data['author'];?>" />
-		<input type="hidden" name="idx" value="<?=$data['idx'];?>" />
-<div class="tab-content">
-		<?php
-			if ($data['image']) {
-				//$image_image = '<img src="assets/image/news/'.$data['image'].'" style="float:left; margin:2px 10px 10px 2px" />';
-				$image_image = '<span id="canvas_view" style="float:left;margin:2px 10px 10px 2px; " class="img-polaroid"><canvas width="200" height="200" style="background-image:url('.$this->config->item('dir_ppid').'assets/image/news/'.$data['image'].')"></canvas></span>';
-				$image_canvas = '<canvas id="myCanvas" width="200" height="200" style="background-image:url('.$this->config->item('dir_ppid').'assets/image/news/'.$data['image'].')"></canvas>';
-				$input_image = '<input id="image_name_old" type="hidden" name="image_name_old" value="'.$data['image'].'" />';
-				$image_data = "block";
-			}
-			else {
-				$image_image = '<span id="canvas_view" style="float:left;margin:0; " class="img-polaroid"><canvas width=0 height=0></canvas></span>';			
-				$image_data = "none";
-			}
-		?>
-<div id="tab-edit" class="tab-pane active">    
-    <div class="row">
-	    <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-8">
-                    <label>News Title</label>
-                    <input type="text" id="title" name="title" class="form-control input-xs required" value="<?=$data['title'];?>" />
-                </div>
-                <div class="col-md-4 form-group">
-                    <label>Type</label>
-                    <select class="form-control" name="category">
-                    	<option value="3"<?=($data['category']==3)?" selected":"";?>>News</option>
-                        <!--<option value="2"<?//=($data['category']==2)?" selected":"";?>>Announcement</option>-->
-                    </select>
-                </div>
-            </div>
-            <div class="">
-                <div class="row">
-                    <div class="col-md-8">
-                        <label>News clip</label>
-                        <textarea name="news_clip" id="news_clip" class="form-control required" rows="3" placeholder="Enter ..."><?=$data['clip'];?></textarea>
-                    </div>
-                    <?
-						if ($data['created']) {
-							$date = preg_split("/ /",$data['created']);
-						}
-					?>
-					
-					
-                    <div class="col-md-4">
-                    <label>Date (Y-m-d)</label>
-					<div class="input-group">
-						<input name="news_date" id="dp3" class="form-control timepicker" data-date-format="yyyy-mm-dd" type="text" value="<?=$date[0];?>">
-						<div class="input-group-addon">
-							<i class="fa fa-calendar"></i>
-						</div>
-					</div>
-                </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label>News Content</label>
-                    <textarea name="news_content" id="news_content" cols="10" rows="3" class="col-md-11 ckeditor required"><?=$data['content'];?></textarea>
-                </div>
-            </div>
-        </div>
-	    <div class="col-md-3">
-        	<div class="formSep">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="imgcontainer">
-                        	<label>Image <span class="help-block" style="display:inline">(Max filesize: 500kb)</span></label>
-                            <!--<div id="runtime">No runtime found.</div>-->
-                            <div id="preview" style=" border: 1px solid grey;width:200px; height:200px;" class="img-polaroid"><?php echo $image_canvas;?></div>
-                            [ <a href id="pickfiles">Browse</a> ]
-                            <div id="image_data" style="display:<?=$image_data;?>">
-                                <label>Image Title</label>
-                                <input class="form-control" id="image_title" type="text" name="news_image_title" value="<?=$data['image_title'];?>" style="width:200px;" />
-                                <label>Source</label>
-                                <input class="form-control" id="image_src" type="text" name="news_image_src" value="<?=$data['image_src'];?>" style="width:200px;" />
-                            </div>
-                        </div>
-                        <input id="image_name" type="hidden" name="image_name" />
-                        <?=$input_image;?>
-                	</div>
-                </div>
-            </div><!-- form separator 
-        	<div class="formSep">
-                <div class="row">
-					<div>
-						<label><span class="error_placement">Headline</span> <span class="f_req">*</span></label><br>
-							<input name="is_headline" id="optionsRadios1" value="1" type="radio">
-							Ya &nbsp;&nbsp;
-							<input name="is_headline" id="optionsRadios2" value="0" type="radio">
-							Tidak
-					</div>
-                </div>
-            </div>--> <!-- form separator -->
-            <div class="formSep">
-                <div class="row">
-                     <div class="col-md-12">
-                        <? $checked=($data['status'])?" checked":""; ?>
-                        <label>
-                            <input type="checkbox" value="1" name="status"<?=$checked;?> />
-                            Publish
-                        </label>
-                    </div>
-                </div>
-            </div> <!-- form separator -->
-        </div> 
-    </div>
-    <br />
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <button type="reset" class="btn">Cancel</button>
-    </div>
-</div>
-<div id="tab-view" class="tab-pane">    
-    <div class="row">
-	    <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 id="title-view"><?=$data['title'];?></h1>
-                    <p>
-                    <blockquote id="news_clip-view">
-                    <?=$data['clip'];?>
-                    </blockquote>
-                    </p>
-                    <?=$image_image;?>
-                    <p id="news_content-view">
-                    </p>
-                </div>
-            </div>
-        </div> 
-    </div>
-</div>
-<div id="tab-comments" class="tab-pane">    
-    <div class="row">
-	    <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-12">
-					<? //modules::load('wg/comments')->comments_list2($data["idx"],4);?>
-				</div>
-            </div>
-       </div>
-    </div>
-</div>
-</div>
-</form>
-<!-- en tab-content-->
-</div>
-</div>
-<script>
 
-</script>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small>Edit Data</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-desktop"></i> Home</a></li>
+    <li><a href="news"> <?=$this->module_title?></a></li>
+    <li class="active">Edit Berita</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+	<div class="row">
+		<div class="col-xs-12">
+
+			<a class="btn btn-app bg-purple" href="<?php echo $this->module?>">
+                <i class="fa fa-bars"></i> Daftar Berita
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>add">
+                <i class="fa fa-plus"></i> Input Berita
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
+
+
+			<?php echo message_box();?>
+			<form id="fdata" action="<?=$module;?>edit" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="editor" value="<?=$user_name;?>" />
+			<input type="hidden" name="author" value="<?=$data['author'];?>" />
+			<input type="hidden" name="idx" value="<?=$data['idx'];?>" />
+
+				<div class="box box-default">
+					<div class="box-header with-border">
+		              <h3 class="box-title">Edit Data</h3>
+		              <div class="box-tools pull-right">
+		                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+		                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+		              </div>
+		            </div><!-- /.box-header -->
+		            <div class="box-body">
+
+		            	<?php
+							if ($data['image']) {
+								//$image_image = '<img src="assets/image/news/'.$data['image'].'" style="float:left; margin:2px 10px 10px 2px" />';
+								$image_image = '<span id="canvas_view" style="float:left;margin:2px 10px 10px 2px; " class="img-polaroid"><canvas width="200" height="200" style="background-image:url('.$this->config->item('dir_ppid').'assets/image/news/'.$data['image'].')"></canvas></span>';
+								$image_canvas = '<canvas id="myCanvas" width="200" height="200" style="background-image:url(../assets/image/pages/'.$data['image'].');background-size: 100% 100%;"></canvas>';
+								$input_image = '<input id="image_name_old" type="hidden" name="image_name_old" value="'.$data['image'].'" />';
+								$image_data = "block";
+							}
+							else {
+								$image_image = '<span id="canvas_view" style="float:left;margin:0; " class="img-polaroid"><canvas width=0 height=0></canvas></span>';			
+								$image_data = "none";
+							}
+						?>
+
+						<div class="row">
+						    <div class="col-md-9">
+					            <div class="row">
+					                <div class="col-md-8">
+					                    <label>News Title</label>
+					                    <input type="text" id="title" name="title" class="form-control input-xs required" value="<?=$data['title'];?>" />
+					                </div>
+					                <div class="col-md-4 form-group">
+					                    <label>Type</label>
+					                    <select class="form-control" name="category">
+					                    	<option value="3"<?=($data['category']==3)?" selected":"";?>>News</option>
+					                        <!--<option value="2"<?//=($data['category']==2)?" selected":"";?>>Announcement</option>-->
+					                    </select>
+					                </div>
+					            </div>
+					            <div class="">
+					                <div class="row">
+					                    <div class="col-md-8">
+					                        <label>News clip</label>
+					                        <textarea name="news_clip" id="news_clip" class="form-control required" rows="3" placeholder="Enter ..."><?=$data['clip'];?></textarea>
+					                    </div>
+					                    <?
+											if ($data['created']) {
+												$date = preg_split("/ /",$data['created']);
+											}
+										?>
+										
+										
+					                    <div class="col-md-4">
+					                    <label>Date (Y-m-d)</label>
+										<div class="input-group">
+											<input name="news_date" id="dp3" class="form-control timepicker" data-date-format="yyyy-mm-dd" type="text" value="<?=$date[0];?>">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+										</div>
+					                </div>
+					                </div>
+					            </div>
+					            <div class="row">
+					                <div class="col-md-12">
+					                    <label>News Content</label>
+					                    <textarea name="news_content" id="news_content" cols="10" rows="3" class="col-md-11 ckeditor required"><?=$data['content'];?></textarea>
+					                </div>
+					            </div>
+					        </div>
+						    <div class="col-md-3">
+					        	<div class="formSep">
+					                <div class="row">
+					                    <div class="col-md-12">
+					                        <div id="imgcontainer">
+					                        	<label>Image <span class="help-block" style="display:inline">(Max filesize: 500kb)</span></label>
+					                            <!--<div id="runtime">No runtime found.</div>-->
+					                            <div id="preview" style=" border: 1px solid grey;width:200px; height:200px;" class="img-polaroid"><?php echo $image_canvas;?></div>
+					                            [ <a href id="pickfiles">Browse</a> ]
+					                            <div id="image_data" style="display:<?=$image_data;?>">
+					                                <label>Image Title</label>
+					                                <input class="form-control" id="image_title" type="text" name="news_image_title" value="<?=$data['image_title'];?>" style="width:200px;" />
+					                                <label>Source</label>
+					                                <input class="form-control" id="image_src" type="text" name="news_image_src" value="<?=$data['image_src'];?>" style="width:200px;" />
+					                            </div>
+					                        </div>
+					                        <input id="image_name" type="hidden" name="image_name" />
+					                        <?=$input_image;?>
+					                	</div>
+					                </div>
+					            </div><!-- form separator 
+					        	<div class="formSep">
+					                <div class="row">
+										<div>
+											<label><span class="error_placement">Headline</span> <span class="f_req">*</span></label><br>
+												<input name="is_headline" id="optionsRadios1" value="1" type="radio">
+												Ya &nbsp;&nbsp;
+												<input name="is_headline" id="optionsRadios2" value="0" type="radio">
+												Tidak
+										</div>
+					                </div>
+					            </div>--> <!-- form separator -->
+					            <div class="formSep">
+					                <div class="row">
+					                     <div class="col-md-12">
+					                        <? $checked=($data['status'])?" checked":""; ?>
+					                        <label>
+					                            <input type="checkbox" value="1" name="status"<?=$checked;?> />
+					                            Publish
+					                        </label>
+					                    </div>
+					                </div>
+					            </div> <!-- form separator -->
+					        </div> 
+					    </div>
+		            
+
+		            </div>
+		            <div class="box-footer">
+		             	<div class="form-actions">
+							<button type="submit" class="btn btn-success">Simpan</button>
+							<button type="reset" class="btn">Batal</button>
+						</div>
+	             	</div>
+		        </div>
+
+			</form>
+
+		</div>
+	</div>
+
+</section>
+
+
+
 <script>  
 $(document).ready(function () {
 	$('#dp3').datepicker().on('changeDate', function(ev){

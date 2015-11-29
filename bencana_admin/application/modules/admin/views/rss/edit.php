@@ -7,187 +7,113 @@
 <script type="text/javascript" src="http://www.plupload.com/plupload/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
 <!-- Place inside the <head> of your HTML -->
 <?php $id=$this->encrypt_status==TRUE?encrypt($data['idx']):$data['idx']; ?>
-<div class="row">
-    <div class="col-sm-12 col-lg-12">
-        <!-- start: page header -->
-        <div class="page-header">
-            <div class="row"> 
-                <div class="col-md-12">
-                    <h1><?=$this->module_title?><small> Edit </small></h1>
-                </div><!-- col -->
-              </div><!-- row-->
-        </div><!-- end: page-header -->
-        
-        <!-- start: breadcrumbs -->
-         <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>admin/"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Edit</li>
-         </ul>
-        <!-- end: breadcrumbs -->
-        
-   </div><!-- cols -->
-</div> <!-- row -->
-<?php echo message_box();?>          
-<div style="padding:0px">
-<div class="row topbar box_shadow">
-    <div class="col-md-12">
-            <ul class="tab-bar grey-tab">
-                <li>
-                    <a href="<?php echo $this->module?>">
-                        <span class="block text-center">
-                            <i class="icon-list"></i> 
-                        </span>
-                        Daftar <?=$this->module_title?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo $this->module?>add">
-                        <span class="block text-center">
-                            <i class="icon-plus"></i> 
-                        </span>
-                        Add <?=$this->module_title?>
-                    </a>
-                </li>
-				<li class="active">
-                    <a href="javascript:void(0)">
-                        <span class="block text-center">
-                            <i class="icon-pencil"></i> 
-                        </span>
-                        Edit <?=$this->module_title?>            
-					</a>
-                </li>
-				<li class="pull-right">
-                    <a class="red" onclick="return confirm('Anda yakin akan menghapus data ini?');" href="admin/rss/delete/<?=$id;?>">
-                        <span class="block text-center">
-                            <i class="icon-remove red"></i> 
-                        </span>
-                        Delete <?=$this->module_title?>                    
-					</a>
-                </li>
-            </ul>
-    	<!--<form class="search_form col-md-3 pull-right" action="<?//=$this->module?>listview" method="get">
-        	<?php //$this->load->view("widget/search_box_db"); ?>
-        </form>-->
-    </div>
-</div>
 
-<div class="row-fluid">
-	<ul class="nav nav-tabs" id="news-tab">
-	   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-edit"></i> Edit</a></li>
-	   <!--<li><a href="#tab-view" class="a_view"><i class="icon-eye-open"></i> View</a></li>
-	   <li><a href="#tab-comments" class="a_view"><i class="icon-comments-alt"></i> Comments</a></li>-->
-	</ul>
-	<!--tab content-->
-	<form id="fdata" action="<?=$module;?>edit" method="post" enctype="multipart/form-data" >
-		<input type="hidden" name="editor" value="<?=$user_name;?>" />
-		<input type="hidden" name="author" value="<?=$data['author'];?>" />
-		<input type="hidden" name="idx" value="<?=$data['idx'];?>" />
-<div class="tab-content">
-		<?php
-			// if ($data['image']) {
-				//$image_image = '<img src="assets/image/news/'.$data['image'].'" style="float:left; margin:2px 10px 10px 2px" />';
-				// $image_image = '<span id="canvas_view" style="float:left;margin:2px 10px 10px 2px; " class="img-polaroid"><canvas width="200" height="200" style="background-image:url('.$this->config->item('dir_ppid').'assets/image/news/'.$data['image'].')"></canvas></span>';
-				// $image_canvas = '<canvas id="myCanvas" width="200" height="200" style="background-image:url('.$this->config->item('dir_ppid').'assets/image/news/'.$data['image'].')"></canvas>';
-				// $input_image = '<input id="image_name_old" type="hidden" name="image_name_old" value="'.$data['image'].'" />';
-				// $image_data = "block";
-			// }
-			// else {
-				// $image_image = '<span id="canvas_view" style="float:left;margin:0; " class="img-polaroid"><canvas width=0 height=0></canvas></span>';			
-				// $image_data = "none";
-			// }
-		?>
-<div id="tab-edit" class="tab-pane active">    
+<section class="content-header">
+  <h1>
+    <?=$this->module_title?>
+    <small>Edit Data</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="admin/dashboard"><i class="fa fa-desktop"></i> Home</a></li>
+    <li><a href="rss"> <?=$this->module_title?></a></li>
+    <li class="active">Edit Rss</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
     <div class="row">
-	    <div class="col-md-9">
-            <div class="row">
-                <div class="col-md-8">
-                    <label>Title</label>
-                    <input type="text" id="title" name="title" class="form-control input-xs required" value="<?=$data['title'];?>" />
-                </div>
-				<div class="row">
-                     <div class="col-md-4">
-						<br>
-                        <? $checked=($data['status'])?" checked":""; ?>
-                        <label>
-                            <input type="checkbox" value="1" name="status"<?=$checked;?> />
-                            Publish
-                        </label>
+        <div class="col-xs-12">
+
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>">
+                <i class="fa fa-bars"></i> Daftar Rss
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>add" id="addData">
+                <i class="fa fa-plus"></i> Input Rss
+            </a>
+            <a class="btn btn-app bg-purple" href="<?php echo $this->module?>" id="refresh">
+                <i class="fa fa-refresh"></i> Refresh
+            </a>
+
+
+            <?php echo message_box();?>
+            <form id="fdata" action="<?=$module;?>edit" method="post" enctype="multipart/form-data" >
+				<input type="hidden" name="editor" value="<?=$user_name;?>" />
+				<input type="hidden" name="author" value="<?=$data['author'];?>" />
+				<input type="hidden" name="idx" value="<?=$data['idx'];?>" />
+
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Edit Data</h3>
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+
+                        <div class="row">
+						    <div class="col-md-9">
+					            <div class="row">
+					                <div class="col-md-8">
+					                    <label>Title</label>
+					                    <input type="text" id="title" name="title" class="form-control input-xs required" value="<?=$data['title'];?>" />
+					                </div>
+									<div class="row">
+					                     <div class="col-md-4">
+											<br>
+					                        <? $checked=($data['status'])?" checked":""; ?>
+					                        <label>
+					                            <input type="checkbox" value="1" name="status"<?=$checked;?> />
+					                            Publish
+					                        </label>
+					                    </div>
+					                </div>
+					            </div>
+					            <div class="">
+					                <div class="row">
+					                    <div class="col-md-8">
+					                        <label>Url</label>
+					                        <input type="text" id="news_clip" name="news_clip" class="form-control input-xs required" placeholder="url" value="<?=$data['clip'];?>" />
+					                    </div>
+					                    <?
+											if ($data['created']) {
+												$date = preg_split("/ /",$data['created']);
+											}
+										?>
+					                    <div class="col-md-4">
+					                    <label>Date (Y-m-d)</label>
+										<div class="input-group">
+											<input name="news_date" id="dp3" class="form-control timepicker" data-date-format="yyyy-mm-dd" type="text" value="<?=$date[0];?>">
+											<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+											</div>
+										</div>
+					                </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <button type="reset" class="btn">Batal</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="">
-                <div class="row">
-                    <div class="col-md-8">
-                        <label>Url</label>
-                        <input type="text" id="news_clip" name="news_clip" class="form-control input-xs required" placeholder="url" value="<?=$data['clip'];?>" />
-                    </div>
-                    <?
-						if ($data['created']) {
-							$date = preg_split("/ /",$data['created']);
-						}
-					?>
-                    <div class="col-md-4">
-                    <label>Date (Y-m-d)</label>
-					<div class="input-group">
-						<input name="news_date" id="dp3" class="form-control timepicker" data-date-format="yyyy-mm-dd" type="text" value="<?=$date[0];?>">
-						<div class="input-group-addon">
-							<i class="fa fa-calendar"></i>
-						</div>
-					</div>
-                </div>
-                </div>
-            </div>
+
+            </form>
+
         </div>
     </div>
-    <br />
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        <button type="reset" class="btn">Cancel</button>
-    </div>
-    <br />
-</div>
-<div id="tab-view" class="tab-pane">    
-    <div class="row-fluid">
-	    <div class="span9">
-            <div class="row-fluid">
-                <div class="span12">
-                    <h1 id="title-view"><?=$data['title'];?></h1>
-                    <p>
-                    <blockquote id="news_clip-view">
-                    <?=$data['clip'];?>
-                    </blockquote>
-                    </p>
-                    <?=$image_image;?>
-                    <p id="news_content-view">
-                    </p>
-                </div>
-            </div>
-        </div> 
-    </div>
-    <br />
-    <br />
-</div>
-<div id="tab-comments" class="tab-pane">    
-    <div class="row-fluid">
-	    <div class="span9">
-            <div class="row-fluid">
-                <div class="span12">
-					<? //modules::load('wg/comments')->comments_list2($data["idx"],4);?>
-				</div>
-            </div>
-       </div>
-    </div>
-</div>
-</div>
-</form>
-<!-- en tab-content-->
-</div>
-</div>
-<script>
 
-</script>
+</section>
+
+
+
 <script>  
 $(document).ready(function () {
 	$('#dp3').datepicker().on('changeDate', function(ev){
