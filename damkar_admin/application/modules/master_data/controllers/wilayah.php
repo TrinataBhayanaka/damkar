@@ -65,11 +65,7 @@ class wilayah extends Admin_Controller {
 		$this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('rasioSarPras', "<b>Rasio SarPras</b>", 'required|xss_clean');
-
+	
 		if ($this->form_validation->run() == true)
 		{
 			// if ($_POST['image_name']) {
@@ -83,10 +79,6 @@ class wilayah extends Admin_Controller {
 				'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
 				'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
 				'skpd'   			=> $this->input->post('skpd'),
-				// 'cakupan'      		=> $this->input->post('cakupan'),
-				// 'responTime' 	    => $this->input->post('responTime'),
-				// 'rasioPersonel'     => $this->input->post('rasioPersonel'),
-				// 'rasioSarPras'      => $this->input->post('rasioSarPras'),
 				'status'      		=> 1,
 			);
 		
@@ -159,11 +151,7 @@ class wilayah extends Admin_Controller {
 		$this->form_validation->set_rules('jumlahKecamatan', "<b>Jumlah Kecamatan</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('jumlahPenduduk', "<b>Jumlah Penduduk</b>", 'required|xss_clean');
 		$this->form_validation->set_rules('skpd', "<b>SKPD</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('cakupan', "<b>Cakupan</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('responTime', "<b>Respon Time</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('rasioPersonel', "<b>Rasio Personel</b>", 'required|xss_clean');
-		// $this->form_validation->set_rules('rasioSarPras', "<b>Rasio SarPras</b>", 'required|xss_clean');
-
+	
 		if (isset($_POST) && !empty($_POST))
 		{
 
@@ -174,10 +162,6 @@ class wilayah extends Admin_Controller {
 				'jumlahKecamatan'   => $this->input->post('jumlahKecamatan'),
 				'jumlahPenduduk'   	=> $this->input->post('jumlahPenduduk'),
 				'skpd'   	=> $this->input->post('skpd'),
-				// 'cakupan'      		=> $this->input->post('cakupan'),
-				// 'responTime' 	    => $this->input->post('responTime'),
-				// 'rasioPersonel'     => $this->input->post('rasioPersonel'),
-				// 'rasioSarPras'      => $this->input->post('rasioSarPras'),
 				'status'      		=> 1,
 			);
 
@@ -329,13 +313,13 @@ class wilayah extends Admin_Controller {
 
 		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
-		foreach ($result as $key => $value) {
+		foreach ($result as $keys => $value) {
 			$namaProp=$this->get_name_provinsi($value['propinsi']);
 			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
 			
-			$arrDB[$key]=$value;
-			$arrDB[$key]['namaProp']=$namaProp['nama'];
-			$arrDB[$key]['namaKab']=$namaKab['nama'];
+			$arrDB[$keys]=$value;
+			$arrDB[$keys]['namaProp']=$namaProp['nama'];
+			$arrDB[$keys]['namaKab']=$namaKab['nama'];
 		}
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;

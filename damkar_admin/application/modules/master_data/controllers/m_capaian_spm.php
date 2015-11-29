@@ -327,13 +327,13 @@ class m_capaian_spm extends Admin_Controller {
 
 		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
-		foreach ($result as $key => $value) {
+		foreach ($result as $keys => $value) {
 			$namaProp=$this->get_name_provinsi($value['propinsi']);
 			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
 			
-			$arrDB[$key]=$value;
-			$arrDB[$key]['namaProp']=$namaProp['nama'];
-			$arrDB[$key]['namaKab']=$namaKab['nama'];
+			$arrDB[$keys]=$value;
+			$arrDB[$keys]['namaProp']=$namaProp['nama'];
+			$arrDB[$keys]['namaKab']=$namaKab['nama'];
 		}
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;

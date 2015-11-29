@@ -1,100 +1,95 @@
+<style>
+label{
+     font-weight: bold;
+}
+</style>
 <div class="row"> 
      <div class="col-md-12"> 
-          <table class="table table-condensed">
+          <table class="table table-bordered">
                 <tbody>
-                <tr>
-                  <th>Nomor Induk</th>
+                  <tr>
+                    <th colspan="4" bgcolor="#F0F0F0" align="center">Identitas Diri</th>
+                  </tr>
+               <tr>
+                  <th >No Induk Pegawai</th>
                   <td><?=$user['nip']?></td>
-                </tr>
-                <tr>
-                  <th>Nama Lengkap</th>
-                  <td><?=$user['nama']?></td>
-                </tr>
-                <tr>
                   <th>Gelar Depan</th>
-                  <td><?=$user['glrDepan']?></td>
+                  <td> <?=$user['glrDepan']?></td>
                 </tr>
                 <tr>
+                  <th>Nama lengkap</th>
+                  <td><?=$user['nama']?></td>
                   <th>Gelar Belakang</th>
-                  <td><?=$user['glrBelakang']?></td>
+                  <td> <?=$user['glrBelakang']?></td>
                 </tr>
                 <tr>
                   <th>Jenis Kelamin</th>
-                  <td><?=$user['jenisKelamin']?></td>
+                  <td colspan="3"><?=$user['jenisKelamin']?></td>
                 </tr>
                 <tr>
                   <th>Tempat Lahir</th>
                   <td><?=$user['tempatLahir']?></td>
-                </tr>
-                <tr>
                   <th>Tanggal Lahir</th>
                   <td><?=$user['tglLahir']?></td>
                 </tr>
+
                 <tr>
                   <th>Agama</th>
                   <td><?=$user['agama']?></td>
-                </tr>
-                <tr>
                   <th>Status Perkawinan</th>
                   <td><?=$user['statusKawin']?></td>
                 </tr>
                 <tr>
                   <th>Golongan Darah</th>
                   <td><?=$user['golDarah']?></td>
-                </tr>
-                <tr>
                   <th>Rhesus</th>
-                  <td><?=$user['reshus']?></td>
+                  <td> <?=$user['reshus']?></td>
                 </tr>
                 <tr>
                   <th>Alamat</th>
-                  <td><?=$user['alamat']?></td>
+                  <td colspan="3"><?=$user['alamat']?></td>
                 </tr>
+                  <tr>
+                    <th colspan="4" bgcolor="#F0F0F0" align="center">Identitas Tambahan</th>
+                  </tr>
                 <tr>
                   <th>Provinsi</th>
-                  <td><?=$user['propinsi']?></td>
-                </tr>
-                <tr>
+                  <td> <?=$user['propinsi']?></td>
                   <th>Kabupaten</th>
-                  <td><?=$user['kabupaten']?></td>
+                  <td> <?=$user['kabupaten']?></td>
                 </tr>
                 <tr>
                   <th>Sektor</th>
-                  <td><?=$user['sektor']?></td>
-                </tr>
-                <tr>
+                  <td> <?=$user['sektor']?></td>
                   <th>Tingkat Kompetensi</th>
-                  <td><?=$user['kompetensi']?></td>
+                  <td> <?=$user['kompetensi']?></td>
                 </tr>
                 <tr>
                   <th>TMT Pegawai</th>
-                  <td><?=$user['tmtPegawai']?></td>
-                </tr>
-                <tr>
-                  <th>Status</th>
-                  <td><?=$user['statusKerja']?></td>
+                  <td> <?=$user['tmtPegawai']?></td>
+                  <th>Status Pegawai</th>
+                  <td> <?=$user['statusKerja']?></td>
                 </tr>
                 <tr>
                   <th>Pangkat Golongan</th>
-                  <td><?=$user['pangkat']?></td>
+                  <td> <?=$user['pangkat']?></td>
+                  <th>SK PAngkat</th>
+                  <td> <?=$user['skPangkat']?></td>
                 </tr>
                 <tr>
-                  <th>SK Pangkat</th>
-                  <td><?=$user['skPangkat']?></td>
-                </tr>
-                <tr>
-                  <th>Pendidikan Terakhir</th>
-                  <td><?=$user['pendidikan']?></td>
-                </tr>
-                <tr>
-                  <th>Pelatihan Pangkat</th>
-                  <td><?=$user['pelatihan']?></td>
+                  <th>Pendidikan Terakahir</th>
+                  <td> <?=$user['pendidikan']?></td>
+                  <th>Pendidikan Pelatihan</th>
+                  <td> <?=$user['pelatihan']?></td>
                 </tr>
                 <tr>
                   <th>Keterangan</th>
-                  <td><?=$user['keterangan']?></td>
+                  <td colspan="3">  <?=$user['keterangan']?></td>
                 </tr>
               </tbody>
          </table>
+
+         <button aria-hidden="true" data-dismiss="modal" class="btn btn-info" type="button">Close</button>
+
      </div>  
 </div>

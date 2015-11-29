@@ -32,16 +32,15 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1>User<small> Add </small></h1>
+                    <h1>Tambah <small> <?=$this->module_title?> </small></h1>
                 </div><!-- col -->
             </div><!-- row-->
         </div><!-- end: page-header -->
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>register/register"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
+            <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
+            <li><a href="<?php echo $this->module?>" id="refresh"><?=$this->module_title?></a> <span class="divider"></span></li>
+			<li class="active">Tambah Data</li>
          </ul>
         <!-- end: breadcrumbs -->
    </div><!-- cols -->
@@ -168,16 +167,16 @@
 							</div>
 							
 					</div> <!-- span6 -->
-					<!-- <div class="col-md-4">
+					<div class="col-md-4">
 						<div id="attachment_frame" class="form-group">
-							<span class="help-block" style="display:inline">Lampiran Tanda Pengenal (Max : 200Kb)</span>
+							<span class="help-block" style="display:inline">Lampiran Sektor Terkait (Max : 200Kb)</span>
 							<div id="imgcontainer">
 								<div id="preview" style="width:100%; height:180px;" class="img-thumbnail"><?php echo $image_canvas;?></div>
 								<div id="btn-change" class="img-btn-change"><span><i class="icon-pencil"></i> &nbsp;Attachment</span></div>
 							</div>
 							<input id="image_name" type="hidden" name="image_name" />
 						</div>
-					</div> -->
+					</div>
 					
 				</div>
 				
@@ -227,105 +226,100 @@
 <script>
 
 //Uploader
-// // $(function(){
-// // 	var w_image = $("#attachment_frame").width()-10;
-// // 	var ufile=false;
-// // 	var dfile=<?=($data['image'])?"true":"false";?>;
-// // 	var uploader = new plupload.Uploader({
-// // 		runtimes : 'html5,flash',
-// // 		browse_button : 'btn-change',
-// // 		container: 'imgcontainer',
-// // 		multi_selection: false,
-// // 		url: "<?=base_url()?>test.php",
-// // 		max_file_size : '500kb',
-// // 		/*resize: {
-// // 			width: 200,
-// // 			height: 150,
-// // 			crop: true
-// // 		},*/
-// // 		filters : [
-// // 			{title : "Image files", extensions : "jpg,gif,png"}
-// // 		],
-// // 		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
-// // 	});
+$(function(){
+	var w_image = $("#attachment_frame").width()-10;
+	var ufile=false;
+	var dfile=<?=($data['image'])?"true":"false";?>;
+	var uploader = new plupload.Uploader({
+		runtimes : 'html5,flash',
+		browse_button : 'btn-change',
+		container: 'imgcontainer',
+		multi_selection: false,
+		url: "<?=base_url()?>test.php",
+		max_file_size : '500kb',
+		/*resize: {
+			width: 200,
+			height: 150,
+			crop: true
+		},*/
+		filters : [
+			{title : "Image files", extensions : "jpg,gif,png"}
+		],
+		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
+	});
 	
-// // 	uploader.bind('Init', function(up, params) {
-// // 		$('#runtime').html("Current runtime: " + params.runtime);
-// // 	});
+	uploader.bind('Init', function(up, params) {
+		$('#runtime').html("Current runtime: " + params.runtime);
+	});
 
-// // 	uploader.init();
+	uploader.init();
 
-// // 	uploader.bind('FilesAdded', function(up, files) {
-// // 		if (dfile) {
-// // 			$('#preview').html("");
-// // 			$('#canvas_view').html("");
-// // 		}
-// // 		if (ufile) {
-// // 			uploader.removeFile(ufile);
-// // 			$('#preview').html("");
-// // 			$('#canvas_view').html("");
-// // 		}
-// // 		$.each(files, function(i,file){
-// // 			ufile = file.id;
-// // 			$("#image_name").val(file.name);
-// // 			var img = new mOxie.Image();
+	uploader.bind('FilesAdded', function(up, files) {
+		if (dfile) {
+			$('#preview').html("");
+			$('#canvas_view').html("");
+		}
+		if (ufile) {
+			uploader.removeFile(ufile);
+			$('#preview').html("");
+			$('#canvas_view').html("");
+		}
+		$.each(files, function(i,file){
+			ufile = file.id;
+			$("#image_name").val(file.name);
+			var img = new mOxie.Image();
 	
-// // 			img.onload = function() {
-// // 				this.embed($('#preview').get(0), {
-// // 					width: w_image,
-// // 					height: 170,
-// // 					crop: true
-// // 				});
-// // 				$('#canvas_view').css({margin:"2px 10px 10px 2px"});
-// // 				$('#canvas_view').css({width:w_image,height:170});
-// // 				this.embed($('#canvas_view').get(0), {
-// // 					width: w_image,
-// // 					height: 170,
-// // 					crop: true
-// // 				});
-// // 			};
+			img.onload = function() {
+				this.embed($('#preview').get(0), {
+					width: w_image,
+					height: 170,
+					crop: true
+				});
+				$('#canvas_view').css({margin:"2px 10px 10px 2px"});
+				$('#canvas_view').css({width:w_image,height:170});
+				this.embed($('#canvas_view').get(0), {
+					width: w_image,
+					height: 170,
+					crop: true
+				});
+			};
 	
-// // 			img.onembedded = function() {
-// // 				this.destroy();
-// // 			};
+			img.onembedded = function() {
+				this.destroy();
+			};
 	
-// // 			img.onerror = function() {
-// // 				this.destroy();
-// // 			};
+			img.onerror = function() {
+				this.destroy();
+			};
 	
-// // 			img.load(this.getSource());        
+			img.load(this.getSource());        
 			
-// // 		});
-// // 	});
-// // 	uploader.bind('Error', function(up, err) {
-// // 		alert("Error: " + err.code + " -" + err.message/* +  (err.file ? ", File: " + err.file.name : "")*/);
-// // 		up.refresh(); // Reposition Flash/Silverlight
-// // 	});
-// // 	var x = false;
-// // 	uploader.bind('FileUploaded', function() {
-// // 		//if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
-// // 			x=true;
-// // 			$('#fdata').submit();
-// // 		//}
-// // 	});
-// 	$('#fdata').submit(function(e) {
-// 		// Files in queue upload them first
-// 		if (uploader.files.length > 0) {
-// 			uploader.start();
-// 		} else {
-// 			//x = true;
-// 			alert('Lampiran tanda pengenal wajib ada.');
-// 		}
-// 		//	alert('You must at least upload one file.');
+		});
+	});
+	uploader.bind('Error', function(up, err) {
+		alert("Error: " + err.code + " -" + err.message/* +  (err.file ? ", File: " + err.file.name : "")*/);
+		up.refresh(); // Reposition Flash/Silverlight
+	});
+	var x = false;
+	uploader.bind('FileUploaded', function() {
+		//if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
+			x=true;
+			$('#fdata').submit();
+		//}
+	});
+	$('#fdata').submit(function(e) {
+		// Files in queue upload them first
+		if (uploader.files.length > 0) {
+			uploader.start();
+		} else {
+			//x = true;
+			alert('Lampiran tanda pengenal wajib ada.');
+		}
+		//	alert('You must at least upload one file.');
 	
-// 		if (!x) return false;
-// 	});    
-    
-// });
-	//callback handler for form submit
-$('#fdata').submit(function(event) {
+		if (!x) return false;
 
-        $('.ajax-spinner-bars').css("display","block"); 
+		$('.ajax-spinner-bars').css("display","block"); 
 	    var postData = $(this).serializeArray();
 	    var formURL = $(this).attr("action");
 	    
@@ -342,13 +336,50 @@ $('#fdata').submit(function(event) {
                 // log data to the console so we can see
                 $('#dataAjax').html(data.data); 
         		$('.ajax-spinner-bars').css("display","none"); 
-
+        		$.notify({
+                  message: "<i class='fa fa-check'></i> Data Berhasil Disimpan "
+                },{
+                    type: 'success'
+                });
                 // here we will handle errors and validation messages
             });
 
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
-    });
+	});    
+    
+});
+	//callback handler for form submit
+// $('#fdata').submit(function(event) {
+
+//         $('.ajax-spinner-bars').css("display","block"); 
+// 	    var postData = $(this).serializeArray();
+// 	    var formURL = $(this).attr("action");
+	    
+//         $.ajax({
+//             type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+//             url         : formURL, // the url where we want to POST
+//             data        : postData, // our data object
+//             dataType    : 'json', // what type of data do we expect back from the server
+//             encode          : true
+//         })
+//             // using the done promise callback
+//             .done(function(data) {
+
+//                 // log data to the console so we can see
+//                 $('#dataAjax').html(data.data); 
+//         		$('.ajax-spinner-bars').css("display","none"); 
+//         		$.notify({
+//                   message: "<i class='fa fa-check'></i> Data Berhasil Disimpan "
+//                 },{
+//                     type: 'success'
+//                 });
+//                 // here we will handle errors and validation messages
+//             });
+
+//         // stop the form from submitting the normal way and refreshing the page
+//         event.preventDefault();
+//     });
  
  $('#fdata').on('change','#propinsi',function(){
 

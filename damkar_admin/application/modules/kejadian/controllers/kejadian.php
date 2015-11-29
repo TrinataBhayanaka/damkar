@@ -12,7 +12,7 @@ class kejadian extends Admin_Controller {
         
 		$this->load->library(array("excel","form_validation","utils","ion_auth"));
 
-        $this->module_title="Kejadian List";
+        $this->module_title="Kejadian";
         $this->load->model("kejadian_model");
         $this->load->model("logkejadian_model");
         $this->model=$this->kejadian_model;
@@ -396,7 +396,26 @@ class kejadian extends Admin_Controller {
         
         exit;
   }
+  function detail($idx=false){
+  	
+  		if($this->encrypt_status==TRUE):
+			$id_enc=$idx;
+			$id=decrypt($idx);
+		endif;
 
+		$data['data']=$this->model->GetRecordData("id='{$id}'");
+	// pre($data['data']);
+		$data_layout["content"]=$this->load->view("kejadian/v_detail",$data,true); 
+
+		if ($data['data']){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+
+  }
 	function delete($idx=false,$forder=0,$limit=10,$page=1,$postKey=false){
   		// debug();
 		// if (!$this->cms->has_admin($this->module)) redirect ("error_");
@@ -460,18 +479,59 @@ class kejadian extends Admin_Controller {
 			
 			}   
 	}
+	function searchAjax($forder=0,$limit=10,$page=1,$postKey=false){
+
+		// pre($_POST);
+		$filter="";
+		if($_POST['propinsi']){
+			$filter .=" AND kodePropinsi ='".$_POST['propinsi']."' ";
+		}
+		if($_POST['kabupaten']){
+			$filter .=" AND kodeKabupaten ='".$_POST['kabupaten']."' ";
+		}
+		if($_POST['kejadian']){
+			$filter .=" AND kejadian ='".$_POST['kejadian']."'";
+		}
+		if($_POST['nomor']){
+			$filter .=" AND noKejadian LIKE '%".$_POST['nomor']."%' ";
+		}
+		// pre($filter);
+
+		$postKey=encrypt($filter);
+		// pre($postKey);
+		// $r=decrypt($postKey);
+		// pre($r);
+		
+		$data=$this->dataPaging($forder,$limit,$page,$postKey);
+		
+		$data['m_propinsi']=$this->get_lookup_provinsi();
+		$data_layout["content"]=$this->load->view("kejadian/v_list",$data,true); 
+		
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
  	 function dataPaging($forder=0,$limit=10,$page=1,$postKey=false){
 		$filter="";
+// debug();
 		if($postKey){
-			$key=$postKey;
+			
+			$key=decrypt($postKey);
 		}else{
 			$key = ($_POST['q'])?$_POST['q']:0;
 		}
-
+		// $dataColumn=array("PRS.nip","PRS.id","PRS.nama","KAB.nama as namaKabupaten","PROV.namaProvinsi","KMP.kompetensi","SKR.namaSektor","PRS.sektor","SKR.id as idSektor");
+		// $filter .="(PRS.propinsi=KAB.kode_prop AND PRS.kabupaten=KAB.kode_kab AND PRS.propinsi=PROV.kodeProp AND PRS.kompetensi=KMP.id AND PRS.sektor=SKR.id) ";
+		$filter .=" n_status='1' ";
 		if ($key) {
 			
-			$filter = "(namaSektor like '%".$key."%' or skpd like '%".$key."%' or propinsi like '%".$key."%' or kabupaten like '%".$key."%')";
-			$data["key"]=$key;
+			// $filter = "(namaSektor like '%".$key."%' or skpd like '%".$key."%' or propinsi like '%".$key."%' or kabupaten like '%".$key."%')";
+			$filter .= $key;
+			$data["key"]=$postKey;
 		}
 		$offset 		= ($page-1)*$limit;
 		$data_start 	= $offset+1;
@@ -491,7 +551,7 @@ class kejadian extends Admin_Controller {
 		// pre($arrDB);
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
-		$query_url = ($key)?"/".$key:"";
+		$query_url = ($key)?"/".$postKey:"";
 		$base_url = $this->module."index/".$forder."/".$limit;
 		$perpage = $this->utils->getPerPageAjax($limit,array(5,15,20,25,30,40,50));
 		$paging = $this->utils->getPaginationStringAjax($page, $total_rows, $limit, 1, $base_url, "/",$query_url);
@@ -503,7 +563,9 @@ class kejadian extends Admin_Controller {
 		$data["data_end"]=($data_end<$total_rows)?$data_end:$total_rows; 
 		$data["perpage"]=$perpage;
 		$data["paging"]=$paging;
-		$data["module"]=$this->module;
+		$data["module"]=$this->module;	
+		$data['m_kebakaran']=$this->get_lookup_kebakaran();
+		$data['m_propinsi']=$this->get_lookup_provinsi();
 
 		$data["page"]=$forder."/".$limit."/".$page.$query_url;
 		$data_layout["content"]=$this->load->view("kejadian/v_list",$data,true); 

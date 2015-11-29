@@ -12,7 +12,7 @@ class sektor extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Master Data Sektor List";
+        $this->module_title="Master Data Sektor";
         $this->load->model("sektor_model");
         $this->model=$this->sektor_model;
 
@@ -65,15 +65,16 @@ class sektor extends Admin_Controller {
 
 		if ($this->form_validation->run() == true)
 		{
-			// if ($_POST['image_name']) {
-			// 	$file_name = $this->__file_upload($_POST['image_name'],"wewe");
-			// }
+			$nameFile=$_POST['propinsi']."-".$_POST['kabupaten']."-".$_POST['namaSektor'];
+			if ($_POST['image_name']) {
+				$file_name = $this->__file_upload($_POST['image_name'],$nameFile);
+			}
 
 			$additional_data = array(
 				'namaSektor'    	=> $this->input->post('namaSektor'),
 				'propinsi' 			=> $this->input->post('propinsi'),
 				'kabupaten'  		=> $this->input->post('kabupaten'),				
-				'filename'  		=> "0",				
+				'filename'  		=> $file_name,				
 				'status'      		=> 1,
 			);
 			
@@ -146,10 +147,16 @@ class sektor extends Admin_Controller {
 		if (isset($_POST) && !empty($_POST))
 		{
 
+			$nameFile=$_POST['propinsi']."-".$_POST['kabupaten']."-".$_POST['namaSektor'];
+			if ($_POST['image_name']) {
+				$file_name = $this->__file_upload($_POST['image_name'],$nameFile);
+			}
+
 			$data = array(
 				'namaSektor'    	=> $this->input->post('namaSektor'),
 				'propinsi' 			=> $this->input->post('propinsi'),
 				'kabupaten'  		=> $this->input->post('kabupaten'),				
+				'filename'  		=> $file_name,							
 				'status'      		=> 1,
 			);
 
@@ -296,13 +303,13 @@ class sektor extends Admin_Controller {
 
 		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
 		// pre($arrDB);
-		foreach ($result as $key => $value) {
+		foreach ($result as $keys => $value) {
 			$namaProp=$this->get_name_provinsi($value['propinsi']);
 			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
 			
-			$arrDB[$key]=$value;
-			$arrDB[$key]['namaProp']=$namaProp['nama'];
-			$arrDB[$key]['namaKab']=$namaKab['nama'];
+			$arrDB[$keys]=$value;
+			$arrDB[$keys]['namaProp']=$namaProp['nama'];
+			$arrDB[$keys]['namaKab']=$namaKab['nama'];
 		}
 		$total_rows=$this->model->getTotalRecordWhere2($filter);
 		//print_r($total_rows);exit;
@@ -350,15 +357,15 @@ class sektor extends Admin_Controller {
 	}
 
 	function __file_upload($file_name,$name=false) {
-		$cfolder = $this->config->item('dir_members');
+		$cfolder = $this->config->item('dir_sektors');
 		if (!is_dir($cfolder)) mkdir($cfolder);
 		
-		$folder = $this->config->item('dir_members');
+		$folder = $this->config->item('dir_sektors');
 		$data["process"]=true;
 		if ($file_name) {
 		
 			$fix_name = (($name)?$name:$file_name).substr($file_name,strrpos($file_name,"."));
-			$tmp_name = $this->config->item('dir_tmp_members').$file_name;
+			$tmp_name = $this->config->item('dir_tmp').$file_name;
 			$new_name = $folder.$fix_name;
 			if (file_exists($tmp_name)) {
 				if (copy($tmp_name,$new_name)) {

@@ -32,16 +32,15 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1>Tambah<small> Jenis Kebakaran </small></h1>
+                    <h1>Tambah <small> <?=$this->module_title?> </small></h1>
                 </div><!-- col -->
             </div><!-- row-->
         </div><!-- end: page-header -->
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>register/register"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
+            <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
+            <li><a href="<?php echo $this->module?>" id="refresh"><?=$this->module_title?></a> <span class="divider"></span></li>
+            <li class="active">Tambah Data</li>
          </ul>
         <!-- end: breadcrumbs -->
    </div><!-- cols -->
@@ -170,103 +169,6 @@
 </div>
 <script>
 
-//Uploader
-// // $(function(){
-// // 	var w_image = $("#attachment_frame").width()-10;
-// // 	var ufile=false;
-// // 	var dfile=<?=($data['image'])?"true":"false";?>;
-// // 	var uploader = new plupload.Uploader({
-// // 		runtimes : 'html5,flash',
-// // 		browse_button : 'btn-change',
-// // 		container: 'imgcontainer',
-// // 		multi_selection: false,
-// // 		url: "<?=base_url()?>test.php",
-// // 		max_file_size : '500kb',
-// // 		/*resize: {
-// // 			width: 200,
-// // 			height: 150,
-// // 			crop: true
-// // 		},*/
-// // 		filters : [
-// // 			{title : "Image files", extensions : "jpg,gif,png"}
-// // 		],
-// // 		flash_swf_url : 'http://rawgithub.com/moxiecode/moxie/master/bin/flash/Moxie.cdn.swf'
-// // 	});
-	
-// // 	uploader.bind('Init', function(up, params) {
-// // 		$('#runtime').html("Current runtime: " + params.runtime);
-// // 	});
-
-// // 	uploader.init();
-
-// // 	uploader.bind('FilesAdded', function(up, files) {
-// // 		if (dfile) {
-// // 			$('#preview').html("");
-// // 			$('#canvas_view').html("");
-// // 		}
-// // 		if (ufile) {
-// // 			uploader.removeFile(ufile);
-// // 			$('#preview').html("");
-// // 			$('#canvas_view').html("");
-// // 		}
-// // 		$.each(files, function(i,file){
-// // 			ufile = file.id;
-// // 			$("#image_name").val(file.name);
-// // 			var img = new mOxie.Image();
-	
-// // 			img.onload = function() {
-// // 				this.embed($('#preview').get(0), {
-// // 					width: w_image,
-// // 					height: 170,
-// // 					crop: true
-// // 				});
-// // 				$('#canvas_view').css({margin:"2px 10px 10px 2px"});
-// // 				$('#canvas_view').css({width:w_image,height:170});
-// // 				this.embed($('#canvas_view').get(0), {
-// // 					width: w_image,
-// // 					height: 170,
-// // 					crop: true
-// // 				});
-// // 			};
-	
-// // 			img.onembedded = function() {
-// // 				this.destroy();
-// // 			};
-	
-// // 			img.onerror = function() {
-// // 				this.destroy();
-// // 			};
-	
-// // 			img.load(this.getSource());        
-			
-// // 		});
-// // 	});
-// // 	uploader.bind('Error', function(up, err) {
-// // 		alert("Error: " + err.code + " -" + err.message/* +  (err.file ? ", File: " + err.file.name : "")*/);
-// // 		up.refresh(); // Reposition Flash/Silverlight
-// // 	});
-// // 	var x = false;
-// // 	uploader.bind('FileUploaded', function() {
-// // 		//if (uploader.files.length === (uploader.total.uploaded + uploader.total.failed)) {
-// // 			x=true;
-// // 			$('#fdata').submit();
-// // 		//}
-// // 	});
-// 	$('#fdata').submit(function(e) {
-// 		// Files in queue upload them first
-// 		if (uploader.files.length > 0) {
-// 			uploader.start();
-// 		} else {
-// 			//x = true;
-// 			alert('Lampiran tanda pengenal wajib ada.');
-// 		}
-// 		//	alert('You must at least upload one file.');
-	
-// 		if (!x) return false;
-// 	});    
-    
-// });
-	//callback handler for form submit
 $('#fdata').submit(function(event) {
 
         $('.ajax-spinner-bars').css("display","block"); 
@@ -282,11 +184,15 @@ $('#fdata').submit(function(event) {
         })
             // using the done promise callback
             .done(function(data) {
-
+                 
                 // log data to the console so we can see
                 $('#dataAjax').html(data.data); 
         		$('.ajax-spinner-bars').css("display","none"); 
-
+                 $.notify({
+                      message: "<i class='fa fa-check'></i> Data Berhasil Disimpan"
+                    },{
+                        type: 'success'
+                    });
                 // here we will handle errors and validation messages
             });
 

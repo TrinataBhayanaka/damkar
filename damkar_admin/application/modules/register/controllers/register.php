@@ -198,6 +198,7 @@ class register extends Admin_Controller {
 		$this->load->view($this->admin_layout,$data_layout);
 	}
 	function add(){
+		
   		if (!$this->cms->has_write($this->module)) redirect ("error_");
 		// debug();
 		//validate form input

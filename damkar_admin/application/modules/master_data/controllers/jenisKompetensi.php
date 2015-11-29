@@ -12,7 +12,7 @@ class jenisKompetensi extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Master Data Kompetensi List";
+        $this->module_title="Master Data Kompetensi";
         $this->load->model("mkompetensi_model");
         $this->model=$this->mkompetensi_model;
 

@@ -8,9 +8,9 @@ class export extends CI_Controller {
 	function toxls(){
 		// pre($_POST);
 		$data=urldecode($_POST['tbl']);
-		// pre($data);
-		$this->load->helper("export");
-		exporttoxls($data);
+		// // pre($data);
+		// $this->load->helper("export");
+		$this->exporttoxls($data);
 	}
 	
 	function csv(){
@@ -130,7 +130,16 @@ class export extends CI_Controller {
 		//pre(_MPDF_PATH);
 		//chmod($target_path,0777);
 	}
-	
+	function exporttoxls($data){
+		$file=$_POST["filename"];
+	    $xlsContent=$data;
+	    // pre($_POST);exit;
+		header("Content-type: application/vnd.ms-excel");
+	    header("Content-Disposition: attachment; filename=$file");
+		header("Pragma: ");
+		header("Cache-Control: ");
+	    echo $xlsContent;
+	}
 	/*
 	function get_contents(){
 		$post=rawurldecode($this->input->get_post("tbl"));

@@ -12,7 +12,7 @@ class sarpras extends Admin_Controller {
         
 		$this->load->library(array("form_validation","utils","ion_auth"));
 
-        $this->module_title="Sarana & Prasana List";
+        $this->module_title="Sarana dan Prasana";
         $this->load->model("sarpras_model");
         $this->model=$this->sarpras_model;
 
@@ -157,10 +157,10 @@ class sarpras extends Admin_Controller {
 
 			$data = array(
 				'idSektor'    	=> $this->input->post('idSektor'),
-				'skpd'   			=> $this->input->post('skpd'),
-				'propinsi' 			=> $this->input->post('propinsi'),
-				'kabupaten'  		=> $this->input->post('kabupaten'),				
-				'catSarpras'  		=> $this->input->post('catSarpras'),
+				'skpd'   		=> $this->input->post('skpd'),
+				'propinsi' 		=> $this->input->post('propinsi'),
+				'kabupaten'  	=> $this->input->post('kabupaten'),				
+				'catSarpras'  	=> $this->input->post('catSarpras'),
 				'kondisi'  		=> $this->input->post('kondisi'),
 				'n_status'      		=> 1,
 			);
@@ -285,18 +285,64 @@ class sarpras extends Admin_Controller {
 			
 			}   
 	}
+	
+	function searchAjax($forder=0,$limit=10,$page=1,$postKey=false){
+
+		// pre($_POST);
+		$filter="";
+		if($_POST['propinsi']){
+			$filter .=" AND SRP.propinsi ='".$_POST['propinsi']."' ";
+		}
+		if($_POST['kabupaten']){
+			$filter .=" AND SRP.kabupaten ='".$_POST['kabupaten']."' ";
+		}
+		if($_POST['sektor']){
+			$filter .=" AND SRP.idSektor ='".$_POST['sektor']."'";
+		}
+		if($_POST['catSarpras']){
+			$filter .=" AND SRP.catSarpras ='".$_POST['catSarpras']."' ";
+		}
+		if($_POST['kondisi']){
+			$filter .=" AND SRP.kondisi ='".$_POST['kondisi']."' ";
+		}
+		// pre($filter);
+
+		$postKey=encrypt($filter);
+		// pre($postKey);
+		// $r=decrypt($postKey);
+		// pre($r);
+		
+		$data=$this->dataPaging($forder,$limit,$page,$postKey);
+		
+		$data['m_propinsi']=$this->get_lookup_provinsi();
+		$data_layout["content"]=$this->load->view("sarpras/v_list",$data,true); 
+		
+		if ($data_layout){
+            print json_encode(array('status'=>true, 'data'=>$data_layout["content"]));
+        }else{
+            print json_encode(array('status'=>false));
+        }
+        
+        exit;
+	}
+
  	 function dataPaging($forder=0,$limit=10,$page=1,$postKey=false){
+ 	 	// debug();
 		$filter="";
 		if($postKey){
-			$key=$postKey;
+			$key=decrypt($postKey);
 		}else{
 			$key = ($_POST['q'])?$_POST['q']:0;
 		}
 
+		$dataColumn=array("SRP.id,KAB.nama as namaKabupaten","PROV.namaProvinsi","SKR.namaSektor","CSRP.jenisSarpras","SRP.kondisi");
+		$filter .="(SRP.propinsi=KAB.kode_prop AND SRP.kabupaten=KAB.kode_kab AND SRP.propinsi=PROV.kodeProp AND SRP.catSarpras=CSRP.id AND SRP.idSektor=SKR.id) ";
+
 		if ($key) {
 			
-			$filter = "(namaSektor like '%".$key."%' or skpd like '%".$key."%' or propinsi like '%".$key."%' or kabupaten like '%".$key."%')";
-			$data["key"]=$key;
+			// $filter = "(namaSektor like '%".$key."%' or skpd like '%".$key."%' or propinsi like '%".$key."%' or kabupaten like '%".$key."%')";
+			$filter .= $key;
+			$data["key"]=$postKey;
 		}
 		$offset 		= ($page-1)*$limit;
 		$data_start 	= $offset+1;
@@ -312,30 +358,30 @@ class sarpras extends Admin_Controller {
 			$order = 'order by id desc';
 		}
 
-		$result=$this->model->SearchRecordLimitWhere($filter,$limit,$offset,$order);
+		$arrDB=$this->model->SearchRecordLimitWhereJoin($filter,$limit,$offset,$order,$dataColumn);
 		// pre($result);
 
-		foreach ($result as $keys => $value) {
-			$namaSarpras=$this->get_name_sarpras($value['catSarpras']);
-			// pre($value['catSarpras']);
-			// pre($namaSarpras);
-			$namaSektor=$this->get_name_sektor($value['idSektor']);
-			$namaProp=$this->get_name_provinsi($value['propinsi']);
-			$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
+		// foreach ($result as $keys => $value) {
+		// 	$namaSarpras=$this->get_name_sarpras($value['catSarpras']);
+		// 	// pre($value['catSarpras']);
+		// 	// pre($namaSarpras);
+		// 	$namaSektor=$this->get_name_sektor($value['idSektor']);
+		// 	$namaProp=$this->get_name_provinsi($value['propinsi']);
+		// 	$namaKab=$this->get_name_kabupaten($value['propinsi'],$value['kabupaten']);
 			
-			$arrDB[$keys]=$value;
-			$arrDB[$keys]['namaProp']=$namaProp['nama'];
-			$arrDB[$keys]['namaKab']=$namaKab['nama'];
-			$arrDB[$keys]['namaSarpras']=$namaSarpras['jenisSarpras'];
-			$arrDB[$keys]['namaSektor']=$namaSektor['namaSektor'];
-		}
+		// 	$arrDB[$keys]=$value;
+		// 	$arrDB[$keys]['namaProp']=$namaProp['nama'];
+		// 	$arrDB[$keys]['namaKab']=$namaKab['nama'];
+		// 	$arrDB[$keys]['namaSarpras']=$namaSarpras['jenisSarpras'];
+		// 	$arrDB[$keys]['namaSektor']=$namaSektor['namaSektor'];
+		// }
 		// pre($arrDB);
 		// $data=$this->get_name_provinsi('11');
 		// $data=$this->get_name_kabupaten('11','01');
 		// pre($data);
-		$total_rows=$this->model->getTotalRecordWhere2($filter);
+		$total_rows=$this->model->getTotalRecordWhereJoin($filter,"SRP.id");
 		//print_r($total_rows);exit;
-		$query_url = ($key)?"/".$key:"";
+		$query_url = ($key)?"/".$postKey:"";
 		$base_url = $this->module."index/".$forder."/".$limit;
 		$perpage = $this->utils->getPerPageAjax($limit,array(5,15,20,25,30,40,50));
 		$paging = $this->utils->getPaginationStringAjax($page, $total_rows, $limit, 1, $base_url, "/",$query_url);
@@ -349,6 +395,8 @@ class sarpras extends Admin_Controller {
 		$data["perpage"]=$perpage;
 		$data["paging"]=$paging;
 		$data["module"]=$this->module;
+		$data['m_propinsi']=$this->get_lookup_provinsi();
+		$data['m_catSarpras']=$this->user_model->m_cat_sarpras(false);
 
 		$data["page"]=$forder."/".$limit."/".$page.$query_url;
 		$data_layout["content"]=$this->load->view("sarpras/v_list",$data,true); 

@@ -32,16 +32,15 @@
         <div class="page-header">
             <div class="row"> 
                 <div class="col-md-12">
-                    <h1>Capaian SPM<small> Add </small></h1>
+                    <h1>Ubah Data<small>Capaian SPM</small></h1>
                 </div><!-- col -->
             </div><!-- row-->
         </div><!-- end: page-header -->
         <!-- start: breadcrumbs -->
          <ul class="breadcrumb">
-            <li><a href="<?=base_url()?>register/register"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
-            <li><a href="<?=$this->folder?>">Content</a> <span class="divider"></span></li>
-			<li><a href="<?=$this->folder?>"><?=$this->module_title?></a> <span class="divider"></span></li>
-            <li class="active">Add</li>
+            <li><a href="<?=base_url()?>"><i class='icon-home blue'></i> Home</a> <span class="divider"></span></li>
+            <li><a href="<?php echo $this->module?>" id="refresh">Capaian SPM</a> <span class="divider"></span></li>
+			<li class="active">Ubah Data</li>
          </ul>
         <!-- end: breadcrumbs -->
    </div><!-- cols -->
@@ -85,7 +84,7 @@
 <br>
 <div class="row-fluid">
 <ul class="nav nav-tabs" id="news-tab">
-   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-plus"></i> Tambah Data</a></li>
+   <li class="active"><a href="#tab-edit" class="a_view"><i class="icon-plus"></i> Ubah Data</a></li>
 </ul>
 <!--tab content-->
 <div class="tab-content">
@@ -291,7 +290,11 @@ $('#fdata').submit(function(event) {
                 // log data to the console so we can see
                 $('#dataAjax').html(data.data); 
         		$('.ajax-spinner-bars').css("display","none"); 
-
+        		 $.notify({
+                  message: "<i class='fa fa-check'></i> Data Berhasil Diubah"
+                },{
+                    type: 'success'
+                });
                 // here we will handle errors and validation messages
             });
 
