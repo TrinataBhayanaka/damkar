@@ -62,36 +62,7 @@
 		<div id="wrapper">
 
 			<!-- Top Bar -->
-			<div id="topBar">
-				<div class="container">
-
-					<!-- right -->
-					<ul class="top-links list-inline pull-right">
-					<? if ($this->ion_auth->logged_in()) { ?>
-						<li class="text-welcome hidden-xs">Selamat Datang, <strong><?=$this->user_data['nama']?></strong></li>
-						<li>
-							<a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i class="fa fa-user hidden-xs"></i> MY ACCOUNT</a>
-							<ul class="dropdown-menu pull-right">
-								<li><a tabindex="-1" href="user/profile"><i class="fa fa-cog"></i> MY PROFILE</a></li>
-								<li class="divider"></li>
-								<li><a tabindex="-1" href="user/logout"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
-							</ul>
-						</li>
-					<? } else { ?>
-						<li class="text-welcome hidden-xs"><a href="user/register"><i class="fa fa-user hidden-xs"></i> Pengguna baru? Daftar <strong>disini</strong></a></li>
-						<li class="text-welcome hidden-xs"><a href="user"><i class="fa fa-key hidden-xs"></i> Masuk</a></li>
-					<? } ?>
-
-					</ul>
-
-					<!-- left -->
-					<ul class="top-links list-inline">
-						<li class="hidden-xs"><a href="#"><i class="fa fa-phone"></i> KONTAK (0123) 456789</a></li>
-						<li class="hidden-xs"><a href="#"><i class="fa fa-envelope"></i> kebencanaan@kebencanaan.or.id</a></li>
-					</ul>
-
-				</div>
-			</div>
+			
 			<!-- /Top Bar -->
 
 			<div id="header" class="sticky shadow-after-3 clearfix">
@@ -164,7 +135,7 @@
 										<a href="pages/agenda">AGENDA</a>
 									</li>
 									<li>
-										<a href="pages/agenda">PERATURAN</a>
+										<a href="pages/peraturan">PERATURAN</a>
 									</li>
 									<li>
 										<a href="pages/galeri">GALERI</a>
