@@ -25,6 +25,38 @@ class pages extends Public_Controller {
 		$this->right_page=array("brwa_kepengurusan");
 		$this->index('pbrwa');
 	}
+	function agenda(){
+		$this->page_title="Agenda";
+		$this->page_sub_title="Badan Registrasi Wilayah Adat (BRWA) adalah lembaga tempat pendaftaran (registrasi) wilayah adat";
+		$this->page_active=$this->module."about";
+		$this->breadcrumb=array("Beranda"=>"","Tentang Portal Kebencanaan"=>"pages/about","Agenda"=>"#");
+		$this->right_page=array("brwa_kepengurusan");
+		$this->index('pbrwa');
+	}
+	function peraturan(){
+		$this->page_title="Peraturan";
+		$this->page_sub_title="Badan Registrasi Wilayah Adat (BRWA) adalah lembaga tempat pendaftaran (registrasi) wilayah adat";
+		$this->page_active=$this->module."about";
+		$this->breadcrumb=array("Beranda"=>"","Tentang Portal Kebencanaan"=>"pages/about","Peraturan"=>"#");
+		$this->right_page=array("brwa_kepengurusan");
+		$this->index('pbrwa');
+	}
+	function galeri(){
+		$this->page_title="Galeri";
+		$this->page_sub_title="Badan Registrasi Wilayah Adat (BRWA) adalah lembaga tempat pendaftaran (registrasi) wilayah adat";
+		$this->page_active=$this->module."about";
+		$this->breadcrumb=array("Beranda"=>"","Tentang Portal Kebencanaan"=>"pages/about","Galeri"=>"#");
+		$this->right_page=array("brwa_kepengurusan");
+		$this->index('pbrwa');
+	}
+	function statistik(){
+		$this->page_title="Statistik";
+		$this->page_sub_title="Badan Registrasi Wilayah Adat (BRWA) adalah lembaga tempat pendaftaran (registrasi) wilayah adat";
+		$this->page_active=$this->module."about";
+		$this->breadcrumb=array("Beranda"=>"","Tentang Portal Kebencanaan"=>"pages/about","Statistik"=>"#");
+		$this->right_page=array("brwa_kepengurusan");
+		$this->index('pbrwa');
+	}
 	function kantor(){
 		$this->page_title="Kantor Wilayah ";
 		$this->page_sub_title="Kantor Wilayah BRWA";
