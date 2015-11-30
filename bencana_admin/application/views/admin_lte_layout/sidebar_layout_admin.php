@@ -9,7 +9,7 @@
                 </a>
             </li>
             <? if(($this->cms->has_read("wa_reg/wa_reg/"))||($this->cms->has_read("reg/"))||($this->cms->has_read("ver/"))||($this->cms->has_read("ser/"))||($this->cms->has_read("keberatan/"))||($this->cms->has_read("register/register/"))):?>
-            <li class="treeview">
+            <!--<li class="treeview">
                 <a href="#">
                     <i class="fa fa-globe"></i>
                     <span>Wilayah & Sektor/UPT</span>
@@ -33,7 +33,7 @@
                     <? //endif; ?>
                     
                </ul>
-            </li>
+            </li>-->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-file-text"></i>
@@ -47,7 +47,7 @@
                     
                </ul>
             </li>
-            <li class="treeview">
+            <!--<li class="treeview">
                 <a href="#">
                     <i class="fa fa-bar-chart"></i>
                     <span>Statistik Informasi</span>
@@ -59,7 +59,7 @@
                     <? //endif; ?>
                     
                </ul>
-            </li>
+            </li>-->
             <!--<li class="treeview">
                 <a href="#">
                     <i class="glyphicon glyphicon-fire"></i>
