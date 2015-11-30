@@ -60,7 +60,7 @@
                     
                </ul>
             </li>
-            <li class="treeview">
+            <!--<li class="treeview">
                 <a href="#">
                     <i class="glyphicon glyphicon-fire"></i>
                     <span>Kejadian</span>
@@ -72,7 +72,7 @@
                     <? //endif; ?>
                     
                </ul>
-            </li>
+            </li>-->
 
             <? if(($this->cms->has_read("admin/articles/"))||($this->cms->has_read("admin/news/"))||($this->cms->has_read("admin/slider/"))||($this->cms->has_read("admin/rss/"))):?>
             <li class="treeview">
@@ -86,6 +86,8 @@
                     <li><a href="admin/news"><i class="fa"></i>Berita </a></li>
                     <li><a href="admin/articles"><i class="fa"></i>Artikel </a></li>
                     <li><a href="admin/agenda"><i class="fa"></i>Agenda </a></li>
+                    <li><a href="galeri/galerialbum/"><i class="fa"></i>Galeri Album</a></li>
+                    <li><a href="galeri/galerifoto/"><i class="fa"></i>Galeri Foto</a></li>
                     <li><a href="admin/rss"><i class="fa"></i>RSS </a></li>
                 </ul>
             </li>
