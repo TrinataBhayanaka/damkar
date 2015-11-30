@@ -16,6 +16,8 @@ class dashboard extends Admin_Controller {
 	    $this->folder=$class_folder."/";
         $this->module=$this->folder.$class."/";
 		
+        $this->load->model("dashboard_model");
+        $this->model=$this->dashboard_model;
 	    $this->http_ref=base_url().$this->module;
        
         //$this->load->model("general_model");
@@ -60,7 +62,11 @@ class dashboard extends Admin_Controller {
 	}
 	
 	function index(){
-		
+		$data['jumlahPersonel']=$this->model->jumPersonel();
+		$data['jumlahPNS']=$this->model->jumPersonelPNS();
+		$data['jumlahNonPNS']=$this->model->jumPersonelNonPNS();
+		$data['jumlahSertifikasi']=$this->model->jumPersonelSer();
+		$data['jumlahBSertifikasi']=$this->model->jumPersonelNSer();
 		$this->_render_page($this->module."dashboard_index",$data,true);
 	}
 	

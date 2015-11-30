@@ -5,7 +5,7 @@
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>
-                    0
+                    <?=$jumlahPersonel?>
                 </h3>
                 <p>
                      Jumlah Personel
@@ -24,7 +24,7 @@
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>
-                   0
+                    <?=$jumlahPNS?>
                 </h3>
                 <p>
                     Jumlah PNS
@@ -43,7 +43,7 @@
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
-                    0
+                    <?=$jumlahPNS?>
                 </h3>
                 <p>
                     Jumlah NON PNS
@@ -62,10 +62,10 @@
         <div class="small-box bg-red">
             <div class="inner">
                 <h3>
-                   0
+                   <?=$jumlahSertifikasi?>
                 </h3>
                 <p>
-                    Jumlah DAMKAR
+                    Jumlah Personel Bersertifikasi
                 </p>
             </div>
             <div class="icon">
@@ -86,7 +86,7 @@
         	<!-- GRAFIK LEFT 1 -->
         	<div class="box box-primary">
             <div class="box-header">
-            <h3 class="box-title">Status Chart</h3>
+            <h3 class="box-title">Chart Status Kerja Personel</h3>
             </div>
             <div class="box-body chart-responsive">
             <div class="chart" id="donat" style="height: 300px;"></div>
@@ -97,7 +97,7 @@
         <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header">
-            <h3 class="box-title">Status Chart</h3>
+            <h3 class="box-title">Chart Status Personel Bersertifikasi</h3>
             </div>
             <div class="box-body chart-responsive">
             <div class="chart" id="donat-right" style="height: 300px;"></div>
@@ -156,22 +156,22 @@
                 var donut = new Morris.Donut({
                     element: 'donat',
                     resize: true,
-                    colors: ["#3c8dbc", "#00a65a", "#FF9900","#f56954"],
+                    colors: ["#3c8dbc", "#00a65a", "#FF9900"],
                     data: [
-                        {label: "Teregistrasi", value: 1},
-                        {label: "Terverifikasi", value: 2},
-						{label: "In Progress ", value: 3},
-						{label: "Tersertifikasi", value: 4},
+                        {label: "Jumlah Personel", value: <?=$jumlahPersonel?>},
+                        {label: "Jumlah PNS", value: <?=$jumlahPNS?>},
+						{label: "Jumlah Non PNS", value: <?=$jumlahNonPNS?>},
                     ],
                     hideHover: 'auto'
                 });
 				var donut = new Morris.Donut({
                     element: 'donat-right',
                     resize: true,
-                    colors: ["#669999","#FF0000"],
+                    colors: ["#3c8dbc","#FF0000","#669999"],
                     data: [
-                        {label: "Total Wilayah Adat", value: 5},
-						{label: "Data Tidak Valid", value: 6},
+                        {label: "Jumlah Personel", value: <?=$jumlahPersonel?>},
+                        {label: "Jumlah Bersertifikasi", value: <?=$jumlahSertifikasi?>},
+						{label: "Jumlah Belum Pelatihan", value: <?=$jumlahBSertifikasi?>},
 					
                     ],
                     hideHover: 'auto'
